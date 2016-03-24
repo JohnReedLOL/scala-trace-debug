@@ -130,7 +130,7 @@ Debug.disableEverything_!
 
 ```
 
-Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, please you an exception
+Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, please use an exception.
 
 ____________________________________________________________________________________________________________________
 
@@ -167,7 +167,7 @@ Benefits:
 - Convenient object oriented style syntax
 - Easy to locate and remove trace statements (just Ctr-R find and replace)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
-- Ability to print whole expressions (See "New features")
+- Ability to print whole expressions (see "New features")
 
 ____________________________________________________________________________________________________________________
 
