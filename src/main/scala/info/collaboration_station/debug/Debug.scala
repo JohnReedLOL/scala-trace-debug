@@ -121,94 +121,97 @@ object Debug {
 
   final def trace[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1)
 
-  final def traceExpression[T](block: => T): Unit = macro traceExpressionImpl
+  final def traceExpression[T](block: => T): Unit = macro traceExpressionImpl[T]
 
-  final def traceExpressionImpl(c: Context)(block: c.Tree): c.Tree = {
+  /**
+    * For internal use with traceExpression
+    */
+  final def traceExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val args = List(arg1)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.trace(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   final def trace[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
 
-  final def traceExpression[T](block: => T, lines: Int): Unit = macro traceLinesExpressionImpl
+  final def traceExpression[T](block: => T, lines: Int): Unit = macro traceLinesExpressionImpl[T]
 
-  final def traceLinesExpressionImpl(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
+  final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], lines: c.Expr[Int]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val arg2 = q"$lines"
     val args = List(arg1, arg2)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.trace(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   final def traceStack[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue)
 
-  final def traceStackExpression[T](block: => T): Unit = macro traceStackExpressionImpl
+  final def traceStackExpression[T](block: => T): Unit = macro traceStackExpressionImpl[T]
 
-  final def traceStackExpressionImpl(c: Context)(block: c.Tree): c.Tree = {
+  final def traceStackExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val args = List(arg1)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStack(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   final def traceStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
 
-  final def traceStdOutExpression[T](block: => T): Unit = macro traceStdOutExpressionImpl
+  final def traceStdOutExpression[T](block: => T): Unit = macro traceStdOutExpressionImpl[T]
 
-  final def traceStdOutExpressionImpl(c: Context)(block: c.Tree): c.Tree = {
+  final def traceStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val args = List(arg1)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   final def traceStdOut[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines, useStdOut_? = true)
 
-  final def traceStdOutExpression[T](block: => T, lines: Int): Unit = macro traceLinesStdOutExpressionImpl
+  final def traceStdOutExpression[T](block: => T, lines: Int): Unit = macro traceLinesStdOutExpressionImpl[T]
 
-  final def traceLinesStdOutExpressionImpl(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
+  final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], lines: c.Expr[Int]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val arg2 = q"$lines"
     val args = List(arg1, arg2)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   final def traceStackStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
 
-  final def traceStackStdOutExpression[T](block: => T): Unit = macro traceStackStdOutExpressionImpl
+  final def traceStackStdOutExpression[T](block: => T): Unit = macro traceStackStdOutExpressionImpl[T]
 
-  final def traceStackStdOutExpressionImpl(c: Context)(block: c.Tree): c.Tree = {
+  final def traceStackStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
     import c.universe._
-    val toTraceString = showCode(block) + " -> "
+    val toTraceString = showCode(block.tree) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val args = List(arg1)
     val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStackStdOut(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   /** A fatal assertion.
@@ -229,7 +232,10 @@ object Debug {
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
   // You also cannot use default parameters. Boo.
 
-  final def assertInternal(assertion: Boolean, message: String): Unit = {
+  /**
+    * This function (with no default parameters) is necessary for internal use with assertExpression macro
+    */
+  final def assert(assertion: Boolean, message: String): Unit = {
     if (!assertion && Debug.fatalAssertOn_?) {
       ImplicitTraceObject.traceInternalAssert(message, Int.MaxValue) // trace the max number of lines of stack trace to std error
       System.exit(7)
@@ -238,16 +244,16 @@ object Debug {
 
   final def assertExpression(assertion: Boolean): Unit = macro assertExpressionImpl
 
-  final def assertExpressionImpl(c: Context)(assertion: c.Tree): c.Tree = {
+  final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
     import c.universe._
-    val assertionString = showCode(assertion) + " -> "
+    val assertionString = showCode(assertion.tree) + " -> "
     val arg1 = q"$assertion"
     val arg2 = q"$assertionString + ({$assertion}.toString)"
     val args = List(arg1, arg2)
     val toReturn = q"""
-        info.collaboration_station.debug.Debug.assertInternal(..$args);
+        info.collaboration_station.debug.Debug.assert(..$args);
     """
-    toReturn
+    c.Expr[Unit](toReturn)
   }
 
   /** A fatal assertion.
