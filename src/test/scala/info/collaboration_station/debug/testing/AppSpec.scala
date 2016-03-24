@@ -11,16 +11,6 @@ class CheckSpec
   with GeneratorDrivenPropertyChecks
   with Matchers {
 
-  /*
-  property ("Addition and multiplication are related") {
-    forAll { (x: Int) =>
-      whenever(x > 0) {
-        x * 2 should be(x + x)
-      }
-    }
-  }
-  */
-
   property ("Asserts and Exceptions produce same stack traces") {
     val assertMessage = {
       val originalOut: PrintStream = System.out;

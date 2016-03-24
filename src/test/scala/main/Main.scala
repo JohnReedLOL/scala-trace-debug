@@ -22,15 +22,5 @@ object Main {
     Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
-    /*
-    // does not work
-    import so.AssertEquals._
-
-    assert(1.assertEquals(2) == false)
-    assert(2.assertEquals(2) == true)
-    assert("a".assertEquals("a") == true)
-    assert("a".assertEquals("b") == false)
-    assert("a".assertEquals(1) == false)
-    */
   }
 }

@@ -8,6 +8,20 @@
 .lib/
 dist/*
 # target/
+
+target/scala-2.11/api/
+target/scala-2.11/classes/
+target/scala-2.11/resource_managed/
+target/scala-2.11/src_managed/
+target/scala-2.11/test-classes/
+
+target/resolution-cache/
+target/streams/
+target/test-reports/
+target/.history
+
+resources/info/collaboration_station/
+
 lib_managed/
 src_managed/
 project/boot/
