@@ -1,0 +1,351 @@
+[debug] :: resolving dependencies :: scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1
+[debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
+[debug] 	validate = true
+[debug] 	refresh = false
+[debug] resolving dependencies for configuration 'compile'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[info] Resolving org.scala-lang#scala-library;2.11.7 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@25b88a9
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.7
+[debug] 	local: revision in cache: org.scala-lang#scala-library;2.11.7
+[debug] 	found org.scala-lang#scala-library;2.11.7 in sbt-chain
+[debug] 	[2.11.7] org.scala-lang#scala-library;2.11.7
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[info] Resolving org.scala-lang#scala-reflect;2.11.7 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@7476cefa
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.7
+[debug] 	local: revision in cache: org.scala-lang#scala-reflect;2.11.7
+[debug] 	found org.scala-lang#scala-reflect;2.11.7 in sbt-chain
+[debug] 	[2.11.7] org.scala-lang#scala-reflect;2.11.7
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] resolving dependencies for configuration 'runtime'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [runtime]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->master]
+[debug] resolving dependencies for configuration 'test'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [test]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [runtime]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->default(compile)]
+[info] Resolving org.scalatest#scalatest_2.11;2.2.6 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6e401d63
+[debug] sbt-chain: module revision found in cache: org.scalatest#scalatest_2.11;2.2.6
+[debug] 	local: revision in cache: org.scalatest#scalatest_2.11;2.2.6
+[debug] 	found org.scalatest#scalatest_2.11;2.2.6 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.2 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@61698f92
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
+[debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.2 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->default(compile)]
+[info] Resolving org.scalacheck#scalacheck_2.11;1.11.5 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@62482bd3
+[debug] sbt-chain: module revision found in cache: org.scalacheck#scalacheck_2.11;1.11.5
+[debug] 	local: revision in cache: org.scalacheck#scalacheck_2.11;1.11.5
+[debug] 	found org.scalacheck#scalacheck_2.11;1.11.5 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->default(compile)]
+[info] Resolving org.scala-sbt#test-interface;1.0 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@36b70ee
+[debug] sbt-chain: module revision found in cache: org.scala-sbt#test-interface;1.0
+[debug] 	local: revision in cache: org.scala-sbt#test-interface;1.0
+[debug] 	found org.scala-sbt#test-interface;1.0 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 ...
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4092d197
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
+[debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->master]
+[debug] resolving dependencies for configuration 'provided'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [provided]
+[debug] resolving dependencies for configuration 'optional'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [optional]
+[debug] resolving dependencies for configuration 'compile-internal'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile-internal]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [optional]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [provided]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile-internal->master]
+[debug] resolving dependencies for configuration 'runtime-internal'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [runtime-internal]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [runtime]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->master]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [optional]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime-internal->master]
+[debug] resolving dependencies for configuration 'test-internal'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [test-internal]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [test]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [runtime]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [runtime->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->master]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [optional]
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [provided]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test-internal->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test-internal->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test-internal->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test-internal->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test-internal->master]
+[debug] resolving dependencies for configuration 'plugin'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [plugin]
+[debug] resolving dependencies for configuration 'sources'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [sources]
+[debug] resolving dependencies for configuration 'docs'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [docs]
+[debug] resolving dependencies for configuration 'pom'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [pom]
+[debug] resolving dependencies for configuration 'scala-tool'
+[debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [scala-tool]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [scala-tool->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [scala-tool->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [scala-tool->default(compile)]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [scala-tool->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang#scala-compiler;2.11.7 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.11.7 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.11.7
+[debug] 	local: revision in cache: org.scala-lang#scala-compiler;2.11.7
+[debug] 	found org.scala-lang#scala-compiler;2.11.7 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.4 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
+[debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.4 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->default(compile)]
+[info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
+[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
+[debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->master]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->default(compile)]
+[info] Resolving jline#jline;2.12.1 ...
+[debug] sbt-chain: Checking cache for: dependency: jline#jline;2.12.1 {scala-tool=[default(compile)]}
+[debug] sbt-chain: module revision found in cache: jline#jline;2.12.1
+[debug] 	local: revision in cache: jline#jline;2.12.1
+[debug] 	found jline#jline;2.12.1 in sbt-chain
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->runtime]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->compile]
+[debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->master]
+[debug] 	resolved ivy file produced in cache
+[debug] :: downloading artifacts ::
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar(src)
+[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.11;2.2.6!scalatest_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.11;2.2.6!scalatest_2.11.jar
+[debug] 	[NOT REQUIRED] org.scalatest#scalatest_2.11;2.2.6!scalatest_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.2!scala-xml_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.2!scala-xml_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.2!scala-xml_2.11.jar
+[debug] 	[NOT REQUIRED] org.scalacheck#scalacheck_2.11;1.11.5!scalacheck_2.11.jar
+[debug] 	[NOT REQUIRED] org.scalacheck#scalacheck_2.11;1.11.5!scalacheck_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scalacheck#scalacheck_2.11;1.11.5!scalacheck_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar
+[debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1!scala-parser-combinators_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1!scala-parser-combinators_2.11.jar
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1!scala-parser-combinators_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.7!scala-compiler.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.7!scala-compiler.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(src)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(doc)
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(src)
+[debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(doc)
+[debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(src)
+[debug] :: resolution report :: resolve 67ms :: artifacts dl 10ms
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 compile produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-compile.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 runtime produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-runtime.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 test produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-test.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 provided produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-provided.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 optional produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-optional.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 compile-internal produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-compile-internal.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 runtime-internal produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-runtime-internal.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 test-internal produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-test-internal.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 plugin produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-plugin.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 sources produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-sources.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 docs produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-docs.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 pom produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-pom.xml
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 scala-tool produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-scala-tool.xml
+[debug] 	resolve done (67ms resolve - 10ms download)
