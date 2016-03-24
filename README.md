@@ -107,6 +107,39 @@ See ScalaDoc in source code for in detail documentation.
 
 ____________________________________________________________________________________________________________________
 
+New features:
+
+Now featuring macro expressions:
+
+```scala
+
+    Debug.traceStdOut("Hey0")
+    Debug.traceStdOutExpression{"Hey3"}
+    Debug.traceStdOutExpression{val myVal = 5; 1 + 2 + myVal}
+    Debug.traceStdOutExpression("Hey4", 2)
+    Debug.traceStackStdOutExpression{val myVal = 6; 1 + 2 + myVal}
+
+    Debug.traceExpression{"Hey5"}
+    Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
+    Debug.traceExpression("Hey6", 2)
+    Debug.traceStackExpression{val myVal = 4; 1 + 2 + myVal}
+
+    Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
+    Debug.assertExpression(1+2 == 3)
+
+```
+
+Prints out the expression in addition to the result:
+
+```scala
+"{
+  val myVal = 6;
+  (3).+(myVal)
+} -> 9" in thread main:
+```
+
+____________________________________________________________________________________________________________________
+
 Bugs:
 
 To report or pinpoint bugs, email johnmichaelreedfas@gmail.com
