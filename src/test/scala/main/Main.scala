@@ -6,7 +6,7 @@ import scala.reflect.macros.blackbox.Context
   */
 object Main {
   def main(args: Array[String]) {
-/*
+
     Debug.traceStdOut("Hey0")
     Debug.traceStdOutExpression{"Hey3"}
     Debug.traceStdOutExpression{val myVal = 5; 1 + 2 + myVal}
@@ -21,7 +21,9 @@ object Main {
     Debug.assertNonFatalExpression{val someVal = 2; 1  + someVal == 4}
     Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
-*/
+
+    /*
+    // does not work
     import so.AssertEquals._
 
     assert(1.assertEquals(2) == false)
@@ -29,5 +31,6 @@ object Main {
     assert("a".assertEquals("a") == true)
     assert("a".assertEquals("b") == false)
     assert("a".assertEquals(1) == false)
+    */
   }
 }

@@ -2,51 +2,14 @@
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
-[0m[[0mdebug[0m] [0m	modified: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
 [0m[[0mdebug[0m] [0mRemoved products: Set()[0m
 [0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m	product: Set()[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
-[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/test-classes...[0m
-[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
-[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler feb6eec, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
-[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
-[0m[[0mdebug[0m] [0m	-unchecked[0m
-[0m[[0mdebug[0m] [0m	-deprecation[0m
-[0m[[0mdebug[0m] [0m	-feature[0m
-[0m[[0mdebug[0m] [0m	-Xlint[0m
-[0m[[0mdebug[0m] [0m	-Xfatal-warnings[0m
-[0m[[0mdebug[0m] [0m	-Yinline-warnings[0m
-[0m[[0mdebug[0m] [0m	-Ywarn-inaccessible[0m
-[0m[[0mdebug[0m] [0m	-Ywarn-infer-any[0m
-[0m[[0mdebug[0m] [0m	-Ywarn-nullary-override[0m
-[0m[[0mdebug[0m] [0m	-Ywarn-nullary-unit[0m
-[0m[[0mdebug[0m] [0m	-bootclasspath[0m
-[0m[[0mdebug[0m] [0m	/home/johnreed/Applications/jdk1.8.0_73/jre/lib/resources.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/rt.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/sunrsasign.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/jsse.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/jce.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/charsets.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/lib/jfr.jar:/home/johnreed/Applications/jdk1.8.0_73/jre/classes:/home/johnreed/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar[0m
-[0m[[0mdebug[0m] [0m	-classpath[0m
-[0m[[0mdebug[0m] [0m	/home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/test-classes:/home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/classes:/home/johnreed/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar:/home/johnreed/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.6.jar:/home/johnreed/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar:/home/johnreed/.ivy2/cache/org.scalacheck/scalacheck_2.11/jars/scalacheck_2.11-1.11.5.jar:/home/johnreed/.ivy2/cache/org.scala-sbt/test-interface/jars/test-interface-1.0.jar:/home/johnreed/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.1.jar[0m
-[0m[[31merror[0m] [0m/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala:27: not found: type AssertEquals[0m
-[0m[[31merror[0m] [0m    assert(1.assertEquals(2) == false)[0m
-[0m[[31merror[0m] [0m                         ^[0m
-[0m[[31merror[0m] [0m/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala:28: not found: type AssertEquals[0m
-[0m[[31merror[0m] [0m    assert(2.assertEquals(2) == true)[0m
-[0m[[31merror[0m] [0m                         ^[0m
-[0m[[31merror[0m] [0m/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala:29: not found: type AssertEquals[0m
-[0m[[31merror[0m] [0m    assert("a".assertEquals("a") == true)[0m
-[0m[[31merror[0m] [0m                           ^[0m
-[0m[[31merror[0m] [0m/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala:30: not found: type AssertEquals[0m
-[0m[[31merror[0m] [0m    assert("a".assertEquals("b") == false)[0m
-[0m[[31merror[0m] [0m                           ^[0m
-[0m[[31merror[0m] [0m/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala:31: not found: type AssertEquals[0m
-[0m[[31merror[0m] [0m    assert("a".assertEquals(1) == false)[0m
-[0m[[31merror[0m] [0m                           ^[0m
-[0m[[31merror[0m] [0m5 errors found[0m
-[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
-[0m[[31merror[0m] [0m(test:[31mcompile[0m) Compilation failed[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
