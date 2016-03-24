@@ -1,7 +1,7 @@
 # debugtrace
 Making finding and customizing you tracing, printing, and debugging statements easier than ever. 
 
-Debugging utility for printing, tracing, and fatal and non-fatal assertions.
+Debugging utility for printing, tracing, fatal and non-fatal assertions.
 
 ____________________________________________________________________________________________________________________
 
