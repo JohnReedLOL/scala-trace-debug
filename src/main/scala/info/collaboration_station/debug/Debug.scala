@@ -136,9 +136,9 @@ object Debug {
 
   final def trace[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
 
-  final def traceExpression[T](block: => T, lines: Int): Unit = macro traceExpressionImplLines
+  final def traceExpression[T](block: => T, lines: Int): Unit = macro traceLinesExpressionImpl
 
-  final def traceExpressionImplLines(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
+  final def traceLinesExpressionImpl(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
     import c.universe._
     val toTraceString = showCode(block) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
