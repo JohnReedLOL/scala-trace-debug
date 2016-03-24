@@ -235,23 +235,27 @@ object Debug {
   /**
     * This function (with no default parameters) is necessary for internal use with assertExpression macro
     */
+  /*
   final def assert(assertion: Boolean, message: String): Unit = {
     if (!assertion && Debug.fatalAssertOn_?) {
       ImplicitTraceObject.traceInternalAssert(message, Int.MaxValue) // trace the max number of lines of stack trace to std error
       System.exit(7)
     }
   }
+  */
 
   final def assertExpression(assertion: Boolean): Unit = macro assertExpressionImpl
 
   final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
     import c.universe._
     val assertionString = showCode(assertion.tree) + " -> "
-    val arg1 = q"$assertion"
+    //val arg1 = q"$assertion"
     val arg2 = q"$assertionString + ({$assertion}.toString)"
-    val args = List(arg1, arg2)
+    val arg3 = q"Int.MaxValue"
+    val args = List(arg2, arg3)
     val toReturn = q"""
-        info.collaboration_station.debug.Debug.assert(..$args);
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
     c.Expr[Unit](toReturn)
   }

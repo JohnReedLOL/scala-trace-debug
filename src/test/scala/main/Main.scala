@@ -18,7 +18,7 @@ object Main {
     Debug.traceExpression("Hey6", 2)
     Debug.traceStackExpression{val myVal = 4; 1 + 2 + myVal}
 
-    Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
+    Debug.assertExpression{val myVal = 4; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
   }
