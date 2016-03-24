@@ -17,7 +17,7 @@ libraryDependencies ++= Seq(
 
 // to debug macros, use -Ymacro-debug-lite
 
-scalacOptions ++= Seq("-Ymacro-debug-lite", "-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-infer-any", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-infer-any", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 // initialCommands := "import example._"
 
