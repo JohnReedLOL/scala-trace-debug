@@ -1,0 +1,20 @@
+package info.collaboration_station.debug
+
+import scala.language.experimental.macros
+import scala.reflect.macros.blackbox
+//import scala.reflect.macros.blackbox.Context
+
+final class Macros(val c: blackbox.Context) {
+  final def mono = c.literalUnit
+  final def poly[T: c.WeakTypeTag] = c.literal(c.weakTypeOf[T].toString)
+
+  final def monoImpl = macro mono
+  final def polyImple[T] = macro poly[T]
+}
+
+/*
+object Macros {
+  def mono = macro Impl.mono
+  def poly[T] = macro Impl.poly[T]
+}
+*/

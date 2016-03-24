@@ -119,10 +119,24 @@ object Debug {
     nonFatalAssertOff_!()
   }
 
+  /**
+    * Traces to standard error with a one line stack trace.
+    * @param block this block contains or returns whatever it is to be traced.
+    * @tparam T the return type of the block
+    */
   final def trace[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1)
 
+  /**
+    * Traces to standard error with a N line stack trace.
+    * @param block this block contains or returns whatever it is to be traced.
+    * @param lines the number of lines to trace
+    * @tparam T the return type of the block
+    */
   final def trace[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
 
+  /**
+    * Same as trace, but prints the entire expression, not just the result
+    */
   final object traceExpression {
     final def apply[T](block: => T): Unit = macro traceExpressionImpl[T]
 
@@ -152,8 +166,16 @@ object Debug {
     }
   }
 
+  /**
+    * Traces to standard error with a full length stack trace.
+    * @param block this block contains or returns whatever it is to be traced.
+    * @tparam T the return type of the block
+    */
   final def traceStack[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue)
 
+  /**
+    * Same as traceStack, but prints the entire expression, not just the result
+    */
   final object traceStackExpression {
     final def apply[T](block: => T): Unit = macro traceStackExpressionImpl[T]
 
@@ -169,10 +191,19 @@ object Debug {
     }
   }
 
+  /**
+    * Same as Debug.trace, but prints to standard out instead of standard error
+    */
   final def traceStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
 
+  /**
+    * Same as Debug.trace(block: => T, lines: Int), but prints to standard out instead of standard error
+    */
   final def traceStdOut[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines, useStdOut_? = true)
 
+  /**
+    * Same as Debug.traceStdOut, but prints the whole expression not just its result
+    */
   final object traceStdOutExpression {
 
     final def apply[T](block: => T): Unit = macro traceStdOutExpressionImpl[T]
@@ -203,8 +234,14 @@ object Debug {
     }
   }
 
+  /**
+    * Same as traceStack, but prints to StdOut instead of StdError
+    */
   final def traceStackStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
 
+  /**
+    * Same as traceStackStdOut, but prints the whole expression not just the result
+    */
   final object traceStackStdOutExpression {
     final def apply[T](block: => T): Unit = macro traceStackStdOutExpressionImpl[T]
 
