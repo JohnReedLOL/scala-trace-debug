@@ -43,7 +43,7 @@ Getting started:
 
 Just add this line to your "build.sbt" file:
 
-libraryDependencies += "scala-trace-debug" % "scala-trace-debug" % "2.11" from "https://github.com/JohnReedLOL/scala-trace-debug/blob/master/target/scala-2.11/scala-trace-debug_2.11-0.1.1.jar"
+- libraryDependencies += "scala-trace-debug" % "scala-trace-debug" % "2.11" from "https://github.com/JohnReedLOL/scala-trace-debug/blob/master/target/scala-2.11/scala-trace-debug_2.11-0.1.1.jar"
 
 Maven Repository coming soon.
 
