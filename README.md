@@ -56,6 +56,8 @@ Cheat Sheet:
 
 Methods availiable through implicit conversion:
 
+```scala
+
 import info.collaboration_station.debug._
 
 // tracing methods:
@@ -121,6 +123,8 @@ Debug.nonFatalAssertOff_!
 // Enable/disable everything:
 Debug.enableEverything_!
 Debug.disableEverything_!
+
+```
 
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, please you an exception
 
