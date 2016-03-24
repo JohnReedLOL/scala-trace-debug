@@ -1,5 +1,5 @@
 # debugtrace
-Trace debugging and assertion tool for Scala.
+Making finding and customizing you tracing, printing, and debugging statements easier than ever. Debugging utility for printing, tracing, and fatal and non-fatal assertions.
 
 ____________________________________________________________________________________________________________________
 
