@@ -82,7 +82,7 @@ import info.collaboration_station.debug._
 
 ```
 
-Methods availiable through Debug object (may be usable in Java):
+Methods availiable through Debug object:
 
 ```scala
 
