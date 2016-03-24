@@ -134,18 +134,18 @@ object Debug {
     toReturn
   }
 
-  final def traceLines[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
+  final def trace[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
 
-  final def traceLinesExpression[T](block: => T, lines: Int): Unit = macro traceLinesExpressionImpl
+  final def traceExpression[T](block: => T, lines: Int): Unit = macro traceExpressionImplLines
 
-  final def traceLinesExpressionImpl(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
+  final def traceExpressionImplLines(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
     import c.universe._
     val toTraceString = showCode(block) + " -> "
     val arg1 = q"$toTraceString + ({$block}.toString)"
     val arg2 = q"$lines"
     val args = List(arg1, arg2)
     val toReturn = q"""
-        info.collaboration_station.debug.Debug.traceLines(..$args);
+        info.collaboration_station.debug.Debug.trace(..$args);
     """
     toReturn
   }
@@ -180,9 +180,9 @@ object Debug {
     toReturn
   }
 
-  final def traceLinesStdOut[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines, useStdOut_? = true)
+  final def traceStdOut[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines, useStdOut_? = true)
 
-  final def traceLinesStdOutExpression[T](block: => T, lines: Int): Unit = macro traceLinesStdOutExpressionImpl
+  final def traceStdOutExpression[T](block: => T, lines: Int): Unit = macro traceLinesStdOutExpressionImpl
 
   final def traceLinesStdOutExpressionImpl(c: Context)(block: c.Tree, lines: c.Tree): c.Tree = {
     import c.universe._
@@ -191,7 +191,7 @@ object Debug {
     val arg2 = q"$lines"
     val args = List(arg1, arg2)
     val toReturn = q"""
-        info.collaboration_station.debug.Debug.traceLinesStdOut(..$args);
+        info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
     toReturn
   }

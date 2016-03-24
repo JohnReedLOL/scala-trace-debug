@@ -6,30 +6,19 @@ import scala.reflect.macros.blackbox.Context
   */
 object Main {
   def main(args: Array[String]) {
-    /*
+
     Debug.traceStdOut("Hey0")
     Debug.traceStdOutExpression{"Hey3"}
     Debug.traceStdOutExpression{val myVal = 5; 1 + 2 + myVal}
-    Debug.traceLinesStdOutExpression("Hey4", 2)
+    Debug.traceStdOutExpression("Hey4", 2)
     Debug.traceStackStdOutExpression{val myVal = 6; 1 + 2 + myVal}
 
-    /**/
-    Debug.traceExpression{"Hey1"}
+    Debug.traceExpression{"Hey5"}
     Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
-    Debug.traceLinesExpression("Hey2", 2)
+    Debug.traceExpression("Hey6", 2)
     Debug.traceStackExpression{val myVal = 4; 1 + 2 + myVal}
 
-*/
-/*
-    info.collaboration_station.debug.Debug.assertInternal({
-      val myVal: Int = 3;
-      3.==(myVal)
-    }, "{\n  val myVal = 3;\n  (3).==(myVal)\n} -> ".$plus({
-      val myVal: Int = 3;
-      3.==(myVal)
-    }.toString))
-*/
-    Debug.assertExpression{val myVal = 4; 1 + 2 == myVal}
+    Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
   }
