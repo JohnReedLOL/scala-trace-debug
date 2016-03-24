@@ -1,5 +1,7 @@
 # debugtrace
-Making finding and customizing you tracing, printing, and debugging statements easier than ever. Debugging utility for printing, tracing, and fatal and non-fatal assertions.
+Making finding and customizing you tracing, printing, and debugging statements easier than ever. 
+
+Debugging utility for printing, tracing, and fatal and non-fatal assertions.
 
 ____________________________________________________________________________________________________________________
 
@@ -78,7 +80,11 @@ import info.collaboration_station.debug._
 "foo".printStdErr
 "foo".printlnStdErr
 
+```
+
 Methods availiable through Debug object (may be usable in Java):
+
+```scala
 
 import info.collaboration_station.debug.Debug
 
@@ -98,7 +104,11 @@ Debug.assertStdOut("foo" equals "foo", "Assert failed")
 Debug.assertNonFatal("foo" equals "foo", "Assert failed")
 Debug.assertNonFatalStdOut("foo" equals "foo", "Assert failed")
 
+```
+
 Switches availiable through Debug object:
+
+```scala
 
 import info.collaboration_station.debug.Debug
 
@@ -126,7 +136,7 @@ ________________________________________________________________________________
 
 Dependencies:
 
-- None (except for Scala standard library). 
+- libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
 
 - Works best when run with an IDE that supports click-able stack traces. 
 
@@ -134,7 +144,9 @@ ________________________________________________________________________________
 
 Instructions (for IntelliJ IDE):
 
-- Add the jar file to your project. import info.collaboration_station.debug._
+- Add the jar file to your project (lib directory). 
+
+- import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
 
 - Go to: Run > Edit Configurations > Add New Configuration (green plus sign)
 
@@ -147,12 +159,6 @@ Instructions (for IntelliJ IDE):
  
 IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace (see: http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png ).
 
-These instruction assume you know how to package a jar file (sbt package) and include it in your project (SBT uses the "lib" directory).
-
-To include the jar file, you can add to your build.sbt file: 
-
-libraryDependencies += "debugtrace" % "debugtrace" % "2.11" from "https://github.com/JohnReedLOL/debugtrace/blob/master/debugtrace_2.11-0.1.0.jar"
-
 ____________________________________________________________________________________________________________________
 
 Benefits:
@@ -161,6 +167,7 @@ Benefits:
 - Convenient object oriented style syntax
 - Easy to locate and remove trace statements (just Ctr-R find and replace)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
+- Ability to print whole expressions (See "New features")
 
 ____________________________________________________________________________________________________________________
 
@@ -186,29 +193,30 @@ Now featuring macro expressions:
 
 ```scala
 
-    Debug.traceStdOut("Hey0")
-    Debug.traceStdOutExpression{"Hey3"}
-    Debug.traceStdOutExpression{val myVal = 5; 1 + 2 + myVal}
-    Debug.traceStdOutExpression("Hey4", 2)
-    Debug.traceStackStdOutExpression{val myVal = 6; 1 + 2 + myVal}
-
-    Debug.traceExpression{"Hey5"}
-    Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
-    Debug.traceExpression("Hey6", 2)
-    Debug.traceStackExpression{val myVal = 4; 1 + 2 + myVal}
-
-    Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
-    Debug.assertExpression(1+2 == 3)
+    Debug.traceExpression{
+                          val myVal = 4; 
+                          1 + 2 + myVal }
+                          
+    Debug.assertExpression{
+                           val someVal = 2; 
+                           1 + someVal == 4 }
 
 ```
 
 Prints out the expression in addition to the result:
 
 ```scala
+// Output:
+
 "{
-  val myVal = 6;
+  val myVal = 4;
   (3).+(myVal)
-} -> 9" in thread main:
+} -> 7" in thread main:
+
+"{
+  val someVal = 2;
+  (1).+(someVal).==(4)
+} -> false" in thread main:
 ```
 
 ____________________________________________________________________________________________________________________
