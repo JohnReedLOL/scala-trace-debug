@@ -226,17 +226,26 @@ object Debug {
     }
   }
 
-  final def assertExpression(assertion: => Boolean): Unit = macro assertExpressionImpl
+  // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
+  // You also cannot use default parameters. Boo.
+
+  final def assertInternal(assertion: Boolean, message: String): Unit = {
+    if (!assertion && Debug.fatalAssertOn_?) {
+      ImplicitTraceObject.traceInternalAssert(message, Int.MaxValue) // trace the max number of lines of stack trace to std error
+      System.exit(7)
+    }
+  }
+
+  final def assertExpression(assertion: Boolean): Unit = macro assertExpressionImpl
 
   final def assertExpressionImpl(c: Context)(assertion: c.Tree): c.Tree = {
     import c.universe._
     val assertionString = showCode(assertion) + " -> "
     val arg1 = q"$assertion"
     val arg2 = q"$assertionString + ({$assertion}.toString)"
-    val arg3 = q"Int.MaxValue"
-    val args = List(arg1, arg2, arg3)
+    val args = List(arg1, arg2)
     val toReturn = q"""
-        info.collaboration_station.debug.Debug.assert(..$args);
+        info.collaboration_station.debug.Debug.assertInternal(..$args);
     """
     toReturn
   }

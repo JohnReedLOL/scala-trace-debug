@@ -20,7 +20,16 @@ object Main {
     Debug.traceStackExpression{val myVal = 4; 1 + 2 + myVal}
 
 */
-    Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
+/*
+    info.collaboration_station.debug.Debug.assertInternal({
+      val myVal: Int = 3;
+      3.==(myVal)
+    }, "{\n  val myVal = 3;\n  (3).==(myVal)\n} -> ".$plus({
+      val myVal: Int = 3;
+      3.==(myVal)
+    }.toString))
+*/
+    Debug.assertExpression{val myVal = 4; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
   }

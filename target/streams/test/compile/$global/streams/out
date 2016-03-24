@@ -1,23 +1,24 @@
+[0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
 [0m[[0mdebug[0m] [0m	added: Set()[0m
 [0m[[0mdebug[0m] [0m	modified: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
 [0m[[0mdebug[0m] [0mRemoved products: Set(/home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/test-classes/main/Main.class, /home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/test-classes/main/Main$.class)[0m
-[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set(APIChangeDueToMacroDefinition(info.collaboration_station.debug.Debug$))[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
 [0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m	product: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
-[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
 [0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/johnreed/sbtProjects/scala-trace-debug/src/test/scala/main/Main.scala)[0m
 [0m[[0mdebug[0m] [0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
 [0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/johnreed/sbtProjects/scala-trace-debug/target/scala-2.11/test-classes...[0m
 [0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
 [0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.11.7[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler 63f66611, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler b2c89d0, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
 [0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
 [0m[[0mdebug[0m] [0m	-Ymacro-debug-lite[0m
 [0m[[0mdebug[0m] [0m	-unchecked[0m
