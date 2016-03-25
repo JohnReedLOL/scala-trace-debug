@@ -9,4 +9,3 @@
 [debug] 	typesafe-releases: http://repo.typesafe.com/typesafe/releases
 [debug] 	URLRepository(typesafe-ivy-releasez,Patterns(ivyPatterns=List(http://repo.typesafe.com/typesafe/ivy-releases/[organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]), artifactPatterns=List(http://repo.typesafe.com/typesafe/ivy-releases/[organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]), isMavenCompatible=false, descriptorOptional=false, skipConsistencyCheck=false))
 [debug] Using inline dependencies specified in Scala.
-[debug] Using inline dependencies specified in Scala.

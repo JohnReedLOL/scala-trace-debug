@@ -4,7 +4,7 @@
 		module="scala-trace-debug_2.11"
 		revision="0.1.1"
 		status="integration"
-		publication="20160324172342"
+		publication="20160325150623"
 	>
 		<description>
 		scala-trace-debug
@@ -37,5 +37,6 @@
 		<dependency org="org.scalatest" name="scalatest_2.11" rev="2.2.6" conf="test->default(compile)"/>
 		<dependency org="org.scalacheck" name="scalacheck_2.11" rev="1.11.5" conf="test->default(compile)"/>
 		<dependency org="org.scala-lang" name="scala-reflect" rev="2.11.7" conf="compile->default(compile)"/>
+		<dependency org="me.lessis" name="bintray-sbt" rev="0.3.0" conf="compile->default(compile)" e:sbtVersion="0.13" e:scalaVersion="2.11"/>
 	</dependencies>
 </ivy-module>

@@ -615,9 +615,9 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-agent;0.13.5!test-agent.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.5!apply-macro.jar
-[debug] :: resolution report :: resolve 366ms :: artifacts dl 11ms
+[debug] :: resolution report :: resolve 430ms :: artifacts dl 13ms
 [debug] 	report for scala-trace-debug#scala-trace-debug$sbt_2.11;0.1.1 default produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sbt_2.11-default.xml
-[debug] 	resolve done (366ms resolve - 11ms download)
+[debug] 	resolve done (430ms resolve - 13ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: scala-trace-debug#scala-trace-debug$sources_2.11;0.1.1
 [debug] 	confs: [default]
@@ -959,6 +959,6 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_8_2;0.13.5!precompiled-2_8_2.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_9_2;0.13.5!precompiled-2_9_2.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_9_3;0.13.5!precompiled-2_9_3.jar(src)
-[debug] :: resolution report :: resolve 64ms :: artifacts dl 13ms
+[debug] :: resolution report :: resolve 82ms :: artifacts dl 46ms
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_2.11;0.1.1 default produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_2.11-default.xml
-[debug] 	resolve done (64ms resolve - 13ms download)
+[debug] 	resolve done (82ms resolve - 46ms download)
