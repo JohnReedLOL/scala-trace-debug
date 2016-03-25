@@ -4,7 +4,7 @@
 		module="scala-trace-debug$sbt_2.11"
 		revision="0.1.1"
 		status="integration"
-		publication="20160325150625"
+		publication="20160325151812"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>
@@ -12,6 +12,22 @@
 	<publications>
 	</publications>
 	<dependencies>
-		<dependency org="org.scala-sbt" name="sbt" rev="0.13.5" conf="default->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt" rev="0.13.8" conf="default->default(compile)"/>
+		<dependency org="me.lessis" name="bintray-sbt" rev="0.3.0" conf="default->default(compile)" scalaVersion="2.10" sbtVersion="0.13"/>
+		<dependency org="me.lessis" name="bintry_2.10" rev="0.4.0" conf="default->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.10.4" conf="default->default(compile)" info.apiURL="http://www.scala-lang.org/api/2.10.4/"/>
+		<dependency org="net.databinder.dispatch" name="dispatch-json4s-native_2.10" rev="0.11.2" conf="default->default(compile)"/>
+		<dependency org="net.databinder.dispatch" name="dispatch-core_2.10" rev="0.11.2" conf="default->default(compile)"/>
+		<dependency org="com.ning" name="async-http-client" rev="1.8.10" conf="default->default(compile)"/>
+		<dependency org="io.netty" name="netty" rev="3.9.2.Final" conf="default->default(compile)"/>
+		<dependency org="org.json4s" name="json4s-core_2.10" rev="3.2.10" conf="default->default(compile)"/>
+		<dependency org="org.json4s" name="json4s-ast_2.10" rev="3.2.10" conf="default->default(compile)"/>
+		<dependency org="com.thoughtworks.paranamer" name="paranamer" rev="2.6" conf="default->default(compile)"/>
+		<dependency org="org.scala-lang" name="scalap" rev="2.10.0" conf="default->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.10.4" conf="default->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-reflect" rev="2.10.4" conf="default->default(compile)" info.apiURL="http://www.scala-lang.org/api/2.10.4/"/>
+		<dependency org="org.json4s" name="json4s-native_2.10" rev="3.2.10" conf="default->default(compile)"/>
+		<dependency org="org.slf4j" name="slf4j-nop" rev="1.7.7" conf="default->default(compile)"/>
+		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.7" conf="default->default(compile)"/>
 	</dependencies>
 </ivy-module>

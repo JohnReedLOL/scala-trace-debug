@@ -4,7 +4,7 @@
 		module="scala-trace-debug$sources_javadoc_2.11"
 		revision="0.1.1"
 		status="integration"
-		publication="20160324172343"
+		publication="20160325151733"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

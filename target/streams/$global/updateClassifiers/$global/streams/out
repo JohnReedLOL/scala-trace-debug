@@ -1,3 +1,6 @@
+[warn] Multiple dependencies with the same organization/name but different versions. To avoid conflict, pick one version:
+[warn]  * org.scala-lang.modules:scala-parser-combinators_2.11:(1.0.1, 1.0.4)
+[warn]  * org.scala-lang.modules:scala-xml_2.11:(1.0.2, 1.0.4)
 [debug] :: resolving dependencies :: scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1
 [debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
 [debug] 	validate = true
@@ -6,9 +9,8 @@
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 [compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
 [info] Resolving org.scala-lang#scala-library;2.11.7 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@25b88a9
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@13eb4a21
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-library;2.11.7
 [debug] 	found org.scala-lang#scala-library;2.11.7 in sbt-chain
 [debug] 	[2.11.7] org.scala-lang#scala-library;2.11.7
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
@@ -16,9 +18,8 @@
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->default(compile)]
 [info] Resolving org.scala-lang#scala-reflect;2.11.7 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@7476cefa
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@69975d34
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-reflect;2.11.7
 [debug] 	found org.scala-lang#scala-reflect;2.11.7 in sbt-chain
 [debug] 	[2.11.7] org.scala-lang#scala-reflect;2.11.7
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
@@ -73,45 +74,40 @@
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [test->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->default(compile)]
 [info] Resolving org.scalatest#scalatest_2.11;2.2.6 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@6e401d63
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@56df10cc
 [debug] sbt-chain: module revision found in cache: org.scalatest#scalatest_2.11;2.2.6
-[debug] 	local: revision in cache: org.scalatest#scalatest_2.11;2.2.6
 [debug] 	found org.scalatest#scalatest_2.11;2.2.6 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->default(compile)]
 [info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.2 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@61698f92
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@36d5bc03
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
 [debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.2 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.2 [test->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->default(compile)]
 [info] Resolving org.scalacheck#scalacheck_2.11;1.11.5 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@62482bd3
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@32ba189c
 [debug] sbt-chain: module revision found in cache: org.scalacheck#scalacheck_2.11;1.11.5
-[debug] 	local: revision in cache: org.scalacheck#scalacheck_2.11;1.11.5
 [debug] 	found org.scalacheck#scalacheck_2.11;1.11.5 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->default(compile)]
 [info] Resolving org.scala-sbt#test-interface;1.0 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@36b70ee
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@2b9340e
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#test-interface;1.0
-[debug] 	local: revision in cache: org.scala-sbt#test-interface;1.0
 [debug] 	found org.scala-sbt#test-interface;1.0 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-sbt#test-interface;1.0 [test->master]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->default(compile)]
 [info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4092d197
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@15889e9c
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
 [debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [test->compile]
@@ -271,7 +267,6 @@
 [info] Resolving org.scala-lang#scala-compiler;2.11.7 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.11.7 {scala-tool=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-compiler;2.11.7
 [debug] 	found org.scala-lang#scala-compiler;2.11.7 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->compile]
@@ -280,7 +275,6 @@
 [info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.4 {scala-tool=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
 [debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.4 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-xml_2.11;1.0.4 [scala-tool->compile]
@@ -289,7 +283,6 @@
 [info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 {scala-tool=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
 [debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [scala-tool->compile]
@@ -298,7 +291,6 @@
 [info] Resolving jline#jline;2.12.1 ...
 [debug] sbt-chain: Checking cache for: dependency: jline#jline;2.12.1 {scala-tool=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: jline#jline;2.12.1
-[debug] 	local: revision in cache: jline#jline;2.12.1
 [debug] 	found jline#jline;2.12.1 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1->jline#jline;2.12.1 [scala-tool->compile]
@@ -334,7 +326,7 @@
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(src)
 [debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(doc)
 [debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(src)
-[debug] :: resolution report :: resolve 67ms :: artifacts dl 10ms
+[debug] :: resolution report :: resolve 46ms :: artifacts dl 15ms
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 compile produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-compile.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 runtime produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-runtime.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 test produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-test.xml
@@ -348,4 +340,4 @@
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 docs produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-docs.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 pom produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-pom.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug$sources_javadoc_2.11;0.1.1 scala-tool produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_javadoc_2.11-scala-tool.xml
-[debug] 	resolve done (67ms resolve - 10ms download)
+[debug] 	resolve done (46ms resolve - 15ms download)

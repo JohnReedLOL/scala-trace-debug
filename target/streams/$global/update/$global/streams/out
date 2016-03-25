@@ -7,9 +7,8 @@
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->default(compile)]
 [info] Resolving org.scala-lang#scala-library;2.11.7 ...
-[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4a40fac3
+[debug] sbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@74ee18c8
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-library;2.11.7
 [debug] 	found org.scala-lang#scala-library;2.11.7 in sbt-chain
 [debug] 	[2.11.7] org.scala-lang#scala-library;2.11.7
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [compile->runtime]
@@ -19,7 +18,6 @@
 [info] Resolving org.scala-lang#scala-reflect;2.11.7 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.11.7 {compile=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-reflect;2.11.7
 [debug] 	found org.scala-lang#scala-reflect;2.11.7 in sbt-chain
 [debug] 	[2.11.7] org.scala-lang#scala-reflect;2.11.7
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->runtime]
@@ -31,37 +29,6 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
-[info] Resolving me.lessis#bintray-sbt;0.3.0 ...
-[debug] sbt-chain: Checking cache for: dependency: me.lessis#bintray-sbt;0.3.0 {compile=[default(compile)]}
-[debug] 		tried /home/johnreed/.ivy2/local/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[debug] 	local: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[debug] 		tried file:/home/johnreed/.activator/repository/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[debug] 	activator-launcher-local: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[debug] 		tried file:/home/johnreed/sbtProjects/activator-dist-1.3.7/repository/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[debug] 	activator-local: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[debug] 		tried http://repo1.maven.org/maven2/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[debug] CLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[debug] 	public: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[debug] 		tried http://repo.typesafe.com/typesafe/releases/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[debug] CLIENT ERROR: Not Found url=http://repo.typesafe.com/typesafe/releases/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[debug] 	typesafe-releases: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[debug] 		tried http://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[debug] CLIENT ERROR: Not Found url=http://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[debug] 	typesafe-ivy-releasez: no ivy file found for me.lessis#bintray-sbt;0.3.0
-[warn] 	module not found: me.lessis#bintray-sbt;0.3.0
-[warn] ==== local: tried
-[warn]   /home/johnreed/.ivy2/local/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[warn] ==== activator-launcher-local: tried
-[warn]   file:/home/johnreed/.activator/repository/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[warn] ==== activator-local: tried
-[warn]   file:/home/johnreed/sbtProjects/activator-dist-1.3.7/repository/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
-[warn] ==== public: tried
-[warn]   http://repo1.maven.org/maven2/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[warn] ==== typesafe-releases: tried
-[warn]   http://repo.typesafe.com/typesafe/releases/me/lessis/bintray-sbt_2.11_0.13/0.3.0/bintray-sbt-0.3.0.pom
-[warn] ==== typesafe-ivy-releasez: tried
-[warn]   http://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintray-sbt/scala_2.11/sbt_0.13/0.3.0/ivys/ivy.xml
 [debug] resolving dependencies for configuration 'runtime'
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [runtime]
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [compile]
@@ -77,7 +44,6 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] resolving dependencies for configuration 'test'
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [test]
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [runtime]
@@ -94,12 +60,10 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->default(compile)]
 [info] Resolving org.scalatest#scalatest_2.11;2.2.6 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scalatest#scalatest_2.11;2.2.6 {test=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scalatest#scalatest_2.11;2.2.6
-[debug] 	local: revision in cache: org.scalatest#scalatest_2.11;2.2.6
 [debug] 	found org.scalatest#scalatest_2.11;2.2.6 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->compile]
@@ -113,7 +77,6 @@
 [info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.2 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.2
 [debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.2 in sbt-chain
 [debug] == resolving dependencies org.scalatest#scalatest_2.11;2.2.6->org.scala-lang.modules#scala-xml_2.11;1.0.2 [compile->compile(*)]
 [debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.2->org.scala-lang#scala-library;2.11.1 [compile->master(compile)]
@@ -136,7 +99,6 @@
 [info] Resolving org.scalacheck#scalacheck_2.11;1.11.5 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scalacheck#scalacheck_2.11;1.11.5 {test=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scalacheck#scalacheck_2.11;1.11.5
-[debug] 	local: revision in cache: org.scalacheck#scalacheck_2.11;1.11.5
 [debug] 	found org.scalacheck#scalacheck_2.11;1.11.5 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalacheck#scalacheck_2.11;1.11.5 [test->compile]
@@ -148,7 +110,6 @@
 [info] Resolving org.scala-sbt#test-interface;1.0 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#test-interface;1.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#test-interface;1.0
-[debug] 	local: revision in cache: org.scala-sbt#test-interface;1.0
 [debug] 	found org.scala-sbt#test-interface;1.0 in sbt-chain
 [debug] == resolving dependencies org.scalacheck#scalacheck_2.11;1.11.5->org.scala-sbt#test-interface;1.0 [compile->compile(*)]
 [debug] == resolving dependencies org.scalacheck#scalacheck_2.11;1.11.5->org.scala-sbt#test-interface;1.0 [compile->runtime(*)]
@@ -157,7 +118,6 @@
 [info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1
 [debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 in sbt-chain
 [debug] == resolving dependencies org.scalacheck#scalacheck_2.11;1.11.5->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1 [compile->compile(*)]
 [debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.1->org.scala-lang#scala-library;2.11.0 [compile->master(*)]
@@ -195,7 +155,6 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [optional]
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [provided]
 [debug] resolving dependencies for configuration 'runtime-internal'
@@ -214,7 +173,6 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [optional]
 [debug] resolving dependencies for configuration 'test-internal'
 [debug] == resolving dependencies for scala-trace-debug#scala-trace-debug_2.11;0.1.1 [test-internal]
@@ -233,7 +191,6 @@
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.11.7->org.scala-lang#scala-library;2.11.7 [runtime->compile]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-reflect;2.11.7 [compile->master]
-[debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->default(compile)]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scalatest#scalatest_2.11;2.2.6 [test->compile]
@@ -298,7 +255,6 @@
 [info] Resolving org.scala-lang#scala-compiler;2.11.7 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.11.7 {scala-tool=[default, optional(default)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.11.7
-[debug] 	local: revision in cache: org.scala-lang#scala-compiler;2.11.7
 [debug] 	found org.scala-lang#scala-compiler;2.11.7 in sbt-chain
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->runtime]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-compiler;2.11.7 [scala-tool->compile]
@@ -317,7 +273,6 @@
 [info] Resolving org.scala-lang.modules#scala-xml_2.11;1.0.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.11;1.0.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-xml_2.11;1.0.4
 [debug] 	found org.scala-lang.modules#scala-xml_2.11;1.0.4 in sbt-chain
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-xml_2.11;1.0.4 [compile->compile(*)]
 [debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.11;1.0.4->org.scala-lang#scala-library;2.11.4 [compile->master(compile)]
@@ -333,7 +288,6 @@
 [info] Resolving org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] sbt-chain: module revision found in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
-[debug] 	local: revision in cache: org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4
 [debug] 	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 in sbt-chain
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4 [compile->compile(*)]
 [debug] == resolving dependencies org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4->org.scala-lang#scala-library;2.11.6 [compile->master(compile)]
@@ -361,7 +315,6 @@
 [info] Resolving jline#jline;2.12.1 ...
 [debug] sbt-chain: Checking cache for: dependency: jline#jline;2.12.1 {optional=[compile(*), master(compile)]}
 [debug] sbt-chain: module revision found in cache: jline#jline;2.12.1
-[debug] 	local: revision in cache: jline#jline;2.12.1
 [debug] 	found jline#jline;2.12.1 in sbt-chain
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.11.7->jline#jline;2.12.1 [optional->compile(*)]
 [debug] == resolving dependencies scala-trace-debug#scala-trace-debug_2.11;0.1.1->org.scala-lang#scala-library;2.11.7 [scala-tool->default]
@@ -382,12 +335,7 @@
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(bundle)
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(bundle)
 [debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar
-[debug] :: resolution report :: resolve 1152ms :: artifacts dl 8ms
-[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
-[warn] 	::          UNRESOLVED DEPENDENCIES         ::
-[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
-[warn] 	:: me.lessis#bintray-sbt;0.3.0: not found
-[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
+[debug] :: resolution report :: resolve 278ms :: artifacts dl 13ms
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 compile produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-compile.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 runtime produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-runtime.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 test produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-test.xml
@@ -401,60 +349,5 @@
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 docs produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-docs.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 pom produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-pom.xml
 [debug] 	report for scala-trace-debug#scala-trace-debug_2.11;0.1.1 scala-tool produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug_2.11-scala-tool.xml
-[debug] 	resolve done (1152ms resolve - 8ms download)
-[warn] 
-[warn] 	Note: Some unresolved dependencies have extra attributes.  Check that these dependencies exist with the requested attributes.
-[warn] 		me.lessis:bintray-sbt:0.3.0 (scalaVersion=2.11, sbtVersion=0.13)
-[warn] 
-sbt.ResolveException: unresolved dependency: me.lessis#bintray-sbt;0.3.0: not found
-	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:217)
-	at sbt.IvyActions$$anonfun$update$1.apply(IvyActions.scala:126)
-	at sbt.IvyActions$$anonfun$update$1.apply(IvyActions.scala:125)
-	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:115)
-	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:115)
-	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:103)
-	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:48)
-	at sbt.IvySbt$$anon$3.call(Ivy.scala:57)
-	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
-	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
-	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
-	at xsbt.boot.Using$.withResource(Using.scala:10)
-	at xsbt.boot.Using$.apply(Using.scala:9)
-	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
-	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
-	at xsbt.boot.Locks$.apply0(Locks.scala:31)
-	at xsbt.boot.Locks$.apply(Locks.scala:28)
-	at sbt.IvySbt.withDefaultLogger(Ivy.scala:57)
-	at sbt.IvySbt.withIvy(Ivy.scala:98)
-	at sbt.IvySbt.withIvy(Ivy.scala:94)
-	at sbt.IvySbt$Module.withModule(Ivy.scala:115)
-	at sbt.IvyActions$.update(IvyActions.scala:125)
-	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1223)
-	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1221)
-	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$74.apply(Defaults.scala:1244)
-	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$74.apply(Defaults.scala:1242)
-	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:35)
-	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1246)
-	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1241)
-	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:45)
-	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1249)
-	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1214)
-	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1192)
-	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
-	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:42)
-	at sbt.std.Transform$$anon$4.work(System.scala:64)
-	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
-	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:237)
-	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18)
-	at sbt.Execute.work(Execute.scala:244)
-	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
-	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:237)
-	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:160)
-	at sbt.CompletionService$$anon$2.call(CompletionService.scala:30)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-[error] (*:update) sbt.ResolveException: unresolved dependency: me.lessis#bintray-sbt;0.3.0: not found
+[debug] 	resolve done (278ms resolve - 13ms download)
+[info] Done updating.

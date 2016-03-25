@@ -24,5 +24,3 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfat
 // This is needed for macros:
 
 libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
-
-addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")

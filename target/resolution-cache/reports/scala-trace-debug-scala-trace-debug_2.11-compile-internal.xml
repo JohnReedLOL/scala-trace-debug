@@ -7,7 +7,7 @@
 		revision="0.1.1"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20160325150623"/>
+		date="20160325151733"/>
 	<dependencies>
 		<module organisation="org.scala-lang" name="scala-reflect">
 			<revision name="2.11.7" status="release" pubdate="20150622161700" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.11.7/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="1">
@@ -31,13 +31,6 @@
 					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5745606" time="0" location="/home/johnreed/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar">
 						<origin-location is-local="false" location="https://jcenter.bintray.com/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar"/>
 					</artifact>
-				</artifacts>
-			</revision>
-		</module>
-		<module organisation="me.lessis" name="bintray-sbt">
-			<revision name="0.3.0" error="not found" extra-scalaVersion="2.11" extra-sbtVersion="0.13" downloaded="false" searched="false" conf="default(compile)" position="-1">
-				<caller organisation="scala-trace-debug" name="scala-trace-debug_2.11" conf="compile-internal, compile, provided, optional" rev="0.3.0" rev-constraint-default="0.3.0" rev-constraint-dynamic="0.3.0" callerrev="0.1.1" extra-scalaVersion="2.11" extra-sbtVersion="0.13"/>
-				<artifacts>
 				</artifacts>
 			</revision>
 		</module>
