@@ -37,4 +37,8 @@ licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0"))
 
 bintrayPackageLabels := Seq("debug", "scala", "trace", "debugging", "assert")
 
-bintrayVcsUrl := Some("git@github.com:you/your-repo.git")
+// https://github.com/JohnReedLOL/scala-trace-debug
+
+bintrayVcsUrl := Some("git@github.com:JohnReedLOL/scala-trace-debug.git")
+
+// bintraySyncMavenCentral
