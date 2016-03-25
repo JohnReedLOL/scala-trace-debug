@@ -1,7 +1,7 @@
-# debugtrace
-Making finding and customizing you tracing, printing, and debugging statements easier than ever. 
+# scala-trace-debug
+Make bug tracing and prevention easier than ever with scala-trace-debug. 
 
-Debugging utility for printing, tracing, fatal and non-fatal assertions.
+This debugging utility provides user-friendly prints, traces, fatal assertions, non-fatal assertions, and macro printing.
 
 ____________________________________________________________________________________________________________________
 
@@ -35,17 +35,19 @@ Output:
 		path.to.file2(Main.scala:44)
 ```
 
-See screenshot: http://s30.postimg.org/czzaeecgh/Example_Screenshot.png
+![Demo](http://s30.postimg.org/czzaeecgh/Example_Screenshot.png)
 
 ____________________________________________________________________________________________________________________
 
 Getting started:
 
-Just add this line to your "build.sbt" file:
+Just add these two lines to your "build.sbt" file:
 
-- libraryDependencies += "scala-trace-debug" % "scala-trace-debug" % "2.11" from "https://github.com/JohnReedLOL/scala-trace-debug/blob/master/target/scala-2.11/scala-trace-debug_2.11-0.1.1.jar"
+scala'''
+resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-Maven Repository coming soon.
+libraryDependencies += "scala-trace-debug" % "scala-trace-debug_2.11" % "0.1.1"
+'''
 
 ____________________________________________________________________________________________________________________
 Cheat Sheet:
@@ -156,8 +158,9 @@ Instructions (for IntelliJ IDE):
 
 - For best results, click 'Debug' as the stack traces will be optimized away in 'Run' mode. 
  
- 
-IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace (see: http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png ).
+IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace.
+
+![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
 ____________________________________________________________________________________________________________________
 
