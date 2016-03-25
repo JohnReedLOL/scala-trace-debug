@@ -24,3 +24,15 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfat
 // This is needed for macros:
 
 libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
+
+// bintray settings
+
+bintrayReleaseOnPublish in ThisBuild := true
+
+bintrayOmitLicense := false
+
+// Apache-2.0
+
+licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0"))
+
+bintrayPackageLabels := Seq("debug", "scala", "trace", "debugging", "assert")

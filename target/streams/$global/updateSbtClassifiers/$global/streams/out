@@ -13,7 +13,6 @@
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#sbt;0.13.8 {default=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.8
 [debug] 	found org.scala-sbt#sbt;0.13.8 in sbt-chain
-[debug] no default cache defined: set to /home/johnreed/.ivy2/cache
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.8->org.scala-lang#scala-library;2.10.4 [compile->default(compile)]
 [info] Resolving org.scala-lang#scala-library;2.10.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}
@@ -939,9 +938,9 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-agent;0.13.8!test-agent.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.8!apply-macro.jar
-[debug] :: resolution report :: resolve 301ms :: artifacts dl 9ms
+[debug] :: resolution report :: resolve 567ms :: artifacts dl 19ms
 [debug] 	report for scala-trace-debug#scala-trace-debug$sbt_2.11;0.1.1 default produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sbt_2.11-default.xml
-[debug] 	resolve done (301ms resolve - 9ms download)
+[debug] 	resolve done (567ms resolve - 19ms download)
 [debug] Using inline dependencies specified in Scala.
 [debug] :: resolving dependencies :: scala-trace-debug#scala-trace-debug$sources_2.11;0.1.1
 [debug] 	confs: [default]
@@ -1384,73 +1383,15 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_8_2;0.13.8!precompiled-2_8_2.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_9_2;0.13.8!precompiled-2_9_2.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-sbt#precompiled-2_9_3;0.13.8!precompiled-2_9_3.jar(src)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar
-[info] downloading https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar ...
-[debug] 	sbt-plugin-releases: downloading https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar
-[debug] 	sbt-plugin-releases: downloading https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar.sha1
-[debug] sha1 OK for https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintray-sbt/scala_2.10/sbt_0.13/0.3.0/srcs/bintray-sbt-sources.jar
-[info] 	[SUCCESSFUL ] me.lessis#bintray-sbt;0.3.0!bintray-sbt.jar(src) (1013ms)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] 		tried /home/johnreed/.ivy2/local/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] 		tried /home/johnreed/.activator/repository/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] 		tried /home/johnreed/sbtProjects/activator-dist-1.3.7/repository/me.lessis/bintry_2.10/0.4.0/srcs/bintry_2.10-sources.jar
-[debug] 		tried https://repo1.maven.org/maven2/me/lessis/bintry_2.10/0.4.0/bintry_2.10-0.4.0-sources.jar
-[info] downloading https://repo1.maven.org/maven2/me/lessis/bintry_2.10/0.4.0/bintry_2.10-0.4.0-sources.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/me/lessis/bintry_2.10/0.4.0/bintry_2.10-0.4.0-sources.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/me/lessis/bintry_2.10/0.4.0/bintry_2.10-0.4.0-sources.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/me/lessis/bintry_2.10/0.4.0/bintry_2.10-0.4.0-sources.jar
-[info] 	[SUCCESSFUL ] me.lessis#bintry_2.10;0.4.0!bintry_2.10.jar(src) (322ms)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] 		tried /home/johnreed/.ivy2/local/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] 		tried /home/johnreed/.activator/repository/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] 		tried /home/johnreed/sbtProjects/activator-dist-1.3.7/repository/net.databinder.dispatch/dispatch-json4s-native_2.10/0.11.2/srcs/dispatch-json4s-native_2.10-sources.jar
-[debug] 		tried https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-json4s-native_2.10/0.11.2/dispatch-json4s-native_2.10-0.11.2-sources.jar
-[info] downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-json4s-native_2.10/0.11.2/dispatch-json4s-native_2.10-0.11.2-sources.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-json4s-native_2.10/0.11.2/dispatch-json4s-native_2.10-0.11.2-sources.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-json4s-native_2.10/0.11.2/dispatch-json4s-native_2.10-0.11.2-sources.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-json4s-native_2.10/0.11.2/dispatch-json4s-native_2.10-0.11.2-sources.jar
-[info] 	[SUCCESSFUL ] net.databinder.dispatch#dispatch-json4s-native_2.10;0.11.2!dispatch-json4s-native_2.10.jar(src) (219ms)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] 		tried /home/johnreed/.ivy2/local/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] 		tried /home/johnreed/.activator/repository/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] 		tried /home/johnreed/sbtProjects/activator-dist-1.3.7/repository/net.databinder.dispatch/dispatch-core_2.10/0.11.2/srcs/dispatch-core_2.10-sources.jar
-[debug] 		tried https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.2/dispatch-core_2.10-0.11.2-sources.jar
-[info] downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.2/dispatch-core_2.10-0.11.2-sources.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.2/dispatch-core_2.10-0.11.2-sources.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.2/dispatch-core_2.10-0.11.2-sources.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/net/databinder/dispatch/dispatch-core_2.10/0.11.2/dispatch-core_2.10-0.11.2-sources.jar
-[info] 	[SUCCESSFUL ] net.databinder.dispatch#dispatch-core_2.10;0.11.2!dispatch-core_2.10.jar(src) (247ms)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] 		tried /home/johnreed/.ivy2/local/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] 		tried /home/johnreed/.activator/repository/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] 		tried /home/johnreed/sbtProjects/activator-dist-1.3.7/repository/com.ning/async-http-client/1.8.10/srcs/async-http-client-sources.jar
-[debug] 		tried https://repo1.maven.org/maven2/com/ning/async-http-client/1.8.10/async-http-client-1.8.10-sources.jar
-[info] downloading https://repo1.maven.org/maven2/com/ning/async-http-client/1.8.10/async-http-client-1.8.10-sources.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/com/ning/async-http-client/1.8.10/async-http-client-1.8.10-sources.jar
-[debug] 	public: downloading https://repo1.maven.org/maven2/com/ning/async-http-client/1.8.10/async-http-client-1.8.10-sources.jar.sha1
-[debug] sha1 OK for https://repo1.maven.org/maven2/com/ning/async-http-client/1.8.10/async-http-client-1.8.10-sources.jar
-[info] 	[SUCCESSFUL ] com.ning#async-http-client;1.8.10!async-http-client.jar(src) (581ms)
-[debug] 		tried https://repo.typesafe.com/typesafe/ivy-releases/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.typesafe.com/typesafe/ivy-releases/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] 		tried https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] CLIENT ERROR: Not Found url=https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] 		tried /home/johnreed/.ivy2/local/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] 		tried /home/johnreed/.activator/repository/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] 		tried /home/johnreed/sbtProjects/activator-dist-1.3.7/repository/io.netty/netty/3.9.2.Final/srcs/netty-sources.jar
-[debug] 		tried https://repo1.maven.org/maven2/io/netty/netty/3.9.2.Final/netty-3.9.2.Final-sources.jar
-[info] downloading https://repo1.maven.org/maven2/io/netty/netty/3.9.2.Final/netty-3.9.2.Final-sources.jar ...
-[debug] 	public: downloading https://repo1.maven.org/maven2/io/netty/netty/3.9.2.Final/netty-3.9.2.Final-sources.jar
+[debug] 	[NOT REQUIRED] me.lessis#bintray-sbt;0.3.0!bintray-sbt.jar(src)
+[debug] 	[NOT REQUIRED] me.lessis#bintry_2.10;0.4.0!bintry_2.10.jar(src)
+[debug] 	[NOT REQUIRED] net.databinder.dispatch#dispatch-json4s-native_2.10;0.11.2!dispatch-json4s-native_2.10.jar(src)
+[debug] 	[NOT REQUIRED] net.databinder.dispatch#dispatch-core_2.10;0.11.2!dispatch-core_2.10.jar(src)
+[debug] 	[NOT REQUIRED] com.ning#async-http-client;1.8.10!async-http-client.jar(src)
+[debug] 	[NOT REQUIRED] io.netty#netty;3.9.2.Final!netty.jar(src)
+[debug] 	[NOT REQUIRED] org.json4s#json4s-native_2.10;3.2.10!json4s-native_2.10.jar(src)
+[debug] 	[NOT REQUIRED] org.slf4j#slf4j-nop;1.7.7!slf4j-nop.jar(src)
+[debug] 	[NOT REQUIRED] org.slf4j#slf4j-api;1.7.7!slf4j-api.jar(src)
+[debug] :: resolution report :: resolve 107ms :: artifacts dl 23ms
+[debug] 	report for scala-trace-debug#scala-trace-debug$sources_2.11;0.1.1 default produced in /home/johnreed/sbtProjects/scala-trace-debug/target/resolution-cache/reports/scala-trace-debug-scala-trace-debug$sources_2.11-default.xml
+[debug] 	resolve done (107ms resolve - 23ms download)

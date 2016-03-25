@@ -7,7 +7,7 @@
 		revision="0.1.1"
 		conf="default"
 		confs="default"
-		date="20160325151812"/>
+		date="20160325152801"/>
 	<dependencies>
 		<module organisation="me.lessis" name="bintray-sbt">
 			<revision name="0.3.0" status="release" pubdate="20150508013010" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/softprops/bintray-sbt#readme" extra-scalaVersion="2.10" extra-sbtVersion="0.13" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="54">

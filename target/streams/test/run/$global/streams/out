@@ -10,8 +10,8 @@
 [0m[[0mdebug[0m] [0m	/home/johnreed/.ivy2/cache/org.scalacheck/scalacheck_2.11/jars/scalacheck_2.11-1.11.5.jar[0m
 [0m[[0mdebug[0m] [0m	/home/johnreed/.ivy2/cache/org.scala-sbt/test-interface/jars/test-interface-1.0.jar[0m
 [0m[[0mdebug[0m] [0m	/home/johnreed/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.1.jar[0m
-[0m[[0mdebug[0m] [0mWaiting for thread run-main-4 to terminate.[0m
-[0m[[0mdebug[0m] [0m	Thread run-main-4 exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
+[0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
 [0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
 [0m[[0mdebug[0m] [0mSandboxed run complete..[0m
 [0m[[0mdebug[0m] [0mExited with code 0[0m

@@ -4,7 +4,7 @@
 		module="scala-trace-debug$sources_2.11"
 		revision="0.1.1"
 		status="integration"
-		publication="20160325151812"
+		publication="20160325152802"
 	/>
 	<configurations>
 		<conf name="default" visibility="public" description=""/>
