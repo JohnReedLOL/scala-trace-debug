@@ -206,7 +206,7 @@ Now featuring macro expressions:
 
 ```
 
-![Example](http://s17.postimg.org/oecz45dun/Good_Screenshot.png)
+![Example](http://i.imgur.com/2066Z0L.png)
 
 ____________________________________________________________________________________________________________________
 
