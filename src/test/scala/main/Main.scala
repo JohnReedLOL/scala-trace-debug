@@ -1,21 +1,24 @@
 package main
 import scala.reflect.macros.blackbox.Context
-import info.collaboration_station.debug._
+import info.collaboration_station.debug._ // wildcard import for implicit trace/assert/print functionality
 /**
   * Created by johnreed on 3/23/16. Run with sbt test:run
   */
 object Main {
   def main(args: Array[String]) {
 
-    Debug.trace("Hello World")      // 1 line of stack trace
-    Debug.trace("Hello World 2", 2) // 2 lines of stack trace (max)
-    "Hello World".trace(0)          // 0 lines of stack trace
+    Debug.trace("Hello World")                  // 1 line of stack trace
+    Debug.trace("Hello World 2", numLines = 2)  // 2 lines of stack trace
+    "Hello World".trace(numLines = 0)           // 0 lines of stack trace
 
-    Debug.traceExpression{val foo = "foo"; foo + "bar"}     // trace that which produces foo + bar
+    Debug.traceExpression{ // trace the expression ("foo" + "bar")
+      val foo = "foo";
+      foo + "bar"
+    }
+    Debug.assert(1 + 1 == 2, "One plus one must equal two")         // fatal assertion (kills application)
+    1.assertNonFatalEquals(3, "One must equal three", numLines = 2) // non-fatal assertion, 2 lines of stack trace
 
-    Debug.assert(1 + 1 == 2, "One plus one must equal two") // fatal assertion (kills application)
-    1.assertNonFatalEquals(3, "One must equal three")       // non-fatal assertion
-
+    Thread.sleep(10) // sleep to prevent print statements from getting mixed up
 
     Debug.traceStdOut("Hey0")
     Debug.traceStdOutExpression{"Hey3"}
