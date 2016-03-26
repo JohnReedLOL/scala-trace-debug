@@ -13,6 +13,8 @@ object Main {
     Debug.traceStdOutExpression("Hey4", 2)
     Debug.traceStackStdOutExpression{val myVal = 6; 1 + 2 + myVal}
 
+    Thread.sleep(10) // sleep to prevent print statements from getting mixed up
+
     Debug.traceExpression{"Hey5"}
     Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
     Debug.traceExpression("Hey6", 2)
