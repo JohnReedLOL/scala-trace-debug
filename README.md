@@ -217,7 +217,7 @@ Now featuring macro expressions:
 
 Example:
 
-![Example](http://i.imgur.com/2066Z0L.png)
+![Example](http://i.imgur.com/D1jLiaa.png)
 
 ____________________________________________________________________________________________________________________
 
