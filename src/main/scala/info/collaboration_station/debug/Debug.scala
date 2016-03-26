@@ -138,6 +138,8 @@ object Debug {
 
   /**
     * Same as trace, but prints the entire expression, not just the result
+    * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     */
   final object traceExpression {
     final def apply[T](block: => T): Unit = macro traceExpressionImpl[T]
@@ -178,6 +180,7 @@ object Debug {
 
   /**
     * Same as traceStack, but prints the entire expression, not just the result
+    * @example Debug.traceStackExpression{val myVal = 3; 1 + 2 + myVal}
     */
   final object traceStackExpression {
     final def apply[T](block: => T): Unit = macro traceStackExpressionImpl[T]
@@ -206,6 +209,8 @@ object Debug {
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
+    * @example Debug.traceStdOutExpression{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.traceStdOutExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     */
   final object traceStdOutExpression {
 
@@ -244,6 +249,7 @@ object Debug {
 
   /**
     * Same as traceStackStdOut, but prints the whole expression not just the result
+    * @example Debug.traceStackStdOutExpression{val myVal = 3; 1 + 2 + myVal}
     */
   final object traceStackStdOutExpression {
     final def apply[T](block: => T): Unit = macro traceStackStdOutExpressionImpl[T]
@@ -278,6 +284,11 @@ object Debug {
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
   // You also cannot use default parameters. Boo.
 
+  /**
+    * Same as assert, but prints the whole expression instead of an error message
+    * @example Debug.assertExpression{val one = 1; one + 1 == 2}
+    * @example Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    */
   final object assertExpression {
     final def apply(assertion: Boolean): Unit = macro assertExpressionImpl
 
@@ -336,6 +347,11 @@ object Debug {
     }
   }
 
+  /**
+    * Same as assertNonFatal, but prints the whole expression instead of an error message
+    * @example Debug.assertNonFatalExpression{val one = 1; one + 1 == 2}
+    * @example Debug.assertNonFatalExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    */
   final object assertNonFatalExpression {
 
     final def apply(assertion: Boolean): Unit = macro assertNonFatalExpressionImpl
