@@ -5,7 +5,7 @@ This debugging utility provides user-friendly prints, traces, fatal assertions, 
 
 ____________________________________________________________________________________________________________________
 
-Example:
+**Example:**
 
 ```scala
 import info.collaboration_station.debug._
@@ -39,7 +39,7 @@ Output:
 
 ____________________________________________________________________________________________________________________
 
-Getting started:
+**Getting started:**
 
 Just add these two lines to your "build.sbt" file:
 
@@ -50,7 +50,7 @@ libraryDependencies += "scala-trace-debug" % "scala-trace-debug_2.11" % "0.1.1"
 ```
 
 ____________________________________________________________________________________________________________________
-Cheat Sheet:
+**Cheat Sheet:**
 
 Methods availiable through implicit conversion:
 
@@ -136,7 +136,7 @@ Fatal assertions kill the application with exit code 7. Non-fatal assertions nev
 
 ____________________________________________________________________________________________________________________
 
-Dependencies:
+**Dependencies:**
 
 - libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
 
@@ -144,7 +144,7 @@ Dependencies:
 
 ____________________________________________________________________________________________________________________
 
-Instructions (for IntelliJ IDE):
+**Instructions (for IntelliJ IDE):**
 
 - Add the jar file to your project (lib directory). 
 
@@ -164,7 +164,7 @@ IntelliJ console has shortcut up and down arrows to navigate up and down the sta
 
 ____________________________________________________________________________________________________________________
 
-Benefits:
+**Benefits:**
 
 - Easy to locate print statements
 - Convenient object oriented style syntax
@@ -174,15 +174,15 @@ Benefits:
 
 ____________________________________________________________________________________________________________________
 
-Requirements:
+**Requirements:**
 
-- Scala
+- Scala 2.11
 - SBT
 - Some sort of IDE that supports stack trace highlighing
 
 ____________________________________________________________________________________________________________________
 
-More info:
+**More info:**
 
 See ScalaDoc in source code for in detail documentation.
 
@@ -190,7 +190,7 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 ____________________________________________________________________________________________________________________
 
-New features:
+**New features:**
 
 Now featuring macro expressions:
 
@@ -212,6 +212,6 @@ Example:
 
 ____________________________________________________________________________________________________________________
 
-Bugs:
+**Bugs:**
 
 To report or pinpoint bugs, email johnmichaelreedfas@gmail.com
