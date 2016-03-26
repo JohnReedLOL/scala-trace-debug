@@ -54,10 +54,10 @@ package object debug {
 
     /** Prints out this object to standard error with a user specified number of lines of stack trace
       *
-      * @param linesOfStackTrace The number of lines of stack trace
+      * @param numLines The number of lines of stack trace
       * @return The thing that was just printed
       */
-    final def trace(linesOfStackTrace: Int = 1): MyType = ImplicitTraceObject.traceInternal(me, linesOfStackTrace)
+    final def trace(numLines: Int = 1): MyType = ImplicitTraceObject.traceInternal(me, numLines)
 
     /** Prints out this object to standard error along with the entire stack trace
       *
@@ -73,10 +73,10 @@ package object debug {
 
     /** Prints out this object to standard out with a user specified number of lines of stack trace
       *
-      * @param linesOfStackTrace The number of lines of stack trace
+      * @param numLines The number of lines of stack trace
       * @return The thing that was just printed
       */
-    final def traceStdOut(linesOfStackTrace: Int): MyType = ImplicitTraceObject.traceInternal(me, linesOfStackTrace, useStdOut_? = true)
+    final def traceStdOut(numLines: Int): MyType = ImplicitTraceObject.traceInternal(me, numLines, useStdOut_? = true)
 
     /** Prints out this object to standard out along with the entire stack trace
       *
@@ -89,12 +89,13 @@ package object debug {
       *
       * @param assertion the assertion that must be true for the program to run
       * @param message   the message to be printed to standard error on assertion failure
+      * @param numLines  the number of lines of stack trace
       * @example 1.assert( _ + 2 = 3, "Error: one plus two does not equal three.")
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
-    final def assert(assertion: (MyType) => Boolean, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assert(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
       if (!assertion(me) && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
         System.exit(7)
       }
       me
@@ -105,12 +106,13 @@ package object debug {
       *
       * @param assertion the assertion that must be true for the program to run
       * @param message   the message to be printed  to standard out on assertion failure
+      * @param numLines  the number of lines of stack trace
       * @example 1.assertStdOut( _ + 2 = 3, "Error: one plus two does not equal three.")
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
-    final def assertStdOut(assertion: (MyType) => Boolean, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
       if (!assertion(me) && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
         System.exit(7)
       }
       me
@@ -121,14 +123,14 @@ package object debug {
       *
       * @param other    the thing that this must be equal to
       * @param message  the message to be printed  to standard error on assertion failure
-      * @param maxLines the max number of lines of stack trace to show on assertion failure. Defaults to all lines
+      * @param numLines the max number of lines of stack trace to show on assertion failure. Defaults to all lines
       * @example "foo".assertEquals("bar", "Error: foo does not equal bar")
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
-    final def assertEquals(other: MyType, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertEquals(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = (me.equals(other))
       if (!assertionTrue_? && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
         System.exit(7)
       }
       me
@@ -139,10 +141,10 @@ package object debug {
       *
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
-    final def assertEqualsStdOut(other: MyType, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertEqualsStdOut(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = (me.equals(other))
       if (!assertionTrue_? && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
         System.exit(7)
       }
       me
@@ -151,10 +153,10 @@ package object debug {
     /**
       * Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatal(assertion: (MyType) => Boolean, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertNonFatal(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = assertion(me)
       if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
       }
       me
     }
@@ -162,10 +164,10 @@ package object debug {
     /**
       * Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalStdOut(assertion: (MyType) => Boolean, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertNonFatalStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = assertion(me)
       if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
       }
       me
     }
@@ -173,10 +175,10 @@ package object debug {
     /**
       * Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalEquals(other: MyType, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertNonFatalEquals(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = (me.equals(other))
       if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
       }
       me
     }
@@ -184,10 +186,10 @@ package object debug {
     /**
       * Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalEqualsStdOut(other: MyType, message: String, maxLines: Int = Int.MaxValue): MyType = {
+    final def assertNonFatalEqualsStdOut(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
       val assertionTrue_? = (me.equals(other))
       if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
       }
       me
     }

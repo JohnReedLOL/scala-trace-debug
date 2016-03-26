@@ -128,11 +128,12 @@ object Debug {
 
   /**
     * Traces to standard error with a N line stack trace.
+    *
     * @param block this block contains or returns whatever it is to be traced.
-    * @param lines the number of lines to trace
+    * @param numLines the number of lines to trace
     * @tparam T the return type of the block
     */
-  final def trace[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines)
+  final def trace[T](block: => T, numLines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, numLines)
 
   /**
     * Same as trace, but prints the entire expression, not just the result
@@ -151,13 +152,13 @@ object Debug {
       c.Expr[Unit](toReturn)
     }
 
-    final def apply[T](block: => T, lines: Int): Unit = macro traceLinesExpressionImpl[T]
+    final def apply[T](block: => T, numLines: Int): Unit = macro traceLinesExpressionImpl[T]
 
-    final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], lines: c.Expr[Int]): c.Expr[Unit] = {
+    final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[Unit] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
-      val arg2 = q"$lines"
+      val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn = q"""
         info.collaboration_station.debug.Debug.trace(..$args);
@@ -197,9 +198,9 @@ object Debug {
   final def traceStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
 
   /**
-    * Same as Debug.trace(block: => T, lines: Int), but prints to standard out instead of standard error
+    * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
     */
-  final def traceStdOut[T](block: => T, lines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, lines, useStdOut_? = true)
+  final def traceStdOut[T](block: => T, numLines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, numLines, useStdOut_? = true)
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
@@ -219,13 +220,13 @@ object Debug {
       c.Expr[Unit](toReturn)
     }
 
-    final def apply[T](block: => T, lines: Int): Unit = macro traceLinesStdOutExpressionImpl[T]
+    final def apply[T](block: => T, numLines: Int): Unit = macro traceLinesStdOutExpressionImpl[T]
 
-    final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], lines: c.Expr[Int]): c.Expr[Unit] = {
+    final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[Unit] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
-      val arg2 = q"$lines"
+      val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStdOut(..$args);
@@ -265,9 +266,9 @@ object Debug {
     * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
     */
-  final def assert(assertion: => Boolean, message: String, maxLines: Int = Int.MaxValue): Unit = {
+  final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
     if (!assertion && Debug.fatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+      ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
       System.exit(7)
     }
   }
@@ -301,9 +302,9 @@ object Debug {
     * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
     */
-  final def assertStdOut(assertion: => Boolean, message: String, maxLines: Int = Int.MaxValue): Unit = {
+  final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
     if (!assertion && Debug.fatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
       System.exit(7)
     }
   }
@@ -311,9 +312,9 @@ object Debug {
   /**
     * Like Debug.assert(), but does not terminate the application
     */
-  final def assertNonFatal(assertion: => Boolean, message: String, maxLines: Int = Int.MaxValue): Unit = {
+  final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
     if (!assertion && Debug.nonFatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, maxLines) // trace the max number of lines of stack trace to std error
+      ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
     }
   }
 
@@ -336,9 +337,9 @@ object Debug {
   /**
     * Like Debug.assertStdOut(), but does not terminate the application
     */
-  final def assertNonFatalStdOut(assertion: => Boolean, message: String, maxLines: Int = Int.MaxValue): Unit = {
+  final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
     if (!assertion && Debug.nonFatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, maxLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
     }
   }
 }
