@@ -196,31 +196,17 @@ Now featuring macro expressions:
 
 ```scala
 
-    Debug.traceExpression{
+    Debug.traceExpression{ // print out the (syntactically de-sugared) expression
                           val myVal = 4; 
                           1 + 2 + myVal }
                           
-    Debug.assertExpression{
+    Debug.assertExpression{ // print out the expression if the expression return false
                            val someVal = 2; 
                            1 + someVal == 4 }
 
 ```
 
-Prints out the expression in addition to the result:
-
-```scala
-// Output:
-
-"{
-  val myVal = 4;
-  (3).+(myVal)
-} -> 7" in thread main:
-
-"{
-  val someVal = 2;
-  (1).+(someVal).==(4)
-} -> false" in thread main:
-```
+![Example](http://s17.postimg.org/oecz45dun/Good_Screenshot.png)
 
 ____________________________________________________________________________________________________________________
 
