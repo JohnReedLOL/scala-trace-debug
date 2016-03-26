@@ -121,6 +121,7 @@ object Debug {
 
   /**
     * Traces to standard error with a one line stack trace.
+    *
     * @param block this block contains or returns whatever it is to be traced.
     * @tparam T the return type of the block
     */
@@ -169,6 +170,7 @@ object Debug {
 
   /**
     * Traces to standard error with a full length stack trace.
+    *
     * @param block this block contains or returns whatever it is to be traced.
     * @tparam T the return type of the block
     */
@@ -279,12 +281,28 @@ object Debug {
   final object assertExpression {
     final def apply(assertion: Boolean): Unit = macro assertExpressionImpl
 
+    final def apply(assertion: Boolean, numLines: Int): Unit = macro assertLinesExpressionImpl
+
     final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
       import c.universe._
       val assertionString = showCode(assertion.tree) + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"Int.MaxValue"
+      val args = List(arg2, arg3)
+      val toReturn = q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+    """
+      c.Expr[Unit](toReturn)
+    }
+
+    final def assertLinesExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[Unit] = {
+      import c.universe._
+      val assertionString = showCode(assertion.tree) + " -> "
+      //val arg1 = q"$assertion"
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"$numLines"
       val args = List(arg2, arg3)
       val toReturn = q"""
         val assertBoolean = $assertion;
@@ -318,20 +336,41 @@ object Debug {
     }
   }
 
-  final def assertNonFatalExpression(assertion: Boolean): Unit = macro assertNonFatalExpressionImpl
+  final object assertNonFatalExpression {
 
-  final def assertNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
-    import c.universe._
-    val assertionString = showCode(assertion.tree) + " -> "
-    //val arg1 = q"$assertion"
-    val arg2 = q"$assertionString + ({$assertion}.toString)"
-    val arg3 = q"Int.MaxValue"
-    val args = List(arg2, arg3)
-    val toReturn = q"""
+    final def apply(assertion: Boolean): Unit = macro assertNonFatalExpressionImpl
+
+    final def apply(assertion: Boolean, numLines: Int): Unit = macro assertLinesNonFatalExpressionImpl
+
+    final def assertNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
+      import c.universe._
+      val assertionString = showCode(assertion.tree) + " -> "
+      //val arg1 = q"$assertion"
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"Int.MaxValue"
+      val args = List(arg2, arg3)
+      val toReturn =
+        q"""
         val assertBoolean = $assertion;
         info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
-    c.Expr[Unit](toReturn)
+      c.Expr[Unit](toReturn)
+    }
+
+    final def assertLinesNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[Unit] = {
+      import c.universe._
+      val assertionString = showCode(assertion.tree) + " -> "
+      //val arg1 = q"$assertion"
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"$numLines"
+      val args = List(arg2, arg3)
+      val toReturn =
+        q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+    """
+      c.Expr[Unit](toReturn)
+    }
   }
 
   /**

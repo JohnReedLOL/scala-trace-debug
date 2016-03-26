@@ -40,8 +40,9 @@ object Main {
       val five = 5;
       one * two + three / four + five;
     }
-
+    Debug.assertNonFatalExpression({val someVal = 2; 1  + someVal == 4}, 3) // 3 lines of stack trace
     Debug.assertNonFatalExpression{val someVal = 2; 1  + someVal == 4}
+    Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
