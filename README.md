@@ -23,7 +23,7 @@ object Main {
 }
 ```
 
-Output:
+*Output:*
 
 ```scala
 	"Hello World 1" in thread main:
