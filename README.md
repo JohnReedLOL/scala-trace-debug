@@ -35,7 +35,7 @@ Output:
 		path.to.file2(Main.scala:44)
 ```
 
-![Demo](http://s30.postimg.org/czzaeecgh/Example_Screenshot.png)
+![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ____________________________________________________________________________________________________________________
 
