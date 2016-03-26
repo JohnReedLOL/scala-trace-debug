@@ -106,6 +106,22 @@ Debug.assertStdOut("foo" equals "foo", "Assert failed")
 Debug.assertNonFatal("foo" equals "foo", "Assert failed")
 Debug.assertNonFatalStdOut("foo" equals "foo", "Assert failed")
 
+// macro expression prints to standard error
+Debug.traceExpression{val one = 1; one + 2 == 3} 
+Debug.traceExpression({val one = 1; one + 2 == 3}, 4) // 4 lines of stack trace
+Debug.traceStack{val one = 1; one + 2 == 3} // entire stack trace
+
+// macro expression prints to standard out
+Debug.traceStdOutExpression{val one = 1; one + 2 == 3} 
+Debug.traceStdOutExpression({val one = 1; one + 2 == 3}, 4) // 4 lines of stack trace
+Debug.traceStdOutStack{val one = 1; one + 2 == 3} // entire stack trace
+
+// macro expression asserts
+Debug.assertExpression{val one = 1; one + 2 == 3}
+Debug.assertExpression({val one = 1; one + 2 == 3}, 4)
+Debug.assertNonFatalExpression{val one = 1; one + 2 == 3}
+Debug.assertNonFatalExpression({val one = 1; one + 2 == 3}, 4) 
+
 ```
 
 Switches availiable through Debug object:
@@ -136,27 +152,27 @@ Fatal assertions kill the application with exit code 7. Non-fatal assertions nev
 
 ____________________________________________________________________________________________________________________
 
-**Dependencies:**
+**Requirements:**
 
-- libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
-
-- Works best when run with an IDE that supports click-able stack traces. 
+- Scala 2.11
+- SBT
+- Some sort of IDE that supports stack trace highlighing
 
 ____________________________________________________________________________________________________________________
 
 **Instructions (for IntelliJ IDE):**
 
-- Add the jar file to your project (lib directory). 
+1. Add the library dependency (sbt).
 
-- import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
+2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
 
-- Go to: Run > Edit Configurations > Add New Configuration (green plus sign)
+2. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
-- Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually)
+3. Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually).
 
-- Click the green 'Run' (Shift+F10) or 'Debug' (Shift+F9) button and watch the stack traces in the console. 
+4. Position the stack traces and asserts in the line of likely sources of bugs.
 
-- For best results, click 'Debug' as the stack traces will be optimized away in 'Run' mode. 
+5. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
 IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace.
 
@@ -174,13 +190,6 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
-**Requirements:**
-
-- Scala 2.11
-- SBT
-- Some sort of IDE that supports stack trace highlighing
-
-____________________________________________________________________________________________________________________
 
 **More info:**
 
