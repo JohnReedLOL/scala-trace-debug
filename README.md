@@ -223,42 +223,70 @@ ________________________________________________________________________________
 
 **Use in practice:**
 
-|  Once upon a time, I had a very frustrating bug. It was caused by an idiosyncrasy in the semantics of a copy constructor 
-that caused it to do a shallow copy instead of a deep copy and the code was multithreaded and required a deep copy.
+  Once upon a time, I had a very frustrating bug. It was caused by an 
+idiosyncrasy in the semantics of a copy constructor that caused it to do 
+a shallow copy instead of a deep copy and the code was multithreaded and 
+required a deep copy.
 
-|  This bug frustrated me because even though I looked at that very line of code from where the bug originated, I did not 
-see the bug. It was so subtle.
+  This bug frustrated me because even though I looked at that very line of 
+code from where the bug originated, I did not see the bug. It was so 
+subtle.
 
-|  How would I deal with such a subtle bug? I am not 100% sure how you would do it, but since I wrote this tool, let me 
-explain to you how I would do it.
+  How would I deal with such a subtle bug? I am not 100% sure how you would 
+do it, but since I wrote this tool, let me explain to you how I would do 
+it.
 
-|  First thing, you find the exact commit where this bug began to happen. Someone reported it and you have a way to check 
-for it and you do "git bisect" and do a bisection search until you find the commit from whence that bug originated.
+  First thing, you find the exact commit where this bug began to happen. 
+Someone reported it and you have a way to check for it and you do "git 
+bisect" and do a bisection search until you find the commit from whence 
+that bug originated.
 
-|  Now that you know this bug originated from commit 9da581d910c9c4ac935570123456789abcef, you can see the changes that 
-were made in that commit. Let's say that is not enough information for you to figure out the bug.
+  Now that you know this bug originated from commit 
+9da581d910c9c4ac935570123456789abcef, you can see the changes that were 
+made in that commit. Let's say that is not enough information for you to 
+figure out the bug.
 
-|  Then you can start tracing the execution in the vicinity of where changes were made. Let's say there was a "hot swap" 
-or "hot replace" feature in the debugger that allowed you to "modify and re-compile code (inside methods/blocks) in debug mode and to have these changes visible and taken into account by the debugged VM". Let's use that feature.
+  Then you can start tracing the execution in the vicinity of where changes 
+were made. Let's say there was a "hot swap" or "hot replace" feature in 
+the debugger that allowed you to "modify and re-compile code (inside 
+methods/blocks) in debug mode and to have these changes visible and taken 
+into account by the debugged VM". Let's use that feature.
 
-|  If this "hot swap" feature works, we should be able to insert calls to scala-trace-debug inside our code and scroll 
-through the stack traces. We sprinkle some breakpoints in the vicinity of the bug and maybe add a few "trace" or even "assertNonFatal" calls while we do our debugging.
+  If this "hot swap" feature works, we should be able to insert calls to 
+scala-trace-debug inside our code and scroll through the stack traces. 
+We sprinkle some breakpoints in the vicinity of the bug and maybe add a 
+few "trace" or even "assertNonFatal" calls while we do our debugging.
 
-|  By doing this, we should have an idea of the flow of execution of a given thread and we should be able to verify if this 
-and this assumption is true or false. In addition to being able to trace variables and print de-sugared expressions, we can supplement the information provided by scala-trace-debug with the information provided by the debugger.
+  By doing this, we should have an idea of the flow of execution of a 
+given thread and we should be able to verify if this and this assumption 
+is true or false. In addition to being able to trace variables and print 
+de-sugared expressions, we can supplement the information provided by 
+scala-trace-debug with the information provided by the debugger.
 
-|  By combining the information about the flow of execution with the values displayed, we should be able to infer what is 
-going on. We can make assumptions about what is true in the source code and turn those assumptions into assertions and even into unit tests.
+  By combining the information about the flow of execution with the values 
+displayed, we should be able to infer what is going on. We can make 
+assumptions about what is true in the source code and turn those 
+assumptions into assertions and even into unit tests.
 
-|  Given all this information: the commit history, the documentation in the source code (or the self-documenting source 
-code if no Javadoc is available), the value of variables, the flow of execution, and knowledge as to what assertions are true and what are not, we should be able to understand what is going on and figure out what to do to fix any violated assertions or failed unit tests.
+  Given all this information: the commit history, the documentation in the 
+source code (or the self-documenting source code if no Javadoc is 
+available), the value of variables, the flow of execution, and knowledge 
+as to what assertions are true and what are not, we should be able to 
+understand what is going on and figure out what to do to fix any violated 
+assertions or failed unit tests. 
 
-|  Assuming that we can do that, the bug should be fixable. 
+Assuming that we can do that, the bug should be fixable.
 
-|  p.s. Calls to scala-debug-trace are not meant to be left inside in production code. `git reset --hard HEAD~1` 
-should allow you to discards uncommitted changes.
+  p.s. Calls to scala-debug-trace are not meant to be left inside in 
+production code. `git reset --hard HEAD~1` should allow you to discards 
+uncommitted changes.
 
-|  Side note: It is a personal pet peeve of mine to see threads with names like "1128471". If the code is creating a new thread, the name of the thread can double as a form of documentation. Example: Database_Thread, GUI_Thread, Socket_Thread. To change the name of a thread pool, see: http://stackoverflow.com/questions/6113746/naming-threads-and-thread-pools-of-executorservice
+  Side note: It is a personal pet peeve of mine to see threads with names 
+like "1128471". If the code is creating a new thread, the name of the 
+thread can double as a form of documentation. Example: Database_Thread, 
+GUI_Thread, Socket_Thread. To change the name of a thread pool, 
+see ![this link.](http://stackoverflow.com/questions/6113746/naming-threads-and-thread-pools-of-executorservice)
+
 ____________________________________________________________________________________________________________________
 
 
