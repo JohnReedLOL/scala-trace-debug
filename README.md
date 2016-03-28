@@ -52,7 +52,7 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.2"
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
 
-!(Methods available through implicit conversion)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace]:
+![Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace):
 
 ```scala
 
@@ -84,7 +84,7 @@ import info.collaboration_station.debug._
 
 ```
 
-!(Methods available through Debug object)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$]:
+![Methods available through Debug object](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$):
 
 ```scala
 
@@ -242,11 +242,13 @@ it.
 
 3. Put break points in the area of what was changed.
 
-4. Follow !(these instructions)[https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help] to enable hot reloading of source code while debugging. Scala IDE has similar !("hot code replace")[http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html] functionality.
+4. Follow ![these instructions](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar !["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality.
 
 Note: "Hot code replace adds the possibility to modify and re-compile (method body) code in a debug mode and to have these changes visible and taken into account by the debugged VM without restarting the application."
 
-Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must !(drop the obsolete frame)[http://s29.postimg.org/qyox1zyif/obsolete_frame.png] by right clicking "Drop Frame" on the obsolete frame and then clicking "Step Over" (F8).
+Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must drop the obsolete frame by right clicking "Drop Frame" on the obsolete frame and then clicking "Step Over" (F8).
+
+![Drop the obsolete stack frame](http://s29.postimg.org/qyox1zyif/obsolete_frame.png)
 
 5. While stepping through the code, make or add calls to scala-trace-debug. 
 
