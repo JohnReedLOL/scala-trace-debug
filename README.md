@@ -52,7 +52,7 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.2"
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
 
-Methods availiable through implicit conversion:
+!(Methods available through implicit conversion)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace]:
 
 ```scala
 
@@ -84,7 +84,7 @@ import info.collaboration_station.debug._
 
 ```
 
-Methods availiable through Debug object:
+!(Methods available through Debug object)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$]:
 
 ```scala
 
@@ -124,7 +124,7 @@ Debug.assertNonFatalExpression({val one = 1; one + 2 == 3}, 4)
 
 ```
 
-Switches availiable through Debug object:
+Switches available through Debug object:
 
 ```scala
 
@@ -236,37 +236,27 @@ subtle.
 do it, but since I wrote this tool, let me explain to you how I would do 
 it.
 
-  First thing, you find the exact commit where this bug began to happen. 
-Someone reported it and you have a way to check for it and you do "git 
-bisect" and do a bisection search until you find the commit from whence 
-that bug originated.
+1. Do git bisect to find the commit that produced the bug.
 
-  Now that you know this bug originated from commit 
-9da581d910c9c4ac935570123456789abcef, you can see the changes that were 
-made in that commit. Let's say that is not enough information for you to 
-figure out the bug.
+2. Read the lines of code that were changed.
 
-  Then you can start tracing the execution in the vicinity of where changes 
-were made. Let's say there was a "hot swap" or "hot replace" feature in 
-the debugger that allowed you to "modify and re-compile code (inside 
-methods/blocks) in debug mode and to have these changes visible and taken 
-into account by the debugged VM". Let's use that feature.
+3. Put break points in the area of what was changed.
 
-  If this "hot swap" feature works, we should be able to insert calls to 
-scala-trace-debug inside our code and scroll through the stack traces. 
-We sprinkle some breakpoints in the vicinity of the bug and maybe add a 
-few "trace" or even "assertNonFatal" calls while we do our debugging.
+4. Follow !(these instructions)[https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help] to enable hot reloading of source code while debugging. Scala IDE has similar !("hot code replace")[http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html] functionality.
 
-  By doing this, we should have an idea of the flow of execution of a 
-given thread and we should be able to verify if this and this assumption 
-is true or false. In addition to being able to trace variables and print 
-de-sugared expressions, we can supplement the information provided by 
-scala-trace-debug with the information provided by the debugger.
+Note: "Hot code replace adds the possibility to modify and re-compile (method body) code in a debug mode and to have these changes visible and taken into account by the debugged VM without restarting the application."
 
-  By combining the information about the flow of execution with the values 
-displayed, we should be able to infer what is going on. We can make 
-assumptions about what is true in the source code and turn those 
-assumptions into assertions and even into unit tests.
+Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must !(drop the obsolete frame)[http://s29.postimg.org/qyox1zyif/obsolete_frame.png] by right clicking "Drop Frame" on the obsolete frame and then clicking "Step Over" (F8).
+
+5. While stepping through the code, make or add calls to scala-trace-debug. 
+
+6. Use stack traces to trace an execution path through the source code as you use the debugger to look at values in the source code.
+
+7. Make calls to nonFatalAssert to verify any assumptions you may have about the source code or insert calls to the regular fatal assert to prove that something you believe to be true is in fact true. Note that often times these assertions make good unit tests.
+
+8. If you see a line of code that looks like "object method object method object method parameter" and you get confused by the whitespace, use traceExpression to de-sugar the expression.
+
+9. Don't forget to read the javadoc or self documentation in the code.
 
   Given all this information: the commit history, the documentation in the 
 source code (or the self-documenting source code if no Javadoc is 
@@ -275,16 +265,14 @@ as to what assertions are true and what are not, we should be able to
 understand what is going on and figure out what to do to fix any violated 
 assertions or failed unit tests. 
 
-Assuming that we can do that, the bug should be fixable.
-
-  p.s. Calls to scala-debug-trace are not meant to be left inside in 
+  p.s. Calls to scala-debug-trace are not meant to be left inside 
 production code. `git reset --hard HEAD~1` should allow you to discards 
 uncommitted changes.
 
   Side note: It is a personal pet peeve of mine to see threads with names 
 like "1128471". If the code is creating a new thread, the name of the 
-thread can double as a form of documentation. Example: Database_Thread, 
-GUI_Thread, Socket_Thread. To change the name of a thread pool, 
+thread can double as a form of documentation. Example: "Database_Thread", 
+"GUI_Thread", "Socket_Thread". To change the name of a thread pool, 
 see ![this link.](http://stackoverflow.com/questions/6113746/naming-threads-and-thread-pools-of-executorservice)
 
 ____________________________________________________________________________________________________________________
