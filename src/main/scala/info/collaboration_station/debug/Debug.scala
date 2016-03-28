@@ -4,7 +4,7 @@ import scala.language.experimental.macros // There will be macros
 import scala.reflect.macros.blackbox.Context
 
 /**
-  * Created by johnreed on 3/12/16
+  * Created by johnreed on 3/12/16. Contains static debug functions.
   */
 object Debug {
 

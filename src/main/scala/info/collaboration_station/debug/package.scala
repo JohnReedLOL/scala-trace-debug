@@ -1,10 +1,7 @@
 package info.collaboration_station
 
-import scala.language.experimental.macros // There will be macros
-import scala.reflect.macros.blackbox.Context
-
 /**
-  * Created by johnreed on 3/12/16.
+  * Created by johnreed on 3/12/16. Contains implicit debug functions. Import with "import info.collaboration_station.debug._"
   */
 package object debug {
 
@@ -198,12 +195,12 @@ package object debug {
   /**
     * Contains static methods for ImplicitTraceObject
     */
-  object ImplicitTraceObject {
+  protected[debug] object ImplicitTraceObject {
 
     /** The offset of the first line from the base of the stack trace
       * The +1 is necessary because the method call traceInternal adds one to the offset of the stack trace
       */
-    val newStackOffset = Debug.stackOffset + 1
+    protected[debug] val newStackOffset = Debug.stackOffset + 1
 
     /** Prints out the object with N lines of stack trace. Do not use with assertions
       *
