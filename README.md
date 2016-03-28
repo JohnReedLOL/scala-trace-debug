@@ -214,11 +214,11 @@ it.
 
 3. Put break points in the area of what was changed.
 
-4. Follow [this IntelliJ doc](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar ["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality.
+4. Follow [this IntelliJ doc](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar ["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality. Basically, modify the file while in "debug" mode, click "Build > Compile File.scala", reload the class, drop the obsolete stack frame, and debug as usual.
 
 Note: "Hot code replace adds the possibility to modify and re-compile (method body) code in a debug mode and to have these changes visible and taken into account by the debugged VM without restarting the application."
 
-Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must drop the obsolete frame by right clicking "Drop Frame" on the obsolete frame and then clicking "Step Over" (F8).
+Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must drop the obsolete frame by right clicking "Drop Frame" on the obsolete frame and then click "Step Over" (F8).
 
 ![Drop the obsolete stack frame](http://s29.postimg.org/qyox1zyif/obsolete_frame.png)
 
