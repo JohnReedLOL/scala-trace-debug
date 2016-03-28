@@ -84,7 +84,7 @@ import info.collaboration_station.debug._
 
 ```
 
-[Methods available through Debug object](http://collaboration-station.info/debug/index.html):
+[Methods available through Debug object](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$):
 
 ```scala
 
