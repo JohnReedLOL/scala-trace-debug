@@ -7,34 +7,6 @@ ________________________________________________________________________________
 
 **Example:**
 
-```scala
-import info.collaboration_station.debug._
-
-object Main {
-  def main(args: Array[String]) {
-    Debug.enableEverything_!()
-    
-    "Hello World 1".trace // 1 line of stack trace
-    "Hello World 3".trace(3) // 3 lines of stack trace
-    
-    Debug.fatalAssertOff_!() // disables fatal assert
-    "foo".assertEquals("bar", "message3") // fatal assert cancelled
-  }
-}
-```
-
-*Output:*
-
-```scala
-	"Hello World 1" in thread main:
-		at path.to.main(Main.scala:22)
-
-	"Hello World 3" in thread main:
-		path.to.main(Main.scala:22)
-		path.to.file1(Main.scala:33)
-		path.to.file2(Main.scala:44)
-```
-
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ____________________________________________________________________________________________________________________
