@@ -197,6 +197,11 @@ package object debug {
     */
   protected[debug] object ImplicitTraceObject {
 
+    /**
+      * Ensures that no two threads can print at the same time
+      */
+    private object PrintLocker
+
     /** The offset of the first line from the base of the stack trace
       * The +1 is necessary because the method call traceInternal adds one to the offset of the stack trace
       */
@@ -237,9 +242,9 @@ package object debug {
       }
       toPrint += "\n"
       if (useStdOut_?) {
-        System.out.println(toPrint)
+        PrintLocker.synchronized{ System.out.println(toPrint) }
       } else {
-        System.err.println(toPrint)
+        PrintLocker.synchronized{ System.err.println(toPrint) }
       }
       toPrintOutNullable // return the origional thing, even if it is null
     }
@@ -280,9 +285,9 @@ package object debug {
       }
       toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
       if (useStdOut_?) {
-        System.out.println(toPrint)
+        PrintLocker.synchronized{ System.out.println(toPrint) }
       } else {
-        System.err.println(toPrint)
+        PrintLocker.synchronized{ System.err.println(toPrint) }
       }
       toPrintOutNullable // return the original thing, even if it is null
     }
