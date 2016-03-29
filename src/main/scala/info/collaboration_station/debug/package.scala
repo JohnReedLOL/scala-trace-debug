@@ -17,6 +17,7 @@ package object debug {
   implicit final class ImplicitTrace[MyType](val me: MyType) {
     /**
       * Same as System.out.print(this), but with the function name after the object
+      *
       * @return the thing that was just printed
       * @example if(foo.print) { /* do something with foo */ }
       */
@@ -24,6 +25,7 @@ package object debug {
 
     /**
       * Same as System.out.println(this), but with the function name after the object
+      *
       * @return the thing that was just printed
       * @example if(foo.println) { /* do something with foo */ }
       */
@@ -31,6 +33,7 @@ package object debug {
 
     /**
       * Same as System.err.print(this), but with the function name after the object
+      *
       * @return the thing that was just printed
       * @example if(foo.printStdErr) { /* do something with foo */ }
       */
@@ -38,6 +41,7 @@ package object debug {
 
     /**
       * Same as System.err.println(this), but with the function name after the object
+      *
       * @return the thing that was just printed
       * @example if(foo.printlnStdErr) { /* do something with foo */ }
       */
@@ -198,22 +202,25 @@ package object debug {
       } else {
         0
       }
-      val stack = Thread.currentThread().getStackTrace
       val toPrintOut: String = if (toPrintOutNullable == null) {
         "null"
       } else {
         toPrintOutNullable.toString
       }
       var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
-      for (row <- 0 to Math.min(numStackLines - 1, stack.length - 1 - newStackOffset)) {
-        val lineNumber = newStackOffset + row
-        val stackLine = stack(lineNumber)
-        // The java stack traces use a tab character, not a space
-        val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine
+      if(numStackLinesIntended > 0) {
+        val stack = Thread.currentThread().getStackTrace
+        for (row <- 0 to Math.min(numStackLines - 1, stack.length - 1 - newStackOffset)) {
+          val lineNumber = newStackOffset + row
+          val stackLine = stack(lineNumber)
+          // The java stack traces use a tab character, not a space
+          val tab = "\t"
+          toPrint += "\n" + tab + "at " + stackLine
+        }
+      } else {
+        // do not make a call to Thread.currentThread().getStackTrace
       }
       toPrint += "\n"
-
       if (!useStdOut_? && !Debug.traceErrOn_? ) {
         return toPrint // if we are using standard error and tracing to standard error is off, return
       }
@@ -227,7 +234,7 @@ package object debug {
         PrintLocker.synchronized{ System.err.println(toPrint) }
       }
       toPrint
-    } // TO DO: FIX TRACE INTERNAL ASSERT AND STUFF
+    }
 
     /** Prints out the object with N lines of stack trace. Meant to be used only for asserts
       *
