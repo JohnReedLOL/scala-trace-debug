@@ -7,34 +7,6 @@ ________________________________________________________________________________
 
 **Example:**
 
-```scala
-import info.collaboration_station.debug._
-
-object Main {
-  def main(args: Array[String]) {
-    Debug.enableEverything_!()
-    
-    "Hello World 1".trace // 1 line of stack trace
-    "Hello World 3".trace(3) // 3 lines of stack trace
-    
-    Debug.fatalAssertOff_!() // disables fatal assert
-    "foo".assertEquals("bar", "message3") // fatal assert cancelled
-  }
-}
-```
-
-*Output:*
-
-```scala
-	"Hello World 1" in thread main:
-		at path.to.main(Main.scala:22)
-
-	"Hello World 3" in thread main:
-		path.to.main(Main.scala:22)
-		path.to.file1(Main.scala:33)
-		path.to.file2(Main.scala:44)
-```
-
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ____________________________________________________________________________________________________________________
@@ -52,7 +24,7 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.2"
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
 
-!(Methods available through implicit conversion)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace]:
+[Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace):
 
 ```scala
 
@@ -84,7 +56,7 @@ import info.collaboration_station.debug._
 
 ```
 
-!(Methods available through Debug object)[http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$]:
+[Methods available through Debug object](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$):
 
 ```scala
 
@@ -166,13 +138,13 @@ ________________________________________________________________________________
 
 2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
 
-2. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
+3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
-3. Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually).
+4. Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually).
 
-4. Position the stack traces and asserts in the line of likely sources of bugs.
+5. Position the stack traces and asserts in the line of likely sources of bugs.
 
-5. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+6. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
 IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace.
 
@@ -240,23 +212,67 @@ it.
 
 2. Read the lines of code that were changed.
 
-3. Put break points in the area of what was changed.
+3. Put break points in the area of what was changed. If your code has multiple threads that interact with one another, consider putting calls to scala-trace-debug in different threads. The print statements won't get garbled because each call to scala-trace-debug corresponds to only one call to System.out.println or System.err.println.
 
-4. Follow !(these instructions)[https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help] to enable hot reloading of source code while debugging. Scala IDE has similar !("hot code replace")[http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html] functionality.
+4. Hot swap in some calls to scala-trace-debug during the debugging process to gether more information. 
 
-Note: "Hot code replace adds the possibility to modify and re-compile (method body) code in a debug mode and to have these changes visible and taken into account by the debugged VM without restarting the application."
+5. Follow [this IntelliJ doc](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar ["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality. 
 
-Hot code replace will cause your current stack frame to become obsolete and the JVM does not like obsolete frames. For hot code replace to work correctly, you must !(drop the obsolete frame)[http://s29.postimg.org/qyox1zyif/obsolete_frame.png] by right clicking "Drop Frame" on the obsolete frame and then clicking "Step Over" (F8).
+How to "hot reload" calls to scala-trace-debug in IntelliJ:
 
-5. While stepping through the code, make or add calls to scala-trace-debug. 
+1 While debugging, add a call to trace, assert, or traceExpression and save. This call will be hot swapped in.
 
-6. Use stack traces to trace an execution path through the source code as you use the debugger to look at values in the source code.
 
-7. Make calls to nonFatalAssert to verify any assumptions you may have about the source code or insert calls to the regular fatal assert to prove that something you believe to be true is in fact true. Note that often times these assertions make good unit tests.
 
-8. If you see a line of code that looks like "object method object method object method parameter" and you get confused by the whitespace, use traceExpression to de-sugar the expression.
+2 Compile the class that you are in.
 
-9. Don't forget to read the javadoc or self documentation in the code.
+
+
+![Compile](http://i.imgur.com/pihleox.png)
+
+
+
+3 Reload said class.
+
+
+
+![Reload](http://i.imgur.com/25yb2cw.png)
+
+
+
+4 Drop the current stack frame which has become obsolete.
+
+
+
+![Drop](http://i.imgur.com/6QRxWRt.png)
+
+
+
+5 Click "Step Over" to get a new stack frame.
+
+
+
+![New](http://i.imgur.com/0VkAV0k.png)
+
+
+
+6 The hot swapped code should run.
+
+
+
+![Run](http://i.imgur.com/Soy49Lm.png)
+
+
+
+Back to "Use in practice":
+
+- Use stack traces to trace an execution path through the source code as you use the debugger to look at values in the source code.
+
+- Make calls to nonFatalAssert to verify any assumptions you may have about the source code or insert calls to the regular fatal assert to prove that something you believe to be true is in fact true. Note that often times these assertions make good unit tests.
+
+- If you see a line of code that looks like "object method object method object method parameter" and you get confused by the whitespace, use traceExpression to de-sugar the expression.
+
+- Don't forget to read the javadoc or self documentation in the code.
 
   Given all this information: the commit history, the documentation in the 
 source code (or the self-documenting source code if no Javadoc is 
@@ -267,13 +283,13 @@ assertions or failed unit tests.
 
   p.s. Calls to scala-debug-trace are not meant to be left inside 
 production code. `git reset --hard HEAD~1` should allow you to discards 
-uncommitted changes.
+uncommitted changes. 
 
   Side note: It is a personal pet peeve of mine to see threads with names 
 like "1128471". If the code is creating a new thread, the name of the 
 thread can double as a form of documentation. Example: "Database_Thread", 
 "GUI_Thread", "Socket_Thread". To change the name of a thread pool, 
-see ![this link.](http://stackoverflow.com/questions/6113746/naming-threads-and-thread-pools-of-executorservice)
+see [this link](http://stackoverflow.com/questions/6113746/naming-threads-and-thread-pools-of-executorservice)
 
 ____________________________________________________________________________________________________________________
 
@@ -281,3 +297,11 @@ ________________________________________________________________________________
 **Bugs:**
 
 To report or pinpoint bugs, email johnmichaelreedfas@gmail.com
+
+____________________________________________________________________________________________________________________
+
+**Features:**
+
+If you want to implement a new feature, just ask. Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in 
+`info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in 
+`info.collaboration_station.debug.Debug`

@@ -193,7 +193,7 @@ package object debug {
   }
 
   /**
-    * Contains static methods for ImplicitTraceObject
+    * Contains static methods for ImplicitTrace. All the real printing is done here.
     */
   protected[debug] object ImplicitTraceObject {
 
