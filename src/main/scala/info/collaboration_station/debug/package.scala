@@ -238,29 +238,28 @@ package object debug {
       */
     protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
         useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
-
-      val numStackLines = if (numStackLinesIntended > 0) {
-        numStackLinesIntended // the number of lines must be positive or zero
-      } else {
-        0
+      if(assertionTrue_?) {
+        return "" // If assertion is true, print nothing and return empty string.
       }
-      val stack = Thread.currentThread().getStackTrace
       val toPrintOut: String = if (toPrintOutNullable == null) {
         "null"
       } else {
-        toPrintOutNullable.toString
+        toPrintOutNullable.toString // calling toString on null is bad
       }
       var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
-      for (row <- 0 to Math.min(numStackLines - 1, stack.length - 1 - newStackOffset)) {
-        val lineNumber = newStackOffset + row
-        val stackLine = stack(lineNumber)
-        // The java stack traces use a tab character, not a space
-        val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine
-      }
-      toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
-      if(assertionTrue_?) {
-        return "" // If assertion is true, print nothing and return emptry string.
+      if(numStackLinesIntended > 0) {
+        // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
+        val stack = Thread.currentThread().getStackTrace
+        for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
+          val lineNumber = newStackOffset + row
+          val stackLine = stack(lineNumber)
+          // The java stack traces use a tab character, not a space
+          val tab = "\t"
+          toPrint += "\n" + tab + "at " + stackLine
+        }
+        toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
+      } else {
+        toPrint += "\n" + "^ An assertion failure has occured. ^" + "\n"
       }
       if ( !isFatal_? && !Debug.nonFatalAssertOn_? ) {
         return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)

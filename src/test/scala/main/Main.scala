@@ -45,6 +45,8 @@ object Main {
     Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
+    Debug.assertNonFatalExpression({val noStack = "No stack trace is generated"; noStack.equals("foo")}, 0) // no lines of stack trace
+    Debug.assertNonFatal(1 == 2, "No stack trace is printed", 0)
 
     Debug.disableEverything_!()
     System.err.println( Debug.trace(77, numLines = 2) ) // this should return a String
