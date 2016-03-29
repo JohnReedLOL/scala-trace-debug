@@ -49,8 +49,6 @@ ________________________________________________________________________________
 
 [Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace):
 
-http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172
-
 ```scala
 
 import info.collaboration_station.debug._
