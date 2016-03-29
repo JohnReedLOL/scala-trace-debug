@@ -35,7 +35,7 @@ In addition, all the add-on methods available through implicit conversion still 
 
 Example:
 
-scala```
+```scala
 
 import info.collaboration_station.debug._ // wildcard import for implicit conversion
 ...
