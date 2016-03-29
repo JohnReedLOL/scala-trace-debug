@@ -197,11 +197,6 @@ package object debug {
       */
     protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
         useStdOut_? : Boolean = false): String = {
-      val numStackLines = if (numStackLinesIntended > 0) {
-        numStackLinesIntended // the number of lines must be positive or zero
-      } else {
-        0
-      }
       val toPrintOut: String = if (toPrintOutNullable == null) {
         "null"
       } else {
@@ -210,7 +205,7 @@ package object debug {
       var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
       if(numStackLinesIntended > 0) {
         val stack = Thread.currentThread().getStackTrace
-        for (row <- 0 to Math.min(numStackLines - 1, stack.length - 1 - newStackOffset)) {
+        for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
           val lineNumber = newStackOffset + row
           val stackLine = stack(lineNumber)
           // The java stack traces use a tab character, not a space
