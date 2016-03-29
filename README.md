@@ -18,7 +18,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.3"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.5"
 ```
 
 ____________________________________________________________________________________________________________________
@@ -27,7 +27,7 @@ ________________________________________________________________________________
 
 Due to demand for the ability to integrate this tool with a logger, all calls to Debug.trace, Debug.assert, etc. now return a String that can be passed into a logger. 
 
-To use this feature, try "libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.4" (version 0.1.4)
+To use this feature, try "libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.4" (version 0.1.4 or above)
 
 You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. Note that Debug.nonFatalAssertOff_! only prevents non-fatal assertions from printing - they still return a String containing what they would have printed if they were on (just like Debug.trace does when you do Debug.traceErrOff_!).
 
@@ -43,6 +43,12 @@ val foo = true
 if( foo.trace ) { /* Do something with foo */ }
 
 ```
+
+____________________________________________________________________________________________________________________
+
+**Performance: **
+
+If you do not want the overhead of creating a stack trace, you can set the length of the stack trace to zero and no call to Thread.currentThread().getStackTrace will be made.
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
