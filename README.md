@@ -192,7 +192,7 @@ See ScalaDoc in source code for in detail documentation.
 
 See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressions-print-statements-with-line-numbers-in-scala/36194986#36194986
 
-Also see: [http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
+[http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
 [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
