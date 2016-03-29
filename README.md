@@ -138,13 +138,13 @@ ________________________________________________________________________________
 
 2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
 
-2. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
+3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
-3. Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually).
+4. Pick either "Application" (with a Main class) or "SBT Task" (run or test, usually).
 
-4. Position the stack traces and asserts in the line of likely sources of bugs.
+5. Position the stack traces and asserts in the line of likely sources of bugs.
 
-5. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+6. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
 IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace.
 
@@ -220,49 +220,49 @@ it.
 
 How to "hot reload" calls to scala-trace-debug in IntelliJ:
 
-1. While debugging, add a call to trace, assert, or traceExpression and save. This call will be hot swapped in.
+1 While debugging, add a call to trace, assert, or traceExpression and save. This call will be hot swapped in.
 
-...
 
-2. Compile the class that you are in.
 
-...
+2 Compile the class that you are in.
+
+
 
 ![Compile](http://i.imgur.com/pihleox.png)
 
-...
 
-3. Reload said class.
 
-...
+3 Reload said class.
+
+
 
 ![Reload](http://i.imgur.com/25yb2cw.png)
 
-...
 
-4. Drop the current stack frame which has become obsolete.
 
-...
+4 Drop the current stack frame which has become obsolete.
+
+
 
 ![Drop](http://i.imgur.com/6QRxWRt.png)
 
-...
 
-5. Click "Step Over" to get a new stack frame.
 
-...
+5 Click "Step Over" to get a new stack frame.
+
+
 
 ![New](http://i.imgur.com/0VkAV0k.png)
 
-...
 
-6. The hot swapped code should run.
 
-...
+6 The hot swapped code should run.
+
+
 
 ![Run](http://i.imgur.com/Soy49Lm.png)
 
-...
+
 
 Back to "Use in practice":
 
