@@ -35,7 +35,7 @@ In addition, all the add-on methods available through implicit conversion still 
 
 Example:
 
-scala```
+```scala
 
 import info.collaboration_station.debug._ // wildcard import for implicit conversion
 ...
@@ -60,28 +60,28 @@ ________________________________________________________________________________
 import info.collaboration_station.debug._
 
 // tracing methods:
-"foo".trace
-"foo".trace(5) // 5 lines of stack trace
-"foo".traceStdOut
-"foo".traceStdOut(5)
+val result = "foo".trace.append("bar")
+val result = "foo".trace(5) // 5 lines of stack trace
+val result = "foo".traceStdOut
+val result = "foo".traceStdOut(5)
 
 // fatal assertions:
-"foo".assert( _ equals "foo", "Assert failed")
-"foo".assertEquals("foo", "Assert failed")
-"foo".assertStdOut( _ equals "foo", "Assert failed")
-"foo".assertEqualsStdOut("foo", "Assert failed")
+val result = "foo".assert( _ equals "foo", "Assert failed").append("bar")
+val result = "foo".assertEquals("foo", "Assert failed")
+val result = "foo".assertStdOut( _ equals "foo", "Assert failed")
+val result = "foo".assertEqualsStdOut("foo", "Assert failed")
 
 // non-fatal assertions:
-"foo".assertNonFatal( _ equals "foo", "Assert failed")
-"foo".assertNonFatalEquals("foo", "Assert failed")
-"foo".assertNonFatalStdOut( _ equals "foo", "Assert failed")
-"foo".assertNonFatalEqualsStdOut("foo", "Assert failed")
+val result = "foo".assertNonFatal( _ equals "foo", "Assert failed").append("bar")
+val result = "foo".assertNonFatalEquals("foo", "Assert failed")
+val result = "foo".assertNonFatalStdOut( _ equals "foo", "Assert failed")
+val result = "foo".assertNonFatalEqualsStdOut("foo", "Assert failed")
 
 // print methods:
-"foo".print
-"foo".println
-"foo".printStdErr
-"foo".printlnStdErr
+if( true.print ) { ... } 
+if( true.println ) { ... } // prints "true"
+if( true.printStdErr ) { ... }
+if( true.printlnStdErr ) { ... }
 
 ```
 
@@ -198,6 +198,12 @@ See ScalaDoc in source code for in detail documentation.
 
 See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressions-print-statements-with-line-numbers-in-scala/36194986#36194986
 
+[http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
+
+[https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
+
+
+
 ____________________________________________________________________________________________________________________
 
 **New features:**
@@ -241,7 +247,7 @@ it.
 
 2. Read the lines of code that were changed.
 
-3. Put break points in the area of what was changed. If your code has multiple threads that interact with one another, consider putting calls to scala-trace-debug in different threads. All printing in scala-trace-debug is done through an internal object called ImplicitTraceObject with a lock called PrintLock, so it should be thread safe.
+3. Put break points in the area of what was changed. If your code has multiple threads that interact with one another, consider putting calls to scala trace debug in different threads. All printing in scala trace debug is done through an internal object called ImplicitTraceObject with a lock called PrintLock, so it should be thread safe.
 
 4. Hot swap in some calls to scala-trace-debug during the debugging process to gather more information. 
 
