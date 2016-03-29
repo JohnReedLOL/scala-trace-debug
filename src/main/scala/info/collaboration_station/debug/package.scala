@@ -238,14 +238,7 @@ package object debug {
       */
     protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
         useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
-      // Disabling trace does not also disable assert. They are two separate things
-      //if( !Debug.traceErrOn_? && !useStdOut_?) {
-      //  return toPrintOutNullable // if tracing to standard error is off and we trace to standard error, return
-      //}
-      //if( !Debug.traceOutOn_? && useStdOut_?) {
-      //  return toPrintOutNullable // if tracing to standard out is off and we trace to out, return
-      //}
-      // ^ Disabling is being taken care of in the assert function. There is no connection between turning off trace and turning off assert.
+
       val numStackLines = if (numStackLinesIntended > 0) {
         numStackLinesIntended // the number of lines must be positive or zero
       } else {
