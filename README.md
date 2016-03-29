@@ -48,7 +48,11 @@ ________________________________________________________________________________
 
 **Performance:**
 
-No overhead for no stack trace. "foo".trace(0)
+No overhead for no stack trace. 
+
+```scala
+"foo".trace(0) // no call to Thread.currentThread.getStackTrace()
+```
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
