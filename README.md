@@ -18,7 +18,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.2"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.3"
 ```
 
 ____________________________________________________________________________________________________________________

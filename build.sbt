@@ -4,7 +4,7 @@ organization := "scala-trace-debug"
 
 // version := "0.1.0-SNAPSHOT"
 
-version := "0.1.2"
+version := "0.1.3"
 
 scalaVersion := "2.11.7"
 
