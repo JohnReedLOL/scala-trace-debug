@@ -286,12 +286,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    if (!assertion && Debug.fatalAssertOn_?) {
-      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-      System.exit(7)
-      return toReturn
-    }
-    ""
+    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
@@ -347,23 +342,15 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    if (!assertion && Debug.fatalAssertOn_?) {
-      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
-      System.exit(7)
-      return toReturn
-    }
-    ""
+    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
   /**
     * Like Debug.assert(), but does not terminate the application
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    if (!assertion && Debug.nonFatalAssertOn_?) {
-      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-      return toReturn
-    }
-    ""
+    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   /**
@@ -414,10 +401,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    if (!assertion && Debug.nonFatalAssertOn_?) {
-      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
-      return toReturn
-    }
-    ""
+    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
+
   }
 }

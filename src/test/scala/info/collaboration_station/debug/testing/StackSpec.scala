@@ -112,7 +112,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "foo".assertNonFatalStdOut( _ equals "bar", "Error message"); // write stuff to System.out
+      val assertString = "foo".assertNonFatalStdOut( _ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut); // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())

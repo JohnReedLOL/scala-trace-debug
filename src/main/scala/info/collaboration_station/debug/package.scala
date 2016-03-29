@@ -91,10 +91,7 @@ package object debug {
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assert(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-      if (!assertion(me) && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-        System.exit(7)
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, assertionTrue_? = assertion(me), isFatal_? = true)
       me
     }
 
@@ -109,7 +106,7 @@ package object debug {
       */
     final def assertStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
       if (!assertion(me) && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion(me), isFatal_? = true)
         System.exit(7)
       }
       me
@@ -125,11 +122,7 @@ package object debug {
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assertEquals(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = (me.equals(other))
-      if (!assertionTrue_? && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-        System.exit(7)
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = me.equals(other), isFatal_? = true)
       me
     }
 
@@ -139,11 +132,7 @@ package object debug {
       * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assertEqualsStdOut(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = (me.equals(other))
-      if (!assertionTrue_? && Debug.fatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
-        System.exit(7)
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = me.equals(other), isFatal_? = true)
       me
     }
 
@@ -151,10 +140,7 @@ package object debug {
       * Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
       */
     final def assertNonFatal(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = assertion(me)
-      if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion(me), isFatal_? = false)
       me
     }
 
@@ -162,10 +148,7 @@ package object debug {
       * Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
       */
     final def assertNonFatalStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = assertion(me)
-      if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion(me), isFatal_? = false)
       me
     }
 
@@ -173,10 +156,7 @@ package object debug {
       * Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
       */
     final def assertNonFatalEquals(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = (me.equals(other))
-      if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = me.equals(other), isFatal_? = false)
       me
     }
 
@@ -184,10 +164,7 @@ package object debug {
       * Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
       */
     final def assertNonFatalEqualsStdOut(other: MyType, message: String, numLines: Int = Int.MaxValue): MyType = {
-      val assertionTrue_? = (me.equals(other))
-      if (!assertionTrue_? && Debug.nonFatalAssertOn_?) {
-        ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
-      }
+      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = me.equals(other), isFatal_? = false)
       me
     }
   }
@@ -250,7 +227,7 @@ package object debug {
         PrintLocker.synchronized{ System.err.println(toPrint) }
       }
       toPrint
-    }
+    } // TO DO: FIX TRACE INTERNAL ASSERT AND STUFF
 
     /** Prints out the object with N lines of stack trace. Meant to be used only for asserts
       *
@@ -260,7 +237,7 @@ package object debug {
       * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
       */
     protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-        useStdOut_? : Boolean = false): String = {
+        useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
       // Disabling trace does not also disable assert. They are two separate things
       //if( !Debug.traceErrOn_? && !useStdOut_?) {
       //  return toPrintOutNullable // if tracing to standard error is off and we trace to standard error, return
@@ -289,10 +266,22 @@ package object debug {
         toPrint += "\n" + tab + "at " + stackLine
       }
       toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
+      if(assertionTrue_?) {
+        return "" // If assertion is true, print nothing and return emptry string.
+      }
+      if ( !isFatal_? && !Debug.nonFatalAssertOn_? ) {
+        return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
+      }
+      if ( isFatal_? && !Debug.fatalAssertOn_? ) {
+        return toPrint // If it is fatal and fatalAssert is off, return the string without printing (so that the logger can print it)
+      }
       if (useStdOut_?) {
         PrintLocker.synchronized{ System.out.println(toPrint) }
       } else {
         PrintLocker.synchronized{ System.err.println(toPrint) }
+      }
+      if(isFatal_? && Debug.fatalAssertOn_? ) {
+        System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
       }
       toPrint
     }
