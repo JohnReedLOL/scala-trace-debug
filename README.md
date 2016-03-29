@@ -48,7 +48,7 @@ ________________________________________________________________________________
 
 **Performance:**
 
-If you do not want the overhead of creating a stack trace, you can set the length of the stack trace to zero and no call to Thread.currentThread().getStackTrace will be made.
+No overhead for no stack trace. "foo".trace(0)
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
