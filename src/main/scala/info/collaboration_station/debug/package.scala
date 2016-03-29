@@ -47,39 +47,39 @@ package object debug {
       *
       * @return The thing that was just printed
       */
-    final def trace: MyType = ImplicitTraceObject.traceInternal(me, 1)
+    final def trace: MyType = { ImplicitTraceObject.traceInternal(me, 1); me}
 
     /** Prints out this object to standard error with a user specified number of lines of stack trace
       *
       * @param numLines The number of lines of stack trace
       * @return The thing that was just printed
       */
-    final def trace(numLines: Int = 1): MyType = ImplicitTraceObject.traceInternal(me, numLines)
+    final def trace(numLines: Int = 1): MyType = { ImplicitTraceObject.traceInternal(me, numLines); me }
 
     /** Prints out this object to standard error along with the entire stack trace
       *
       * @return The thing that was just printed
       */
-    final def traceStack: MyType = ImplicitTraceObject.traceInternal(me, Int.MaxValue)
+    final def traceStack: MyType = { ImplicitTraceObject.traceInternal(me, Int.MaxValue); me }
 
     /** Prints out this object with 1 lines of stack trace to standard out
       *
       * @return The thing that was just printed
       */
-    final def traceStdOut: MyType = ImplicitTraceObject.traceInternal(me, 1, useStdOut_? = true)
+    final def traceStdOut: MyType = { ImplicitTraceObject.traceInternal(me, 1, useStdOut_? = true); me }
 
     /** Prints out this object to standard out with a user specified number of lines of stack trace
       *
       * @param numLines The number of lines of stack trace
       * @return The thing that was just printed
       */
-    final def traceStdOut(numLines: Int): MyType = ImplicitTraceObject.traceInternal(me, numLines, useStdOut_? = true)
+    final def traceStdOut(numLines: Int): MyType = { ImplicitTraceObject.traceInternal(me, numLines, useStdOut_? = true); me }
 
     /** Prints out this object to standard out along with the entire stack trace
       *
       * @return The thing that was just printed
       */
-    final def traceStackStdOut: MyType = ImplicitTraceObject.traceInternal(me, Int.MaxValue, useStdOut_? = true)
+    final def traceStackStdOut: MyType = { ImplicitTraceObject.traceInternal(me, Int.MaxValue, useStdOut_? = true); me }
 
     /** A fatal assertion, but with the function name after the object.
       * Terminates the program with exit code "7"
@@ -212,15 +212,10 @@ package object debug {
       * @param toPrintOutNullable    the object to print out. May be "null"
       * @param numStackLinesIntended N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values
       * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
-      * @return The thing that was put into the first parameter
+      * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
       */
-    protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int, useStdOut_? : Boolean = false): A = {
-      if (!Debug.traceErrOn_? && !useStdOut_?) {
-        return toPrintOutNullable // if tracing to standard error is off and we trace to standard error, return
-      }
-      if (!Debug.traceOutOn_? && useStdOut_?) {
-        return toPrintOutNullable // if tracing to standard out is off and we trace to out, return
-      }
+    protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+        useStdOut_? : Boolean = false): String = {
       val numStackLines = if (numStackLinesIntended > 0) {
         numStackLinesIntended // the number of lines must be positive or zero
       } else {
@@ -241,12 +236,20 @@ package object debug {
         toPrint += "\n" + tab + "at " + stackLine
       }
       toPrint += "\n"
+
+      if (!useStdOut_? && !Debug.traceErrOn_? ) {
+        return toPrint // if we are using standard error and tracing to standard error is off, return
+      }
+      if (useStdOut_? && !Debug.traceOutOn_? ) {
+        return toPrint // if we are using standard out and tracing to standard out is off, return
+      }
+
       if (useStdOut_?) {
         PrintLocker.synchronized{ System.out.println(toPrint) }
       } else {
         PrintLocker.synchronized{ System.err.println(toPrint) }
       }
-      toPrintOutNullable // return the origional thing, even if it is null
+      toPrint
     }
 
     /** Prints out the object with N lines of stack trace. Meant to be used only for asserts
@@ -254,9 +257,10 @@ package object debug {
       * @param toPrintOutNullable    the object to print out. May be "null"
       * @param numStackLinesIntended N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values
       * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
-      * @return The thing that was put into the first parameter
+      * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
       */
-    protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int, useStdOut_? : Boolean = false): A = {
+    protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+        useStdOut_? : Boolean = false): String = {
       // Disabling trace does not also disable assert. They are two separate things
       //if( !Debug.traceErrOn_? && !useStdOut_?) {
       //  return toPrintOutNullable // if tracing to standard error is off and we trace to standard error, return
@@ -264,6 +268,7 @@ package object debug {
       //if( !Debug.traceOutOn_? && useStdOut_?) {
       //  return toPrintOutNullable // if tracing to standard out is off and we trace to out, return
       //}
+      // ^ Disabling is being taken care of in the assert function. There is no connection between turning off trace and turning off assert.
       val numStackLines = if (numStackLinesIntended > 0) {
         numStackLinesIntended // the number of lines must be positive or zero
       } else {
@@ -289,7 +294,7 @@ package object debug {
       } else {
         PrintLocker.synchronized{ System.err.println(toPrint) }
       }
-      toPrintOutNullable // return the original thing, even if it is null
+      toPrint
     }
   }
 

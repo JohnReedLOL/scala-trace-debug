@@ -46,5 +46,8 @@ object Main {
     Debug.assertExpression{val myVal = 3; 1 + 2 == myVal}
     Debug.assertExpression(1+2 == 3)
 
+    Debug.disableEverything_!()
+    System.err.println( Debug.trace(77, numLines = 2) ) // this should return a String
+    System.err.println( Debug.assertNonFatal(2 == 3, "foo", numLines = 2) ) // this should return a String
   }
 }

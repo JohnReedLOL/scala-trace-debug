@@ -124,8 +124,9 @@ object Debug {
     *
     * @param block this block contains or returns whatever it is to be traced.
     * @tparam T the return type of the block
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def trace[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1)
+  final def trace[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, 1)
 
   /**
     * Traces to standard error with a N line stack trace.
@@ -133,18 +134,20 @@ object Debug {
     * @param block this block contains or returns whatever it is to be traced.
     * @param numLines the number of lines to trace
     * @tparam T the return type of the block
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def trace[T](block: => T, numLines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, numLines)
+  final def trace[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines)
 
   /**
     * Same as trace, but prints the entire expression, not just the result
     * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
     * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object traceExpression {
-    final def apply[T](block: => T): Unit = macro traceExpressionImpl[T]
+    final def apply[T](block: => T): String = macro traceExpressionImpl[T]
 
-    final def traceExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
+    final def traceExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -152,12 +155,12 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.trace(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T, numLines: Int): Unit = macro traceLinesExpressionImpl[T]
+    final def apply[T](block: => T, numLines: Int): String = macro traceLinesExpressionImpl[T]
 
-    final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[Unit] = {
+    final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -166,7 +169,7 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.trace(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
@@ -175,17 +178,19 @@ object Debug {
     *
     * @param block this block contains or returns whatever it is to be traced.
     * @tparam T the return type of the block
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStack[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue)
+  final def traceStack[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue)
 
   /**
     * Same as traceStack, but prints the entire expression, not just the result
     * @example Debug.traceStackExpression{val myVal = 3; 1 + 2 + myVal}
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object traceStackExpression {
-    final def apply[T](block: => T): Unit = macro traceStackExpressionImpl[T]
+    final def apply[T](block: => T): String = macro traceStackExpressionImpl[T]
 
-    final def traceStackExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
+    final def traceStackExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -193,30 +198,33 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStack(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
   /**
     * Same as Debug.trace, but prints to standard out instead of standard error
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
+  final def traceStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
 
   /**
     * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStdOut[T](block: => T, numLines: Int): Unit = ImplicitTraceObject.traceInternal(block.toString, numLines, useStdOut_? = true)
+  final def traceStdOut[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines, useStdOut_? = true)
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
     * @example Debug.traceStdOutExpression{val myVal = 3; 1 + 2 + myVal}
     * @example Debug.traceStdOutExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object traceStdOutExpression {
 
-    final def apply[T](block: => T): Unit = macro traceStdOutExpressionImpl[T]
+    final def apply[T](block: => T): String = macro traceStdOutExpressionImpl[T]
 
-    final def traceStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
+    final def traceStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -224,12 +232,12 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T, numLines: Int): Unit = macro traceLinesStdOutExpressionImpl[T]
+    final def apply[T](block: => T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
 
-    final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[Unit] = {
+    final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -238,23 +246,25 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
   /**
     * Same as traceStack, but prints to StdOut instead of StdError
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStackStdOut[T](block: => T): Unit = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
+  final def traceStackStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
 
   /**
     * Same as traceStackStdOut, but prints the whole expression not just the result
     * @example Debug.traceStackStdOutExpression{val myVal = 3; 1 + 2 + myVal}
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object traceStackStdOutExpression {
-    final def apply[T](block: => T): Unit = macro traceStackStdOutExpressionImpl[T]
+    final def apply[T](block: => T): String = macro traceStackStdOutExpressionImpl[T]
 
-    final def traceStackStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[Unit] = {
+    final def traceStackStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = showCode(block.tree) + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -262,7 +272,7 @@ object Debug {
       val toReturn = q"""
         info.collaboration_station.debug.Debug.traceStackStdOut(..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
@@ -273,12 +283,15 @@ object Debug {
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
+  final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     if (!assertion && Debug.fatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
+      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
       System.exit(7)
+      return toReturn
     }
+    ""
   }
 
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
@@ -288,13 +301,14 @@ object Debug {
     * Same as assert, but prints the whole expression instead of an error message
     * @example Debug.assertExpression{val one = 1; one + 1 == 2}
     * @example Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object assertExpression {
-    final def apply(assertion: Boolean): Unit = macro assertExpressionImpl
+    final def apply(assertion: Boolean): String = macro assertExpressionImpl
 
-    final def apply(assertion: Boolean, numLines: Int): Unit = macro assertLinesExpressionImpl
+    final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesExpressionImpl
 
-    final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
+    final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val assertionString = showCode(assertion.tree) + " -> "
       //val arg1 = q"$assertion"
@@ -305,10 +319,10 @@ object Debug {
         val assertBoolean = $assertion;
         info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
 
-    final def assertLinesExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[Unit] = {
+    final def assertLinesExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionString = showCode(assertion.tree) + " -> "
       //val arg1 = q"$assertion"
@@ -319,7 +333,7 @@ object Debug {
         val assertBoolean = $assertion;
         info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
@@ -330,35 +344,41 @@ object Debug {
     * @param message   the message to be printed to standard out on assertion failure
     * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
+  final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     if (!assertion && Debug.fatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
       System.exit(7)
+      return toReturn
     }
+    ""
   }
 
   /**
     * Like Debug.assert(), but does not terminate the application
     */
-  final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
+  final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     if (!assertion && Debug.nonFatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
+      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines) // trace the max number of lines of stack trace to std error
+      return toReturn
     }
+    ""
   }
 
   /**
     * Same as assertNonFatal, but prints the whole expression instead of an error message
     * @example Debug.assertNonFatalExpression{val one = 1; one + 1 == 2}
     * @example Debug.assertNonFatalExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final object assertNonFatalExpression {
 
-    final def apply(assertion: Boolean): Unit = macro assertNonFatalExpressionImpl
+    final def apply(assertion: Boolean): String = macro assertNonFatalExpressionImpl
 
-    final def apply(assertion: Boolean, numLines: Int): Unit = macro assertLinesNonFatalExpressionImpl
+    final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesNonFatalExpressionImpl
 
-    final def assertNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[Unit] = {
+    final def assertNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val assertionString = showCode(assertion.tree) + " -> "
       //val arg1 = q"$assertion"
@@ -370,10 +390,10 @@ object Debug {
         val assertBoolean = $assertion;
         info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
 
-    final def assertLinesNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[Unit] = {
+    final def assertLinesNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionString = showCode(assertion.tree) + " -> "
       //val arg1 = q"$assertion"
@@ -385,16 +405,19 @@ object Debug {
         val assertBoolean = $assertion;
         info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
-      c.Expr[Unit](toReturn)
+      c.Expr[String](toReturn)
     }
   }
 
   /**
     * Like Debug.assertStdOut(), but does not terminate the application
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): Unit = {
+  final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     if (!assertion && Debug.nonFatalAssertOn_?) {
-      ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+      val toReturn = ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true) // trace the max number of lines of stack trace to std out
+      return toReturn
     }
+    ""
   }
 }
