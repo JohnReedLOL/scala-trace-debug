@@ -22,6 +22,29 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.3"
 ```
 
 ____________________________________________________________________________________________________________________
+
+**Logger incorporation:**
+
+Due to demand for the ability to integrate this tool with a logger, all calls to Debug.trace, Debug.assert, etc. now return a String that can be passed into a logger. 
+
+To use this feature, try "libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.4" (version 0.1.4)
+
+You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. Note that Debug.nonFatalAssertOff_! only prevents non-fatal assertions from printing - they still return a String containing what they would have printed if they were on (just like Debug.trace does when you do Debug.traceErrOff_!).
+
+In addition, all the add-on methods available through implicit conversion still return the object they were called upon so that you can use them inside an expression.
+
+Example:
+
+scala```
+
+import info.collaboration_station.debug._ // wildcard import for implicit conversion
+...
+val foo = true
+if( foo.trace ) { /* Do something with foo */ }
+
+```
+
+____________________________________________________________________________________________________________________
 **Cheat Sheet:**
 
 [Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace):
