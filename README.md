@@ -212,9 +212,9 @@ it.
 
 2. Read the lines of code that were changed.
 
-3. Put break points in the area of what was changed. If your code has multiple threads that interact with one another, consider putting calls to scala-trace-debug in different threads. The print statements won't get garbled because each call to scala-trace-debug corresponds to only one call to System.out.println or System.err.println.
+3. Put break points in the area of what was changed. If your code has multiple threads that interact with one another, consider putting calls to scala-trace-debug in different threads. All printing in scala-trace-debug is done through an internal object called ImplicitTraceObject with a lock called PrintLock, so it should be thread safe.
 
-4. Hot swap in some calls to scala-trace-debug during the debugging process to gether more information. 
+4. Hot swap in some calls to scala-trace-debug during the debugging process to gather more information. 
 
 5. Follow [this IntelliJ doc](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar ["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality. 
 
