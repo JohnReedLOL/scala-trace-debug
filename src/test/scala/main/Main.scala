@@ -22,7 +22,7 @@ object Main {
 
     Debug.traceStdOut("Hey0")
     Debug.traceStdOutExpression{"Hey3"}
-    Debug.traceStdOutExpression{val myVal = 5; 1 + 2 + myVal}
+    Debug.traceStdOutExpression({val myVal = 5; 1 + 2 + myVal}, 0) // 0 lines of stack trace
     Debug.traceStdOutExpression("Hey4", 2)
     Debug.traceStackStdOutExpression{val myVal = 6; 1 + 2 + myVal}
 
