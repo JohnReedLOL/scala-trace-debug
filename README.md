@@ -221,16 +221,48 @@ it.
 How to "hot reload" calls to scala-trace-debug in IntelliJ:
 
 1. While debugging, add a call to trace, assert, or traceExpression and save. This call will be hot swapped in.
+
+...
+
 2. Compile the class that you are in.
+
+...
+
 ![Compile](http://i.imgur.com/pihleox.png)
+
+...
+
 3. Reload said class.
+
+...
+
 ![Reload](http://i.imgur.com/25yb2cw.png)
+
+...
+
 4. Drop the current stack frame which has become obsolete.
+
+...
+
 ![Drop](http://i.imgur.com/6QRxWRt.png)
+
+...
+
 5. Click "Step Over" to get a new stack frame.
+
+...
+
 ![New](http://i.imgur.com/0VkAV0k.png)
+
+...
+
 6. The hot swapped code should run.
+
+...
+
 ![Run](http://i.imgur.com/Soy49Lm.png)
+
+...
 
 Back to "Use in practice":
 
