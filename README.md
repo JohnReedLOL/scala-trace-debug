@@ -18,7 +18,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.5"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.6"
 ```
 
 ____________________________________________________________________________________________________________________
@@ -96,11 +96,11 @@ if( true.printlnStdErr ) { ... }
 import info.collaboration_station.debug.Debug
 
 // tracing methods:
-Debug.trace("foo")
+val result: String = Debug.trace("foo")
 Debug.trace("foo", 5)
 Debug.traceStack("foo") // entire stack trace
 Debug.traceStdOut("foo")
-Debug.traceStdOut("foo", 5)
+LOGGER.warning( Debug.traceStdOut("foo", 5) )
 Debug.traceStackStdOut("foo")
 
 // fatal assertions:
