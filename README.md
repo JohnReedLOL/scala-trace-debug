@@ -114,6 +114,8 @@ Debug.assertNonFatalStdOut("foo" equals "foo", "Assert failed")
 // macro expression prints to standard error
 Debug.traceExpression{val one = 1; one + 2 == 3} 
 Debug.traceExpression({val one = 1; one + 2 == 3}, 4) // 4 lines of stack trace
+Debug.traceCode{val one = 1; one + 2 == 3} 
+Debug.traceExpression({val one = 1; one + 2 == 3}, 4) // 4 lines of stack trace
 Debug.traceStack{val one = 1; one + 2 == 3} // entire stack trace
 
 // macro expression prints to standard out
@@ -123,6 +125,7 @@ Debug.traceStdOutStack{val one = 1; one + 2 == 3} // entire stack trace
 
 // macro expression asserts
 Debug.assertExpression{val one = 1; one + 2 == 3}
+Debug.assertCode{val one = 1; one + 2 == 3}
 Debug.assertExpression({val one = 1; one + 2 == 3}, 4)
 Debug.assertNonFatalExpression{val one = 1; one + 2 == 3}
 Debug.assertNonFatalExpression({val one = 1; one + 2 == 3}, 4) 
