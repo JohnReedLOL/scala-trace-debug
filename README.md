@@ -46,9 +46,13 @@ if( foo.trace ) { /* Do something with foo */ }
 
 ____________________________________________________________________________________________________________________
 
-**Performance: **
+**Performance:**
 
-If you do not want the overhead of creating a stack trace, you can set the length of the stack trace to zero and no call to Thread.currentThread().getStackTrace will be made.
+No overhead for no stack trace. 
+
+```scala
+"foo".trace(0) // no call to Thread.currentThread.getStackTrace()
+```
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet:**
