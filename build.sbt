@@ -15,15 +15,22 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.11.5" % "test"
 )
 
+def macroDependencies(version: String) = Seq(
+    "org.scala-lang" % "scala-reflect" % version % "provided" ,
+    "org.scala-lang" % "scala-compiler" % version % "provided" // needed for reflect.macros.runtime.Context in Experimental
+  )
+
+libraryDependencies ++= macroDependencies(scalaVersion.value)
+
 // to debug macros, use -Ymacro-debug-lite
 
 scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-infer-any", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 // initialCommands := "import example._"
 
-// This is needed for macros:
+// This is needed for macros: (No longer needed due to "org.scala-lang" % "scala-reflect" % version % "provided")
 
-libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
+// libraryDependencies <+= (scalaVersion)("org.scala-lang" % "scala-reflect" % _)
 
 // bintray settings
 

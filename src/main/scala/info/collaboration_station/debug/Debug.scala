@@ -139,6 +139,93 @@ object Debug {
   final def trace[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines)
 
   /**
+    * Same as trace, but prints the code in the block, not just the result
+    * @example myVal = 3; Debug.traceCode{1 + 2 + myVal}
+    * @example myVal = 3; Debug.traceCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+    */
+  final object traceCode {
+    final def apply[T](block: => T): String = macro traceCodeImpl[T]
+
+    final def traceCodeImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+      import c.universe._
+      val blockTree = block.tree
+      val blockSource = new String(blockTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = blockSource.slice(start, start + end)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      val args = List(arg1)
+      val toReturn = q"""
+        info.collaboration_station.debug.Debug.trace(..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+
+    final def apply[T](block: => T, numLines: Int): String = macro traceLinesCodeImpl[T]
+
+    final def traceLinesCodeImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      val blockTree = block.tree
+      val blockSource = new String(blockTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = blockSource.slice(start, start + end)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      val arg2 = q"$numLines"
+      val args = List(arg1, arg2)
+      val toReturn = q"""
+        info.collaboration_station.debug.Debug.trace(..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+  }
+
+  /**
+    * Same as traceStack, but prints the source code in the block, not just the result
+    * @example myVal = 3; Debug.traceStackCode{1 + 2 + myVal}
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+    */
+  final object traceStackCode {
+    final def apply[T](block: => T): String = macro traceStackCodeImpl[T]
+
+    final def traceStackCodeImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+      import c.universe._
+      val blockTree = block.tree
+      val blockSource = new String(blockTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = blockSource.slice(start, start + end)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      // System.err.println(arg1)
+      // At compile time prints: "(".$plus("fooVar + barVar").$plus(") -> ").$plus(fooVar.+(barVar).toString)
+      val args = List(arg1)
+      val toReturn = q"""
+        info.collaboration_station.debug.Debug.traceStack(..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+  }
+
+  /**
     * Same as trace, but prints the entire expression, not just the result
     * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
     * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace

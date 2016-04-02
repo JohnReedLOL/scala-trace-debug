@@ -48,8 +48,17 @@ object Main {
     Debug.assertNonFatalExpression({val noStack = "No stack trace is generated"; noStack.equals("foo")}, 0) // no lines of stack trace
     Debug.assertNonFatal(1 == 2, "No stack trace is printed", 0)
 
-    Debug.disableEverything_!()
+    Debug.enableEverything_!()
     System.err.println( Debug.trace(77, numLines = 2) ) // this should return a String
     System.err.println( Debug.assertNonFatal(2 == 3, "foo", numLines = 2) ) // this should return a String
+    val fooVar = "foo"
+    val barVar = "bar"
+    Debug.traceCode[String]{fooVar + barVar}
+    Debug.traceCode[String]({fooVar + barVar}, 3)
+    Debug.traceStackCode[String]{fooVar + barVar}
+    val trueVar = true
+    val falseVar = false
+    Debug.assertExpression{trueVar || falseVar || false}
+    System.err.println("End")
   }
 }
