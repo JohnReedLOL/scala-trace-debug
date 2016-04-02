@@ -419,6 +419,66 @@ object Debug {
     }
   }
 
+  /**
+    * Same as assert, but prints the code instead of an error message.
+    * @example val one = 1; Debug.assertCode{one + 1 == 2}
+    * @example val one = 1; Debug.assertCode({one + 1 == 2}, 0) // 0 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+    */
+  final object assertCode {
+    final def apply(assertion: Boolean): String = macro assertCodeImpl
+
+    final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesCodeImpl
+
+    final def assertCodeImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+      import c.universe._
+      val assertionTree = assertion.tree
+      val assertionSource = new String(assertionTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = assertionSource.slice(start, start + end)
+      val assertionString = blockString + " -> "
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"Int.MaxValue"
+      val args = List(arg2, arg3)
+      val toReturn = q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+
+    final def assertLinesCodeImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      val assertionTree = assertion.tree
+      val assertionSource = new String(assertionTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = assertionSource.slice(start, start + end)
+      val assertionString = blockString + " -> "
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"$numLines"
+      val args = List(arg2, arg3)
+      val toReturn = q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+  }
+
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     *

@@ -58,7 +58,8 @@ object Main {
     Debug.traceStackCode[String]{fooVar + barVar}
     val trueVar = true
     val falseVar = false
-    Debug.assertExpression{trueVar || falseVar || false}
+    System.err.println("assertCode")
+    // Debug.assertCode{(trueVar || falseVar || false) && false} // "trueVar || falseVar || false -> false" in thread run-main-4:
     System.err.println("End")
   }
 }
