@@ -143,13 +143,6 @@ For use in practice, see [this link](http://pastebin.com/GSjxYQ70)
 
 ____________________________________________________________________________________________________________________
 
-
-**Bugs:**
-
-To report or pinpoint bugs, email johnmichaelreedfas@gmail.com
-
-____________________________________________________________________________________________________________________
-
 **Features:**
 
 If you want to implement a new feature, just ask. Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in 
