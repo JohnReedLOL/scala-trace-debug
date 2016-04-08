@@ -54,9 +54,11 @@ No overhead for no stack trace.
 
 ____________________________________________________________________________________________________________________
 
-**Container Printing:**
+**Container Printing [pending scala trace debug "0.1.7"]:**
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
+
+0.1.7 is pending on [this error](http://stackoverflow.com/questions/36510644/scala-typetags-reflection-induced-compile-error)
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet / Examples:**
