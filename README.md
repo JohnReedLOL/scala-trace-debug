@@ -127,11 +127,11 @@ ________________________________________________________________________________
 
 Now featuring desugared macro expressions and code tracing:
 
-##### Desugared macro expression:
+**Desugared macro expression:**
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-##### Code tracing:
+**Code tracing:**
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
@@ -155,16 +155,3 @@ ________________________________________________________________________________
 If you want to implement a new feature, just ask. Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in 
 `info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in 
 `info.collaboration_station.debug.Debug`
-
-____________________________________________________________________________________________________________________
-
-
-**Design decisions:**
-
-"trace" is the default and "traceStdOut" requires six extra characters to type. This is because if you trace to standard out and you get an exception in standard error, the text will be garbled in the console.
-
-The function names are long. I could have named them something shorter, but the presumption is that if you are using this tool, you have an IDE which can auto-complete long function names.
-
-traceExpression is listed before traceCode. This is because traceCode has a few bugs. For example, trailing functions like (4).toString sometimes get cut off.
-
-traceContainer requires an implicit conversion (import collection.JavaConversions._ ) to work with Java containers.
