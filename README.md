@@ -63,13 +63,13 @@ ________________________________________________________________________________
 
 [Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace)
 
-[Methods available through Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
+[Methods available through the Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.Debug$)
 
 Example functions: http://pastebin.com/2e1JN1De
 
 ^ For more examples, see "scala-trace-debug/src/test/scala/main/Main.scala"
 
-Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, please use an exception.
+Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
 
 ____________________________________________________________________________________________________________________
 
