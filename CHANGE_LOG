@@ -5,3 +5,5 @@ Change log:
 "0.1.5" - Performance improvement - printing a stack trace of length 0 makes no call to Thread.currentThread().getStackTrace
 
 "0.1.6" - Added traceCode, assertCode as an alternative to traceExpression, assertExpression
+
+"0.1.7" - Added traceContents for List, Map, etc.

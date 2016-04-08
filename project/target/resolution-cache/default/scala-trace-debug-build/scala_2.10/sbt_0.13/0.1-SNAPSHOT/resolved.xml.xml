@@ -4,7 +4,7 @@
 		module="scala-trace-debug-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160325151752"
+		publication="20160408085025"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

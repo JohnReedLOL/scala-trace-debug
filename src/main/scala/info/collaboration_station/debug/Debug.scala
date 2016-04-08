@@ -140,6 +140,7 @@ object Debug {
 
   /**
     * Same as trace, but prints the code in the block, not just the result
+    *
     * @example myVal = 3; Debug.traceCode{1 + 2 + myVal}
     * @example myVal = 3; Debug.traceCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -195,6 +196,7 @@ object Debug {
 
   /**
     * Same as traceStack, but prints the source code in the block, not just the result
+    *
     * @example myVal = 3; Debug.traceStackCode{1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -227,6 +229,7 @@ object Debug {
 
   /**
     * Same as trace, but prints the entire expression, not just the result
+    *
     * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
     * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -271,6 +274,7 @@ object Debug {
 
   /**
     * Same as traceStack, but prints the entire expression, not just the result
+    *
     * @example Debug.traceStackExpression{val myVal = 3; 1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -291,18 +295,21 @@ object Debug {
 
   /**
     * Same as Debug.trace, but prints to standard out instead of standard error
+    *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def traceStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
 
   /**
     * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
+    *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def traceStdOut[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines, useStdOut_? = true)
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
+    *
     * @example Debug.traceStdOutExpression{val myVal = 3; 1 + 2 + myVal}
     * @example Debug.traceStdOutExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -339,12 +346,14 @@ object Debug {
 
   /**
     * Same as traceStack, but prints to StdOut instead of StdError
+    *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def traceStackStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
 
   /**
     * Same as traceStackStdOut, but prints the whole expression not just the result
+    *
     * @example Debug.traceStackStdOutExpression{val myVal = 3; 1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -381,6 +390,7 @@ object Debug {
 
   /**
     * Same as assert, but prints the whole expression instead of an error message
+    *
     * @example Debug.assertExpression{val one = 1; one + 1 == 2}
     * @example Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -421,6 +431,7 @@ object Debug {
 
   /**
     * Same as assert, but prints the code instead of an error message.
+    *
     * @example val one = 1; Debug.assertCode{one + 1 == 2}
     * @example val one = 1; Debug.assertCode({one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -494,6 +505,7 @@ object Debug {
 
   /**
     * Like Debug.assert(), but does not terminate the application
+    *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
@@ -502,6 +514,7 @@ object Debug {
 
   /**
     * Same as assertNonFatal, but prints the whole expression instead of an error message
+    *
     * @example Debug.assertNonFatalExpression{val one = 1; one + 1 == 2}
     * @example Debug.assertNonFatalExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
@@ -544,11 +557,121 @@ object Debug {
   }
 
   /**
+    * Same as assertNonFatal, but prints the code instead of an error message.
+    *
+    * @example val one = 1; Debug.assertNonFatalCode{one + 1 == 2}
+    * @example val one = 1; Debug.assertNonFatalCode({one + 1 == 2}, 0) // 0 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+    */
+  final object assertNonFatalCode {
+    final def apply(assertion: Boolean): String = macro assertCodeImpl
+
+    final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesCodeImpl
+
+    final def assertCodeImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+      import c.universe._
+      val assertionTree = assertion.tree
+      val assertionSource = new String(assertionTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = assertionSource.slice(start, start + end)
+      val assertionString = blockString + " -> "
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"Int.MaxValue"
+      val args = List(arg2, arg3)
+      val toReturn = q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+
+    final def assertLinesCodeImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      val assertionTree = assertion.tree
+      val assertionSource = new String(assertionTree.pos.source.content)
+      // apply case tree => tree.pos.start to each subtree on which the function is defined and collect the results.
+      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.start }
+      val start: Int = listOfTreePositions.min
+      import scala.language.existentials
+      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
+      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
+      codeParser.expr()
+      val end = codeParser.in.lastOffset
+      val blockString = assertionSource.slice(start, start + end)
+      val assertionString = blockString + " -> "
+      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val arg3 = q"$numLines"
+      val args = List(arg2, arg3)
+      val toReturn = q"""
+        val assertBoolean = $assertion;
+        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+  }
+
+  /**
     * Like Debug.assertStdOut(), but does not terminate the application
+    *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
 
   }
+
+  import scala.collection.TraversableLike
+  import scala.reflect.runtime.universe._ // for WeakTypeTag
+
+  /**
+    * Traces the contents of a Scala container to standard error. To convert a Java container into a Scala container, import collection.JavaConversions._
+    *
+    * @param collection the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
+    * @param numElements the number of elements you want to trace. Defaults to all elements in the collection
+    * @param numLines the number of lines of stack trace.
+    * @return the string containing what was printed or what would have been printed if printing was enabled.
+    */
+  final def traceContents[CollectionType <: TraversableLike[Any, Any]]
+  (collection: CollectionType, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
+    val collectionType = tag.tpe
+    var toPrint = collectionType.toString
+    val numValues = Math.min(numElements, collection.size)
+    val iterator = collection.toIterator
+    for(index <- 0 to numValues-1) { // -1 because we are starting from 0 instead of 1
+      if (iterator.hasNext) {
+        toPrint = toPrint + " " + iterator.next()
+      }
+    }
+    ImplicitTraceObject.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
+  }
+
+  /**
+    * Traces the contents of a Scala container to standard out. To convert a Java container into a Scala container, import collection.JavaConversions._
+    *
+    * @param collection the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
+    * @param numElements the number of elements you want to trace. Defaults to all elements in the collection
+    * @param numLines the number of lines of stack trace.
+    * @return the string containing what was printed or what would have been printed if printing was enabled.
+    */
+  final def traceContentsStdOut[CollectionType <: TraversableLike[Any, Any]]
+  (collection: CollectionType, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
+    val collectionType = tag.tpe
+    var toPrint = collectionType.toString
+    val numValues = Math.min(numElements, collection.size)
+    val iterator = collection.toIterator
+    for(index <- 0 to numValues-1) { // -1 because we are starting from 0 instead of 1
+      if (iterator.hasNext) {
+        toPrint = toPrint + " " + iterator.next()
+      }
+    }
+    ImplicitTraceObject.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
+  }
+
 }

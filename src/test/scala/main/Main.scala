@@ -1,4 +1,6 @@
 package main
+import java.util.concurrent.ConcurrentHashMap
+
 import scala.reflect.macros.blackbox.Context
 import info.collaboration_station.debug._ // wildcard import for implicit trace/assert/print functionality
 /**
@@ -7,6 +9,49 @@ import info.collaboration_station.debug._ // wildcard import for implicit trace/
 object Main {
   def main(args: Array[String]) {
 
+    Debug.traceCode({ // print out the code as it appears in the source
+      val myVal = 4;
+      1 + 2 + myVal }, 1) // 1 lines of stack trace
+
+    Debug.traceCode({ // print out the code as it appears in the source
+      val s = List(1,2,3)
+      (s).toString }, 2) // 2 lines of stack trace
+
+    Debug.assertNonFatalCode({
+      val three = 3
+      three + 2 == 0 }, 2)
+
+    Debug.assertCode{
+      val one = 1
+      one + 2 == 3 }
+      val m = Map[String, Int]("hello" -> 2) //  TraversableLike[A, Traversable[A]]
+
+    Thread.sleep(20)
+
+    // You can use this with a logger
+    Debug.traceErrOff_! // just get the String
+    val collectionString = Debug.traceContents( List(1,2,3) )
+    println( collectionString )
+
+    Debug.traceOutOn_!
+    Debug.traceContentsStdOut( Map("1" -> 1, "2" -> 2, "3" -> 3) )
+
+    Debug.enableEverything_!
+    Debug.traceContents( List(1,2,3), numElements = 2, numLines = 2 )
+
+
+    Thread.sleep(20)
+
+    /*
+    val ll = new java.util.List() // interface Iterable<T>
+    val lll = new java.util.Set() // Iterable<T>
+    val llll = new java.util.Map() // Map<K, V>
+    val x = new ConcurrentHashMap[String, Int]() // AbstractMap<K, V>
+    val list = new scala.collection.mutable.ArrayBuffer[Int]()
+val m = Map[String, Int]("hello" -> 2) //  TraversableLike[A, Traversable[A]]
+val r = Array.apply(1,2,3) //  Array[T]
+    val l = List(1,2,3) // A template trait for traversable collections of type Traversable[A]. This is a base trait of all kinds of Scala collections.
+    */
     Debug.trace("Hello World")                  // 1 line of stack trace
     Debug.trace("Hello World 2", numLines = 2)  // 2 lines of stack trace
     "Hello World".trace(numLines = 0)           // 0 lines of stack trace
