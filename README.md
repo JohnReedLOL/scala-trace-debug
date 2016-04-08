@@ -61,7 +61,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________
 **Cheat Sheet / Examples:**
 
-[Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace)
+[Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
 
 [Methods available through the Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.Debug$)
 
