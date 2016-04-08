@@ -27,9 +27,7 @@ ________________________________________________________________________________
 
 Due to demand for the ability to integrate this tool with a logger, all calls to Debug.trace, Debug.assert, etc. now return a String that can be passed into a logger. 
 
-To use this feature, try "libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.4" (version 0.1.4 or above)
-
-You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. Note that Debug.nonFatalAssertOff_! only prevents non-fatal assertions from printing - they still return a String containing what they would have printed if they were on (just like Debug.trace does when you do Debug.traceErrOff_!).
+You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. Note that Debug.nonFatalAssertOff_! only prevents non-fatal assertions from printing - they still return a String containing what they would have printed if they were on.
 
 In addition, all the add-on methods available through implicit conversion still return the object they were called upon so that you can use them inside an expression.
 
@@ -61,13 +59,15 @@ ________________________________________________________________________________
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
 ____________________________________________________________________________________________________________________
-**Cheat Sheet:**
+**Cheat Sheet / Examples:**
 
-[Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace):
+[Methods available through implicit conversion](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.package$$ImplicitTrace)
 
-[Methods available through Debug object](http://collaboration-station.info/debug/index.html#info.collaboration_station.debug.Debug$):
+[Methods available through Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
 
 Example functions: http://pastebin.com/2e1JN1De
+
+^ For more examples, see "scala-trace-debug/src/test/scala/main/Main.scala"
 
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, please use an exception.
 
@@ -85,7 +85,7 @@ ________________________________________________________________________________
 
 1. Add the library dependency (in sbt) or grab the jar file from the "scala-trace-debug/target/scala-2.11" folder.
 
-2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug
+2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug (static methods)
 
 3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
@@ -104,11 +104,9 @@ ________________________________________________________________________________
 **Benefits:**
 
 - Easy to locate print statements
-- Convenient object oriented style syntax
+- Convenient object oriented style syntax facilitates chaining.
 - Easy to locate and remove trace statements (just Ctr-R find and replace)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
-- Ability to print whole expressions (see "New features")
-
 ____________________________________________________________________________________________________________________
 
 
@@ -129,11 +127,11 @@ ________________________________________________________________________________
 
 Now featuring desugared macro expressions and code tracing:
 
-Desugared macro expression:
+##### Desugared macro expression:
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-Code tracing:
+##### Code tracing:
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
@@ -141,7 +139,7 @@ ________________________________________________________________________________
 
 **Use in practice:**
 
-For a debugging story, see [this link](http://pastebin.com/GSjxYQ70)
+For use in practice, see [this link](http://pastebin.com/GSjxYQ70)
 
 ____________________________________________________________________________________________________________________
 
@@ -163,12 +161,10 @@ ________________________________________________________________________________
 
 **Design decisions:**
 
-I made a few design decisions that you might not agree with. "trace" is the default and "traceStdOut" requires six extra characters to type. This is because if you trace to standard out and you get an exception in standard error, the text will be garbled in the console. 
+"trace" is the default and "traceStdOut" requires six extra characters to type. This is because if you trace to standard out and you get an exception in standard error, the text will be garbled in the console.
 
 The function names are long. I could have named them something shorter, but the presumption is that if you are using this tool, you have an IDE which can auto-complete long function names.
 
-traceExpression is listed before traceCode. This is because traceCode has a few bugs. For example, trailing functions like (4).toString sometimes get cut off. With traceCode, you want to stick to Object.something(). 
+traceExpression is listed before traceCode. This is because traceCode has a few bugs. For example, trailing functions like (4).toString sometimes get cut off.
 
-Fatal assertions are the default and if you want non-fatal you have to type eight extra characters. That was probably a mistake.
-
-traceContainer requires an implicit conversion (import collection.JavaConversions._ ) to work with java containers.
+traceContainer requires an implicit conversion (import collection.JavaConversions._ ) to work with Java containers.
