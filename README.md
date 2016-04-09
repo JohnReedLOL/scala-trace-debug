@@ -25,11 +25,15 @@ ________________________________________________________________________________
 
 **Logger incorporation:**
 
-Due to demand for the ability to integrate this tool with a logger, all calls to Debug.trace, Debug.assert, etc. now return a String that can be passed into a logger. 
+All calls to Debug.trace, Debug.assert, etc. return a String that can be passed into a logger. 
 
-You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. Note that Debug.nonFatalAssertOff_! only prevents non-fatal assertions from printing - they still return a String containing what they would have printed if they were on.
+You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. 
 
-In addition, all the add-on methods available through implicit conversion still return the object they were called upon so that you can use them inside an expression.
+____________________________________________________________________________________________________________________
+
+**Chaining:**
+
+All the add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
 
 Example:
 
@@ -39,6 +43,8 @@ import info.collaboration_station.debug._ // wildcard import for implicit conver
 ...
 val foo = true
 if( foo.trace ) { /* Do something with foo */ }
+
+val foobar = "foo".trace.concat("bar").trace // chaining
 
 ```
 
