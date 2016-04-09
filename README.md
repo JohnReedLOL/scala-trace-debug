@@ -18,7 +18,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.6"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.7"
 ```
 
 ____________________________________________________________________________________________________________________
@@ -54,11 +54,9 @@ No overhead for no stack trace.
 
 ____________________________________________________________________________________________________________________
 
-**Container Printing [pending scala trace debug "0.1.7"]:**
+**Container Printing:**
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
-
-0.1.7 is pending on [this error](http://stackoverflow.com/questions/36510644/scala-typetags-reflection-induced-compile-error)
 
 ____________________________________________________________________________________________________________________
 **Cheat Sheet / Examples:**
