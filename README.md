@@ -1,5 +1,5 @@
 # scala-trace-debug
-Make bug tracing and prevention easier than ever with scala trace debug. 
+Make bug tracing and prevention in multithreaded code easier than ever with scala trace debug. 
 
 Provides user-friendly prints, traces, fatal assertions, non-fatal assertions, container printing, and code printing.
 
