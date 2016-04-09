@@ -35,8 +35,6 @@ ________________________________________________________________________________
 
 All the add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
 
-Example:
-
 ```scala
 
 import info.collaboration_station.debug._ // wildcard import for implicit conversion
