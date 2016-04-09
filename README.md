@@ -1,7 +1,7 @@
 # scala-trace-debug
 Make bug tracing and prevention easier than ever with scala trace debug. 
 
-This debugging utility provides user-friendly prints, traces, fatal assertions, non-fatal assertions, container printing, and code printing.
+Provides user-friendly prints, traces, fatal assertions, non-fatal assertions, container printing, and code printing.
 
 ____________________________________________________________________________________________________________________
 
