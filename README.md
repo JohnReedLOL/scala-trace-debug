@@ -1,5 +1,5 @@
 # scala-trace-debug
-Make bug tracing and prevention in multithreaded code easier than ever with scala trace debug. 
+Make multithreaded bug tracing and prevention easier than ever with scala trace debug. 
 
 Provides user-friendly prints, traces, fatal assertions, non-fatal assertions, container printing, and code printing.
 
@@ -62,6 +62,7 @@ ________________________________________________________________________________
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
+^ Works for any Scala container. To pass in Java containers, you can [import import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool)
 ____________________________________________________________________________________________________________________
 **Cheat Sheet / Examples:**
 
@@ -107,8 +108,8 @@ ________________________________________________________________________________
 
 **Benefits:**
 
-- Easy to locate print statements
-- Convenient object oriented style syntax facilitates chaining.
+- Easy to locate print statements. Gives you an idea of what each thread is doing.
+- Convenient object oriented style syntax facilitates chaining. Static methods usable with logger.
 - Easy to locate and remove trace statements (just Ctr-R find and replace)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
 ____________________________________________________________________________________________________________________
@@ -147,8 +148,7 @@ For use in practice, see [this link](http://pastebin.com/GSjxYQ70)
 
 ____________________________________________________________________________________________________________________
 
-**Features:**
+**Architecture:**
 
-If you want to implement a new feature, just ask. Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in 
-`info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in 
+Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in `info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in 
 `info.collaboration_station.debug.Debug`
