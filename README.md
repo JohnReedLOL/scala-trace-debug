@@ -140,13 +140,6 @@ For use in practice, see [this link](http://pastebin.com/GSjxYQ70)
 
 ____________________________________________________________________________________________________________________
 
-**Architecture:**
-
-Currently all the actual printing is done in *info.collaboration_station.debug.ImplicitTraceObject*, all the "add-on" methods are in *info.collaboration_station.debug.ImplicitTrace*, and all the calls to the "Debug" object are in 
-*info.collaboration_station.debug.Debug*
-
-____________________________________________________________________________________________________________________
-
 **More info:**
 
 See [ScalaDoc](http://ec2-52-87-157-20.compute-1.amazonaws.com/) in source code for in detail documentation.
@@ -156,3 +149,10 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 [http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
 [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
+
+____________________________________________________________________________________________________________________
+
+**Code layout:**
+
+Currently all the actual printing is done in *info.collaboration_station.debug.ImplicitTraceObject*, all the "add-on" methods are in *info.collaboration_station.debug.ImplicitTrace*, and all the calls to the "Debug" object are in 
+*info.collaboration_station.debug.Debug*
