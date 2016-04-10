@@ -23,7 +23,7 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.7"
 
 ____________________________________________________________________________________________________________________
 
-**Logger incorporation:**
+**Logger Incorporation:**
 
 All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
