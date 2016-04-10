@@ -25,9 +25,9 @@ ________________________________________________________________________________
 
 **Logger incorporation:**
 
-All calls to Debug.trace, Debug.assert, etc. return a String that can be passed into a logger. 
+All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
-You can disable printing to standard out and standard error via Debug.disableEverything_! This will still return a String that you can pass into a logger. 
+You can disable printing to standard out and standard error via `Debug.disableEverything_!` This will still return a String that you can pass into a logger. 
 
 ____________________________________________________________________________________________________________________
 
@@ -62,9 +62,9 @@ ________________________________________________________________________________
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
-^ A String containing the stack trace is obtained on line 33 and passed into println on line 34. The number of elements printed is adjustable.
+^ A String containing the stack trace is obtained on line 33 and passed into println on line 34, giving you `List[Int] 1 2 3`. The number of elements printed is adjustable. ^
 
-^ Works for any Scala container. To pass in Java containers, you can [import import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool)
+^ Works for any Scala container. To pass in Java containers, you can [import import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 
 ____________________________________________________________________________________________________________________
 
@@ -155,5 +155,5 @@ ________________________________________________________________________________
 
 **Architecture:**
 
-Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in `info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in 
-`info.collaboration_station.debug.Debug`
+Currently all the actual printing is done in *info.collaboration_station.debug.ImplicitTraceObject*, all the "add-on" methods are in *info.collaboration_station.debug.ImplicitTrace*, and all the calls to the "Debug" object are in 
+*info.collaboration_station.debug.Debug*
