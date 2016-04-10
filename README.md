@@ -62,8 +62,12 @@ ________________________________________________________________________________
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
+^ A String containing the stack trace is obtained on line 33 and passed into println on line 34. The number of elements printed is adjustable.
+
 ^ Works for any Scala container. To pass in Java containers, you can [import import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool)
+
 ____________________________________________________________________________________________________________________
+
 **Cheat Sheet / Examples:**
 
 [Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
@@ -112,6 +116,7 @@ ________________________________________________________________________________
 - Convenient object oriented style syntax facilitates chaining. Static methods usable with logger.
 - Easy to locate and remove trace statements (just Ctr-R find and replace)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
+
 ____________________________________________________________________________________________________________________
 
 
@@ -132,11 +137,11 @@ ________________________________________________________________________________
 
 Now featuring desugared macro expressions and code tracing:
 
-**Desugared macro expression:**
+**Desugared macro expression tracing:**
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-**Code tracing:**
+**Code tracing and assertions:**
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
