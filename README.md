@@ -1,7 +1,7 @@
 # scala-trace-debug
 Make multithreaded bug tracing and prevention easier than ever with scala trace debug. 
 
-Provides user-friendly prints, traces, fatal assertions, non-fatal assertions, container printing, and code printing.
+Provides user-friendly prints, traces, assertions, container printing, and code printing.
 
 ____________________________________________________________________________________________________________________
 
@@ -42,7 +42,7 @@ import info.collaboration_station.debug._ // wildcard import for implicit conver
 val foo = true
 if( foo.trace ) { /* Do something with foo */ }
 
-val foobar = "foo".trace.concat("bar").trace // chaining
+val foobar = "foo".trace.concat("bar").println() // Chaining. First print "foo", then print "foobar"
 
 ```
 
