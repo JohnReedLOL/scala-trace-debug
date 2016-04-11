@@ -100,16 +100,6 @@ IntelliJ console has shortcut up and down arrows to navigate up and down the sta
 
 ____________________________________________________________________________________________________________________
 
-**Benefits:**
-
-- Easy to locate print statements. Gives you an idea of what each thread is doing.
-- Convenient object oriented style syntax facilitates chaining. Static methods usable with logger.
-- Easy to locate and remove trace statements (just Ctr-R find and replace)
-- Customizable features including stack trace length and enabling/disabling of assertions and traces.
-
-
-____________________________________________________________________________________________________________________
-
 **New features:**
 
 Now featuring desugared macro expressions and code tracing:
@@ -121,6 +111,15 @@ Now featuring desugared macro expressions and code tracing:
 **Code tracing and assertions:**
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
+
+____________________________________________________________________________________________________________________
+
+**Benefits:**
+
+- Easy to locate print statements. Gives you an idea of what each thread is doing.
+- Convenient object oriented style syntax facilitates chaining. Static methods usable with logger.
+- Easy to locate and remove trace statements (just Ctr-R find and replace)
+- Customizable features including stack trace length and enabling/disabling of assertions and traces.
 
 ____________________________________________________________________________________________________________________
 
