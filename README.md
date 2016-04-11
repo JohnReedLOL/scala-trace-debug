@@ -37,33 +37,6 @@ You can disable printing to standard out and standard error via `Debug.disableEv
 
 ____________________________________________________________________________________________________________________
 
-**Chaining:**
-
-All the add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
-
-```scala
-
-import info.collaboration_station.debug._ // wildcard import for implicit conversion
-...
-val foo = true
-if( foo.trace ) { /* Do something with foo */ }
-
-val foobar = "foo".trace.concat("bar").println() // Chaining. First print "foo", then print "foobar"
-
-```
-
-____________________________________________________________________________________________________________________
-
-**Performance:**
-
-No overhead for no stack trace. 
-
-```scala
-"foo".trace(0) // no call to Thread.currentThread.getStackTrace()
-```
-
-____________________________________________________________________________________________________________________
-
 **Container Printing:**
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
@@ -87,6 +60,24 @@ Example functions: http://pastebin.com/2e1JN1De
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
 
 ____________________________________________________________________________________________________________________
+
+**Chaining:**
+
+All the add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
+
+```scala
+
+import info.collaboration_station.debug._ // wildcard import for implicit conversion
+...
+val foo = true
+if( foo.trace ) { /* Do something with foo */ }
+
+val foobar = "foo".trace.concat("bar").println() // Chaining. First print "foo", then print "foobar"
+
+```
+
+____________________________________________________________________________________________________________________
+
 
 **Instructions (for IntelliJ IDE):**
 
@@ -136,6 +127,15 @@ ________________________________________________________________________________
 
 For use in practice, see [this link](http://pastebin.com/GSjxYQ70)
 
+____________________________________________________________________________________________________________________
+
+**Performance:**
+
+No overhead for no stack trace. 
+
+```scala
+"foo".trace(0) // no call to Thread.currentThread.getStackTrace()
+```
 ____________________________________________________________________________________________________________________
 
 **More info:**
