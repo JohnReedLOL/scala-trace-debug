@@ -1,7 +1,7 @@
 # scala-trace-debug
 Make multithreaded bug tracing and prevention easier than ever with scala trace debug. 
 
-Provides user-friendly prints, traces, assertions, container printing, and code printing.
+Provides user-friendly prints, traces, assertions, container printing, and source code printing.
 
 ____________________________________________________________________________________________________________________
 
@@ -44,7 +44,7 @@ ________________________________________________________________________________
 
 ^ A String containing the stack trace is obtained on line 33 and passed into println on line 34, giving you `List[Int] 1 2 3`. The number of elements printed is adjustable. ^
 
-^ Works for any Scala container. To pass in Java containers, you can [import import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
+^ Works for any Scala container. To pass in Java containers, you can [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 
 ____________________________________________________________________________________________________________________
 
@@ -56,7 +56,7 @@ ________________________________________________________________________________
 
 Example functions: http://pastebin.com/2e1JN1De
 
-^ For more examples, see "scala-trace-debug/src/test/scala/main/Main.scala"
+^ For more examples, see "src/test/scala/main/Main.scala"
 
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
 
@@ -82,7 +82,7 @@ ________________________________________________________________________________
 
 **Instructions (for IntelliJ IDE):**
 
-1. Add the library dependency (in sbt) or grab the jar file from the "scala-trace-debug/target/scala-2.11" folder.
+1. Add the library dependency (in sbt) or grab the jar file from the "target/scala-2.11" folder.
 
 2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug (static methods)
 
@@ -94,7 +94,7 @@ ________________________________________________________________________________
 
 6. Click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
-IntelliJ console has shortcut up and down arrows to navigate up and down the stack trace.
+7. Use the IntelliJ console arrows to navigate up and down the stack traces.
 
 ![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
