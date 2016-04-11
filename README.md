@@ -104,11 +104,11 @@ ________________________________________________________________________________
 
 Now featuring desugared macro expressions and code tracing:
 
-###### Desugared macro expression tracing:
+**_Desugared macro expression tracing:_**
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-###### Code tracing and assertions:
+**_Code tracing and assertions:_**
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
