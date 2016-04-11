@@ -4,27 +4,40 @@ organization := "scala-trace-debug"
 
 // version := "0.1.0-SNAPSHOT"
 
-version := "0.1.7"
-
 scalaVersion := "2.11.7"
 
-// crossScalaVersions := Seq("2.10.4", "2.11.2")
+version := "0.1.8"
+
+// scalaVersion := "2.11.7"
+
+crossScalaVersions := Seq("2.10.4", "2.11.7")
+
+def macroDependencies(version: String) =
+  Seq(
+    "org.scala-lang" % "scala-reflect" % version % "provided",
+    "org.scala-lang" % "scala-compiler" % version % "provided"
+  ) ++
+    (if (version startsWith "2.10.")
+      Seq(compilerPlugin("org.scalamacros" % s"paradise" % "2.0.0" cross CrossVersion.full),
+        "org.scalamacros" %% s"quasiquotes" % "2.0.0")
+    else
+      Seq())
+
+unmanagedSourceDirectories in Compile ++= {
+  if (scalaVersion.value startsWith "2.10.") {System.err.println("baseDirectory.value_2.10: " + baseDirectory.value); Seq(baseDirectory.value / "src"/ "main" / "scala-2.10") }
+  else {System.err.println("baseDirectory.value_2.11: " + baseDirectory.value); Seq(baseDirectory.value / "src" / "main" / "scala-2.11") }
+}
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.6" % "test",
   "org.scalacheck" %% "scalacheck" % "1.11.5" % "test"
 )
 
-def macroDependencies(version: String) = Seq(
-    "org.scala-lang" % "scala-reflect" % version % "provided" ,
-    "org.scala-lang" % "scala-compiler" % version % "provided" // needed for reflect.macros.runtime.Context in Experimental
-  )
-
 libraryDependencies ++= macroDependencies(scalaVersion.value)
 
 // to debug macros, use -Ymacro-debug-lite
 
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-infer-any", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
+scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 // initialCommands := "import example._"
 

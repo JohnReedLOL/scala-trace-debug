@@ -11,6 +11,12 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
+**Requirements:**
+
+- Scala 2.10.4 or higher
+- Some sort of IDE that supports stack trace highlighting
+____________________________________________________________________________________________________________________
+
 **Getting started:**
 
 Just add these two lines to your "build.sbt" file:
@@ -18,7 +24,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.7"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.8"
 ```
 
 ____________________________________________________________________________________________________________________
@@ -79,14 +85,6 @@ Example functions: http://pastebin.com/2e1JN1De
 ^ For more examples, see "scala-trace-debug/src/test/scala/main/Main.scala"
 
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
-
-____________________________________________________________________________________________________________________
-
-**Requirements:**
-
-- Scala 2.11
-- SBT
-- Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 

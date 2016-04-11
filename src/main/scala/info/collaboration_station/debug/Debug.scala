@@ -1,7 +1,6 @@
 package info.collaboration_station.debug
 
-import scala.language.experimental.macros // There will be macros
-import scala.reflect.macros.blackbox.Context
+import scala.language.experimental.macros
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions.
@@ -148,7 +147,7 @@ object Debug {
   final object traceCode {
     final def apply[T](block: => T): String = macro traceCodeImpl[T]
 
-    final def traceCodeImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockTree = block.tree
       val blockSource = new String(blockTree.pos.source.content)
@@ -171,7 +170,7 @@ object Debug {
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesCodeImpl[T]
 
-    final def traceLinesCodeImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def traceLinesCodeImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val blockTree = block.tree
       val blockSource = new String(blockTree.pos.source.content)
@@ -203,7 +202,7 @@ object Debug {
   final object traceStackCode {
     final def apply[T](block: => T): String = macro traceStackCodeImpl[T]
 
-    final def traceStackCodeImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceStackCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockTree = block.tree
       val blockSource = new String(blockTree.pos.source.content)
@@ -237,9 +236,9 @@ object Debug {
   final object traceExpression {
     final def apply[T](block: => T): String = macro traceExpressionImpl[T]
 
-    final def traceExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val args = List(arg1)
       val toReturn = q"""
@@ -250,9 +249,9 @@ object Debug {
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesExpressionImpl[T]
 
-    final def traceLinesExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def traceLinesExpressionImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
@@ -281,9 +280,9 @@ object Debug {
   final object traceStackExpression {
     final def apply[T](block: => T): String = macro traceStackExpressionImpl[T]
 
-    final def traceStackExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceStackExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val args = List(arg1)
       val toReturn = q"""
@@ -318,9 +317,9 @@ object Debug {
 
     final def apply[T](block: => T): String = macro traceStdOutExpressionImpl[T]
 
-    final def traceStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val args = List(arg1)
       val toReturn = q"""
@@ -331,9 +330,9 @@ object Debug {
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
 
-    final def traceLinesStdOutExpressionImpl[T](c: Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def traceLinesStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
@@ -360,9 +359,9 @@ object Debug {
   final object traceStackStdOutExpression {
     final def apply[T](block: => T): String = macro traceStackStdOutExpressionImpl[T]
 
-    final def traceStackStdOutExpressionImpl[T](c: Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def traceStackStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = showCode(block.tree) + " -> "
+      val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
       val args = List(arg1)
       val toReturn = q"""
@@ -400,9 +399,9 @@ object Debug {
 
     final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesExpressionImpl
 
-    final def assertExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    final def assertExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionString = showCode(assertion.tree) + " -> "
+      val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"Int.MaxValue"
@@ -414,9 +413,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def assertLinesExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def assertLinesExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionString = showCode(assertion.tree) + " -> "
+      val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"$numLines"
@@ -441,7 +440,7 @@ object Debug {
 
     final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesCodeImpl
 
-    final def assertCodeImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    final def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val assertionTree = assertion.tree
       val assertionSource = new String(assertionTree.pos.source.content)
@@ -465,7 +464,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def assertLinesCodeImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def assertLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionTree = assertion.tree
       val assertionSource = new String(assertionTree.pos.source.content)
@@ -525,9 +524,9 @@ object Debug {
 
     final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesNonFatalExpressionImpl
 
-    final def assertNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    final def assertNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionString = showCode(assertion.tree) + " -> "
+      val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"Int.MaxValue"
@@ -540,9 +539,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def assertLinesNonFatalExpressionImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def assertLinesNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionString = showCode(assertion.tree) + " -> "
+      val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"$numLines"
@@ -568,7 +567,7 @@ object Debug {
 
     final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesCodeImpl
 
-    final def assertCodeImpl(c: Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    final def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val assertionTree = assertion.tree
       val assertionSource = new String(assertionTree.pos.source.content)
@@ -592,7 +591,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def assertLinesCodeImpl(c: Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def assertLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionTree = assertion.tree
       val assertionSource = new String(assertionTree.pos.source.content)
