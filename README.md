@@ -86,7 +86,7 @@ ________________________________________________________________________________
 
 1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
 
-2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug (static methods)
+2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala) (implicit conversion) or [info.collaboration_station.debug.Debug](src/main/scala/info/collaboration_station/debug/Debug.scala) (static methods)
 
 3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
@@ -152,7 +152,6 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 ____________________________________________________________________________________________________________________
 
-**Code layout:**
+**Code layout:
 
-Currently all the actual printing is done in *info.collaboration_station.debug.ImplicitTraceObject*, all the "add-on" methods are in *info.collaboration_station.debug.ImplicitTrace*, and all the calls to the "Debug" object are in 
-*info.collaboration_station.debug.Debug*
+Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in `info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in `info.collaboration_station.debug.Debug`
