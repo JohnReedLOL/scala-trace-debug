@@ -1,4 +1,4 @@
-Debugging example for https://github.com/JohnReedLOL/scala-trace-debug :
+Debugging example for https://github.com/JohnReedLOL/scala-trace-debug
  
   Once upon a time, I had a very frustrating bug. It was caused by an
 idiosyncrasy in the semantics of a copy constructor that caused it to do
