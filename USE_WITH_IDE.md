@@ -17,7 +17,8 @@ required a deep copy.
  
 5. Follow [this IntelliJ doc](https://www.jetbrains.com/help/idea/2016.1/reloading-classes.html?origin=old_help) to enable hot reloading of source code while debugging. Scala IDE has similar ["hot code replace"](http://scala-ide.org/docs/current-user-doc/features/scaladebugger/index.html) functionality.
  
- ____________________________________________________________
+
+____________________________________________________________
 
 Lemma: How to "hot reload" calls to scala-trace-debug in IntelliJ:
  
@@ -49,7 +50,7 @@ Lemma: How to "hot reload" calls to scala-trace-debug in IntelliJ:
 ![Run](http://i.imgur.com/Soy49Lm.png)
  
  
- ____________________________________________________________
+____________________________________________________________
  
 Back to "Use in practice":
  
