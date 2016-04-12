@@ -28,6 +28,8 @@ resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/mav
 libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.8"
 ```
 
+Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
+
 ____________________________________________________________________________________________________________________
 
 **Logger Incorporation:**
@@ -82,7 +84,7 @@ ________________________________________________________________________________
 
 **Instructions (for IntelliJ IDE):**
 
-1. Add the library dependency (in sbt) or grab the jar file from the "target/scala-2.11" folder.
+1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
 
 2. import info.collaboration_station.debug._ (implicit conversion) or info.collaboration_station.debug.Debug (static methods)
 
