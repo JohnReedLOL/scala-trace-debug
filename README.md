@@ -152,6 +152,6 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 ____________________________________________________________________________________________________________________
 
-**Code layout:
+**Code layout**:
 
 Currently all the actual printing is done in `info.collaboration_station.debug.ImplicitTraceObject`, all the "add-on" methods are in `info.collaboration_station.debug.ImplicitTrace`, and all the calls to the "Debug" object are in `info.collaboration_station.debug.Debug`
