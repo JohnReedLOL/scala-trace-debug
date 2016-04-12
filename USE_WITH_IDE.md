@@ -60,18 +60,18 @@ Back to "Use in practice":
  
 - If you see a line of code that looks like "object method object method object method parameter" and you get confused by the whitespace, use traceExpression to de-sugar the expression.
  
-  Given all this information: the commit history, the documentation in the
+Given all this information: the commit history, the documentation in the
 source code (or the self-documenting source code if no Javadoc is
 available), the value of variables, the flow of execution, and knowledge
 as to what assertions are true and what are not, we should be able to
 understand what is going on and figure out what to do to fix any violated
 assertions or failed unit tests.
  
-  p.s. Calls to scala-debug-trace are not meant to be left inside
+p.s. Calls to scala-debug-trace are not meant to be left inside
 production code. `git reset --hard HEAD~1` should allow you to discards
 uncommitted changes.
  
-  Side note: It is a personal pet peeve of mine to see threads with names
+Side note: It is a personal pet peeve of mine to see threads with names
 like "1128471". If the code is creating a new thread, the name of the
 thread can double as a form of documentation. Example: "Database_Thread",
 "GUI_Thread", "Socket_Thread". To change the name of a thread pool,
