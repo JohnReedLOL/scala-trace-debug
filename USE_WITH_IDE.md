@@ -2,7 +2,7 @@ Debugging example for https://github.com/JohnReedLOL/scala-trace-debug
  
   Once upon a time, I had a very frustrating bug. It was caused by an
 idiosyncrasy in the semantics of a copy constructor that caused it to do
-a shallow copy instead of a deep copy and the code was multithreaded and
+a shallow copy instead of a deep copy in multithreaded code that
 required a deep copy.
  
   How would I deal with such a subtle bug? Well since this tool was explicitly designed for this sort of a thing, here's one way.
