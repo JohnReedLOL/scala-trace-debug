@@ -56,7 +56,7 @@ ________________________________________________________________________________
 
 Example functions: http://pastebin.com/2e1JN1De
 
-^ For more examples, see "src/test/scala/main/Main.scala"
+^ For more examples, see [Main.scala, which you can run with sbt test:run.](src/test/scala/main/Main.scala)
 
 Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
 
