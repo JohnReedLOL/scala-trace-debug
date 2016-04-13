@@ -129,10 +129,10 @@ ________________________________________________________________________________
 
 For use in practice, see [this link](USE_WITH_IDE.md)
 
-- To only add print methods to your scope, `import info.collaboration_station.debug.implicitlyPrintable`
-- To only add trace methods to your scope, `import info.collaboration_station.debug.implicitlyTraceable`
-- If only add assert methods to your scope, `import info.collaboration_station.debug.implicitlyAssertable`
-- To add all print/trace/assert methods to your scope, `import info.collaboration_station.debug._`
+- To only add prints, `import info.collaboration_station.debug.implicitlyPrintable`
+- To only add traces, `import info.collaboration_station.debug.implicitlyTraceable`
+- If only add asserts, `import info.collaboration_station.debug.implicitlyAssertable`
+- To add prints, traces, and asserts, `import info.collaboration_station.debug._`
 
 ____________________________________________________________________________________________________________________
 
