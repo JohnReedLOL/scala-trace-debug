@@ -1,6 +1,7 @@
 package info.collaboration_station.debug
 
 import scala.language.experimental.macros
+import info.collaboration_station.debug.internal.Printer
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions.
@@ -125,7 +126,7 @@ object Debug {
     * @tparam T the return type of the block
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def trace[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, 1)
+  final def trace[T](block: => T): String = Printer.traceInternal(block.toString, 1)
 
   /**
     * Traces to standard error with a N line stack trace.
@@ -135,7 +136,7 @@ object Debug {
     * @tparam T the return type of the block
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def trace[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines)
+  final def trace[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines)
 
   /**
     * Same as trace, but prints the code in the block, not just the result
@@ -269,7 +270,7 @@ object Debug {
     * @tparam T the return type of the block
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStack[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue)
+  final def traceStack[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue)
 
   /**
     * Same as traceStack, but prints the entire expression, not just the result
@@ -297,14 +298,14 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, 1, useStdOut_? = true)
+  final def traceStdOut[T](block: => T): String = Printer.traceInternal(block.toString, 1, useStdOut_? = true)
 
   /**
     * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStdOut[T](block: => T, numLines: Int): String = ImplicitTraceObject.traceInternal(block.toString, numLines, useStdOut_? = true)
+  final def traceStdOut[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines, useStdOut_? = true)
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
@@ -348,7 +349,7 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def traceStackStdOut[T](block: => T): String = ImplicitTraceObject.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
+  final def traceStackStdOut[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
 
   /**
     * Same as traceStackStdOut, but prints the whole expression not just the result
@@ -381,7 +382,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
+    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
@@ -499,7 +500,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
+    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
   /**
@@ -508,7 +509,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   /**
@@ -622,7 +623,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    ImplicitTraceObject.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
 
   }
 
@@ -648,7 +649,7 @@ object Debug {
         toPrint = toPrint + " " + iterator.next()
       }
     }
-    ImplicitTraceObject.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
   }
 
   /**
@@ -670,7 +671,7 @@ object Debug {
         toPrint = toPrint + " " + iterator.next()
       }
     }
-    ImplicitTraceObject.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
   }
 
 }
