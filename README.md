@@ -25,7 +25,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.8"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.9"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
@@ -128,6 +128,11 @@ ________________________________________________________________________________
 **Use in practice:**
 
 For use in practice, see [this link](USE_WITH_IDE.md)
+
+- To only add print methods to your scope, `import info.collaboration_station.debug.implicitlyPrintable`
+- To only add trace methods to your scope, `import info.collaboration_station.debug.implicitlyTraceable`
+- If only add assert methods to your scope, `import info.collaboration_station.debug.implicitlyAssertable`
+- To add all print/trace/assert methods to your scope, `import info.collaboration_station.debug._`
 
 ____________________________________________________________________________________________________________________
 
