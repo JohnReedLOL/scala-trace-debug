@@ -75,7 +75,7 @@ import info.collaboration_station.debug._ // wildcard import for implicit conver
 val foo = true
 if( foo.trace ) { /* Do something with foo */ }
 
-val foobar = "foo".trace.concat("bar").println() // Chaining. First print "foo", then print "foobar"
+val foobar = "foo".trace().concat("bar").println() // Chaining. First print "foo", then print "foobar"
 
 ```
 
