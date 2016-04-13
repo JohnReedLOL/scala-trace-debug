@@ -7,7 +7,9 @@ import info.collaboration_station.debug.internal.{ImplicitAssert, ImplicitPrint,
   */
 package object debug {
 
-  import scala.language.implicitConversions // Warning: implicit conversions language feature
+  import scala.language.implicitConversions
+
+  // Warning: implicit conversions language feature
 
   /**
     * Import this to add print functionality to the current scope

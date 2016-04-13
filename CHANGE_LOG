@@ -9,3 +9,4 @@ Change log:
 "0.1.7" - Added traceContents for List, Map, etc.
 
 "0.1.8" - Backwards compatibility to scalaVersions "2.10.4"
+        - Reformatted to allow separate imports for prints, traces, and asserts

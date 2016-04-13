@@ -3,8 +3,8 @@ package info.collaboration_station.debug.testing
 import java.io._
 
 import info.collaboration_station.debug._
-
 import org.scalatest._
+
 // import info.collaboration_station.debug.testing.TestingUtils // this import comes from debugtrace/test/scala
 
 class StackSpec extends FlatSpec {
@@ -27,7 +27,8 @@ class StackSpec extends FlatSpec {
       System.setErr(newErr)
       "Hello  World".trace; // write stuff to System.err
       System.err.flush()
-      System.setErr(originalErr); // So you can print again
+      System.setErr(originalErr);
+      // So you can print again
       val baisErr: ByteArrayInputStream = new ByteArrayInputStream(baosErr.toByteArray())
       val bfReaderErr = new BufferedReader(new InputStreamReader(baisErr))
       // (bfReaderErr == null).trace // must be false
@@ -49,7 +50,8 @@ class StackSpec extends FlatSpec {
       System.setErr(newErr)
       "Hello  World".trace; // write stuff to System.err
       System.err.flush()
-      System.setErr(originalErr); // So you can print again
+      System.setErr(originalErr);
+      // So you can print again
       val baisErr: ByteArrayInputStream = new ByteArrayInputStream(baosErr.toByteArray())
       val bfReaderErr = new BufferedReader(new InputStreamReader(baisErr))
       // (bfReaderErr == null).trace // must be false
@@ -71,7 +73,8 @@ class StackSpec extends FlatSpec {
       System.setOut(newOut)
       "Hello  World".traceStdOut; // write stuff to System.out
       System.out.flush()
-      System.setOut(originalOut); // So you can print again
+      System.setOut(originalOut);
+      // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
       val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
@@ -93,7 +96,8 @@ class StackSpec extends FlatSpec {
       System.setOut(newOut)
       "Hello  World".traceStdOut; // write stuff to System.out
       System.out.flush()
-      System.setOut(originalOut); // So you can print again
+      System.setOut(originalOut);
+      // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
       val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
@@ -113,9 +117,10 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      val assertString = "foo".assertNonFatalStdOut( _ equals "bar", "Error message"); // write stuff to System.out
+      val assertString = "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
-      System.setOut(originalOut); // So you can print again
+      System.setOut(originalOut);
+      // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
       val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
@@ -134,9 +139,10 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "foo".assertNonFatalStdOut( _ equals "bar", "Error message"); // write stuff to System.out
+      "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
-      System.setOut(originalOut); // So you can print again
+      System.setOut(originalOut);
+      // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
       val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
@@ -161,32 +167,32 @@ class StackSpec extends FlatSpec {
     assert(true)
   }
   */
-/*
-  "An empty Set" should "should have size 0" in {
-    assert(Set.empty.size == 0)
-  }
-
-  it should "produce NoSuchElementException when head is invoked" in {
-    intercept[NoSuchElementException] {
-      Set.empty.head
+  /*
+    "An empty Set" should "should have size 0" in {
+      assert(Set.empty.size == 0)
     }
-  }
 
-  "A Stack" should "pop values in last-in-first-out order" in {
-    val stack = new Stack[Int]
-    stack.push(1)
-    stack.push(2)
-    assert(stack.pop() === 2)
-    assert(stack.pop() === 1)
-  }
-
-  ignore should "throw NoSuchElementException if an empty stack is popped" in {
-    val emptyStack = new Stack[String]
-    intercept[NoSuchElementException] {
-      emptyStack.pop()
+    it should "produce NoSuchElementException when head is invoked" in {
+      intercept[NoSuchElementException] {
+        Set.empty.head
+      }
     }
-  }
-*/
+
+    "A Stack" should "pop values in last-in-first-out order" in {
+      val stack = new Stack[Int]
+      stack.push(1)
+      stack.push(2)
+      assert(stack.pop() === 2)
+      assert(stack.pop() === 1)
+    }
+
+    ignore should "throw NoSuchElementException if an empty stack is popped" in {
+      val emptyStack = new Stack[String]
+      intercept[NoSuchElementException] {
+        emptyStack.pop()
+      }
+    }
+  */
 }
 
 // http://www.scalatest.org/user_guide/tagging_your_tests

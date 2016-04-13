@@ -3,6 +3,7 @@ package info.collaboration_station.debug.internal
 import info.collaboration_station.debug.Debug
 
 import scala.language.implicitConversions
+
 /**
   * Created by johnreed on 4/12/16.
   */
