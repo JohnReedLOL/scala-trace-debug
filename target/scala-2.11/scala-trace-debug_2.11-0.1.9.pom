@@ -5,7 +5,7 @@
     <artifactId>scala-trace-debug_2.11</artifactId>
     <packaging>jar</packaging>
     <description>scala-trace-debug</description>
-    <version>0.1.8</version>
+    <version>0.1.9</version>
     <licenses>
         <license>
             <name>Apache-2.0</name>
