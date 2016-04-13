@@ -208,8 +208,10 @@ object Debug {
     */
   final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
-
   }
+
+  import scala.collection.TraversableLike
+  import scala.reflect.runtime.universe.WeakTypeTag
 
   /**
     * Traces the contents of a Scala container to standard error. To convert a Java container into a Scala container, import collection.JavaConversions._
