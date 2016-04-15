@@ -1,7 +1,6 @@
 package info.collaboration_station
 
-import info.collaboration_station.debug.internal.old.ImplicitAssert
-import info.collaboration_station.debug.internal.{ImplicitAssertMacros, ImplicitPrintMacros, ImplicitTraceMacros, Printer}
+import info.collaboration_station.debug.internal.{ImplicitAssertMacros, ImplicitPrintMacros, ImplicitTraceMacros}
 
 /**
   * Created by johnreed on 3/12/16. Contains implicit debug functions. Import with "import info.collaboration_station.debug._"
@@ -83,7 +82,7 @@ package object debug {
       * @param assertion the assertion that must be true for the program to run
       * @param message   the message to be printed to standard error on assertion failure
       * @example 1.assert( _ + 2 = 3, "Error: one plus two does not equal three.")
-      * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+      * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assert(assertion: (MyType) => Boolean, message: String): MyType =
       macro ImplicitAssertMacros.assert[MyType]
@@ -94,7 +93,7 @@ package object debug {
       * @param assertion the assertion that must be true for the program to run
       * @param message   the message to be printed  to standard out on assertion failure
       * @example 1.assertStdOut( _ + 2 = 3, "Error: one plus two does not equal three.")
-      * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+      * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assertStdOut(assertion: (MyType) => Boolean, message: String): MyType =
       macro ImplicitAssertMacros.assertStdOut[MyType]
@@ -105,15 +104,15 @@ package object debug {
       * @param other    the thing that this must be equal to
       * @param message  the message to be printed  to standard error on assertion failure
       * @example "foo".assertEquals("bar", "Error: foo does not equal bar")
-      * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+      * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assertEquals[OtherType](other: OtherType, message: String): MyType =
       macro ImplicitAssertMacros.assertEquals[MyType, OtherType]
 
     /**
-      * Same as ImplicitTrace.assertEquals(), but it uses StdOut instead of StdErr.
+      * Same as ImplicitAssert.assertEquals(), but it uses StdOut instead of StdErr.
       *
-      * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+      * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
       */
     final def assertEqualsStdOut[OtherType](other: OtherType, message: String): MyType =
       macro ImplicitAssertMacros.assertEqualsStdOut[MyType, OtherType]
@@ -131,40 +130,40 @@ package object debug {
       macro ImplicitAssertMacros.assertNotEqualsStdOut[MyType, OtherType]
 
     /**
-      * Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
+      * Same as ImplicitAssert[MyType].assert(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatal(assertion: (MyType) => Boolean, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatal[MyType]
+    final def safeAssert(assertion: (MyType) => Boolean, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssert[MyType]
 
     /**
-      * Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
+      * Same as ImplicitAssert[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalStdOut(assertion: (MyType) => Boolean, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatalStdOut[MyType]
+    final def safeAssertStdOut(assertion: (MyType) => Boolean, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssertStdOut[MyType]
 
     /**
-      * Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
+      * Same as ImplicitAssert[MyType].assertEquals(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalEquals[OtherType](other: OtherType, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatalEquals[MyType, OtherType]
+    final def safeAssertEquals[OtherType](other: OtherType, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssertEquals[MyType, OtherType]
 
     /**
-      * Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
+      * Same as ImplicitAssert[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
       */
-    final def assertNonFatalEqualsStdOut[OtherType](other: OtherType, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatalEqualsStdOut[MyType, OtherType]
+    final def safeAssertEqualsStdOut[OtherType](other: OtherType, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssertEqualsStdOut[MyType, OtherType]
 
     /**
-      * Same as assertNonFatalEquals, but checks for inequality instead of equality.
+      * Same as safeAssertEquals, but checks for inequality instead of equality.
       */
-    final def assertNonFatalNotEquals[OtherType](other: OtherType, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatalNotEquals[MyType, OtherType]
+    final def safeAssertNotEquals[OtherType](other: OtherType, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssertNotEquals[MyType, OtherType]
 
     /**
-      * Same as assertNonFatalEqualsStdOut, but checks for inequality instead of equality.
+      * Same as safeAssertEqualsStdOut, but checks for inequality instead of equality.
       */
-    final def assertNonFatalNotEqualsStdOut[OtherType](other: OtherType, message: String): MyType =
-      macro ImplicitAssertMacros.assertNonFatalNotEqualsStdOut[MyType, OtherType]
+    final def safeAssertNotEqualsStdOut[OtherType](other: OtherType, message: String): MyType =
+      macro ImplicitAssertMacros.safeAssertNotEqualsStdOut[MyType, OtherType]
   }
 
 }

@@ -24,7 +24,7 @@ object Main {
       (s).toString
     }, 2) // 2 lines of stack trace
 
-    Debug.assertNonFatalCode({
+    Debug.safeAssertCode.apply({
       val three = 3
       three + 2 == 0
     }, 2)
@@ -71,7 +71,7 @@ val r = Array.apply(1,2,3) //  Array[T]
       foo + "bar"
     }
     Debug.assert(1 + 1 == 2, "One plus one must equal two") // fatal assertion (kills application)
-    1.assertNonFatalEquals(3, "One must equal three") // non-fatal assertion, 2 lines of stack trace [BROKEN]
+    1.safeAssertEquals(3, "One must equal three") // non-fatal assertion, 2 lines of stack trace [BROKEN]
 
     Thread.sleep(10) // sleep to prevent print statements from getting mixed up
 
@@ -107,10 +107,10 @@ val r = Array.apply(1,2,3) //  Array[T]
       val five = 5;
       one * two + three / four + five;
     }
-    System.err.println("Assertions return strings: " + Debug.assertNonFatalExpression({
+    System.err.println("Assertions return strings: " + Debug.safeAssertExpression({
       val someVal = 2; 1 + someVal == 4
     }, 3))
-    Debug.assertNonFatalExpression {
+    Debug.safeAssertExpression {
       val someVal = 2; 1 + someVal == 4
     }
     Debug.assertExpression({
@@ -120,14 +120,14 @@ val r = Array.apply(1,2,3) //  Array[T]
       val myVal = 3; 1 + 2 == myVal
     }
     Debug.assertExpression(1 + 2 == 3)
-    Debug.assertNonFatalExpression({
+    Debug.safeAssertExpression({
       val noStack = "No stack trace is generated"; noStack.equals("foo")
     }, 0) // no lines of stack trace
-    Debug.assertNonFatal(1 == 2, "No stack trace is printed", 0)
+    Debug.safeAssert(1 == 2, "No stack trace is printed", 0)
 
     Debug.enableEverything_!()
     System.err.println(Debug.trace(77, numLines = 2)) // this should return a String
-    System.err.println(Debug.assertNonFatal(2 == 3, "foo", numLines = 2)) // this should return a String
+    System.err.println(Debug.safeAssert(2 == 3, "foo", numLines = 2)) // this should return a String
     val fooVar = "foo"
     val barVar = "bar"
     Debug.traceCode[String] {

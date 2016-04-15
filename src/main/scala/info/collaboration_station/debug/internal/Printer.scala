@@ -65,8 +65,8 @@ object Printer {
     * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                                    useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
+  final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+                              useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.
     }

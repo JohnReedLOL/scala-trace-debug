@@ -66,7 +66,7 @@ object Debug {
   }
 
   /**
-    * Enables fatal assertions. Has no effect on "assertNonFatal", only on "assert" and other fatal assert methods (assertEquals, etc.)
+    * Enables fatal assertions. Has no effect on "safeAssert", only on regular "assert" and other regular assert methods (assertEquals, etc.)
     */
   def fatalAssertOn_!() = {
     _fatalAssertOn_? = true
@@ -104,7 +104,7 @@ object Debug {
   }
 
   /**
-    * Disables fatal assertions. Has no effect on "assertNonFatal", only on "assert" and other fatal assert methods (assertEquals, etc.)
+    * Disables fatal assertions. Has no effect on "safeAssert", only on "assert" and other fatal assert methods (assertEquals, etc.)
     */
   def fatalAssertOff_!() = {
     _fatalAssertOn_? = false
@@ -172,11 +172,11 @@ object Debug {
     * @param assertion the assertion that must be true for the program to run. Can be a value or a function
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
-    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
+    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
   /** A fatal assertion.
@@ -185,11 +185,11 @@ object Debug {
     * @param assertion the assertion that must be true for the program to run. Can be a value or a function
     * @param message   the message to be printed to standard out on assertion failure
     * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
-    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @note this (and other assertions not marked "safe") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
+    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
   /**
@@ -197,8 +197,8 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
+  final def safeAssert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   /**
@@ -206,8 +206,8 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
+  final def safeAssertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   import scala.collection.TraversableLike
@@ -587,17 +587,17 @@ object Debug {
   // for WeakTypeTag
 
   /**
-    * Same as assertNonFatal, but prints the whole expression instead of an error message
+    * Same as safeAssert, but prints the whole expression instead of an error message
     *
-    * @example Debug.assertNonFatalExpression{val one = 1; one + 1 == 2}
-    * @example Debug.assertNonFatalExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    * @example Debug.safeAssertExpression{val one = 1; one + 1 == 2}
+    * @example Debug.safeAssertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object assertNonFatalExpression {
+  final object safeAssertExpression {
 
-    final def apply(assertion: Boolean): String = macro assertNonFatalExpressionImpl
+    final def apply(assertion: Boolean): String = macro safeAssertExpressionImpl
 
-    final def assertNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    final def safeAssertExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
@@ -607,14 +607,14 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        info.collaboration_station.debug.Debug.safeAssert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
 
-    final def apply(assertion: Boolean, numLines: Int): String = macro assertLinesNonFatalExpressionImpl
+    final def apply(assertion: Boolean, numLines: Int): String = macro safeAssertLinesExpressionImpl
 
-    final def assertLinesNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    final def safeAssertLinesExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
@@ -624,20 +624,20 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        info.collaboration_station.debug.Debug.safeAssert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
   }
 
   /**
-    * Same as assertNonFatal, but prints the code instead of an error message.
+    * Same as safeAssert, but prints the code instead of an error message.
     *
-    * @example val one = 1; Debug.assertNonFatalCode{one + 1 == 2}
-    * @example val one = 1; Debug.assertNonFatalCode({one + 1 == 2}, 0) // 0 lines of stack trace
+    * @example val one = 1; Debug.safeAssertCode{one + 1 == 2}
+    * @example val one = 1; Debug.safeAssertCode({one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object assertNonFatalCode {
+  final object safeAssertCode {
     final def apply(assertion: Boolean): String = macro assertCodeImpl
 
     final def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
@@ -660,7 +660,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        info.collaboration_station.debug.Debug.safeAssert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -687,7 +687,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        info.collaboration_station.debug.Debug.safeAssert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }

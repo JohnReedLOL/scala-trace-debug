@@ -117,9 +117,9 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      val assertString0 = "foo".assertNonFatal( (str: String) => { str.equals("foo") }, "error");
-      val assertString1 = "foo".assertNonFatal( _ equals "bar", "error");
-      val assertString = "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      val assertString0 = "foo".safeAssert( (str: String) => { str.equals("foo") }, "error");
+      val assertString1 = "foo".safeAssert( _ equals "bar", "error");
+      val assertString = "foo".safeAssertStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
@@ -141,7 +141,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      "foo".safeAssertStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
