@@ -8,9 +8,8 @@ import info.collaboration_station.debug.Debug
 object Printer {
 
   /** The offset of the first line from the base of the stack trace
-    * The +1 is necessary because the method call traceInternal adds one to the offset of the stack trace
     */
-  protected[debug] val newStackOffset = Debug.stackOffset + 1
+  protected[debug] val newStackOffset = Debug.stackOffset
 
   /** Prints out the object with N lines of stack trace. Do not use with assertions
     *
@@ -19,7 +18,7 @@ object Printer {
     * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+  final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                                               useStdOut_? : Boolean = false): String = {
     val toPrintOut: String = if (toPrintOutNullable == null) {
       "null"
@@ -66,7 +65,7 @@ object Printer {
     * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[debug] final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+  final def traceInternalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                                                     useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.

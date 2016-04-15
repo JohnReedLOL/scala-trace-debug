@@ -1,11 +1,13 @@
-package info.collaboration_station.debug.internal
+package info.collaboration_station.debug.internal.old
+
+import info.collaboration_station.debug.internal.Printer
 
 import scala.language.implicitConversions
 
 /**
   * Created by johnreed on 4/12/16.
   */
-final class ImplicitTrace[MyType](val me: MyType) {
+final class ImplicitTraceOld[MyType](val me: MyType) {
 
   /** Prints out this object with 1 lines of stack trace to standard error
     *
@@ -59,6 +61,6 @@ final class ImplicitTrace[MyType](val me: MyType) {
 
 }
 
-object ImplicitTrace {
+object ImplicitTraceOld {
 
 }

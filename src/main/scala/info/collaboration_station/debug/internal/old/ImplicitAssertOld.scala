@@ -1,6 +1,7 @@
-package info.collaboration_station.debug.internal
+package info.collaboration_station.debug.internal.old
 
 import info.collaboration_station.debug.Debug
+import info.collaboration_station.debug.internal.Printer
 
 import scala.language.implicitConversions
 

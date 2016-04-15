@@ -9,6 +9,9 @@ import info.collaboration_station.debug._
 object Main {
   def main(args: Array[String]) {
 
+    "foooooooooo0".traceStdOut
+    "foooooooooo1".trace
+
     Debug.traceCode({
       // print out the code as it appears in the source
       val myVal = 4;
@@ -60,7 +63,7 @@ val r = Array.apply(1,2,3) //  Array[T]
     */
     Debug.trace("Hello World") // 1 line of stack trace
     Debug.trace("Hello World 2", numLines = 2) // 2 lines of stack trace
-    "Hello World".trace(numLines = 0) // 0 lines of stack trace
+    "Hello World".trace(0) // 0 lines of stack trace
 
     Debug.traceExpression {
       // trace the expression ("foo" + "bar")
@@ -68,7 +71,7 @@ val r = Array.apply(1,2,3) //  Array[T]
       foo + "bar"
     }
     Debug.assert(1 + 1 == 2, "One plus one must equal two") // fatal assertion (kills application)
-    1.assertNonFatalEquals(3, "One must equal three", numLines = 2) // non-fatal assertion, 2 lines of stack trace
+    1.assertNonFatalEquals(3, "One must equal three") // non-fatal assertion, 2 lines of stack trace [BROKEN]
 
     Thread.sleep(10) // sleep to prevent print statements from getting mixed up
 
@@ -141,5 +144,9 @@ val r = Array.apply(1,2,3) //  Array[T]
     System.err.println("assertCode")
     // Debug.assertCode{(trueVar || falseVar || false) && false} // "trueVar || falseVar || false -> false" in thread run-main-4:
     System.err.println("End")
+
+    Debug.enableEverything_!()
+    "foo".assertNotEquals(2, "ERROR! foo == 2")
+    "foo".assertEquals("foo", "ERROR! foo == foo")
   }
 }
