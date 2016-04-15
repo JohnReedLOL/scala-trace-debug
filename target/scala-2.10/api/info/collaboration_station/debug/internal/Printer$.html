@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnreed on 4/12/16.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnreed on 4/12/16 for https://github.com/JohnReedLOL/scala-trace-debug
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -183,6 +183,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="info.collaboration_station.debug.internal.Printer#debugDisabled_?" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="debugDisabled_?:Boolean"></a>
+      <a id="debugDisabled_?:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: debugDisabled_$qmark" class="name">debugDisabled_?</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Disabling of traces, asserts, etc.</p><div class="fullcomment"><div class="comment cmt"><p>Disabling of traces, asserts, etc. can be specified through the system property
+&quot;ENABLE_TRACE_DEBUG&quot; or the environment variable
+&quot;ENABLE_TRACE_DEBUG&quot;. The system property takes precedence over the
+environment variable. See: https://github.com/adamw/scala-macro-debug
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -254,6 +271,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="info.collaboration_station.debug.internal.Printer#internalAssert" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="internalAssert[A](toPrintOutNullable:A,numStackLinesIntended:Int,useStdOut_?:Boolean,assertionTrue_?:Boolean,isFatal_?:Boolean):String"></a>
+      <a id="internalAssert[A](A,Int,Boolean,Boolean,Boolean):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">internalAssert</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="toPrintOutNullable">toPrintOutNullable: <span class="extype" name="info.collaboration_station.debug.internal.Printer.internalAssert.A">A</span></span>, <span name="numStackLinesIntended">numStackLinesIntended: <span class="extype" name="scala.Int">Int</span></span>, <span name="useStdOut_?">useStdOut_?: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="assertionTrue_?">assertionTrue_?: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isFatal_?">isFatal_?: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints out the object with N lines of stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Prints out the object with N lines of stack trace. Meant to be used only for asserts
+</p></div><dl class="paramcmts block"><dt class="param">toPrintOutNullable</dt><dd class="cmt"><p>the object to print out. May be &quot;null&quot;</p></dd><dt class="param">numStackLinesIntended</dt><dd class="cmt"><p>N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values</p></dd><dt class="param">useStdOut_?</dt><dd class="cmt"><p>Whether to use standard out for trace (as opposed to std error). Uses standard error by default</p></dd><dt>returns</dt><dd class="cmt"><p>The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="info.collaboration_station.debug">info.collaboration_station.debug</a>] </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -362,21 +394,6 @@ The +1 is necessary because the method call traceInternal adds one to the offset
       </span>
       </h4>
       <p class="shortcomment cmt">Prints out the object with N lines of stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Prints out the object with N lines of stack trace. Do not use with assertions
-</p></div><dl class="paramcmts block"><dt class="param">toPrintOutNullable</dt><dd class="cmt"><p>the object to print out. May be &quot;null&quot;</p></dd><dt class="param">numStackLinesIntended</dt><dd class="cmt"><p>N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values</p></dd><dt class="param">useStdOut_?</dt><dd class="cmt"><p>Whether to use standard out for trace (as opposed to std error). Uses standard error by default</p></dd><dt>returns</dt><dd class="cmt"><p>The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
-</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="info.collaboration_station.debug">info.collaboration_station.debug</a>] </dd></dl></div>
-    </li><li name="info.collaboration_station.debug.internal.Printer#traceInternalAssert" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceInternalAssert[A](toPrintOutNullable:A,numStackLinesIntended:Int,useStdOut_?:Boolean,assertionTrue_?:Boolean,isFatal_?:Boolean):String"></a>
-      <a id="traceInternalAssert[A](A,Int,Boolean,Boolean,Boolean):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceInternalAssert</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="toPrintOutNullable">toPrintOutNullable: <span class="extype" name="info.collaboration_station.debug.internal.Printer.traceInternalAssert.A">A</span></span>, <span name="numStackLinesIntended">numStackLinesIntended: <span class="extype" name="scala.Int">Int</span></span>, <span name="useStdOut_?">useStdOut_?: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="assertionTrue_?">assertionTrue_?: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isFatal_?">isFatal_?: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out the object with N lines of stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Prints out the object with N lines of stack trace. Meant to be used only for asserts
 </p></div><dl class="paramcmts block"><dt class="param">toPrintOutNullable</dt><dd class="cmt"><p>the object to print out. May be &quot;null&quot;</p></dd><dt class="param">numStackLinesIntended</dt><dd class="cmt"><p>N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values</p></dd><dt class="param">useStdOut_?</dt><dd class="cmt"><p>Whether to use standard out for trace (as opposed to std error). Uses standard error by default</p></dd><dt>returns</dt><dd class="cmt"><p>The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../package.html" class="extype" name="info.collaboration_station.debug">info.collaboration_station.debug</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">

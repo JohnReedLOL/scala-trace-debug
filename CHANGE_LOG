@@ -1,13 +1,15 @@
 Change log:
 
-"0.1.4" - Debug statements pass strings which you can pass into a logger.
+"0.1.4" - Debug statements return strings which you can pass into a logger.
 
-"0.1.5" - Performance improvement - printing a stack trace of length 0 makes no call to Thread.currentThread().getStackTrace
+"0.1.5" - Performance improvement - printing a stack trace of length 0 makes no call to Thread.currentThread().getStackTrace.
 
-"0.1.6" - Added traceCode, assertCode as an alternative to traceExpression, assertExpression
+"0.1.6" - Added traceCode, assertCode as an alternative to traceExpression, assertExpression.
 
 "0.1.7" - Added traceContents for List, Map, etc.
 
-"0.1.8" - Backwards compatibility to scalaVersions "2.10.4"
+"0.1.8" - Backwards compatibility to scalaVersions "2.10.4" (exception during macro expansion occurs in traceExpression and traceCode in 2.10.4).
 
-"0.1.9" - Reformatted to allow separate imports for prints, traces, and asserts
+"0.1.9" - Reformatted to allow separate imports for prints, traces, and asserts.
+
+"0.2.0" - Added master shutoff switch. (foo).assertEqual(bar) can take two different types.

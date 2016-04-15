@@ -199,15 +199,15 @@ Terminates the program with exit code &quot;7&quot;
             </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOff_!()&quot;
 </p></span></dd></dl></div>
     </li><li name="info.collaboration_station.debug.internal.ImplicitAssert#assertEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertEquals(other:MyType,message:String,numLines:Int):MyType"></a>
-      <a id="assertEquals(MyType,String,Int):MyType"></a>
+      <a id="assertEquals[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertEquals[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertEquals</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertEquals</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.assertEquals.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Compares this object with another object of the same type for equality using the &quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Compares this object with another object of the same type for equality using the &quot;.equals()&quot; method.
@@ -217,15 +217,15 @@ Terminates the program with exit code &quot;7&quot; in case of assertion failure
             </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOff_!()&quot;
 </p></span></dd></dl></div>
     </li><li name="info.collaboration_station.debug.internal.ImplicitAssert#assertEqualsStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertEqualsStdOut(other:MyType,message:String,numLines:Int):MyType"></a>
-      <a id="assertEqualsStdOut(MyType,String,Int):MyType"></a>
+      <a id="assertEqualsStdOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertEqualsStdOut[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertEqualsStdOut</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertEqualsStdOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.assertEqualsStdOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Same as ImplicitTrace.</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace.assertEquals(), but it uses StdOut instead of StdErr.
@@ -246,29 +246,29 @@ Terminates the program with exit code &quot;7&quot; in case of assertion failure
       <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
 </p></div></div>
     </li><li name="info.collaboration_station.debug.internal.ImplicitAssert#assertNonFatalEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertNonFatalEquals(other:MyType,message:String,numLines:Int):MyType"></a>
-      <a id="assertNonFatalEquals(MyType,String,Int):MyType"></a>
+      <a id="assertNonFatalEquals[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertNonFatalEquals[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertNonFatalEquals</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertNonFatalEquals</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.assertNonFatalEquals.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
 </p></div></div>
     </li><li name="info.collaboration_station.debug.internal.ImplicitAssert#assertNonFatalEqualsStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertNonFatalEqualsStdOut(other:MyType,message:String,numLines:Int):MyType"></a>
-      <a id="assertNonFatalEqualsStdOut(MyType,String,Int):MyType"></a>
+      <a id="assertNonFatalEqualsStdOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertNonFatalEqualsStdOut[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertNonFatalEqualsStdOut</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertNonFatalEqualsStdOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.assertNonFatalEqualsStdOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Int.MaxValue</span></span>)</span><span class="result">: <span class="extype" name="info.collaboration_station.debug.internal.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)

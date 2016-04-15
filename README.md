@@ -5,34 +5,34 @@ Provides user-friendly prints, traces, assertions, container printing, and sourc
 
 ____________________________________________________________________________________________________________________
 
-**Example:**
+### Example:
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ____________________________________________________________________________________________________________________
 
-**Requirements:**
+### Requirements:
 
-- Scala 2.10.4 or higher
+- Scala 2.10.4 or higher [traceExpression and traceCode require higher than scala-2.10]
 - Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 
-**Getting started:**
+### Getting started:
 
 Just add these two lines to your "build.sbt" file:
 
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.1.9"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.0"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
 
 ____________________________________________________________________________________________________________________
 
-**Logger Incorporation:**
+### Logger Incorporation:
 
 All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
@@ -40,7 +40,13 @@ You can disable printing to standard out and standard error via `Debug.disableEv
 
 ____________________________________________________________________________________________________________________
 
-**Container Printing:**
+### Master Shutoff Switch:
+
+If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
+A system property may also be used. "The system property takes precedence over the environment variable"
+____________________________________________________________________________________________________________________
+
+### Container Printing:
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
@@ -50,7 +56,7 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
-**Cheat Sheet / Examples:**
+### Cheat Sheet / Examples:
 
 [Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
 
@@ -60,29 +66,31 @@ Example functions: http://pastebin.com/2e1JN1De
 
 ^ For more examples, see [Main.scala](src/test/scala/main/Main.scala), which you can run with `sbt test:run`
 
-Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currectly running thread, use an exception.
+Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currently running thread, use an exception.
 
 ____________________________________________________________________________________________________________________
 
-**Chaining:**
+### Method Chaining:
 
-All the add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
+Add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
 
 ```scala
 
-import info.collaboration_station.debug._ // wildcard import for implicit conversion
+import info.collaboration_station.debug.implicitlyTraceable
 ...
 val foo = true
-if( foo.trace ) { /* Do something with foo */ }
+if( foo.trace ) { ... }
 
-val foobar = "foo".trace().concat("bar").println() // Chaining. First print "foo", then print "foobar"
+import info.collaboration_station.debug.implicitlyPrintable
+...
+val foobar = "foo".trace().concat("bar").println() // Chaining.
 
 ```
 
 ____________________________________________________________________________________________________________________
 
 
-**Instructions (for IntelliJ IDE):**
+### Instructions (for IntelliJ IDE):
 
 1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
 
@@ -102,7 +110,7 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
-**New features:**
+### New features:
 
 Now featuring desugared macro expressions and code tracing:
 
@@ -116,16 +124,15 @@ Now featuring desugared macro expressions and code tracing:
 
 ____________________________________________________________________________________________________________________
 
-**Benefits:**
+### Benefits:
 
 - Easy to locate print statements. Gives you an idea of what each thread is doing.
-- Convenient object oriented style syntax facilitates chaining. Static methods usable with logger.
-- Easy to locate and remove trace statements (just Ctr-R find and replace)
+- Easy to locate and remove trace statements (Ctr-R find-and-replace or set ENABLE_TRACE_DEBUG)
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
 
 ____________________________________________________________________________________________________________________
 
-**Use in practice:**
+### Use in practice:
 
 For use in practice, see [this link](USE_WITH_IDE.md)
 
@@ -136,7 +143,7 @@ For use in practice, see [this link](USE_WITH_IDE.md)
 
 ____________________________________________________________________________________________________________________
 
-**Performance:**
+### Performance:
 
 No overhead for no stack trace. 
 
@@ -145,7 +152,7 @@ No overhead for no stack trace.
 ```
 ____________________________________________________________________________________________________________________
 
-**More info:**
+#### More info:
 
 See [ScalaDoc](http://ec2-52-87-157-20.compute-1.amazonaws.com/) in source code for in detail documentation.
 
@@ -157,6 +164,6 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 ____________________________________________________________________________________________________________________
 
-**Code layout**:
+#### Code layout:
 
 Currently all the actual printing is done in `info.collaboration_station.debug.internal.Printer`, all the "add-on" methods are in `info.collaboration_station.debug.package.scala`, and all the calls to the "Debug" object are in `info.collaboration_station.debug.Debug`

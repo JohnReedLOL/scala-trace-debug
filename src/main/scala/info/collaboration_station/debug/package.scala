@@ -3,7 +3,7 @@ package info.collaboration_station
 import info.collaboration_station.debug.internal.{ImplicitAssert, ImplicitPrint, ImplicitTrace}
 
 /**
-  * Created by johnreed on 3/12/16. Contains implicit debug functions. Import with "import info.collaboration_station.debug._"
+  * Created by johnreed on 3/12/16. Makes Scala Trace Debug functions available via implicit conversions. https://github.com/JohnReedLOL/scala-trace-debug
   */
 package object debug {
 

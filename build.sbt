@@ -6,7 +6,7 @@ organization := "scala-trace-debug"
 
 scalaVersion := "2.11.7"
 
-version := "0.1.9"
+version := "0.2.0"
 
 // scalaVersion := "2.11.7"
 
@@ -24,8 +24,8 @@ def macroDependencies(version: String) =
       Seq())
 
 unmanagedSourceDirectories in Compile ++= {
-  if (scalaVersion.value startsWith "2.10.") {System.err.println("baseDirectory.value_2.10: " + baseDirectory.value); Seq(baseDirectory.value / "src"/ "main" / "scala-2.10") }
-  else {System.err.println("baseDirectory.value_2.11: " + baseDirectory.value); Seq(baseDirectory.value / "src" / "main" / "scala-2.11") }
+  if (scalaVersion.value startsWith "2.10.") {Seq(baseDirectory.value / "src"/ "main" / "scala-2.10") }
+  else {Seq(baseDirectory.value / "src" / "main" / "scala-2.11") }
 }
 
 libraryDependencies ++= Seq(

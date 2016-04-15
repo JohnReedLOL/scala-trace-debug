@@ -5,7 +5,7 @@ import info.collaboration_station.debug.internal.Printer
 import scala.language.experimental.macros
 
 /**
-  * Created by johnreed on 3/12/16. Contains static debug functions.
+  * Created by johnreed on 3/12/16. Contains static debug functions. https://github.com/JohnReedLOL/scala-trace-debug
   */
 object Debug {
 
@@ -176,7 +176,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
+    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
   /** A fatal assertion.
@@ -189,7 +189,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
+    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
   /**
@@ -198,7 +198,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatal(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   /**
@@ -207,7 +207,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   final def assertNonFatalStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.traceInternalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   import scala.collection.TraversableLike
