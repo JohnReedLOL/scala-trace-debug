@@ -118,7 +118,7 @@ class StackSpec extends FlatSpec {
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
       val assertString0 = "foo".safeAssert( (str: String) => { str.equals("foo") }, "error");
-      val assertString1 = "foo".safeAssert( _ equals "bar", "error");
+      // val assertString1 = "foo".safeAssert( _ equals "bar", "Error message");
       val assertString = "foo".safeAssertStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
@@ -153,6 +153,11 @@ class StackSpec extends FlatSpec {
       assert(message.length == 0)
     }
   }
+
+  ignore should "assertions and exeptions should produce same stack traces" in {
+
+  }
+
   /*
   "output" should "look good" in {
     Debug.enableEverything_!()

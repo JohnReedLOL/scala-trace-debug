@@ -7,6 +7,53 @@ import info.collaboration_station.debug.Debug
   */
 object Printer {
 
+  /**
+    * Disabling of traces, asserts, etc. can be specified through the system property
+    * "enable_debug_messages" or the environment variable
+    * "enable_debug_messages". The system property takes precedence over the
+    * environment variable. See: https://github.com/adamw/scala-macro-debug
+    */
+  val debugDisabled_? : Boolean = {
+
+    // Holds true or false if debugging has been enabled or disabled through
+    // a system property
+    val systemProperty = {
+      val tmp = System.getProperty("enable_debug_messages")
+      if (tmp == null) null
+      else {
+        tmp.trim().toLowerCase() match {
+          case "true" => true
+          case "false" => false
+          case _ => null
+        }
+      }
+    }
+
+    // Holds true or false if debugging has been enabled or disabled through
+    // an environment variable
+    val environmentProperty = {
+      val tmp = System.getenv("enable_debug_messages")
+      if (tmp == null) null
+      else {
+        tmp.trim().toLowerCase() match {
+          case "true" => true
+          case "false" => false
+          case _ => null
+        }
+      }
+    }
+
+    // The resulting value
+    systemProperty match {
+      case b: Boolean => !b
+      case _ =>
+        environmentProperty match {
+          case b: Boolean => !b
+          case _ => false
+        }
+    }
+  }
+
   /** The offset of the first line from the base of the stack trace
     */
   protected[debug] val newStackOffset = Debug.stackOffset
@@ -19,7 +66,11 @@ object Printer {
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
   final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                              useStdOut_? : Boolean = false): String = {
+                             useStdOut_? : Boolean = false): String = {
+    if (debugDisabled_?) {
+      return ""
+    }
+
     val toPrintOut: String = if (toPrintOutNullable == null) {
       "null"
     } else {
@@ -67,7 +118,7 @@ object Printer {
     */
   final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                               useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
-    if (assertionTrue_?) {
+    if (assertionTrue_? || debugDisabled_?) {
       return "" // If assertion is true, print nothing and return empty string.
     }
     val toPrintOut: String = if (toPrintOutNullable == null) {
@@ -115,4 +166,5 @@ object Printer {
     * Ensures that no two threads can print at the same time
     */
   private object PrintLocker
+
 }

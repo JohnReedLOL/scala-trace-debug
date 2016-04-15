@@ -12,7 +12,7 @@ object Debug {
   /**
     * Stack offset is 2 because the first row in the stack trace is Thread and the second row is internal call
     */
-  protected[debug] val stackOffset = 2
+  protected[debug] val stackOffset = 2 + 1 // this +1 is temporary for the extra method invocation.
 
   @volatile private var _traceOutOn_? = true
   @volatile private var _traceErrOn_? = true
