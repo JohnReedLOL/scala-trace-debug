@@ -12,13 +12,13 @@ object Main {
     "foooooooooo0".traceStdOut
     "foooooooooo1".trace
 
-    Debug.traceCode({
+    Debug.code({
       // print out the code as it appears in the source
       val myVal = 4;
       1 + 2 + myVal
     }, 1) // 1 lines of stack trace
 
-    Debug.traceCode({
+    Debug.code({
       // print out the code as it appears in the source
       val s = List(1, 2, 3)
       (s).toString
@@ -39,14 +39,14 @@ object Main {
 
     // You can use this with a logger
     Debug.traceErrOff_! // just get the String
-    val collectionString = Debug.traceContents(List(1, 2, 3))
+    val collectionString = Debug.contents(List(1, 2, 3))
     println(collectionString)
 
     Debug.traceOutOn_!
-    Debug.traceContentsStdOut(Map("1" -> 1, "2" -> 2, "3" -> 3))
+    Debug.contentsStdOut(Map("1" -> 1, "2" -> 2, "3" -> 3))
 
     Debug.enableEverything_!
-    Debug.traceContents(List(1, 2, 3), numElements = 2, numLines = 2)
+    Debug.contents(List(1, 2, 3), numElements = 2, numLines = 2)
 
 
     Thread.sleep(20)
@@ -65,7 +65,7 @@ val r = Array.apply(1,2,3) //  Array[T]
     Debug.trace("Hello World 2", numLines = 2) // 2 lines of stack trace
     "Hello World".trace(0) // 0 lines of stack trace
 
-    Debug.traceExpression {
+    Debug.expression {
       // trace the expression ("foo" + "bar")
       val foo = "foo";
       foo + "bar"
@@ -76,30 +76,30 @@ val r = Array.apply(1,2,3) //  Array[T]
     Thread.sleep(10) // sleep to prevent print statements from getting mixed up
 
     Debug.traceStdOut("Hey0")
-    Debug.traceStdOutExpression {
+    Debug.expressionStdOut {
       "Hey3"
     }
-    Debug.traceStdOutExpression({
+    Debug.expressionStdOut({
       val myVal = 5; 1 + 2 + myVal
     }, 0) // 0 lines of stack trace
-    Debug.traceStdOutExpression("Hey4", 2)
-    Debug.traceStackStdOutExpression {
+    Debug.expressionStdOut("Hey4", 2)
+    Debug.expressionStackStdOut {
       val myVal = 6; 1 + 2 + myVal
     }
 
     Thread.sleep(10) // sleep to prevent print statements from getting mixed up
 
-    Debug.traceExpression {
+    Debug.expression {
       "Hey5"
     }
-    Debug.traceExpression {
+    Debug.expression {
       val myVal = 3; 1 + 2 + myVal
     }
-    Debug.traceExpression("Hey6", 2)
-    Debug.traceStackExpression {
+    Debug.expression("Hey6", 2)
+    Debug.expressionStack {
       val myVal = 4; 1 + 2 + myVal
     }
-    Debug.traceExpression {
+    Debug.expression {
       val one = 1;
       val two = 2;
       val three = 3;
@@ -130,13 +130,13 @@ val r = Array.apply(1,2,3) //  Array[T]
     System.err.println(Debug.safeAssert(2 == 3, "foo", numLines = 2)) // this should return a String
     val fooVar = "foo"
     val barVar = "bar"
-    Debug.traceCode[String] {
+    Debug.code[String] {
       fooVar + barVar
     }
-    Debug.traceCode[String]({
+    Debug.code[String]({
       fooVar + barVar
     }, 3)
-    Debug.traceStackCode[String] {
+    Debug.codeStack[String] {
       fooVar + barVar
     }
     val trueVar = true

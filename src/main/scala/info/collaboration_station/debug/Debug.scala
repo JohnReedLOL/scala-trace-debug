@@ -220,8 +220,9 @@ object Debug {
     * @param numElements the number of elements you want to trace. Defaults to all elements in the collection
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
+    * @example Debug.contents( List(1,2,3) )
     */
-  final def traceContents[CollectionType <: TraversableLike[Any, Any]]
+  final def contents[CollectionType <: TraversableLike[Any, Any]]
   (collection: CollectionType, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
     val collectionType = tag.tpe
     var toPrint = collectionType.toString
@@ -243,8 +244,9 @@ object Debug {
     * @param numElements the number of elements you want to trace. Defaults to all elements in the collection
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
+    * @example Debug.contentsStdOut( List(1,2,3) )
     */
-  final def traceContentsStdOut[CollectionType <: TraversableLike[Any, Any]]
+  final def contentsStdOut[CollectionType <: TraversableLike[Any, Any]]
   (collection: CollectionType, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
     val collectionType = tag.tpe
     var toPrint = collectionType.toString
@@ -262,12 +264,12 @@ object Debug {
   /**
     * Same as trace, but prints the code in the block, not just the result
     *
-    * @example myVal = 3; Debug.traceCode{1 + 2 + myVal}
-    * @example myVal = 3; Debug.traceCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example myVal = 3; Debug.code{1 + 2 + myVal}
+    * @example myVal = 3; Debug.code(1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceCode {
-    final def traceCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+  final object code {
+    final def codeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockTree = block.tree
       val blockSource = new String(blockTree.pos.source.content)
@@ -312,7 +314,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceCodeImpl[T]
+    final def apply[T](block: => T): String = macro codeImpl[T]
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesCodeImpl[T]
   }
@@ -322,12 +324,12 @@ object Debug {
 
   /**
     * Same as traceStack, but prints the source code in the block, not just the result
-    *
-    * @example myVal = 3; Debug.traceStackCode{1 + 2 + myVal}
+    * Debug.codeStack{ // Her this is come code }
+    * @example myVal = 3; Debug.codeStack{1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceStackCode {
-    final def traceStackCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+  final object codeStack {
+    final def codeStackImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockTree = block.tree
       val blockSource = new String(blockTree.pos.source.content)
@@ -351,18 +353,18 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceStackCodeImpl[T]
+    final def apply[T](block: => T): String = macro codeStackImpl[T]
   }
 
   /**
     * Same as trace, but prints the entire expression, not just the result
     *
-    * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
-    * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example Debug.expression{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.expression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceExpression {
-    final def traceExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+  final object expression {
+    final def expressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -387,7 +389,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceExpressionImpl[T]
+    final def apply[T](block: => T): String = macro expressionImpl[T]
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesExpressionImpl[T]
   }
@@ -395,11 +397,11 @@ object Debug {
   /**
     * Same as traceStack, but prints the entire expression, not just the result
     *
-    * @example Debug.traceStackExpression{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.expressionStack{val myVal = 3; 1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceStackExpression {
-    final def traceStackExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+  final object expressionStack {
+    final def expressionStackImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -411,19 +413,19 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceStackExpressionImpl[T]
+    final def apply[T](block: => T): String = macro expressionStackImpl[T]
   }
 
   /**
     * Same as Debug.traceStdOut, but prints the whole expression not just its result
     *
-    * @example Debug.traceStdOutExpression{val myVal = 3; 1 + 2 + myVal}
-    * @example Debug.traceStdOutExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example Debug.expressionStdOut{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.expressionStdOut({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceStdOutExpression {
+  final object expressionStdOut {
 
-    final def traceStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    final def expressionStdOutImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -448,7 +450,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceStdOutExpressionImpl[T]
+    final def apply[T](block: => T): String = macro expressionStdOutImpl[T]
 
     final def apply[T](block: => T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
   }
@@ -456,11 +458,11 @@ object Debug {
   /**
     * Same as traceStackStdOut, but prints the whole expression not just the result
     *
-    * @example Debug.traceStackStdOutExpression{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.expressionStackStdOut{val myVal = 3; 1 + 2 + myVal}
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  final object traceStackStdOutExpression {
-    final def traceStackStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+  final object expressionStackStdOut {
+    final def expressionStackStdOutImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val toTraceString = (block.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$block}.toString)"
@@ -472,7 +474,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    final def apply[T](block: => T): String = macro traceStackStdOutExpressionImpl[T]
+    final def apply[T](block: => T): String = macro expressionStackStdOutImpl[T]
   }
 
   /**
