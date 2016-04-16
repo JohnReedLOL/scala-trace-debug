@@ -284,7 +284,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.info.collaboration_station.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -307,7 +307,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.info.collaboration_station.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -346,7 +346,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.traceStack(..$args);
+        _root_.info.collaboration_station.debug.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -369,7 +369,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.info.collaboration_station.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -382,7 +382,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.info.collaboration_station.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -406,7 +406,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.traceStack(..$args);
+        _root_.info.collaboration_station.debug.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -430,7 +430,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.traceStdOut(..$args);
+        _root_.info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -443,7 +443,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.traceStdOut(..$args);
+        _root_.info.collaboration_station.debug.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -467,7 +467,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        info.collaboration_station.debug.Debug.traceStackStdOut(..$args);
+        _root_.info.collaboration_station.debug.Debug.traceStackStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -495,7 +495,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -512,7 +512,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -548,7 +548,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -575,7 +575,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -607,7 +607,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -624,7 +624,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -660,7 +660,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -687,7 +687,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
+        _root_.info.collaboration_station.debug.Debug.assertNonFatal(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
