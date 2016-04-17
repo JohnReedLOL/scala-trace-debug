@@ -51,11 +51,14 @@ class CheckSpec
           } else {
             0
           }
+
           positiveX should be >= 0
           val inRangeX = ((positiveX) % (minLength-3) ) + 2 // Add two in case you get zero or one. Subtract three so that you have space after adding two.
           inRangeX should be >= 2
           inRangeX should be < minLength
-          assertMessage(inRangeX) should be(exceptionMessage(inRangeX))
+          // System.err.println("assert: " +  assertMessage(inRangeX) )
+          // System.err.println("excep: " + exceptionMessage(inRangeX) )
+          assertMessage(inRangeX).substring(0, 15) should be(exceptionMessage(inRangeX).substring(0, 15))
         }
       }
     }

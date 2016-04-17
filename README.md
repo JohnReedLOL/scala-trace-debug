@@ -9,11 +9,12 @@ ________________________________________________________________________________
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
+^ Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
 ____________________________________________________________________________________________________________________
 
 ### Requirements:
 
-- Scala 2.10.4 or higher [traceExpression and traceCode require higher than scala-2.10]
+- Scala 2.10.4 or higher
 - Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
@@ -25,7 +26,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.0"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.1"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
@@ -50,7 +51,7 @@ ________________________________________________________________________________
 
 ![ContainerExample](http://i.imgur.com/IMk1CnM.png)
 
-^ A String containing the stack trace is obtained on line 33 and passed into println on line 34, giving you `List[Int] 1 2 3`. The number of elements printed is adjustable. ^
+^ A String containing the stack trace is obtained on line 33 and passed into println on line 34, giving you `List[Int] 1 2 3`. The start element number of elements printed is adjustable. Ex. `Debug.traceContents(List(0, 1, 2, 3, 4, 5), start = 2, numElements = 3)` ^
 
 ^ Works for any Scala container. To pass in Java containers, you can [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 

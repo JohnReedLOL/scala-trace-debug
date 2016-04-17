@@ -2,15 +2,23 @@ name := "scala-trace-debug"
 
 organization := "scala-trace-debug"
 
-// version := "0.1.0-SNAPSHOT"
-
 scalaVersion := "2.11.7"
 
-version := "0.2.0"
-
-// scalaVersion := "2.11.7"
+version := "0.2.1"
 
 crossScalaVersions := Seq("2.10.4", "2.11.7")
+
+resolvers += Resolver.sonatypeRepo("releases")
+
+/** Error during compilation of source code that depends on macros that access the source code:
+  *
+  * [info] Setting version to 2.10.4
+  * exception during macro expansion:
+  * [error] java.lang.UnsupportedOperationException: Position.start on class scala.reflect.internal.util.OffsetPosition
+  * [error]         at scala.reflect.internal.util.Position.start(Position.scala:114)
+  *
+  * As a workaround, you can pass -Dsbt.parser.simple=true to your play/SBT command line. This will revert to the old .sbt parser that splits based on \n\n.
+  */
 
 def macroDependencies(version: String) =
   Seq(
@@ -23,21 +31,28 @@ def macroDependencies(version: String) =
     else
       Seq())
 
+// baseDirectory.value / ".."/"shared" / "src" / "main" / "scala-2.11"
+
 unmanagedSourceDirectories in Compile ++= {
-  if (scalaVersion.value startsWith "2.10.") {Seq(baseDirectory.value / "src"/ "main" / "scala-2.10") }
-  else {Seq(baseDirectory.value / "src" / "main" / "scala-2.11") }
+  if (scalaVersion.value startsWith "2.10.") {
+    Seq(baseDirectory.value / "src"/ "main" / "scala-2.10")
+  }
+  else {
+    Seq(baseDirectory.value / "src" / "main" / "scala-2.11")
+  }
 }
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.6" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.11.5" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.11.5" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.1.3" % "test"
 )
 
 libraryDependencies ++= macroDependencies(scalaVersion.value)
 
-// to debug macros, use -Ymacro-debug-lite
+// to debug macros, use -Ymacro-debug-lite. IGNORE DEPRECATION WARNING "method startOrPoint in trait Position is deprecated" FROM SCALA 2.10 -
 
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature", "-Xlint", "-Xfatal-warnings", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
+scalacOptions ++= Seq("-unchecked", "-feature", "-Xlint", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 // initialCommands := "import example._"
 

@@ -2,6 +2,12 @@ package main
 
 import info.collaboration_station.debug._
 
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.util.StatusPrinter;
+
+import org.slf4j._
+
+
 // wildcard import for implicit trace/assert/print functionality
 /**
   * Created by johnreed on 3/23/16. Run with sbt test:run
@@ -9,6 +15,56 @@ import info.collaboration_station.debug._
 object Main {
   def main(args: Array[String]) {
 
+    Debug.traceContents(List(0, 1, 2, 3, 4, 5, 6, 7, 8), start = 2, numElements = 3)
+
+    //val file = sourcecode.File()
+    //assert(file.endsWith("/sourcecode/shared/src/test/scala/sourcecode/Tests.scala"))
+
+    /*
+    Debug.traceCode(file)
+
+    val line = implicitly[sourcecode.Line]
+
+    Debug.traceCode(line)
+
+    val s = sourcecode.FullName.Machine()
+
+    Debug.traceCode( implicitly[sourcecode.Name] )
+    Debug.traceCode( implicitly[sourcecode.FullName.Machine] )
+
+    Thread.sleep(10)
+    println()
+    val parseFile: (String => String) = (s: String) => {
+      val parsedFileLinuxMac = s.split("/")
+      // val parsedFileWindows = s.split("\\") // java.util.regex.PatternSyntaxException: Unexpected internal error
+      parsedFileLinuxMac(parsedFileLinuxMac.length-1)
+    }
+    println( sourcecode.FullName.Machine() + "(" + parseFile( sourcecode.File() ) + ":" + sourcecode.Line() + ")" )
+    println( sourcecode.Name.Machine() + "(" + sourcecode.File() + ":" + sourcecode.Line() + ")" )
+    println( sourcecode.Enclosing.Machine() + "(" + sourcecode.File() + ":" + sourcecode.Line() + ")" )
+    println()
+    */
+    Thread.sleep(10)
+
+    System.err.println("Main.main(Main.scala:30)")
+
+    val logger = LoggerFactory.getLogger("main.HelloWorld1");
+    logger.debug("Hello world.");
+    logger.debug("Hello world.");
+    logger.debug("Hello world.");
+    Debug.disableEverything_!()
+    logger.debug( Debug.trace("Foo bar is awesome!") )
+    logger.debug( Debug.trace("Foo bar is awesome!") )
+    logger.debug( Debug.trace("Foo bar is awesome!") )
+    logger.debug("foo", new RuntimeException("re"))
+
+    val temp = LoggerFactory.getILoggerFactory();
+    val lc = temp.asInstanceOf[LoggerContext]
+    StatusPrinter.print(lc);
+
+    Thread.sleep(10)
+
+    /*
     Debug.traceCode({
       // print out the code as it appears in the source
       val myVal = 4;
@@ -47,6 +103,7 @@ object Main {
 
 
     Thread.sleep(20)
+    */
 
     /*
     val ll = new java.util.List() // interface Iterable<T>
@@ -124,7 +181,7 @@ val r = Array.apply(1,2,3) //  Array[T]
 
     Debug.enableEverything_!()
     System.err.println(Debug.trace(77, numLines = 2)) // this should return a String
-    System.err.println(Debug.assertNonFatal(2 == 3, "foo", numLines = 2)) // this should return a String
+    System.err.println(Debug.assertNonFatal(2 == 3, "foo", numLines = 20)) // this should return a String
     val fooVar = "foo"
     val barVar = "bar"
     Debug.traceCode[String] {

@@ -17,7 +17,9 @@ class StackSpec extends FlatSpec {
   }
 
   "Enabling trace to std err" should "allow tracing to std err" in {
+    // "Hello  World before on".trace;
     Debug.traceErrOn_!
+    // "Hello  World after on".trace;
     val traceMessage = {
       val originalErr: PrintStream = System.err;
       // To get it back later

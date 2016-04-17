@@ -13,3 +13,7 @@ Change log:
 "0.1.9" - Reformatted to allow separate imports for prints, traces, and asserts.
 
 "0.2.0" - Added master shutoff switch. (foo).assertEqual(bar) can take two different types.
+
+"0.2.1" - Fixed exception during macro expansion in traceExpression and traceCode in 2.10.4
+        - Added jar file names to stacktrace in assertions. Ex. [scalatest_2.11-2.2.6.jar]
+        - Enhanced container printing. Example: Debug.traceContents(List(0, 1, 2, 3, 4, 5), start = 2, numElements = 3) -> "List[Int] 2 3 4"
