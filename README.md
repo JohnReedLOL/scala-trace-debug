@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
-^ Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
+^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
 ____________________________________________________________________________________________________________________
 
 ### Requirements:
@@ -26,7 +26,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.1"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.2"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 

@@ -33,5 +33,9 @@ project/plugins/project/
 
 #IntelliJ specific
 .idea
+*.iml
+.settings
+.classpath
+.project
 
 # Created by .ignore support plugin (hsz.mobi)

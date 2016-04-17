@@ -84,10 +84,12 @@ object Printer {
       val stack = Thread.currentThread().getStackTrace
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
         val lineNumber = newStackOffset + row
-        val stackLine = stack(lineNumber)
+        val stackLine: StackTraceElement = stack(lineNumber)
+        val packageName = getGetPackageName(stackLine)
+        val myPackageName = if(packageName.equals("[]")) {""} else {packageName}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine
+        toPrint += "\n" + tab + "at " + stackLine + "  " + myPackageName
       }
     } else {
       // do not make a call to Thread.currentThread().getStackTrace
@@ -112,6 +114,16 @@ object Printer {
     toPrint
   }
 
+  def getGetPackageName(stackLine: StackTraceElement): String = {
+    try {
+      val className = Class.forName(stackLine.getClassName)
+      val stringLocation = className.getProtectionDomain().getCodeSource().getLocation().toString()
+      "[" + stringLocation.substring(stringLocation.lastIndexOf('/') + 1) + "]"
+    } catch {
+      case _:java.lang.Exception => { "" }
+    }
+  }
+
   /** Prints out the object with N lines of stack trace. Meant to be used only for asserts
     *
     * @param toPrintOutNullable    the object to print out. May be "null"
@@ -131,32 +143,14 @@ object Printer {
     }
     var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
 
-    /**
-      * for (StackTraceElement el : e.getStackTrace()) {
-      * Class<?> clazz = Class.forName(el.getClassName());
-      * String location = clazz.getProtectionDomain().getCodeSource().getLocation().toString();
-      * System.out.println(location.substring(location.lastIndexOf('/') +1));
-      * }
-      */
-
     if (numStackLinesIntended > 0) {
       // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
       val stack = Thread.currentThread().getStackTrace
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
         val lineNumber = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
-        // assertions add package names to their traces
-        val packageName: String = {
-          try {
-            val className = Class.forName(stackLine.getClassName)
-            val stringLocation = className.getProtectionDomain().getCodeSource().getLocation().toString()
-            "[" + stringLocation.substring(stringLocation.lastIndexOf('/') + 1) + "]"
-          } catch {
-            case _:java.lang.Exception => { "" }
-          }
-        }
+        val packageName = getGetPackageName(stackLine)
         val myPackageName = if(packageName.equals("[]")) {""} else {packageName}
-
         // The java stack traces use a tab character, not a space
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + "  " + myPackageName
