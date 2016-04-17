@@ -15,6 +15,8 @@ import org.slf4j._
 object Main {
   def main(args: Array[String]) {
 
+    println( Log.find("foo" + 2 + "bar") )
+
     Debug.traceContents(List(0, 1, 2, 3, 4, 5, 6, 7, 8), start = 2, numElements = 3)
 
     //val file = sourcecode.File()
