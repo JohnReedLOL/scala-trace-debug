@@ -65,7 +65,6 @@ class StackSpec extends FlatSpec {
 
 
   "Enabling trace to std out" should "allow tracing to std out" in {
-    Debug.traceOutOn_!
     val traceMessage = {
       val originalOut: PrintStream = System.out;
       // To get it back later
@@ -73,6 +72,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
+      Debug.traceOutOn_!
       "Hello  World".traceStdOut; // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);

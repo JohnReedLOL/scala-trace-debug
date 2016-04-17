@@ -1,5 +1,6 @@
 package info.collaboration_station.debug
 
+import info.collaboration_station.debug.Helpers.MacroHelperMethod
 import info.collaboration_station.debug.internal.Printer
 
 import scala.language.experimental.macros
@@ -305,17 +306,7 @@ object Debug {
   object traceCode {
     def traceCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val blockTree = block.tree
-      val blockSource = new String(blockTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = blockSource.slice(start, start + end)
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
       val args = List(arg1)
       val toReturn =
@@ -327,17 +318,7 @@ object Debug {
 
     def traceLinesCodeImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val blockTree = block.tree
-      val blockSource = new String(blockTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = blockSource.slice(start, start + end)
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
