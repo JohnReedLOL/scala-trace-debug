@@ -5,7 +5,15 @@ Provides user-friendly prints, traces, assertions, container printing, and sourc
 
 ____________________________________________________________________________________________________________________
 
-### Example:
+### Examples:
+
+#### Logger Integration:
+
+![Logger](http://i.imgur.com/Vc2YeaS.png)
+
+^ If the environment variable or system property `ENABLE_TRACE_DEBUG` is false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time. ^
+
+#### No Logger Integration:
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
@@ -26,7 +34,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.2"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.3"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
@@ -146,7 +154,7 @@ ________________________________________________________________________________
 
 ### Performance:
 
-No overhead for no stack trace. 
+No overhead for no stack trace.
 
 ```scala
 "foo".trace(0) // no call to Thread.currentThread.getStackTrace()

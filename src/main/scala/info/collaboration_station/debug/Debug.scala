@@ -221,8 +221,8 @@ object Debug {
   (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue): String = {
     var toPrint = ""
     val iterator = collection.toIterator
-    var currentElement: Long = 0 // Long to prevent overflow
-    val end: Long = start + numElements  // Long to prevent overflow
+    var currentElement: Long = 0L // Long to prevent overflow
+    val end = start.toLong + numElements.toLong  // Long to prevent overflow
     // first increment the iterator to start
     while (currentElement < start) {
       if (iterator.hasNext) {
@@ -290,6 +290,7 @@ object Debug {
   object traceCode {
     def traceCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
       import c.universe._
+      import scala.language.existentials
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
       val args = List(arg1)
@@ -302,6 +303,7 @@ object Debug {
 
     def traceLinesCodeImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
+      import scala.language.existentials
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
       val arg2 = q"$numLines"

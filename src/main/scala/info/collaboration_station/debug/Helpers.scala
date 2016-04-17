@@ -1,10 +1,10 @@
 package info.collaboration_station.debug
 
 /**
-  * Created by johnreed on 4/17/16.
+  * Created by johnreed on 4/17/16. A place for helper methods.
   */
 protected[debug] object Helpers {
-  class MacroHelperMethod[C <: Compat.Context](val c: C) {
+  final class MacroHelperMethod[C <: Compat.Context](val c: C) {
     def getSourceCode(toPrint: c.Tree): c.Tree = {
       import c.universe._
       val blockTree = toPrint

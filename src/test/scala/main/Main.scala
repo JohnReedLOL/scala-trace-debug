@@ -15,9 +15,13 @@ import org.slf4j._
 object Main {
   def main(args: Array[String]) {
 
-    println( Log.find("foo" + 2 + "bar") )
-
-    Debug.traceContents(List(0, 1, 2, 3, 4, 5, 6, 7, 8), start = 2, numElements = 3)
+    val logger = LoggerFactory.getLogger("main.HelloWorld");
+    import info.collaboration_station.debug.Log
+    logger.debug( Log.find("foo" + 2 + "bar") )
+    logger.debug( Log.find( List(0,1,2,3,4) ) )
+    logger.debug( Log.find( List(0,1,2,3,4), 1) )
+    logger.debug( Log.find( List(0,1,2,3,4), 1, 3) )
+    Debug.traceContentsStdOut(List(0, 1, 2, 3, 4, 5), 1, numElements = 3)
 
     //val file = sourcecode.File()
     //assert(file.endsWith("/sourcecode/shared/src/test/scala/sourcecode/Tests.scala"))
@@ -50,7 +54,6 @@ object Main {
 
     System.err.println("Main.main(Main.scala:30)")
 
-    val logger = LoggerFactory.getLogger("main.HelloWorld1");
     logger.debug("Hello world.");
     logger.debug("Hello world.");
     logger.debug("Hello world.");

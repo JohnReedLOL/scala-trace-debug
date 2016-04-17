@@ -4,21 +4,11 @@ organization := "scala-trace-debug"
 
 scalaVersion := "2.11.7"
 
-version := "0.2.2"
+version := "0.2.3"
 
 crossScalaVersions := Seq("2.10.4", "2.11.7")
 
 resolvers += Resolver.sonatypeRepo("releases")
-
-/** Error during compilation of source code that depends on macros that access the source code:
-  *
-  * [info] Setting version to 2.10.4
-  * exception during macro expansion:
-  * [error] java.lang.UnsupportedOperationException: Position.start on class scala.reflect.internal.util.OffsetPosition
-  * [error]         at scala.reflect.internal.util.Position.start(Position.scala:114)
-  *
-  * As a workaround, you can pass -Dsbt.parser.simple=true to your play/SBT command line. This will revert to the old .sbt parser that splits based on \n\n.
-  */
 
 def macroDependencies(version: String) =
   Seq(
