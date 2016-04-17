@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 ![Logger](http://i.imgur.com/Vc2YeaS.png)
 
-^ If the environment variable or system property `ENABLE_TRACE_DEBUG` is false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time. ^
+^ If you set the environment variable or system property `ENABLE_TRACE_DEBUG` to false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time. ^
 
 #### No Logger Integration:
 
