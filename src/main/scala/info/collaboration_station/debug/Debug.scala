@@ -215,18 +215,11 @@ object Debug {
   import scala.reflect.runtime.universe.WeakTypeTag
 
   /**
-    * Traces the contents of a Scala container to standard error. To convert a Java container into a Scala container, import collection.JavaConversions._
-    * Note: The maximum number of elements it can print is 2 to the 32 elements.
-    * @param collection  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
-    * @param start the index of the first element to print. To work on all containers, index is counted using an iterator.
-    * @param numElements the number of elements you want to trace. Defaults to all elements in the collection (or 2 to the 32 elements)
-    * @param numLines    the number of lines of stack trace.
-    * @return the string containing what was printed or what would have been printed if printing was enabled.
+    * Gets the collection as a string of n elements from start to start + numElements
     */
-  def traceContents[CollectionType <: TraversableLike[Any, Any]]
-  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
-    val collectionType = tag.tpe
-    var toPrint = collectionType.toString
+  def getCollectionAsString[CollectionType <: TraversableLike[Any, Any]]
+  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue): String = {
+    var toPrint = ""
     val iterator = collection.toIterator
     var currentElement: Long = 0 // Long to prevent overflow
     val end: Long = start + numElements  // Long to prevent overflow
@@ -252,6 +245,22 @@ object Debug {
         currentElement = Long.MaxValue
       }
     }
+    toPrint
+  }
+
+  /**
+    * Traces the contents of a Scala container to standard error. To convert a Java container into a Scala container, import collection.JavaConversions._
+    * Note: The maximum number of elements it can print is 2 to the 32 elements.
+    * @param collection  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
+    * @param start the index of the first element to print. To work on all containers, index is counted using an iterator.
+    * @param numElements the number of elements you want to trace. Defaults to all elements in the collection (or 2 to the 32 elements)
+    * @param numLines    the number of lines of stack trace.
+    * @return the string containing what was printed or what would have been printed if printing was enabled.
+    */
+  def traceContents[CollectionType <: TraversableLike[Any, Any]]
+  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
+    val collectionType = tag.tpe
+    val toPrint = collectionType.toString + " " + getCollectionAsString(collection, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
   }
 
@@ -267,32 +276,7 @@ object Debug {
   def traceContentsStdOut[CollectionType <: TraversableLike[Any, Any]]
   (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
       val collectionType = tag.tpe
-      var toPrint = collectionType.toString
-      val iterator = collection.toIterator
-      var currentElement: Long = 0 // Long to prevent overflow
-      val end: Long = start + numElements  // Long to prevent overflow
-      // first increment the iterator to start
-      while (currentElement < start) {
-        if (iterator.hasNext) {
-          // Skip this element
-          iterator.next()
-          currentElement += 1
-        } else {
-          // get out of loop
-          currentElement = Long.MaxValue
-        }
-      }
-      // Now currentElement = start
-      // then do real printing
-      while(currentElement < end) {
-        if (iterator.hasNext) {
-          toPrint = toPrint + " " + iterator.next()
-          currentElement += 1
-        } else {
-          // get out of loop
-          currentElement = Long.MaxValue
-        }
-      }
+      val toPrint = collectionType.toString + " " + getCollectionAsString(collection, start, numElements)
       Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
     }
 

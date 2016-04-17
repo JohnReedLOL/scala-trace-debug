@@ -16,7 +16,7 @@ object Log {
 
     def apply(toPrint: Any): String = macro findImpl
 
-    //def apply(toPrint: TraversableLike[Any, Any]): String = macro findContainerImpl
+    // def apply(toPrint: TraversableLike[Any, Any]): String = macro findContainerImpl
 
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
