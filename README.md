@@ -61,6 +61,8 @@ ________________________________________________________________________________
 
 ![ContainerExample](http://i.imgur.com/Ad5CaiI.png)
 
+^ Note the jar file name, `scalatest_2.11`, in the stack trace. ^
+
 ^ Works for any Scala container. To pass in Java containers, [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 
 ____________________________________________________________________________________________________________________
