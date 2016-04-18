@@ -17,7 +17,7 @@ ________________________________________________________________________________
 
 ![Logger](http://i.imgur.com/JFmswtD.png)
 
-^ The left side in parens is the name of a variable. The right side (after ->) is the contents. ^
+^ The left side in parens is the name of a variable; the right side (after ->) is the contents. ^
 
 ____________________________________________________________________________________________________________________
 
