@@ -11,15 +11,15 @@ ________________________________________________________________________________
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
-^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
+^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
 
 #### With logger:
 
 ![Logger](http://i.imgur.com/JFmswtD.png)
 
-^ The left side in () is the name of a variable. The right side (after ->) is the contents.
+^ The left side in parens is the name of a variable. The right side (after ->) is the contents. ^
 
-^ No overhead of getting a full stack trace incurred by `Log.find`.
+^ No overhead of getting a full stack trace incurred by `Log.find`. ^
 
 ____________________________________________________________________________________________________________________
 
