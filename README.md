@@ -1,5 +1,5 @@
 # scala-trace-debug
-Make multithreaded bug tracing and prevention easier than ever with scala trace debug. 
+Make multithreaded bug tracing and prevention easier than ever with scala trace debug - with or without a logger. 
 
 Provides user-friendly prints, traces, assertions, container printing, and source code printing.
 
@@ -11,7 +11,7 @@ ________________________________________________________________________________
 
 ![Logger](http://i.imgur.com/JFmswtD.png)
 
-^ `Log.find` - no overhead of getting a full stack trace incurred. If you set the environment variable or system property `ENABLE_TRACE_DEBUG` to false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time. ^
+^ No overhead of getting a full stack trace incurred by `Log.find`. ^
 
 #### No Logger Integration:
 
@@ -157,6 +157,9 @@ No overhead for no stack trace.
 ```scala
 "foo".trace(0) // no call to Thread.currentThread.getStackTrace()
 ```
+
+If you set the environment variable or system property `ENABLE_TRACE_DEBUG` to false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time.
+
 ____________________________________________________________________________________________________________________
 
 #### More info:
