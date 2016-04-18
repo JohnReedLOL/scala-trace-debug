@@ -19,8 +19,6 @@ ________________________________________________________________________________
 
 ^ The left side in parens is the name of a variable. The right side (after ->) is the contents. ^
 
-^ No overhead of getting a full stack trace incurred by `Log.find`. ^
-
 ____________________________________________________________________________________________________________________
 
 ### Getting started:
@@ -46,7 +44,7 @@ ________________________________________________________________________________
 
 ### Logger Incorporation:
 
-`Log.find` is designed to be used with a logger.
+`Log.find` is designed to be used with a logger. Does not incut the overhead of a full stack trace.
 
 `Debug` methods can be used without a logger, but all calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
