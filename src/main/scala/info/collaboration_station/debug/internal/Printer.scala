@@ -79,7 +79,7 @@ object Printer {
     } else {
       toPrintOutNullable.toString
     }
-    var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
+    var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
     if (numStackLinesIntended > 0) {
       val stack = Thread.currentThread().getStackTrace
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
@@ -94,7 +94,7 @@ object Printer {
     } else {
       // do not make a call to Thread.currentThread().getStackTrace
     }
-    toPrint += "\n"
+    // toPrint += "\n"
     if (!useStdOut_? && !Debug.traceErrOn_?) {
       return toPrint // if we are using standard error and tracing to standard error is off, return
     }
@@ -153,7 +153,7 @@ object Printer {
     } else {
       toPrintOutNullable.toString // calling toString on null is bad
     }
-    var toPrint = "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
+    var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
 
     if (numStackLinesIntended > 0) {
       // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
@@ -167,9 +167,9 @@ object Printer {
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + " " + myPackageName
       }
-      toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
+      toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^"
     } else {
-      toPrint += "\n" + "^ An assertion failure has occured. ^" + "\n"
+      toPrint += "\n" + "^ An assertion failure has occured. ^"
     }
     if (!isFatal_? && !Debug.nonFatalAssertOn_?) {
       return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
