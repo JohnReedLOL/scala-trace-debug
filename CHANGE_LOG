@@ -25,3 +25,5 @@ Change log:
 "0.2.4" - Added package names from LogBack. See (/home/johnreed/sbtProjects/debug/experimental/experimental/src/main/java/info/collaboration_station/debug/internal/PackagingDataCalculator.java)
 
 "0.2.5" - Windows file names (\\)
+
+"0.2.6" - Log.find(foo, 2) was supposed to print 2 elements of foo

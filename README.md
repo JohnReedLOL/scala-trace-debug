@@ -7,17 +7,17 @@ ________________________________________________________________________________
 
 ### Examples:
 
+#### With logger:
+
+![Logger](http://i.imgur.com/KijjzjD.png)
+
+^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
+
 #### Without logger:
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
-
-#### With logger:
-
-![Logger](http://i.imgur.com/JFmswtD.png)
-
-^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
 ____________________________________________________________________________________________________________________
 
@@ -28,7 +28,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.5"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.6"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
