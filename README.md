@@ -184,4 +184,4 @@ ________________________________________________________________________________
 
 #### Code layout:
 
-Currently all the actual printing is done in [`Printer.scala`](src/main/scala/info/collaboration_station/debug/internal/Printer.scala), all the "add-on" methods are in [`package.scala`](src/main/scala/info/collaboration_station/debug/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/info/collaboration_station/debug/Debug.scala)
+Currently all the actual printing is done in [`Printer.scala`](src/main/scala/info/collaboration_station/debug/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/info/collaboration_station/debug/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/info/collaboration_station/debug/Debug.scala)
