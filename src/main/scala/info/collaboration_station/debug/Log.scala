@@ -9,7 +9,39 @@ import scala.language.experimental.macros
   * Created by johnreed on 4/17/16. A place for log methods
   */
 object Log {
+ 
+ /**
+  * Adds a position to your print statements.
+  */
+  object pos {
+   
+     /**
+      * Returns a string that helps you locate this print statement. Just adds a position.
+      */
+    def apply(toPrint: Any): String = macro posImpl
+    
+    def posImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
+      import c.universe._
+      if (Printer.debugDisabled_?) {
+        return c.Expr[String](q"""  ""  """) // return empty string expression
+      }
+      val lineNum = c.enclosingPosition.line
+      val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
+      val trimmedFileName = processFileName(fileName)
+      val fullName = Compat.enclosingOwner(c).fullName.trim
+      import scala.language.existentials
+      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val toReturn =
+        q"""
+       ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+     """
+      c.Expr[String](toReturn)
+    }
+  }
 
+  /**
+   * Makes it easy to find your print statements.
+   */
   object find {
 
     /**
