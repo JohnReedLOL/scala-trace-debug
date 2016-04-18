@@ -184,4 +184,4 @@ ________________________________________________________________________________
 
 #### Code layout:
 
-Currently all the actual printing is done in `info.collaboration_station.debug.internal.Printer`, all the "add-on" methods are in `info.collaboration_station.debug.package.scala`, and all the calls to the "Debug" object are in [`info.collaboration_station.debug.Debug`](https://github.com/JohnReedLOL/scala-trace-debug/blob/master/src/main/scala/info/collaboration_station/debug/Debug.scala)
+Currently all the actual printing is done in [`info.collaboration_station.debug.internal.Printer`](src/main/scala/info/collaboration_station/debug/internal/Printer.scala), all the "add-on" methods are in `info.collaboration_station.debug.package.scala`, and all the calls to the "Debug" object are in [`info.collaboration_station.debug.Debug`](src/main/scala/info/collaboration_station/debug/Debug.scala)
