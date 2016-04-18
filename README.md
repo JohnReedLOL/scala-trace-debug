@@ -17,7 +17,9 @@ ________________________________________________________________________________
 
 ![Logger](http://i.imgur.com/JFmswtD.png)
 
-^ No overhead of getting a full stack trace incurred by `Log.find`. ^
+^ The left side in () is the name of a variable. The right side (after ->) is the contents.
+
+^ No overhead of getting a full stack trace incurred by `Log.find`.
 
 ____________________________________________________________________________________________________________________
 
