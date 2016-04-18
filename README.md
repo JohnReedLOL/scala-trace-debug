@@ -7,13 +7,13 @@ ________________________________________________________________________________
 
 ### Examples:
 
-#### Logger Integration:
+#### With Logger:
 
 ![Logger](http://i.imgur.com/JFmswtD.png)
 
 ^ No overhead of getting a full stack trace incurred by `Log.find`. ^
 
-#### No Logger Integration:
+#### Without Logger:
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
