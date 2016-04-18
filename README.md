@@ -138,7 +138,6 @@ ________________________________________________________________________________
 
 ### Benefits:
 
-- 100% usable with any logger
 - Easy to locate print statements. Gives you an idea of what each thread is doing.
 - Easy to locate and remove trace statements (Ctr-R find-and-replace or set ENABLE_TRACE_DEBUG to "false")
 - Customizable features including stack trace length and enabling/disabling of assertions and traces.
