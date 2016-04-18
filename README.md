@@ -7,17 +7,17 @@ ________________________________________________________________________________
 
 ### Examples:
 
-#### With logger:
-
-![Logger](http://i.imgur.com/JFmswtD.png)
-
-^ No overhead of getting a full stack trace incurred by `Log.find`. ^
-
 #### Without logger:
 
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
+
+#### With logger:
+
+![Logger](http://i.imgur.com/JFmswtD.png)
+
+^ No overhead of getting a full stack trace incurred by `Log.find`. ^
 
 ____________________________________________________________________________________________________________________
 
