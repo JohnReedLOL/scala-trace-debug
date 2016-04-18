@@ -126,7 +126,7 @@ ________________________________________________________________________________
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-######^ Useful if you have a line like "foo bar baz bizz" and you can't find where the dot and parenthesis go ^
+######^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^
 
 #### _Code tracing and assertions:_
 
