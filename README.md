@@ -178,8 +178,6 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
-[https://www.reddit.com/r/scala/comments/4fab8j/debugging_made_easier/](https://www.reddit.com/r/scala/comments/4fab8j/debugging_made_easier/)
-
 ____________________________________________________________________________________________________________________
 
 #### Code layout:
