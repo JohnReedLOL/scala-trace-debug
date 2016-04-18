@@ -18,12 +18,6 @@ ________________________________________________________________________________
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]`
-____________________________________________________________________________________________________________________
-
-### Requirements:
-
-- Scala 2.10.4 or higher
-- Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 
@@ -38,6 +32,13 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.4"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
+
+____________________________________________________________________________________________________________________
+
+### Requirements:
+
+- Scala 2.10.4 or higher
+- Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 
