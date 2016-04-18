@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 #### Logger Integration:
 
-![Logger](http://i.imgur.com/Vc2YeaS.png)
+![Logger](http://i.imgur.com/JFmswtD.png)
 
 ^ `Log.find` - no overhead of getting a full stack trace incurred. If you set the environment variable or system property `ENABLE_TRACE_DEBUG` to false, the preprocessor will replace all calls to `Log.find` with an empty string at compile time. ^
 

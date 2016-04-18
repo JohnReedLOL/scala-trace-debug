@@ -15,13 +15,13 @@ import org.slf4j._
 object Main {
   def main(args: Array[String]) {
 
-    val logger = LoggerFactory.getLogger("main.HelloWorld");
+    // Easy to locate log statements
     import info.collaboration_station.debug.Log
-    logger.debug( Log.find("foo" + 2 + "bar") )
-    logger.debug( Log.find( List(0,1,2,3,4) ) )
-    logger.debug( Log.find( List(0,1,2,3,4), 1) )
-    logger.debug( Log.find( List(0,1,2,3,4), 1, 3) )
-    Debug.traceContentsStdOut(List(0, 1, 2, 3, 4, 5), 1, numElements = 3)
+    val logger = LoggerFactory.getLogger("Logger");
+    logger.warn( Log.find("foo" + 2 + "bar") )
+    logger.warn( Log.find( List(0,1,2,3) ) )
+    logger.warn( Log.find( List(0,1,2,3), 2) ) // start at 2
+    Debug.traceContents(List(0,1,2,3), numElements = 3)
 
     //val file = sourcecode.File()
     //assert(file.endsWith("/sourcecode/shared/src/test/scala/sourcecode/Tests.scala"))
