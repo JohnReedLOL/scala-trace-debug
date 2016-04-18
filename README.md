@@ -55,7 +55,7 @@ ________________________________________________________________________________
 ### Master Shutoff Switch:
 
 If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty string at compile time.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
 ____________________________________________________________________________________________________________________
 
 ### Container Printing:
