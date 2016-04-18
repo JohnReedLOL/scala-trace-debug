@@ -11,11 +11,12 @@ import org.slf4j._
 class StackSpec extends FlatSpec {
 
   "Contents tracing" should "work" in {
-    val logger = LoggerFactory.getLogger("main.Test");
-    Debug.traceErrOff_! // printing disabled to std err
-    val contentsString = Debug.traceContents(List(0,1,2,3), numLines = 5)
-    logger.warn("\n" + contentsString)
-    Debug.traceOutOn_! // printing enabled to std out
+
+
+    val logger = LoggerFactory.getLogger("Logger");
+    Debug.traceErrOff_! // disabled printing to std err
+    logger.warn( Debug.traceContents(List(0, 1, 2, 3), numLines = 5) )
+    Debug.traceOutOn_! // enabled printing to std out
     Debug.traceContentsStdOut( Map("1"->1, "2"->2, "3"->3) )
 
 

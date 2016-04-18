@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 #### With logger:
 
-![Logger](http://i.imgur.com/KijjzjD.png)
+![Logger](http://i.imgur.com/4O0fH0W.png)
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
@@ -18,6 +18,8 @@ ________________________________________________________________________________
 ![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
 
 ^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
+
+^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
 
 ____________________________________________________________________________________________________________________
 
@@ -28,7 +30,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.7"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.9"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
@@ -44,7 +46,7 @@ ________________________________________________________________________________
 
 ### Logger Incorporation:
 
-`Log.find` is designed to be used with a logger. Does not incut the overhead of a full stack trace.
+`Log.find` is designed to be used with a logger. Does not incur the overhead of a full stack trace.
 
 `Debug` methods can be used without a logger, but all calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
@@ -60,11 +62,11 @@ ________________________________________________________________________________
 
 ### Container Printing:
 
-![ContainerExample](http://i.imgur.com/Ad5CaiI.png)
+![ContainerExample](http://i.imgur.com/P8mlz0C.png)
 
 ^ Note the jar file name, `scalatest_2.11`, in the stack trace. ^
 
-^ Container printing for any Scala container. To pass in Java containers, [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
+^ Container printing works for any Scala container. To pass in Java containers, [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 
 ____________________________________________________________________________________________________________________
 
@@ -77,8 +79,6 @@ ________________________________________________________________________________
 Example functions: http://pastebin.com/2e1JN1De
 
 ^ For more examples, see [Main.scala](src/test/scala/main/Main.scala), which you can run with `sbt test:run`
-
-Note: Fatal assertions kill the application with exit code 7. Non-fatal assertions never terminate any part of the application, not even the currently running thread. To terminate only the currently running thread, use an exception.
 
 ____________________________________________________________________________________________________________________
 

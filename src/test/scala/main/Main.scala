@@ -15,14 +15,18 @@ import org.slf4j._
 object Main {
   def main(args: Array[String]) {
 
-    // Easy to locate log statements
-    import info.collaboration_station.debug.Log
-    val logger = LoggerFactory.getLogger("Logger");
-    logger.warn( Log.pos("foo") )
-    logger.warn( Log.find("foo" + 2 + "bar") )
-    logger.warn( Log.find( List(0,1,2,3) ) )
-    logger.warn( Log.find( List(0,1,2,3), 2) ) // 2 elements
-    Debug.traceContents(List(0,1,2,3), numElements = 3)
+// Easy to locate log statements
+import info.collaboration_station.debug.Log
+val logger = LoggerFactory.getLogger("Logger");
+logger.warn(Log.pos("foo")) // append position
+logger.warn(Log.find("foo" + 2 + "bar"))
+logger.warn(Log.find(List(0, 1, 2, 3)))
+logger.warn(Log.find(List(0, 1, 2, 3), 2)) // 2 elements
+
+
+
+
+    Debug.traceContents(List(0, 1, 2, 3), numElements = 3)
 
     //val file = sourcecode.File()
     //assert(file.endsWith("/sourcecode/shared/src/test/scala/sourcecode/Tests.scala"))
@@ -59,12 +63,12 @@ object Main {
     logger.debug("Hello world.");
     logger.debug("Hello world.");
     Debug.disableEverything_!()
-    logger.debug( Debug.trace("Foo bar is awesome!") )
-    logger.debug( Debug.trace("Foo bar is awesome!") )
-    logger.debug( Debug.trace("Foo bar is awesome!") )
+    logger.debug(Debug.trace("Foo bar is awesome!"))
+    logger.debug(Debug.trace("Foo bar is awesome!"))
+    logger.debug(Debug.trace("Foo bar is awesome!"))
     logger.debug("foo", new RuntimeException("re"))
     Debug.enableEverything_!()
-    Debug.traceContents(List(1,2,3,4,5,6,7))
+    Debug.traceContents(List(1, 2, 3, 4, 5, 6, 7))
 
     val temp = LoggerFactory.getILoggerFactory();
     val lc = temp.asInstanceOf[LoggerContext]
@@ -142,11 +146,13 @@ val r = Array.apply(1,2,3) //  Array[T]
       "Hey3"
     }
     Debug.traceStdOutExpression({
-      val myVal = 5; 1 + 2 + myVal
+      val myVal = 5;
+      1 + 2 + myVal
     }, 0) // 0 lines of stack trace
     Debug.traceStdOutExpression("Hey4", 2)
     Debug.traceStackStdOutExpression {
-      val myVal = 6; 1 + 2 + myVal
+      val myVal = 6;
+      1 + 2 + myVal
     }
 
     Thread.sleep(10) // sleep to prevent print statements from getting mixed up
@@ -155,11 +161,13 @@ val r = Array.apply(1,2,3) //  Array[T]
       "Hey5"
     }
     Debug.traceExpression {
-      val myVal = 3; 1 + 2 + myVal
+      val myVal = 3;
+      1 + 2 + myVal
     }
     Debug.traceExpression("Hey6", 2)
     Debug.traceStackExpression {
-      val myVal = 4; 1 + 2 + myVal
+      val myVal = 4;
+      1 + 2 + myVal
     }
     Debug.traceExpression {
       val one = 1;
@@ -170,20 +178,25 @@ val r = Array.apply(1,2,3) //  Array[T]
       one * two + three / four + five;
     }
     System.err.println("Assertions return strings: " + Debug.assertNonFatalExpression({
-      val someVal = 2; 1 + someVal == 4
+      val someVal = 2;
+      1 + someVal == 4
     }, 3))
     Debug.assertNonFatalExpression {
-      val someVal = 2; 1 + someVal == 4
+      val someVal = 2;
+      1 + someVal == 4
     }
     Debug.assertExpression({
-      val one = 1; one + 1 == 2
+      val one = 1;
+      one + 1 == 2
     }, 0) // 0 lines of stack trace
     Debug.assertExpression {
-      val myVal = 3; 1 + 2 == myVal
+      val myVal = 3;
+      1 + 2 == myVal
     }
     Debug.assertExpression(1 + 2 == 3)
     Debug.assertNonFatalExpression({
-      val noStack = "No stack trace is generated"; noStack.equals("foo")
+      val noStack = "No stack trace is generated";
+      noStack.equals("foo")
     }, 0) // no lines of stack trace
     Debug.assertNonFatal(1 == 2, "No stack trace is printed", 0)
 
