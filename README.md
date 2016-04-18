@@ -57,11 +57,9 @@ ________________________________________________________________________________
 
 ### Container Printing:
 
-![ContainerExample](http://i.imgur.com/IMk1CnM.png)
+![ContainerExample](http://i.imgur.com/Ad5CaiI.png)
 
-^ A String containing the stack trace is obtained on line 33 and passed into println on line 34, giving you `List[Int] 1 2 3`. The start element number of elements printed is adjustable. Ex. `Debug.traceContents(List(0, 1, 2, 3, 4, 5), start = 2, numElements = 3)` ^
-
-^ Works for any Scala container. To pass in Java containers, you can [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
+^ Works for any Scala container. To pass in Java containers, [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
 
 ____________________________________________________________________________________________________________________
 

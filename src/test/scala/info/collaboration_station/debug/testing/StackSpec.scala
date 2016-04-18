@@ -4,12 +4,21 @@ import java.io._
 
 import info.collaboration_station.debug._
 import org.scalatest._
+import org.slf4j._
 
 // import info.collaboration_station.debug.testing.TestingUtils // this import comes from debugtrace/test/scala
 
 class StackSpec extends FlatSpec {
 
-  "one plus one" should "equal two" in {
+  "Contents tracing" should "work" in {
+    val logger = LoggerFactory.getLogger("main.Test");
+    Debug.traceErrOff_! // printing disabled to std err
+    val contentsString = Debug.traceContents(List(0,1,2,3), numLines = 5)
+    logger.warn("\n" + contentsString)
+    Debug.traceOutOn_! // printing enabled to std out
+    Debug.traceContentsStdOut( Map("1"->1, "2"->2, "3"->3) )
+
+
     assertResult(2) {
       1 + 1
     }
