@@ -34,7 +34,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.3"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "0.2.4"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 

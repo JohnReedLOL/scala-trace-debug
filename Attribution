@@ -3,3 +3,5 @@ Works Cited
 Adam Warski is credited for the idea of making a master shutoff switch. The code is taken from scala-macro-debug.
 
 Li Haoyi is credited for the code that made it backwards compatible with Scala 2.10.4. sourcecode.Compat is taken from lihaoyi/sourcecode.
+
+Ceki Gulcu seems to have written the code for getCodeLocation (I got the idea of adding package names from LogBack)

@@ -2,10 +2,10 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>scala-trace-debug</groupId>
-    <artifactId>scala-trace-debug_2.10</artifactId>
+    <artifactId>scala-trace-debug_2.11</artifactId>
     <packaging>jar</packaging>
     <description>scala-trace-debug</description>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <licenses>
         <license>
             <name>Apache-2.0</name>
@@ -21,23 +21,23 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-compiler</artifactId>
-            <version>2.10.4</version>
+            <version>2.11.7</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.4</version>
+            <version>2.11.7</version>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
+            <artifactId>scalatest_2.11</artifactId>
             <version>2.2.6</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.scalacheck</groupId>
-            <artifactId>scalacheck_2.10</artifactId>
+            <artifactId>scalacheck_2.11</artifactId>
             <version>1.11.5</version>
             <scope>test</scope>
         </dependency>
@@ -50,13 +50,8 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-reflect</artifactId>
-            <version>2.10.4</version>
+            <version>2.11.7</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.scalamacros</groupId>
-            <artifactId>quasiquotes_2.10</artifactId>
-            <version>2.0.0</version>
         </dependency>
     </dependencies>
     <repositories>

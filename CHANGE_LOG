@@ -21,3 +21,5 @@ Change log:
 "0.2.2" - Added jar file name to traces as well.
 
 "0.2.3" - Added logger integration, "find" method
+
+"0.2.4" - Added package names from LogBack. See (/home/johnreed/sbtProjects/debug/experimental/experimental/src/main/java/info/collaboration_station/debug/internal/PackagingDataCalculator.java)

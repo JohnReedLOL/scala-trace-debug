@@ -85,11 +85,11 @@ object Printer {
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
         val lineNumber = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
-        val packageName = getGetPackageName(stackLine)
-        val myPackageName = if(packageName.equals("[]")) {""} else {packageName}
+        val packageName = getPackageName(stackLine)
+        val myPackageName = if(packageName.equals("")) {""} else {"[" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine + "  " + myPackageName
+        toPrint += "\n" + tab + "at " + stackLine + " " + myPackageName
       }
     } else {
       // do not make a call to Thread.currentThread().getStackTrace
@@ -114,11 +114,23 @@ object Printer {
     toPrint
   }
 
-  def getGetPackageName(stackLine: StackTraceElement): String = {
+  /**
+    * Gets the package name
+    */
+  protected[internal] def getPackageName(stackLine: StackTraceElement): String = {
     try {
       val className = Class.forName(stackLine.getClassName)
-      val stringLocation = className.getProtectionDomain().getCodeSource().getLocation().toString()
-      "[" + stringLocation.substring(stringLocation.lastIndexOf('/') + 1) + "]"
+      val stringLocation = if(className != null) {
+        val packageName = PackagingDataCalculator.getCodeLocation(className)
+        if(packageName.endsWith(".jar") ) {
+          packageName
+        } else {
+          ""
+        }
+      } else {
+        ""
+      }
+      stringLocation
     } catch {
       case _:java.lang.Exception => { "" }
     }
@@ -149,11 +161,11 @@ object Printer {
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
         val lineNumber = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
-        val packageName = getGetPackageName(stackLine)
-        val myPackageName = if(packageName.equals("[]")) {""} else {packageName}
+        val packageName = getPackageName(stackLine)
+        val myPackageName = if(packageName.equals("")) {""} else {"[" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine + "  " + myPackageName
+        toPrint += "\n" + tab + "at " + stackLine + " " + myPackageName
       }
       toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^" + "\n"
     } else {
