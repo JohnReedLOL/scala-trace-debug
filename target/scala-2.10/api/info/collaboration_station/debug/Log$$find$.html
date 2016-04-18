@@ -171,7 +171,7 @@
               
         </dd></dl></div>
     </li><li name="info.collaboration_station.debug.Log.find#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(container:scala.collection.TraversableLike[Any,Any],start:Int):String"></a>
+      <a id="apply(container:scala.collection.TraversableLike[Any,Any],numElements:Int):String"></a>
       <a id="apply(TraversableLike[Any,Any],Int):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -179,10 +179,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="container">container: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="start">start: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">apply</span><span class="params">(<span name="container">container: <span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="numElements">numElements: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns a string that helps you locate this container.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a string that helps you locate this container. Prints all of this container's elements from start.</p></div><dl class="paramcmts block"><dt class="param">start</dt><dd class="cmt"><p>the index of the first element to print
+      <p class="shortcomment cmt">Returns a string that helps you locate this container.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a string that helps you locate this container. numElements many elements.</p></div><dl class="paramcmts block"><dt class="param">numElements</dt><dd class="cmt"><p>the number of elements to print
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@macroImpl</span><span class="args">(<span>
       
@@ -322,7 +322,7 @@
       </h4>
       
     </li><li name="info.collaboration_station.debug.Log.find#findContainerImplFromStart" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="findContainerImplFromStart(c:info.collaboration_station.debug.Compat.Context)(container:c.Expr[scala.collection.TraversableLike[Any,Any]],start:c.Expr[Int]):c.Expr[String]"></a>
+      <a id="findContainerImplFromStart(c:info.collaboration_station.debug.Compat.Context)(container:c.Expr[scala.collection.TraversableLike[Any,Any]],numElements:c.Expr[Int]):c.Expr[String]"></a>
       <a id="findContainerImplFromStart(Context)(scala.reflect.macros.Context.Expr[TraversableLike[Any,Any]],scala.reflect.macros.Context.Expr[Int]):scala.reflect.macros.Context.Expr[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -330,7 +330,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">findContainerImplFromStart</span><span class="params">(<span name="c">c: <a href="Compat$.html#Context=scala.reflect.macros.Context" class="extmbr" name="info.collaboration_station.debug.Compat.Context">Context</a></span>)</span><span class="params">(<span name="container">container: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Any">Any</span>]]</span>, <span name="start">start: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">findContainerImplFromStart</span><span class="params">(<span name="c">c: <a href="Compat$.html#Context=scala.reflect.macros.Context" class="extmbr" name="info.collaboration_station.debug.Compat.Context">Context</a></span>)</span><span class="params">(<span name="container">container: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.collection.TraversableLike">TraversableLike</span>[<span class="extype" name="scala.Any">Any</span>, <span class="extype" name="scala.Any">Any</span>]]</span>, <span name="numElements">numElements: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.reflect.macros.Aliases.Expr">scala.reflect.macros.Context.Expr</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       

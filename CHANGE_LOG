@@ -26,4 +26,6 @@ Change log:
 
 "0.2.5" - Windows file names (\\)
 
-"0.2.6" - Log.find(foo, 2) was supposed to print 2 elements of foo
+"0.2.5" - lost version #
+
+"0.2.7" - Log.find(foo, 2) was supposed to print 2 elements of foo

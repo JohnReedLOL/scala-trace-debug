@@ -23,10 +23,10 @@ object Log {
     def apply(container: TraversableLike[Any, Any]): String = macro findContainerImpl
 
     /**
-      * Returns a string that helps you locate this container. Prints all of this container's elements from start.
-      * @param start the index of the first element to print
+      * Returns a string that helps you locate this container. numElements many elements.
+      * @param numElements the number of elements to print
       */
-    def apply(container: TraversableLike[Any, Any], start: Int): String = macro findContainerImplFromStart
+    def apply(container: TraversableLike[Any, Any], numElements: Int): String = macro findContainerImplFromStart
 
     /**
       * Returns a string that helps you locate this container. Prints numElements from start.
@@ -78,7 +78,7 @@ object Log {
      """
       c.Expr[String](toReturn)
     }
-    def findContainerImplFromStart(c: Compat.Context)(container: c.Expr[TraversableLike[Any, Any]], start: c.Expr[Int]): c.Expr[String] = {
+    def findContainerImplFromStart(c: Compat.Context)(container: c.Expr[TraversableLike[Any, Any]], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -88,10 +88,9 @@ object Log {
       val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
-      val arg3 = q"scala.Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ")-> " + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, $start, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")-> " + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }

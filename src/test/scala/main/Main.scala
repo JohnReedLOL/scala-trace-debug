@@ -20,7 +20,7 @@ object Main {
     val logger = LoggerFactory.getLogger("Logger");
     logger.warn( Log.find("foo" + 2 + "bar") )
     logger.warn( Log.find( List(0,1,2,3) ) )
-    logger.warn( Log.find( List(0,1,2,3), 2) ) // start at 2
+    logger.warn( Log.find( List(0,1,2,3), 2) ) // 2 elements
     Debug.traceContents(List(0,1,2,3), numElements = 3)
 
     //val file = sourcecode.File()
