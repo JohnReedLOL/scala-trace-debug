@@ -23,3 +23,5 @@ Change log:
 "0.2.3" - Added logger integration, "find" method
 
 "0.2.4" - Added package names from LogBack. See (/home/johnreed/sbtProjects/debug/experimental/experimental/src/main/java/info/collaboration_station/debug/internal/PackagingDataCalculator.java)
+
+"0.2.5" - Windows file names (\\)

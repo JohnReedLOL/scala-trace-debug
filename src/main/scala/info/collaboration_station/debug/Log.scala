@@ -24,14 +24,24 @@ object Log {
 
     /**
       * Returns a string that helps you locate this container. Prints all of this container's elements from start.
+      * @param start the index of the first element to print
       */
     def apply(container: TraversableLike[Any, Any], start: Int): String = macro findContainerImplFromStart
 
     /**
       * Returns a string that helps you locate this container. Prints numElements from start.
+      * @param start the index of the first element to print
+      * @param numElements the number of elements to print
       */
     def apply(container: TraversableLike[Any, Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
 
+    def processFileName(fileName: String): String = {
+      if(fileName.contains("/")) {
+        fileName.split("/").last
+      } else {
+        fileName.split("\\").last
+      }
+    }
 
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
@@ -40,7 +50,7 @@ object Log {
       }
       val lineNum = c.enclosingPosition.line
       val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
-      val trimmedFileName = fileName.split("/").last // Only trims on linux - windows has full file name
+      val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
       import scala.language.existentials
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
@@ -58,7 +68,7 @@ object Log {
       }
       val lineNum = c.enclosingPosition.line
       val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
-      val trimmedFileName = fileName.split("/").last // Only trims on linux - windows has full file name
+      val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val arg3 = q"Int.MaxValue"
@@ -75,7 +85,7 @@ object Log {
       }
       val lineNum = c.enclosingPosition.line
       val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
-      val trimmedFileName = fileName.split("/").last // Only trims on linux - windows has full file name
+      val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val arg3 = q"scala.Int.MaxValue"
@@ -92,7 +102,7 @@ object Log {
       }
       val lineNum = c.enclosingPosition.line
       val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
-      val trimmedFileName = fileName.split("/").last // Only trims on linux - windows has full file name
+      val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =

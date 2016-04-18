@@ -62,6 +62,8 @@ object Main {
     logger.debug( Debug.trace("Foo bar is awesome!") )
     logger.debug( Debug.trace("Foo bar is awesome!") )
     logger.debug("foo", new RuntimeException("re"))
+    Debug.enableEverything_!()
+    Debug.traceContents(List(1,2,3,4,5,6,7))
 
     val temp = LoggerFactory.getILoggerFactory();
     val lc = temp.asInstanceOf[LoggerContext]

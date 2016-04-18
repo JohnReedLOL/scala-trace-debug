@@ -238,13 +238,14 @@ object Debug {
     // then do real printing
     while(currentElement < end) {
       if (iterator.hasNext) {
-        toPrint = toPrint + " " + iterator.next()
+        toPrint = toPrint + iterator.next() + " "
         currentElement += 1
       } else {
         // get out of loop
         currentElement = Long.MaxValue
       }
     }
+    toPrint = toPrint.trim // no trailing whitespace
     toPrint
   }
 
