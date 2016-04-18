@@ -125,7 +125,7 @@ ________________________________________________________________________________
 
 ![Example](http://i.imgur.com/D1jLiaa.png)
 
-^ Useful if you have a line like "foo bar baz bizz" and you can't find where the "." and parenthesis go ^
+^ Useful if you have a line like "foo bar baz bizz" and you can't find where the dot and parenthesis go ^
 
 #### _Code tracing and assertions:_
 
@@ -176,6 +176,8 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 [http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172](http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172)
 
 [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
+
+[https://www.reddit.com/r/scala/comments/4f9pd3/debug_better_with_scala_trace_debug/](https://www.reddit.com/r/scala/comments/4f9pd3/debug_better_with_scala_trace_debug/)
 
 ____________________________________________________________________________________________________________________
 
