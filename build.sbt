@@ -4,7 +4,7 @@ organization := "scala-trace-debug"
 
 scalaVersion := "2.11.7"
 
-version := "0.2.7"
+version := "0.2.8"
 
 crossScalaVersions := Seq("2.10.4", "2.11.7")
 

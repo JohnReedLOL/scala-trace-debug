@@ -39,6 +39,14 @@ object Log {
     }
   }
 
+  def processFileName(fileName: String): String = {
+    if(fileName.contains("/")) {
+      fileName.split("/").last
+    } else {
+      fileName.split("\\").last
+    }
+  }
+
   /**
    * Makes it easy to find your print statements.
    */
@@ -67,14 +75,6 @@ object Log {
       */
     def apply(container: TraversableLike[Any, Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
 
-    def processFileName(fileName: String): String = {
-      if(fileName.contains("/")) {
-        fileName.split("/").last
-      } else {
-        fileName.split("\\").last
-      }
-    }
-
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
@@ -88,7 +88,7 @@ object Log {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")-> " + ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -106,7 +106,7 @@ object Log {
       val arg3 = q"Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ")-> " + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -122,7 +122,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")-> " + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -138,7 +138,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")-> " + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }

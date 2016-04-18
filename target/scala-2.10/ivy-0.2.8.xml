@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="scala-trace-debug" module="scala-trace-debug_2.10" revision="0.2.7" status="release" publication="20160418141750">
+	<info organisation="scala-trace-debug" module="scala-trace-debug_2.10" revision="0.2.8" status="release" publication="20160418182439">
 		<license name="Apache-2.0" url="https://opensource.org/licenses/Apache-2.0"/>
 		<description>
 		scala-trace-debug
