@@ -60,20 +60,20 @@ object Log {
     /**
       * Returns a string that helps you locate this container. Prints all of this container's elements.
       */
-    def apply(container: TraversableLike[Any, Any]): String = macro findContainerImpl
+    def apply(container: collection.GenTraversableOnce[Any]): String = macro findContainerImpl
 
     /**
       * Returns a string that helps you locate this container. numElements many elements.
       * @param numElements the number of elements to print
       */
-    def apply(container: TraversableLike[Any, Any], numElements: Int): String = macro findContainerImplFromStart
+    def apply(container: collection.GenTraversableOnce[Any], numElements: Int): String = macro findContainerImplFromStart
 
     /**
       * Returns a string that helps you locate this container. Prints numElements from start.
       * @param start the index of the first element to print
       * @param numElements the number of elements to print
       */
-    def apply(container: TraversableLike[Any, Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
+    def apply(container: collection.GenTraversableOnce[Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
 
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
@@ -93,7 +93,7 @@ object Log {
       c.Expr[String](toReturn)
     }
 
-    def findContainerImpl(c: Compat.Context)(container: c.Expr[TraversableLike[Any, Any]]): c.Expr[String] = {
+    def findContainerImpl(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -110,7 +110,7 @@ object Log {
      """
       c.Expr[String](toReturn)
     }
-    def findContainerImplFromStart(c: Compat.Context)(container: c.Expr[TraversableLike[Any, Any]], numElements: c.Expr[Int]): c.Expr[String] = {
+    def findContainerImplFromStart(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -126,7 +126,7 @@ object Log {
      """
       c.Expr[String](toReturn)
     }
-    def findContainerImplFromStartWNumElements(c: Compat.Context)(container: c.Expr[TraversableLike[Any, Any]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
+    def findContainerImplFromStartWNumElements(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression

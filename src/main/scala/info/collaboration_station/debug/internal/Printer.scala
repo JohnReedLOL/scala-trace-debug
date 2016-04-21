@@ -5,7 +5,7 @@ import info.collaboration_station.debug.Debug
 /**
   * Created by johnreed on 4/12/16 for https://github.com/JohnReedLOL/scala-trace-debug
   */
-object Printer {
+protected[debug] object Printer {
 
   private val mySystemProperty = "ENABLE_TRACE_DEBUG"
 
