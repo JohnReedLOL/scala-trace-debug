@@ -21,6 +21,7 @@ ________________________________________________________________________________
 
 ^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
 
+^ * Note: Debug.assertNonFatal has been replaced with Debug.check. *
 ____________________________________________________________________________________________________________________
 
 ### Getting started:
