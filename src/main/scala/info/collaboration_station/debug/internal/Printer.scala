@@ -86,10 +86,10 @@ object Printer {
         val lineNumber = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
         val packageName = getPackageName(stackLine)
-        val myPackageName = if(packageName.equals("")) {""} else {"[" + packageName + "]"}
+        val myPackageName = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine + " " + myPackageName
+        toPrint += "\n" + tab + "at " + stackLine + myPackageName
       }
     } else {
       // do not make a call to Thread.currentThread().getStackTrace
@@ -162,10 +162,10 @@ object Printer {
         val lineNumber = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
         val packageName = getPackageName(stackLine)
-        val myPackageName = if(packageName.equals("")) {""} else {"[" + packageName + "]"}
+        val myPackageName = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine + " " + myPackageName
+        toPrint += "\n" + tab + "at " + stackLine + myPackageName
       }
       toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^"
     } else {

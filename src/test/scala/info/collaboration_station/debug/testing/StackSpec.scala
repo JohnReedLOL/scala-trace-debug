@@ -10,20 +10,62 @@ import org.slf4j._
 
 class StackSpec extends FlatSpec {
 
-  "Contents tracing" should "work" in {
-
-
+  "Container printing" should "work for arrays, lists, and maps" in {
     val logger = LoggerFactory.getLogger("Logger");
-    Debug.traceErrOff_! // disabled printing to std err
-    logger.warn( Debug.traceContents(List(0, 1, 2, 3), numLines = 5) )
-    Debug.traceOutOn_! // enabled printing to std out
-    Debug.traceContentsStdOut( Map("1"->1, "2"->2, "3"->3) )
+    Debug.traceContents(List(1,2))
+    Debug.traceContentsStdOut(Array("Hello","World"))
+    Debug.traceErrOff_!()
+    logger.warn( Debug.traceContents(Map("1" -> 1, "2" -> 2)) )
+    Debug.enableEverything_!()
+  }
 
-
-    assertResult(2) {
-      1 + 1
+  "Exceptions and assert" should "have matching stack traces" in {
+    val assertMessage: Array[String] = {
+      val originalOut: PrintStream = System.out;
+      // To get it back later
+      val baos1: ByteArrayOutputStream = new ByteArrayOutputStream();
+      // replaces out
+      val newOut: PrintStream = new PrintStream(baos1)
+      System.setOut(newOut)
+      Debug.assertNonFatalStdOut(false, "RuntimeException"); // write stuff to System.out
+      System.out.flush()
+      System.setOut(originalOut);
+      // So you can print again
+      val bais1: ByteArrayInputStream = new ByteArrayInputStream(baos1.toByteArray())
+      val bfReader1 = new BufferedReader(new InputStreamReader(bais1))
+      TestingUtils.getMessage(bfReader1)
     }
-    // fail("I've got a bad feeling about this") // to force failure
+    val exception = new RuntimeException();
+    val exceptionMessage: Array[String] = {
+      val originalErr: PrintStream = System.err;
+      val baos2: ByteArrayOutputStream = new ByteArrayOutputStream();
+      val newErr: PrintStream = new PrintStream(baos2)
+      System.setErr(newErr);
+      exception.printStackTrace(System.err); // write stuff to System.err
+      System.err.flush()
+      System.setErr(originalErr);
+      val bais2: ByteArrayInputStream = new ByteArrayInputStream(baos2.toByteArray())
+      val bfReader2 = new BufferedReader(new InputStreamReader(bais2))
+      TestingUtils.getMessage(bfReader2)
+    }
+
+    val minLength = Math.min(assertMessage.length, exceptionMessage.length) - 2
+    // same line for same stack trace
+    val exceptionTrimmed = exceptionMessage.slice(0, exceptionMessage.length);
+    val assertTrimmed = assertMessage.slice(1, assertMessage.length);
+    for(i <- 0 until 6) { // minLength) {
+      println("i: " + i)
+      println("exception: " + exceptionTrimmed(i))
+      println("assertion: " + assertTrimmed(i))
+      assert(exceptionTrimmed(i+2).split(" ")(0) === assertTrimmed(i+2).split(" ")(0)) // first word is "at"
+      assert(exceptionTrimmed(i+2).split(" ")(1) === assertTrimmed(i+2).split(" ")(1)) // second word is trace
+      /*
+      System.err.println(exceptionTrimmed(i))
+      System.err.println(assertTrimmed(i))
+      assert(exceptionTrimmed(i).split(" ")(0) === assertTrimmed(i).split(" ")(0)) // first word is "at"
+      assert(exceptionTrimmed(i).split(" ")(1) === assertTrimmed(i).split(" ")(1)) // second word is trace
+      */
+    }
   }
 
   "Enabling trace to std err" should "allow tracing to std err" in {
