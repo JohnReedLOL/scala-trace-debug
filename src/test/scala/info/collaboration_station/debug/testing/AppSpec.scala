@@ -20,7 +20,7 @@ class CheckSpec
       // replaces out
       val newOut: PrintStream = new PrintStream(baos1)
       System.setOut(newOut)
-      Debug.assertNonFatalStdOut(false, "RuntimeException"); // write stuff to System.out
+      Debug.checkStdOut(false, "RuntimeException"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again

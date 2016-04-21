@@ -27,7 +27,7 @@ class StackSpec extends FlatSpec {
       // replaces out
       val newOut: PrintStream = new PrintStream(baos1)
       System.setOut(newOut)
-      Debug.assertNonFatalStdOut(false, "RuntimeException"); // write stuff to System.out
+      Debug.checkStdOut(false, "RuntimeException"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
@@ -171,7 +171,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      val assertString = "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      val assertString = "foo".checkStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
@@ -193,7 +193,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "foo".assertNonFatalStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      "foo".checkStdOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
@@ -213,7 +213,7 @@ class StackSpec extends FlatSpec {
     "Hello World 3".trace(3) // 3 lines of stack trace
     Debug.trace("Hello World 4")
     Debug.trace("Hello World 5", 2) // 2 lines of stack trace
-    "foo".assertNonFatalEquals("bar", "assertFailure1", maxLines = 2)
+    "foo".checkEquals("bar", "assertFailure1", maxLines = 2)
     "foo".assertEquals("foo", "assertFailure2")
     2.assert( _ + 1 == 3, "2 + 1 = 3")
     Debug.fatalAssertOff_!() // disables fatal assert
