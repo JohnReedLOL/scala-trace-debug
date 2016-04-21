@@ -214,13 +214,14 @@ object Debug {
   import scala.collection.TraversableLike
   import scala.reflect.runtime.universe.WeakTypeTag
 
+  // def printAll(coll: collection.GenTraversable[_]) = coll.foreach(println)
+
   /**
     * Gets the collection as a string of n elements from start to start + numElements
     */
-  def getCollectionAsString[CollectionType <: TraversableLike[Any, Any]]
-  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue): String = {
+  def getCollectionAsString(coll: collection.GenTraversableOnce[_], start: Int = 0, numElements: Int = Int.MaxValue): String = {
     var toPrint = ""
-    val iterator = collection.toIterator
+    val iterator = coll.toIterator
     var currentElement: Long = 0L // Long to prevent overflow
     val end = start.toLong + numElements.toLong  // Long to prevent overflow
     // first increment the iterator to start
@@ -228,7 +229,7 @@ object Debug {
       if (iterator.hasNext) {
         // Skip this element
         iterator.next()
-        currentElement += 1
+        currentElement += 1L
       } else {
         // get out of loop
         currentElement = Long.MaxValue
@@ -239,7 +240,7 @@ object Debug {
     while(currentElement < end) {
       if (iterator.hasNext) {
         toPrint = toPrint + iterator.next() + " "
-        currentElement += 1
+        currentElement += 1L
       } else {
         // get out of loop
         currentElement = Long.MaxValue
@@ -252,34 +253,36 @@ object Debug {
   /**
     * Traces the contents of a Scala container to standard error. To convert a Java container into a Scala container, import collection.JavaConversions._
     * Note: The maximum number of elements it can print is 2 to the 32 elements.
-    * @param collection  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
+    *
+    * @param coll  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
     * @param start the index of the first element to print. To work on all containers, index is counted using an iterator.
     * @param numElements the number of elements you want to trace. Defaults to all elements in the collection (or 2 to the 32 elements)
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def traceContents[CollectionType <: TraversableLike[Any, Any]]
-  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
+  def traceContents[CollectionType](coll: collection.GenTraversableOnce[CollectionType], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  (implicit tag: WeakTypeTag[CollectionType]): String = {
     val collectionType = tag.tpe
-    val toPrint = collectionType.toString + " " + getCollectionAsString(collection, start, numElements)
+    val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
   }
 
   /**
     * Traces the contents of a Scala container to standard out. To convert a Java container into a Scala container, import collection.JavaConversions._
     * Note: The maximum number of elements it can print is 2 to the 32 elements.
-    * @param collection  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
+    *
+    * @param coll  the Scala collection. TraversableLike is a base trait of all kinds of Scala collections.
     * @param start the index of the first element to print. To work on all containers, index is counted using an iterator.
     * @param numElements the number of elements you want to trace. Defaults to all elements in the collection (or 2 to the 32 elements)
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def traceContentsStdOut[CollectionType <: TraversableLike[Any, Any]]
-  (collection: CollectionType, start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[CollectionType]): String = {
-      val collectionType = tag.tpe
-      val toPrint = collectionType.toString + " " + getCollectionAsString(collection, start, numElements)
-      Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
-    }
+  def traceContentsStdOut[CollectionType](coll: collection.GenTraversableOnce[CollectionType], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  (implicit tag: WeakTypeTag[CollectionType]): String = {
+    val collectionType = tag.tpe
+    val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
+  }
 
   /**
     * Same as trace, but prints the code in the block, not just the result

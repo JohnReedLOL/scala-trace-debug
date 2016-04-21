@@ -11,7 +11,7 @@ class CheckSpec
   with GeneratorDrivenPropertyChecks
   with Matchers {
 
-  property ("Asserts and Exceptions produce same stack traces") {
+  property ("Asserts and Exceptions produce identical stack traces") {
     val assertMessage = {
       val originalOut: PrintStream = System.out;
       // To get it back later
@@ -58,7 +58,16 @@ class CheckSpec
           inRangeX should be < minLength
           // System.err.println("assert: " +  assertMessage(inRangeX) )
           // System.err.println("excep: " + exceptionMessage(inRangeX) )
-          assertMessage(inRangeX).substring(0, 15) should be(exceptionMessage(inRangeX).substring(0, 15))
+          // "(inRangeX + 1)" is necessary because assert message has leading newline
+
+          //Debug.traceContents(assertMessage)
+
+          //import collection.JavaConversions._
+          val iterator = exceptionMessage.toIterator
+          Debug.traceContents(exceptionMessage)
+          Debug.traceContents(List(1,2,3))
+
+          assertMessage(inRangeX).substring(0, 15) should be(exceptionMessage(inRangeX + 1).substring(0, 15))
         }
       }
     }
