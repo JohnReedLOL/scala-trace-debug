@@ -21,7 +21,7 @@ ________________________________________________________________________________
 
 ^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
 
-^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9. For older version, use 0.2.9 *
+^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
 ____________________________________________________________________________________________________________________
 
 ### Getting started:
@@ -31,7 +31,7 @@ Just add these two lines to your "build.sbt" file:
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.9"
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 

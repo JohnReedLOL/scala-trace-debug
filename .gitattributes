@@ -1,0 +1,4 @@
+/target/scala-2.10/* linguist-language=Scala
+/target/scala-2.11/* linguist-language=Scala
+/target/scala-2.10/* linguist-vendored
+/target/scala-2.11/* linguist-vendored

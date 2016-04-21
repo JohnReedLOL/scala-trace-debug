@@ -21,7 +21,10 @@ val logger = LoggerFactory.getLogger("Logger");
 logger.warn(Log.pos("foo", "bar")) // append position
 logger.warn(Log.find("foo" + 2 + "bar"))
 
-    logger.warn(Log.find(Array("foo", "bar")))
+
+    logger.warn(Log.find(Array("foo", "bar", "baz")))
+    logger.warn(Log.find(Array("foo", "bar", "baz"), 1))
+    logger.warn(Log.find(Array("foo", "bar", "baz"), 0, 2))
 
 logger.warn(Log.find(List(0, 1, 2, 3)))
 logger.warn(Log.find(List(0, 1, 2, 3), 2)) // 2 elements

@@ -57,24 +57,6 @@ object Log {
       */
     def apply(toPrint: Any): String = macro findImpl
 
-    /**
-      * Returns a string that helps you locate this container. Prints all of this container's elements.
-      */
-    def apply(container: collection.GenTraversableOnce[Any]): String = macro findContainerImpl
-
-    /**
-      * Returns a string that helps you locate this container. numElements many elements.
-      * @param numElements the number of elements to print
-      */
-    def apply(container: collection.GenTraversableOnce[Any], numElements: Int): String = macro findContainerImplFromStart
-
-    /**
-      * Returns a string that helps you locate this container. Prints numElements from start.
-      * @param start the index of the first element to print
-      * @param numElements the number of elements to print
-      */
-    def apply(container: collection.GenTraversableOnce[Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
-
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
@@ -92,6 +74,24 @@ object Log {
      """
       c.Expr[String](toReturn)
     }
+
+    /**
+      * Returns a string that helps you locate this container. Prints all of this container's elements.
+      */
+    def apply(container: collection.GenTraversableOnce[Any]): String = macro findContainerImpl
+
+    /**
+      * Returns a string that helps you locate this container. numElements many elements.
+      * @param numElements the number of elements to print
+      */
+    def apply(container: collection.GenTraversableOnce[Any], numElements: Int): String = macro findContainerImplFromStart
+
+    /**
+      * Returns a string that helps you locate this container. Prints numElements from start.
+      * @param start the index of the first element to print
+      * @param numElements the number of elements to print
+      */
+    def apply(container: collection.GenTraversableOnce[Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
 
     def findContainerImpl(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]]): c.Expr[String] = {
       import c.universe._
@@ -127,6 +127,76 @@ object Log {
       c.Expr[String](toReturn)
     }
     def findContainerImplFromStartWNumElements(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      if (Printer.debugDisabled_?) {
+        return c.Expr[String](q"""  ""  """) // return empty string expression
+      }
+      val lineNum = c.enclosingPosition.line
+      val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
+      val trimmedFileName = processFileName(fileName)
+      val fullName = Compat.enclosingOwner(c).fullName.trim
+      val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
+      val toReturn =
+        q"""
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+     """
+      c.Expr[String](toReturn)
+    }
+
+    /* Special case for arrays */
+
+    /**
+      * Returns a string that helps you locate this array. Prints all of this container's elements.
+      */
+    def apply[T](container: Array[T]): String = macro arrayFindContainerImpl[T]
+
+    /**
+      * Returns a string that helps you locate this array. numElements many elements.
+      * @param numElements the number of elements to print
+      */
+    def apply[T](container: Array[T], numElements: Int): String = macro arrayFindContainerImplFromStart[T]
+
+    /**
+      * Returns a string that helps you locate this array. Prints numElements from start.
+      * @param start the index of the first element to print
+      * @param numElements the number of elements to print
+      */
+    def apply[T](container: Array[T], start: Int, numElements: Int): String = macro arrayFindContainerImplFromStartWNumElements[T]
+
+    def arrayFindContainerImpl[T](c: Compat.Context)(container: c.Expr[Array[T]]): c.Expr[String] = {
+      import c.universe._
+      if (Printer.debugDisabled_?) {
+        return c.Expr[String](q"""  ""  """) // return empty string expression
+      }
+      val lineNum = c.enclosingPosition.line
+      val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
+      val trimmedFileName = processFileName(fileName)
+      val fullName = Compat.enclosingOwner(c).fullName.trim
+      val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
+      val arg3 = q"Int.MaxValue"
+      val toReturn =
+        q"""
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+     """
+      c.Expr[String](toReturn)
+    }
+    def arrayFindContainerImplFromStart[T](c: Compat.Context)(container: c.Expr[Array[T]], numElements: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      if (Printer.debugDisabled_?) {
+        return c.Expr[String](q"""  ""  """) // return empty string expression
+      }
+      val lineNum = c.enclosingPosition.line
+      val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
+      val trimmedFileName = processFileName(fileName)
+      val fullName = Compat.enclosingOwner(c).fullName.trim
+      val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
+      val toReturn =
+        q"""
+       "(" + $sourceCode + ")->" + _root_.info.collaboration_station.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+     """
+      c.Expr[String](toReturn)
+    }
+    def arrayFindContainerImplFromStartWNumElements[T](c: Compat.Context)(container: c.Expr[Array[T]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
