@@ -8,7 +8,7 @@ a shallow copy instead of a deep copy in multithreaded code.
  
   How would I deal with such a subtle bug? Well since this tool was explicitly designed for this sort of a thing, here's one way.
  
-1. Do git bisect to find the commit that produced the bug.
+1. Do git bisect to find the commit that produced the bug (or if a unit test caught a bug you can just put breakpoints in the unit test).
  
 2. Read the lines of code that were changed.
  
