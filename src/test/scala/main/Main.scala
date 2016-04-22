@@ -18,16 +18,22 @@ object Main {
 // Easy to locate log statements
 import info.collaboration_station.debug.Log
 val logger = LoggerFactory.getLogger("Logger");
-logger.warn(Log.pos("foo", "bar")) // append position
+logger.warn(Log.pos("foobar")) // append position
 logger.warn(Log.find("foo" + 2 + "bar"))
+logger.warn(Log.find(Array("foo", "bar")))
+val list = List(0, 1, 2)
+logger.warn(Log.find(list, 2)) // first 2 elements
+logger.warn(Log.find(Map("foo" -> 2)))
 
 
+    println()
+    println()
+    println()
     logger.warn(Log.find(Array("foo", "bar", "baz")))
     logger.warn(Log.find(Array("foo", "bar", "baz"), 1))
     logger.warn(Log.find(Array("foo", "bar", "baz"), 0, 2))
 
-logger.warn(Log.find(List(0, 1, 2, 3)))
-logger.warn(Log.find(List(0, 1, 2, 3), 2)) // 2 elements
+
 
 
 

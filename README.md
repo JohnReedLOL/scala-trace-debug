@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 #### With logger:
 
-![Logger](http://i.imgur.com/4O0fH0W.png)
+![Logger](http://i.imgur.com/MNNkYXe.png)
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
