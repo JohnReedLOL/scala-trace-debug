@@ -125,7 +125,7 @@ ________________________________________________________________________________
 
 #### _Desugared macro expression tracing:_
 
-![Example](http://i.imgur.com/D1jLiaa.png)
+![Example](http://i.imgur.com/LvB8lOd.png)
 
 ######^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^
 
