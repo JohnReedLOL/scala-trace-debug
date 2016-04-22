@@ -15,7 +15,7 @@ ________________________________________________________________________________
 
 #### Without logger:
 
-![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
+![Demo](http://i.imgur.com/EFkBppw.png)
 
 ^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
 
