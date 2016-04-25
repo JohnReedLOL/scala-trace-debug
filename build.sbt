@@ -1,6 +1,6 @@
 name := "scala-trace-debug"
 
-organization := "scala-trace-debug"
+organization.<<=(name)
 
 scalaVersion := "2.11.7"
 
@@ -10,16 +10,21 @@ crossScalaVersions := Seq("2.10.4", "2.11.7")
 
 resolvers += Resolver.sonatypeRepo("releases")
 
-def macroDependencies(version: String) =
-  Seq(
+def macroDependencies(version: String): Seq[ModuleID] = {
+  val left: Seq[ModuleID] = Seq(
     "org.scala-lang" % "scala-reflect" % version % "provided",
     "org.scala-lang" % "scala-compiler" % version % "provided"
-  ) ++
-    (if (version startsWith "2.10.")
-      Seq(compilerPlugin("org.scalamacros" % s"paradise" % "2.0.0" cross CrossVersion.full),
-        "org.scalamacros" %% s"quasiquotes" % "2.0.0")
-    else
-      Seq())
+  )
+  val right: Seq[ModuleID] = if (version startsWith "2.10.") {
+    Seq(compilerPlugin("org.scalamacros" % s"paradise" % "2.0.0" cross CrossVersion.full),
+      "org.scalamacros" %% s"quasiquotes" % "2.0.0")
+  }
+  else {
+    Seq()
+  }
+  val toReturn: Seq[ModuleID] = left.++(right)(Seq.canBuildFrom[ModuleID])
+  toReturn
+}
 
 // baseDirectory.value / ".."/"shared" / "src" / "main" / "scala-2.11"
 
