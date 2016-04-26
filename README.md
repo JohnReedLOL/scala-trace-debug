@@ -9,7 +9,7 @@ ________________________________________________________________________________
 
 1. Am I using an IDE?
 
-2. Do I find myself searching the file system (Ctr-F) for the location of log or print statements?
+2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements?
 &nbsp;
 
 If you answered yes to both of these questions, this tool is for you.
