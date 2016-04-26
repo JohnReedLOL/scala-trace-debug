@@ -1,4 +1,4 @@
-package scala.trace.internal
+package scala.trace.conversions
 
 import scala.language.implicitConversions
 

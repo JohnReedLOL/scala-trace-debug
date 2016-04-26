@@ -1,7 +1,8 @@
-package scala.trace.internal
+package scala.trace.conversions
 
 import scala.language.implicitConversions
 import scala.trace.Debug
+import scala.trace.internal.Printer
 
 /**
   * Created by johnreed on 4/12/16.
