@@ -45,138 +45,135 @@ object Debug {
 
   /**
     * Enables tracing and asserts, including fatal assertions.
-    * SE stands for "Side Effecting"
+    *
     */
-  def enableEverythingSE() = {
-    traceErrOnSE()
-    traceOutOnSE()
-    fatalAssertOnSE()
-    nonFatalAssertOnSE()
+  def enableEverything() = {
+    traceErrOn()
+    traceOutOn()
+    fatalAssertOn()
+    nonFatalAssertOn()
   }
 
   /**
     * Enables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
-    * SE stands for "Side Effecting"
+    *
     */
-  def traceErrOnSE() = {
+  def traceErrOn() = {
     isTraceErrOn_ = true
   }
 
   /**
     * Enables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
-    * SE stands for "Side Effecting"
+    *
     */
-  def traceOutOnSE() = {
+  def traceOutOn() = {
     isTraceOutOn_ = true
   }
 
   /**
     * Enables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
-    * SE stands for "Side Effecting"
+    *
     */
-  def fatalAssertOnSE() = {
+  def fatalAssertOn() = {
     isFatalAssertOn_ = true
   }
 
   /**
     * Enables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
-    * SE stands for "Side Effecting"
+    *
     */
-  def nonFatalAssertOnSE() = {
+  def nonFatalAssertOn() = {
     isNonFatalAssertOn_ = true
   }
 
   /**
     * Disables tracing and asserts. Both fatal and non-fatal assertions are disabled. Does not disable print or println
-    * SE stands for "Side Effecting"
+    *
     */
-  def disableEverythingSE() = {
-    traceErrOffSE()
-    traceOutOffSE()
-    fatalAssertOffSE()
-    nonFatalAssertOffSE()
+  def disableEverything() = {
+    traceErrOff()
+    traceOutOff()
+    fatalAssertOff()
+    nonFatalAssertOff()
   }
 
   /**
     * Disables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
-    * SE stands for "Side Effecting"
+    *
     */
-  def traceErrOffSE() = {
+  def traceErrOff() = {
     isTraceErrOn_ = false
   }
 
   /**
     * Disables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
-    * SE stands for "Side Effecting"
+    *
     */
-  def traceOutOffSE() = {
+  def traceOutOff() = {
     isTraceOutOn_ = false
   }
 
   /**
     * Disables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
-    * SE stands for "Side Effecting"
+    *
     */
-  def fatalAssertOffSE() = {
+  def fatalAssertOff() = {
     isFatalAssertOn_ = false
   }
 
   /**
     * Disables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
-    * SE stands for "Side Effecting"
+    *
     */
-  def nonFatalAssertOffSE() = {
+  def nonFatalAssertOff() = {
     isNonFatalAssertOn_ = false
   }
 
   /**
     * Traces to standard error with a one line stack trace.
     *
-    * @param block this block contains or returns whatever it is to be traced.
-    * @tparam T the return type of the block
+    * @param toPrint whatever it is you want to print.
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def trace[T](block: => T): String = Printer.traceInternal(block.toString, 1)
+  def trace[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1)
 
   /**
     * Traces to standard error with a N line stack trace.
     *
-    * @param block    this block contains or returns whatever it is to be traced.
+    * @param toPrint whatever it is you want to print.
     * @param numLines the number of lines to trace
-    * @tparam T the return type of the block
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def trace[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines)
+  def trace[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines)
 
   /**
     * Traces to standard error with a full length stack trace.
     *
-    * @param block this block contains or returns whatever it is to be traced.
-    * @tparam T the return type of the block
+    * @param toPrint whatever it is you want to print.
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStack[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue)
+  def traceStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue)
 
   /**
     * Same as Debug.trace, but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](block: => T): String = Printer.traceInternal(block.toString, 1, usingStdOut = true)
+  def traceStdOut[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1, usingStdOut = true)
 
   /**
-    * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
+    * Same as Debug.trace(toPrint: T, numLines: Int), but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines, usingStdOut = true)
+  def traceStdOut[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines, usingStdOut = true)
 
   /**
     * Same as traceStack, but prints to StdOut instead of StdError
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStackStdOut[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue, usingStdOut = true)
+  def traceStackStdOut[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue, usingStdOut = true)
 
   /** A fatal assertion.
     * Terminates the program with exit code "7"
@@ -303,11 +300,11 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object traceCode {
-    def traceCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       import scala.language.existentials
-      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       val args = List(arg1)
       val toReturn =
         q"""
@@ -316,11 +313,11 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def traceLinesCodeImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       import scala.language.existentials
-      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(block.tree)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn =
@@ -330,9 +327,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceCodeImpl[T]
+    def apply[T](toPrint: T): String = macro traceCodeImpl[T]
 
-    def apply[T](block: => T, numLines: Int): String = macro traceLinesCodeImpl[T]
+    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesCodeImpl[T]
   }
 
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
@@ -345,9 +342,9 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object traceStackCode {
-    def traceStackCodeImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceStackCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val blockTree = block.tree
+      val blockTree = toPrint.tree
       val blockSource = new String(blockTree.pos.source.content)
       // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
       val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.startOrPoint }
@@ -358,7 +355,7 @@ object Debug {
       codeParser.expr()
       val end = codeParser.in.lastOffset
       val blockString = blockSource.slice(start, start + end)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$block}.toString) """
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       // System.err.println(arg1)
       // At compile time prints: "(".$plus("fooVar + barVar").$plus(") -> ").$plus(fooVar.+(barVar).toString)
       val args = List(arg1)
@@ -369,7 +366,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceStackCodeImpl[T]
+    def apply[T](toPrint: T): String = macro traceStackCodeImpl[T]
   }
 
   /**
@@ -380,10 +377,10 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object traceExpression {
-    def traceExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val args = List(arg1)
       val toReturn =
         q"""
@@ -392,10 +389,10 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def traceLinesExpressionImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn =
@@ -405,9 +402,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceExpressionImpl[T]
+    def apply[T](toPrint: T): String = macro traceExpressionImpl[T]
 
-    def apply[T](block: => T, numLines: Int): String = macro traceLinesExpressionImpl[T]
+    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesExpressionImpl[T]
   }
 
   /**
@@ -417,10 +414,10 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object traceStackExpression {
-    def traceStackExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceStackExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val args = List(arg1)
       val toReturn =
         q"""
@@ -429,7 +426,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceStackExpressionImpl[T]
+    def apply[T](toPrint: T): String = macro traceStackExpressionImpl[T]
   }
 
   /**
@@ -441,10 +438,10 @@ object Debug {
     */
   object traceStdOutExpression {
 
-    def traceStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val args = List(arg1)
       val toReturn =
         q"""
@@ -453,10 +450,10 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def traceLinesStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn =
@@ -466,9 +463,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceStdOutExpressionImpl[T]
+    def apply[T](toPrint: T): String = macro traceStdOutExpressionImpl[T]
 
-    def apply[T](block: => T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
+    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
   }
 
   /**
@@ -478,10 +475,10 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object traceStackStdOutExpression {
-    def traceStackStdOutExpressionImpl[T](c: Compat.Context)(block: c.Expr[T]): c.Expr[String] = {
+    def traceStackStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (block.tree).toString + " -> "
-      val arg1 = q"$toTraceString + ({$block}.toString)"
+      val toTraceString = (toPrint.tree).toString + " -> "
+      val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val args = List(arg1)
       val toReturn =
         q"""
@@ -490,7 +487,7 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply[T](block: => T): String = macro traceStackStdOutExpressionImpl[T]
+    def apply[T](toPrint: T): String = macro traceStackStdOutExpressionImpl[T]
   }
 
   /**

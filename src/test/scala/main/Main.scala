@@ -19,6 +19,30 @@ object Main {
 
   def main(args: Array[String]) {
     import scala.trace.debug.Log
+    Debug.trace("foo1")
+    Debug.trace("foo3", 3)
+    Debug.traceStdOut("foo1StdOut")
+    Debug.traceStdOut("foo3StdOut", 3)
+
+    Debug.enableEverything()
+    Debug.disableEverything
+
+    Debug.fatalAssertOff()
+    Debug.fatalAssertOn()
+
+    Debug.nonFatalAssertOff()
+    Debug.nonFatalAssertOn()
+
+    Debug.traceErrOff()
+    Debug.traceErrOn()
+
+    Debug.traceOutOff()
+    Debug.traceOutOn()
+
+    Debug.trace("foo1")
+    Debug.trace("foo3", 3)
+    Debug.traceStdOut("foo1StdOut")
+    Debug.traceStdOut("foo3StdOut", 3)
 
     // Easy to locate log statements
     Debug.traceContents(List(1, 2, 3) map ( 2.* ))

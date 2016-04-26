@@ -33,7 +33,10 @@ unmanagedSourceDirectories in Compile ++= {
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.6" % "test",
   "org.scalacheck" %% "scalacheck" % "1.11.5" % "test",
-  "ch.qos.logback" % "logback-classic" % "1.1.3" % "test"
+  "ch.qos.logback" % "logback-classic" % "1.1.3" % "test",
+  "junit" % "junit" % "4.11" % Test,
+  "com.novocode" % "junit-interface" % "0.11" % Test
+    exclude("junit", "junit-dep")
 )
 
 libraryDependencies ++= macroDependencies(scalaVersion.value)
