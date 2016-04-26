@@ -5,23 +5,15 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
-### Examples:
+### Is this the right tool for me?
 
-#### With logger:
+1. Am I using an IDE?
 
-![Logger](http://i.imgur.com/MNNkYXe.png)
+2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements?
+&nbsp;
 
-^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
+If you answered yes to both of these questions, this tool is for you.
 
-#### Without logger:
-
-![Demo](http://s9.postimg.org/ssuso8f4f/Example_Screenshot_Highlight.png)
-
-^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
-
-^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
-
-^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
 ____________________________________________________________________________________________________________________
 
 ### Getting started:
@@ -38,10 +30,47 @@ Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder
 
 ____________________________________________________________________________________________________________________
 
+
+### Examples:
+
+#### Without logger:
+
+![Demo](http://i.imgur.com/EFkBppw.png)
+
+^ Note: `Debug.assert` kills the application with exit code 7. `Debug.check` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
+
+#### With logger:
+
+![Logger](http://i.imgur.com/MNNkYXe.png)
+
+^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
+
+^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
+
+____________________________________________________________________________________________________________________
+
 ### Requirements:
 
 - Scala 2.10.4 or higher
 - Some sort of IDE that supports stack trace highlighting
+
+____________________________________________________________________________________________________________________
+
+### Instructions (for IntelliJ IDE):
+
+1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
+
+2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala)
+
+3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
+
+4. Pick either "Application" (with a Main class) or "SBT Task" ("run", "test", or "test:run").
+
+5. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+ 
+6. Use the IntelliJ console arrows to navigate up and down the stack traces.
+
+![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
 ____________________________________________________________________________________________________________________
 
@@ -102,30 +131,11 @@ val foobar = "foo".trace().concat("bar").println() // Chaining.
 
 ____________________________________________________________________________________________________________________
 
-
-### Instructions (for IntelliJ IDE):
-
-1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
-
-2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala)
-
-3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
-
-4. Pick either "Application" (with a Main class) or "SBT Task" ("run", "test", or "test:run").
-
-5. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
- 
-6. Use the IntelliJ console arrows to navigate up and down the stack traces.
-
-![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
-
-____________________________________________________________________________________________________________________
-
 ### More features:
 
 #### _Desugared macro expression tracing:_
 
-![Example](http://i.imgur.com/D1jLiaa.png)
+![Example](http://i.imgur.com/LvB8lOd.png)
 
 ######^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^
 
