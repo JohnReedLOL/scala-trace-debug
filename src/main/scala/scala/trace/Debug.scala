@@ -2,7 +2,6 @@ package scala.trace
 
 import Helpers.MacroHelperMethod
 import scala.language.experimental.macros
-import scala.trace.Compat
 import scala.trace.internal.Printer
 import scala.trace.internal.Printer
 
@@ -178,7 +177,7 @@ object Debug {
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     *
-    * @param assertion the assertion that must be true for the program to run. Can be a value or a function
+    * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
@@ -191,13 +190,13 @@ object Debug {
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     *
-    * @param assertion the assertion that must be true for the program to run. Can be a value or a function
+    * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard out on assertion failure
     * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def assertStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
@@ -206,7 +205,7 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def check(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def check(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
@@ -215,7 +214,7 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def checkStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def checkStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 

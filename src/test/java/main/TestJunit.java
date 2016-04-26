@@ -7,6 +7,23 @@ import scala.trace.Debug;
 public class TestJunit {
     @Test
     public void testAdd() {
+
+        System.err.println("\"message\" in thread main:");
+
+        Debug.assertStdOut(false, "message", 3);
+
+        System.err.println("^ The above stack trace leads to an assertion failure. ^");
+
+        final char escape = (char)27;
+        String clear = escape + "[0m"; // clear all formatting
+
+        String s2 = escape + "[33mHelloWorld" + clear;
+
+        String s = escape + "[36mHelloWorld" + clear;
+
+        System.out.println(s);
+        System.out.println(s2);
+
         String str= "Junit is working fine";
         Debug.trace("foo1");
         Debug.trace("foo3", 3);
