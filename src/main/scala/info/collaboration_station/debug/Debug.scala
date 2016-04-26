@@ -15,107 +15,117 @@ object Debug {
     */
   protected[debug] val stackOffset = 2
 
-  @volatile private var _traceOutOn_? = true
-  @volatile private var _traceErrOn_? = true
-  @volatile private var _fatalAssertOn_? = true
-  @volatile private var _nonFatalAssertOn_? = true
+  @volatile private var isTraceOutOn_ = true
+  @volatile private var isTraceErrOn_ = true
+  @volatile private var isFatalAssertOn_ = true
+  @volatile private var isNonFatalAssertOn_ = true
 
   /** Tells you whether tracing to standard out is on or off
     * Note that disabling the "traceStdOut" feature does not disable the "assertStdOut" feature
     */
-  def traceOutOn_? = _traceOutOn_?
+  def isTraceOutOn = isTraceOutOn_
 
   /** Tells you whether tracing to standard error is on or off
     * Note that disabling the "trace" feature does not disable the "assert" feature
     */
-  def traceErrOn_? = _traceErrOn_?
+  def isTraceErrOn = isTraceErrOn_
 
   /**
     * Tells you whether fatal asserts are on or off
     */
-  def fatalAssertOn_? = _fatalAssertOn_?
+  def isFatalAssertOn = isFatalAssertOn_
 
   /**
     * Tells you whether non-fatal asserts are on or off
     */
-  def nonFatalAssertOn_? = _nonFatalAssertOn_?
+  def isNonFatalAssertOn = isNonFatalAssertOn_
 
   // these lines disable and enable particular features
 
   /**
-    * Enables tracing and asserts, including fatal assertions
+    * Enables tracing and asserts, including fatal assertions.
+    * SE stands for "Side Effecting"
     */
-  def enableEverything_!() = {
-    traceErrOn_!()
-    traceOutOn_!()
-    fatalAssertOn_!()
-    nonFatalAssertOn_!()
+  def enableEverythingSE() = {
+    traceErrOnSE()
+    traceOutOnSE()
+    fatalAssertOnSE()
+    nonFatalAssertOnSE()
   }
 
   /**
     * Enables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
+    * SE stands for "Side Effecting"
     */
-  def traceErrOn_!() = {
-    _traceErrOn_? = true
+  def traceErrOnSE() = {
+    isTraceErrOn_ = true
   }
 
   /**
     * Enables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
+    * SE stands for "Side Effecting"
     */
-  def traceOutOn_!() = {
-    _traceOutOn_? = true
+  def traceOutOnSE() = {
+    isTraceOutOn_ = true
   }
 
   /**
     * Enables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
+    * SE stands for "Side Effecting"
     */
-  def fatalAssertOn_!() = {
-    _fatalAssertOn_? = true
+  def fatalAssertOnSE() = {
+    isFatalAssertOn_ = true
   }
 
   /**
     * Enables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
+    * SE stands for "Side Effecting"
     */
-  def nonFatalAssertOn_!() = {
-    _nonFatalAssertOn_? = true
+  def nonFatalAssertOnSE() = {
+    isNonFatalAssertOn_ = true
   }
 
   /**
     * Disables tracing and asserts. Both fatal and non-fatal assertions are disabled. Does not disable print or println
+    * SE stands for "Side Effecting"
     */
-  def disableEverything_!() = {
-    traceErrOff_!()
-    traceOutOff_!()
-    fatalAssertOff_!()
-    nonFatalAssertOff_!()
+  def disableEverythingSE() = {
+    traceErrOffSE()
+    traceOutOffSE()
+    fatalAssertOffSE()
+    nonFatalAssertOffSE()
   }
 
   /**
     * Disables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
+    * SE stands for "Side Effecting"
     */
-  def traceErrOff_!() = {
-    _traceErrOn_? = false
+  def traceErrOffSE() = {
+    isTraceErrOn_ = false
   }
 
   /**
     * Disables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
+    * SE stands for "Side Effecting"
     */
-  def traceOutOff_!() = {
-    _traceOutOn_? = false
+  def traceOutOffSE() = {
+    isTraceOutOn_ = false
   }
 
   /**
     * Disables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
+    * SE stands for "Side Effecting"
     */
-  def fatalAssertOff_!() = {
-    _fatalAssertOn_? = false
+  def fatalAssertOffSE() = {
+    isFatalAssertOn_ = false
   }
 
   /**
     * Disables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
+    * SE stands for "Side Effecting"
     */
-  def nonFatalAssertOff_!() = {
-    _nonFatalAssertOn_? = false
+  def nonFatalAssertOffSE() = {
+    isNonFatalAssertOn_ = false
   }
 
   /**
@@ -151,21 +161,21 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](block: => T): String = Printer.traceInternal(block.toString, 1, useStdOut_? = true)
+  def traceStdOut[T](block: => T): String = Printer.traceInternal(block.toString, 1, usingStdOut = true)
 
   /**
     * Same as Debug.trace(block: => T, numLines: Int), but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines, useStdOut_? = true)
+  def traceStdOut[T](block: => T, numLines: Int): String = Printer.traceInternal(block.toString, numLines, usingStdOut = true)
 
   /**
     * Same as traceStack, but prints to StdOut instead of StdError
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStackStdOut[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue, useStdOut_? = true)
+  def traceStackStdOut[T](block: => T): String = Printer.traceInternal(block.toString, Int.MaxValue, usingStdOut = true)
 
   /** A fatal assertion.
     * Terminates the program with exit code "7"
@@ -173,11 +183,11 @@ object Debug {
     * @param assertion the assertion that must be true for the program to run. Can be a value or a function
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
-    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
+    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
   /** A fatal assertion.
@@ -186,11 +196,11 @@ object Debug {
     * @param assertion the assertion that must be true for the program to run. Can be a value or a function
     * @param message   the message to be printed to standard out on assertion failure
     * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
-    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOff_!()"
+    * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def assertStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = true)
+    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
   /**
@@ -199,7 +209,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def check(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, useStdOut_? = false, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   /**
@@ -208,7 +218,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def checkStdOut(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, useStdOut_? = true, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 
   import scala.collection.TraversableLike
@@ -264,7 +274,7 @@ object Debug {
   (implicit tag: WeakTypeTag[CollectionType]): String = {
     val collectionType = tag.tpe
     val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
-    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = false)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
   }
 
   /**
@@ -281,7 +291,7 @@ object Debug {
   (implicit tag: WeakTypeTag[CollectionType]): String = {
     val collectionType = tag.tpe
     val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
-    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, useStdOut_? = true)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
   }
 
   /**

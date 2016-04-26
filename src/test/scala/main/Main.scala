@@ -9,14 +9,25 @@ import org.slf4j._
 
 
 // wildcard import for implicit trace/assert/print functionality
+
+
+
 /**
   * Created by johnreed on 3/23/16. Run with sbt test:run
   */
 object Main {
+
   def main(args: Array[String]) {
 
-// Easy to locate log statements
-import info.collaboration_station.debug.Log
+    // Easy to locate log statements
+    import info.collaboration_station.debug.Log
+    Debug.traceContents(List(1, 2, 3) map ( 2.* ))
+    Debug.traceContents(List(1, 2, 3) map ( _*2 ))
+  }
+}
+
+
+    /*
 val logger = LoggerFactory.getLogger("Logger");
 logger.warn(Log.pos("foobar")) // append position
 logger.warn(Log.find("foo" + 2 + "bar"))
@@ -74,12 +85,12 @@ logger.warn(Log.find(Map("foo" -> 2)))
     logger.debug("Hello world.");
     logger.debug("Hello world.");
     logger.debug("Hello world.");
-    Debug.disableEverything_!()
+    Debug.disableEverythingSE()
     logger.debug(Debug.trace("Foo bar is awesome!"))
     logger.debug(Debug.trace("Foo bar is awesome!"))
     logger.debug(Debug.trace("Foo bar is awesome!"))
     logger.debug("foo", new RuntimeException("re"))
-    Debug.enableEverything_!()
+    Debug.enableEverythingSE()
     Debug.traceContents(List(1, 2, 3, 4, 5, 6, 7))
 
     val temp = LoggerFactory.getILoggerFactory();
@@ -115,14 +126,14 @@ logger.warn(Log.find(Map("foo" -> 2)))
     Thread.sleep(20)
 
     // You can use this with a logger
-    Debug.traceErrOff_! // just get the String
+    Debug.traceErrOffSE // just get the String
     val collectionString = Debug.traceContents(List(1, 2, 3))
     println(collectionString)
 
-    Debug.traceOutOn_!
+    Debug.traceOutOnSE
     Debug.traceContentsStdOut(Map("1" -> 1, "2" -> 2, "3" -> 3))
 
-    Debug.enableEverything_!
+    Debug.enableEverythingSE
     Debug.traceContents(List(1, 2, 3), numElements = 2, numLines = 2)
 
 
@@ -212,7 +223,7 @@ val r = Array.apply(1,2,3) //  Array[T]
     }, 0) // no lines of stack trace
     Debug.check(1 == 2, "No stack trace is printed", 0)
 
-    Debug.enableEverything_!()
+    Debug.enableEverythingSE()
     System.err.println(Debug.trace(77, numLines = 2)) // this should return a String
     System.err.println(Debug.check(2 == 3, "foo", numLines = 20)) // this should return a String
     val fooVar = "foo"
@@ -233,3 +244,4 @@ val r = Array.apply(1,2,3) //  Array[T]
     System.err.println("End")
   }
 }
+*/

@@ -14,9 +14,9 @@ class StackSpec extends FlatSpec {
     val logger = LoggerFactory.getLogger("Logger");
     Debug.traceContents(List(1,2))
     Debug.traceContentsStdOut(Array("Hello","World"))
-    Debug.traceErrOff_!()
+    Debug.traceErrOffSE()
     logger.warn( Debug.traceContents(Map("1" -> 1, "2" -> 2)) )
-    Debug.enableEverything_!()
+    Debug.enableEverythingSE()
   }
 
   "Exceptions and assert" should "have matching stack traces" in {
@@ -70,7 +70,7 @@ class StackSpec extends FlatSpec {
 
   "Enabling trace to std err" should "allow tracing to std err" in {
     // "Hello  World before on".trace;
-    Debug.traceErrOn_!
+    Debug.traceErrOnSE
     // "Hello  World after on".trace;
     val traceMessage = {
       val originalErr: PrintStream = System.err;
@@ -94,7 +94,7 @@ class StackSpec extends FlatSpec {
   }
 
   "Disabling trace to std err" should "disable tracing to std err" in {
-    Debug.traceErrOff_!
+    Debug.traceErrOffSE
     val traceMessage = {
       val originalErr: PrintStream = System.err;
       // To get it back later
@@ -124,7 +124,7 @@ class StackSpec extends FlatSpec {
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      Debug.traceOutOn_!
+      Debug.traceOutOnSE
       "Hello  World".traceStdOut; // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
@@ -140,7 +140,7 @@ class StackSpec extends FlatSpec {
   }
 
   "Disabling trace to std out" should "disable tracing to std out" in {
-    Debug.traceOutOff_!
+    Debug.traceOutOffSE
     val traceMessage = {
       val originalOut: PrintStream = System.out;
       // To get it back later
@@ -162,8 +162,8 @@ class StackSpec extends FlatSpec {
   }
 
   it should "not disable assert to standard out" in {
-    Debug.nonFatalAssertOn_!() // enable assertion to standard out
-    Debug.traceOutOff_!() // disable trace to standard out
+    Debug.nonFatalAssertOnSE() // enable assertion to standard out
+    Debug.traceOutOffSE() // disable trace to standard out
     val traceMessage = {
       val originalOut: PrintStream = System.out;
       // To get it back later
@@ -185,7 +185,7 @@ class StackSpec extends FlatSpec {
     }
   }
   "Disabling non-fatal assert" should "stop non-fatal assert from working" in {
-    Debug.nonFatalAssertOff_!() // disable assertion to standard out
+    Debug.nonFatalAssertOffSE() // disable assertion to standard out
     val traceMessage = {
       val originalOut: PrintStream = System.out;
       // To get it back later
@@ -207,7 +207,7 @@ class StackSpec extends FlatSpec {
   }
   /*
   "output" should "look good" in {
-    Debug.enableEverything_!()
+    Debug.enableEverythingSE()
     "Hello World 1".trace // 1 line of stack trace
     // "Hello World 2".traceStdOut
     "Hello World 3".trace(3) // 3 lines of stack trace
@@ -216,7 +216,7 @@ class StackSpec extends FlatSpec {
     "foo".checkEquals("bar", "assertFailure1", maxLines = 2)
     "foo".assertEquals("foo", "assertFailure2")
     2.assert( _ + 1 == 3, "2 + 1 = 3")
-    Debug.fatalAssertOff_!() // disables fatal assert
+    Debug.fatalAssertOffSE() // disables fatal assert
     "foo".assertEquals("bar", "message3") // assert cancelled
     assert(true)
   }

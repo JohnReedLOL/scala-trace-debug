@@ -65,11 +65,11 @@ protected[debug] object Printer {
     *
     * @param toPrintOutNullable    the object to print out. May be "null"
     * @param numStackLinesIntended N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values
-    * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
+    * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
   protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                              useStdOut_? : Boolean = false): String = {
+                                              usingStdOut: Boolean = false): String = {
     if(debugDisabled_?) {
       return ""
     }
@@ -95,14 +95,14 @@ protected[debug] object Printer {
       // do not make a call to Thread.currentThread().getStackTrace
     }
     // toPrint += "\n"
-    if (!useStdOut_? && !Debug.traceErrOn_?) {
+    if (!usingStdOut && !Debug.isTraceErrOn) {
       return toPrint // if we are using standard error and tracing to standard error is off, return
     }
-    if (useStdOut_? && !Debug.traceOutOn_?) {
+    if (usingStdOut && !Debug.isTraceOutOn) {
       return toPrint // if we are using standard out and tracing to standard out is off, return
     }
 
-    if (useStdOut_?) {
+    if (usingStdOut) {
       PrintLocker.synchronized {
         System.out.println(toPrint)
       }
@@ -140,11 +140,11 @@ protected[debug] object Printer {
     *
     * @param toPrintOutNullable    the object to print out. May be "null"
     * @param numStackLinesIntended N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values
-    * @param useStdOut_?           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
+    * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
   protected[debug] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                               useStdOut_? : Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
+                                               usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (debugDisabled_? || assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.
     }
@@ -171,13 +171,13 @@ protected[debug] object Printer {
     } else {
       toPrint += "\n" + "^ An assertion failure has occured. ^"
     }
-    if (!isFatal_? && !Debug.nonFatalAssertOn_?) {
+    if (!isFatal_? && !Debug.isNonFatalAssertOn) {
       return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
     }
-    if (isFatal_? && !Debug.fatalAssertOn_?) {
+    if (isFatal_? && !Debug.isFatalAssertOn) {
       return toPrint // If it is fatal and fatalAssert is off, return the string without printing (so that the logger can print it)
     }
-    if (useStdOut_?) {
+    if (usingStdOut) {
       PrintLocker.synchronized {
         System.out.println(toPrint)
       }
@@ -186,7 +186,7 @@ protected[debug] object Printer {
         System.err.println(toPrint)
       }
     }
-    if (isFatal_? && Debug.fatalAssertOn_?) {
+    if (isFatal_? && Debug.isFatalAssertOn) {
       System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
     }
     toPrint

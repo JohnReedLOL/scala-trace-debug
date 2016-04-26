@@ -15,9 +15,6 @@ package info.collaboration_station.debug.internal;
  */
 import java.net.URL;
 import java.security.CodeSource;
-// import java.util.HashMap;
-
-import sun.reflect.Reflection;
 
 // import java.security.AccessControlException; import java.security.AccessController;import java.security.PrivilegedAction;
 /**

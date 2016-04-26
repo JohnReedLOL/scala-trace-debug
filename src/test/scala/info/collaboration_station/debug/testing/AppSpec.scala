@@ -64,7 +64,7 @@ class CheckSpec
           //Debug.traceContents(assertMessage)
 
           //import collection.JavaConversions._
-          //Debug.enableEverything_!
+          //Debug.enableEverythingSE
           //Debug.traceContents(assertMessage, numElements = 4)
           //Debug.traceContents(exceptionMessage, numElements = 4)
           //Debug.traceContents(List(1,2,3), 4)

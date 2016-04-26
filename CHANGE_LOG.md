@@ -38,4 +38,12 @@ Change log:
 
 "1.2.10" - Log.find takes in Java arrays in addition to Scala data structures
 
-"1.2.11" - Not yet released - Debug.assert uses red color in "assert failed" messages, cleaner API.
+Not yet released
+
+"2.2.10" - Java compatibility (with Java test cases), shortened import name
+
+Other stuff (to be done)
+
+test case for code style, test for overflow - too long messages.
+
+Debug.assert uses orange color in "assert failed" messages, cleaner API, cleaner test cases/examples, tryout with Maven

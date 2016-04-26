@@ -37,7 +37,7 @@ final class ImplicitTrace[MyType](val me: MyType) {
     * @return The thing that was just printed
     */
   final def traceStdOut: MyType = {
-    Printer.traceInternal(me, 1, useStdOut_? = true); me
+    Printer.traceInternal(me, 1, usingStdOut = true); me
   }
 
   /** Prints out this object to standard out with a user specified number of lines of stack trace
@@ -46,7 +46,7 @@ final class ImplicitTrace[MyType](val me: MyType) {
     * @return The thing that was just printed
     */
   final def traceStdOut(numLines: Int): MyType = {
-    Printer.traceInternal(me, numLines, useStdOut_? = true); me
+    Printer.traceInternal(me, numLines, usingStdOut = true); me
   }
 
   /** Prints out this object to standard out along with the entire stack trace
@@ -54,7 +54,7 @@ final class ImplicitTrace[MyType](val me: MyType) {
     * @return The thing that was just printed
     */
   final def traceStackStdOut: MyType = {
-    Printer.traceInternal(me, Int.MaxValue, useStdOut_? = true); me
+    Printer.traceInternal(me, Int.MaxValue, usingStdOut = true); me
   }
 
 }
