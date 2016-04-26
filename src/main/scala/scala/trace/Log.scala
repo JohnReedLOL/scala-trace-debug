@@ -1,11 +1,11 @@
-package scala.trace.debug
+package scala.trace
 
-
-import scala.trace.debug.Helpers.MacroHelperMethod
-
+import Helpers.MacroHelperMethod
 import scala.collection.TraversableLike
 import scala.language.experimental.macros
-import scala.trace.debug.internal.Printer
+import scala.trace.Compat
+import scala.trace.internal.Printer
+import scala.trace.internal.Printer
 /**
   * Created by johnreed on 4/17/16. A place for log methods
   */
@@ -107,7 +107,7 @@ object Log {
       val arg3 = q"Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -123,7 +123,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -139,7 +139,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -177,7 +177,7 @@ object Log {
       val arg3 = q"Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, 0, $arg3) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -193,7 +193,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, 0, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
@@ -209,7 +209,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ")->" + _root_.scala.trace.debug.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
+       "(" + $sourceCode + ")->" + _root_.scala.trace.Debug.getCollectionAsString($container, $start, $numElements) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }

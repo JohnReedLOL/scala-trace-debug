@@ -1,11 +1,11 @@
-package scala.trace.debug.internal
+package scala.trace.internal
 
-import scala.trace.debug.Debug
+import scala.trace.Debug
 
 /**
   * Created by johnreed on 4/12/16 for https://github.com/JohnReedLOL/scala-trace-debug
   */
-protected[debug] object Printer {
+protected[trace] object Printer {
 
   private val mySystemProperty = "ENABLE_TRACE_DEBUG"
 
@@ -59,7 +59,7 @@ protected[debug] object Printer {
   /** The offset of the first line from the base of the stack trace
     * The +1 is necessary because the method call traceInternal adds one to the offset of the stack trace
     */
-  protected[debug] val newStackOffset = Debug.stackOffset + 1
+  protected[trace] val newStackOffset = Debug.stackOffset + 1
 
   /** Prints out the object with N lines of stack trace. Do not use with assertions
     *
@@ -68,7 +68,7 @@ protected[debug] object Printer {
     * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[debug] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+  protected[trace] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                                               usingStdOut: Boolean = false): String = {
     if(debugDisabled_?) {
       return ""
@@ -143,7 +143,7 @@ protected[debug] object Printer {
     * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[debug] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
+  protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                                                usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (debugDisabled_? || assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.

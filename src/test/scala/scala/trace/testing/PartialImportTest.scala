@@ -1,6 +1,6 @@
-package scala.trace.debug.testing
+package scala.trace.testing
 
-import scala.trace.debug.implicitlyPrintable
+import scala.trace.implicitlyPrintable
 import org.scalatest._
 
 /**

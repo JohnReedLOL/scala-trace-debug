@@ -1,14 +1,14 @@
-package scala.trace.debug.testing
+package scala.trace.testing
 
 import java.io._
 
-import scala.trace.debug._
+import scala.trace._
 import org.scalatest._
 import org.slf4j._
 
-import scala.trace.debug.Debug
+import scala.trace.Debug
 
-// import scala.trace.debug.testing.TestingUtils // this import comes from debugtrace/test/scala
+// import scala.trace.testing.TestingUtils // this import comes from debugtrace/test/scala
 
 class StackSpec extends FlatSpec {
 

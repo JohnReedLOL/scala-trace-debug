@@ -1,11 +1,11 @@
 package main
 
-import scala.trace.debug._
+import scala.trace._
 import ch.qos.logback.classic.LoggerContext
 import ch.qos.logback.core.util.StatusPrinter
 import org.slf4j._
 
-import scala.trace.debug.Debug
+import scala.trace.Debug
 
 
 // wildcard import for implicit trace/assert/print functionality
@@ -18,7 +18,7 @@ import scala.trace.debug.Debug
 object Main {
 
   def main(args: Array[String]) {
-    import scala.trace.debug.Log
+    import scala.trace.Log
     Debug.trace("foo1")
     Debug.trace("foo3", 3)
     Debug.traceStdOut("foo1StdOut")

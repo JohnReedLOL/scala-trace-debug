@@ -1,9 +1,9 @@
-package scala.trace.debug.testing
+package scala.trace.testing
 
 import java.io.{BufferedReader, IOException}
 
 import scala.util.control.Breaks._
-import scala.trace.debug._
+import scala.trace._
 
 /**
   * Created by johnreed on 3/14/16.

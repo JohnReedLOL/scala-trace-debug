@@ -2,7 +2,7 @@ package main;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import scala.trace.debug.Debug;
+import scala.trace.Debug;
 
 public class TestJunit {
     @Test

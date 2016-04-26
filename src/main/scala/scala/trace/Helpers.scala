@@ -1,11 +1,11 @@
-package scala.trace.debug
+package scala.trace
 
-
+import scala.trace.Compat
 
 /**
   * Created by johnreed on 4/17/16. A place for helper methods.
   */
-protected[debug] object Helpers {
+protected[trace] object Helpers {
   final class MacroHelperMethod[C <: Compat.Context](val c: C) {
     def getSourceCode(toPrint: c.Tree): c.Tree = {
       import c.universe._

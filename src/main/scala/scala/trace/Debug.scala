@@ -1,10 +1,10 @@
-package scala.trace.debug
+package scala.trace
 
-
-import scala.trace.debug.Helpers.MacroHelperMethod
-
+import Helpers.MacroHelperMethod
 import scala.language.experimental.macros
-import scala.trace.debug.internal.Printer
+import scala.trace.Compat
+import scala.trace.internal.Printer
+import scala.trace.internal.Printer
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions. https://github.com/JohnReedLOL/scala-trace-debug
@@ -14,7 +14,7 @@ object Debug {
   /**
     * Stack offset is 2 because the first row in the stack trace is Thread and the second row is internal call
     */
-  protected[debug] val stackOffset = 2
+  protected[trace] val stackOffset = 2
 
   @volatile private var isTraceOutOn_ = true
   @volatile private var isTraceErrOn_ = true
@@ -308,7 +308,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.trace(..$args);
+        _root_.scala.trace.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -322,7 +322,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.trace(..$args);
+        _root_.scala.trace.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -361,7 +361,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.traceStack(..$args);
+        _root_.scala.trace.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -384,7 +384,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.trace(..$args);
+        _root_.scala.trace.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -397,7 +397,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.trace(..$args);
+        _root_.scala.trace.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -421,7 +421,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.traceStack(..$args);
+        _root_.scala.trace.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -445,7 +445,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.traceStdOut(..$args);
+        _root_.scala.trace.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -458,7 +458,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.traceStdOut(..$args);
+        _root_.scala.trace.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -482,7 +482,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.debug.Debug.traceStackStdOut(..$args);
+        _root_.scala.trace.Debug.traceStackStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -510,7 +510,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -527,7 +527,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -563,7 +563,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -590,7 +590,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -622,7 +622,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -639,7 +639,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -675,7 +675,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -702,7 +702,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
