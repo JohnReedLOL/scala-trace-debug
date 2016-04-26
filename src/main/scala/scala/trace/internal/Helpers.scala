@@ -1,4 +1,6 @@
-package scala.trace
+package scala.trace.internal
+
+import scala.trace.Compat
 
 /**
   * Created by johnreed on 4/17/16. A place for helper methods.

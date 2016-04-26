@@ -1,8 +1,7 @@
 package scala.trace
 
-import Helpers.MacroHelperMethod
-import scala.language.experimental.macros
-import scala.trace.internal.Printer
+import Helpers.macros
+import scala.trace.internal.{Helpers, Printer}
 /**
   * Created by johnreed on 4/17/16. A place for log methods
   */
