@@ -56,6 +56,24 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
+### Instructions (for IntelliJ IDE):
+
+1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
+
+2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala)
+
+3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
+
+4. Pick either "Application" (with a Main class) or "SBT Task" ("run", "test", or "test:run").
+
+5. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+ 
+6. Use the IntelliJ console arrows to navigate up and down the stack traces.
+
+![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
+
+____________________________________________________________________________________________________________________
+
 ### Logger Incorporation:
 
 `Log.find` is designed to be used with a logger. Does not incur the overhead of a full stack trace.
@@ -110,25 +128,6 @@ import info.collaboration_station.debug.implicitlyPrintable
 val foobar = "foo".trace().concat("bar").println() // Chaining.
 
 ```
-
-____________________________________________________________________________________________________________________
-
-
-### Instructions (for IntelliJ IDE):
-
-1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
-
-2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala)
-
-3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
-
-4. Pick either "Application" (with a Main class) or "SBT Task" ("run", "test", or "test:run").
-
-5. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
- 
-6. Use the IntelliJ console arrows to navigate up and down the stack traces.
-
-![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
 ____________________________________________________________________________________________________________________
 
