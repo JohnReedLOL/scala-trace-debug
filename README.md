@@ -5,6 +5,17 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
+### Is this the right tool for me?
+
+1. Am I using an IDE?
+
+2. Do I find myself searching the file system (Ctr-F) for the location of log or print statements?
+&nbsp;
+
+If you answered yes to both of these questions, this tool is for you.
+
+____________________________________________________________________________________________________________________
+
 ### Getting started:
 
 Just add these two lines to your "build.sbt" file:
@@ -19,15 +30,6 @@ Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder
 
 ____________________________________________________________________________________________________________________
 
-### Is this the right tool for me?
-
-1. Am I using an IDE (or does my team use an IDE)?
-
-2. Do I find myself searching the file system (Ctr-F) for the location of log or print statements?
-
-If you answered yes to both of these questions, this tool is for you.
-
-____________________________________________________________________________________________________________________
 
 ### Examples:
 
