@@ -33,19 +33,17 @@ ________________________________________________________________________________
 
 ### Examples:
 
+#### Without logger:
+
+![Demo](http://i.imgur.com/EFkBppw.png)
+
+^ Note: `Debug.assert` kills the application with exit code 7. `Debug.check` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
+
 #### With logger:
 
 ![Logger](http://i.imgur.com/MNNkYXe.png)
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
-
-#### Without logger:
-
-![Demo](http://i.imgur.com/EFkBppw.png)
-
-^ Traces and Asserts now come with jar file names in stacktrace. Ex. `[scalatest_2.11-2.2.6.jar]` ^
-
-^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
 
 ^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
 
