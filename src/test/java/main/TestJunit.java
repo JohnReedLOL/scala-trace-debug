@@ -8,6 +8,10 @@ public class TestJunit {
     @Test
     public void testAdd() {
 
+        Debug.trace("Fooo1");
+
+        Debug.traceStdOut("Fooo2");
+
         System.err.println("\"message\" in thread main:");
 
         Debug.assertStdOut(false, "message", 3);

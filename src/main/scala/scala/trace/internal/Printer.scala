@@ -7,15 +7,15 @@ import scala.trace.Debug
   */
 protected[trace] object Printer {
 
-  /**
-    * Uses ANSI color sequences to make the output yellow.
-    */
-  object addRedColor extends Function1[String, String] {
+  object Color {
     val escape: Char = 27.toChar
-    val red: String = "[31m"
-    // val yellow: String = "[33m"
     val clear: String = escape + "[0m"
-    override def apply(str: String): String = {
+    val red: String = "[31m"
+
+    /**
+      * Uses ANSI color sequences to make the output red.
+      */
+    def red(str: String): String = {
       escape + red + str + clear
     }
   }
@@ -184,7 +184,7 @@ protected[trace] object Printer {
     } else {
       toPrint += "\n" + "^ An assertion failure has occured. ^"
     }
-    toPrint = addRedColor(toPrint)
+    toPrint = Color.red(toPrint)
     if (!isFatal_? && !Debug.isNonFatalAssertOn) {
       return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
     }
