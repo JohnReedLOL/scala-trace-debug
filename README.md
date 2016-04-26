@@ -5,6 +5,30 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
+### Getting started:
+
+Just add these two lines to your "build.sbt" file:
+
+```scala
+resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
+
+libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
+```
+
+Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
+
+____________________________________________________________________________________________________________________
+
+### Is this the right tool for me?
+
+1. Am I using an IDE (or does my team use an IDE)?
+
+2. Do I find myself searching the file system (Ctr-F) for the location of log or print statements?
+
+If you answered yes to both of these questions, this tool is for you.
+
+____________________________________________________________________________________________________________________
+
 ### Examples:
 
 #### With logger:
@@ -22,19 +46,6 @@ ________________________________________________________________________________
 ^ Note: `Debug.assert` kills the application with exit code 7. `Debug.assertNonFatal` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
 
 ^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
-____________________________________________________________________________________________________________________
-
-### Getting started:
-
-Just add these two lines to your "build.sbt" file:
-
-```scala
-resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
-
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
-```
-
-Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
 
 ____________________________________________________________________________________________________________________
 
