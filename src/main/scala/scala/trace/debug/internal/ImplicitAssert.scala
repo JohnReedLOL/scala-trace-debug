@@ -1,8 +1,7 @@
-package info.collaboration_station.debug.internal
-
-import info.collaboration_station.debug.Debug
+package scala.trace.debug.internal
 
 import scala.language.implicitConversions
+import scala.trace.debug.Debug
 
 /**
   * Created by johnreed on 4/12/16.

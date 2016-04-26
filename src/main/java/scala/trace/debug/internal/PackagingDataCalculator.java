@@ -1,4 +1,4 @@
-package info.collaboration_station.debug.internal;
+package scala.trace.debug.internal;
 
 /**
  * Logback: the reliable, generic, fast and flexible logging framework.

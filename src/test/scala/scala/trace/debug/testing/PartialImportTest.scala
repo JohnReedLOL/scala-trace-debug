@@ -1,6 +1,6 @@
-package info.collaboration_station.debug.testing
+package scala.trace.debug.testing
 
-import info.collaboration_station.debug.implicitlyPrintable
+import scala.trace.debug.implicitlyPrintable
 import org.scalatest._
 
 /**

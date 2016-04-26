@@ -1,4 +1,4 @@
-package info.collaboration_station.debug.internal
+package scala.trace.debug.internal
 
 import scala.language.implicitConversions
 

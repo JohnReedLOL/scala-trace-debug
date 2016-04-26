@@ -1,9 +1,10 @@
-package info.collaboration_station.debug
+package scala.trace.debug
 
-import info.collaboration_station.debug.Helpers.MacroHelperMethod
-import info.collaboration_station.debug.internal.Printer
+
+import scala.trace.debug.Helpers.MacroHelperMethod
 
 import scala.language.experimental.macros
+import scala.trace.debug.internal.Printer
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions. https://github.com/JohnReedLOL/scala-trace-debug
@@ -310,7 +311,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.scala.trace.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -324,7 +325,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.scala.trace.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -363,7 +364,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.traceStack(..$args);
+        _root_.scala.trace.debug.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -386,7 +387,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.scala.trace.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -399,7 +400,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.trace(..$args);
+        _root_.scala.trace.debug.Debug.trace(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -423,7 +424,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.traceStack(..$args);
+        _root_.scala.trace.debug.Debug.traceStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -447,7 +448,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.traceStdOut(..$args);
+        _root_.scala.trace.debug.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -460,7 +461,7 @@ object Debug {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.traceStdOut(..$args);
+        _root_.scala.trace.debug.Debug.traceStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -484,7 +485,7 @@ object Debug {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.info.collaboration_station.debug.Debug.traceStackStdOut(..$args);
+        _root_.scala.trace.debug.Debug.traceStackStdOut(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -512,7 +513,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -529,7 +530,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -565,7 +566,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -592,7 +593,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -624,7 +625,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -641,7 +642,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -677,7 +678,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -704,7 +705,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.info.collaboration_station.debug.Debug.check(assertBoolean, ..$args);
+        _root_.scala.trace.debug.Debug.check(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }

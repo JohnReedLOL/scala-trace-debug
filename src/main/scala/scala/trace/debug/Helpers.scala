@@ -1,4 +1,6 @@
-package info.collaboration_station.debug
+package scala.trace.debug
+
+
 
 /**
   * Created by johnreed on 4/17/16. A place for helper methods.

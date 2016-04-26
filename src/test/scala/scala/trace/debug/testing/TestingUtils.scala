@@ -1,9 +1,9 @@
-package info.collaboration_station.debug.testing
+package scala.trace.debug.testing
 
 import java.io.{BufferedReader, IOException}
 
 import scala.util.control.Breaks._
-import info.collaboration_station.debug._
+import scala.trace.debug._
 
 /**
   * Created by johnreed on 3/14/16.

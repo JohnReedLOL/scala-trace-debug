@@ -1,12 +1,14 @@
-package info.collaboration_station.debug.testing
+package scala.trace.debug.testing
 
 import java.io._
 
-import info.collaboration_station.debug._
+import scala.trace.debug._
 import org.scalatest._
 import org.slf4j._
 
-// import info.collaboration_station.debug.testing.TestingUtils // this import comes from debugtrace/test/scala
+import scala.trace.debug.Debug
+
+// import scala.trace.debug.testing.TestingUtils // this import comes from debugtrace/test/scala
 
 class StackSpec extends FlatSpec {
 

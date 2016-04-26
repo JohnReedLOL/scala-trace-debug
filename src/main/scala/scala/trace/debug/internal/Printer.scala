@@ -1,6 +1,6 @@
-package info.collaboration_station.debug.internal
+package scala.trace.debug.internal
 
-import info.collaboration_station.debug.Debug
+import scala.trace.debug.Debug
 
 /**
   * Created by johnreed on 4/12/16 for https://github.com/JohnReedLOL/scala-trace-debug

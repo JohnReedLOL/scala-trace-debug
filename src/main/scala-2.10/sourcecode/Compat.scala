@@ -1,6 +1,6 @@
-package info.collaboration_station.debug
+package scala.trace.debug
 
-object Compat{
+protected[debug] object Compat{
   type Context = scala.reflect.macros.Context
   def enclosingOwner(c: Context) = {
     c.asInstanceOf[scala.reflect.macros.runtime.Context]

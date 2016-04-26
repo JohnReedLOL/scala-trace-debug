@@ -1,11 +1,11 @@
 package main
 
-import info.collaboration_station.debug._
-
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.core.util.StatusPrinter;
-
+import scala.trace.debug._
+import ch.qos.logback.classic.LoggerContext
+import ch.qos.logback.core.util.StatusPrinter
 import org.slf4j._
+
+import scala.trace.debug.Debug
 
 
 // wildcard import for implicit trace/assert/print functionality
@@ -18,9 +18,9 @@ import org.slf4j._
 object Main {
 
   def main(args: Array[String]) {
+    import scala.trace.debug.Log
 
     // Easy to locate log statements
-    import info.collaboration_station.debug.Log
     Debug.traceContents(List(1, 2, 3) map ( 2.* ))
     Debug.traceContents(List(1, 2, 3) map ( _*2 ))
   }
