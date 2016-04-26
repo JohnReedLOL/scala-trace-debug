@@ -4,7 +4,7 @@ organization <<= name
 
 scalaVersion := "2.11.7"
 
-version := "0.2.8"
+version := "2.2.10"
 
 crossScalaVersions := Seq("2.10.4", "2.11.7")
 

@@ -58,7 +58,3 @@ final class ImplicitTrace[MyType](val me: MyType) {
   }
 
 }
-
-object ImplicitTrace {
-
-}

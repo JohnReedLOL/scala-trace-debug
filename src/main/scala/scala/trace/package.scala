@@ -1,6 +1,5 @@
 package scala
 
-import scala.trace.internal.ImplicitPrint
 import scala.trace.internal.{ImplicitAssert, ImplicitPrint, ImplicitTrace}
 
 /**
@@ -9,6 +8,11 @@ import scala.trace.internal.{ImplicitAssert, ImplicitPrint, ImplicitTrace}
 package object trace {
 
   import scala.language.implicitConversions
+
+  /**
+    * Assertions fail with exit code 7
+    */
+  protected[trace] val exitFail = 7
 
   // Warning: implicit conversions language feature
 

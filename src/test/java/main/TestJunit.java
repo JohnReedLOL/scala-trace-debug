@@ -14,7 +14,7 @@ public class TestJunit {
 
         System.err.println("\"message\" in thread main:");
 
-        Debug.assertStdOut(false, "message", 3);
+        // Debug.assertStdOut(false, "message", 3);
 
         System.err.println("^ The above stack trace leads to an assertion failure. ^");
 

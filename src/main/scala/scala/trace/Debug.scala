@@ -3,7 +3,6 @@ package scala.trace
 import Helpers.MacroHelperMethod
 import scala.language.experimental.macros
 import scala.trace.internal.Printer
-import scala.trace.internal.Printer
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions. https://github.com/JohnReedLOL/scala-trace-debug
@@ -23,30 +22,28 @@ object Debug {
   /** Tells you whether tracing to standard out is on or off
     * Note that disabling the "traceStdOut" feature does not disable the "assertStdOut" feature
     */
-  def isTraceOutOn = isTraceOutOn_
+  def isTraceOutOn: Boolean = isTraceOutOn_
 
   /** Tells you whether tracing to standard error is on or off
     * Note that disabling the "trace" feature does not disable the "assert" feature
     */
-  def isTraceErrOn = isTraceErrOn_
+  def isTraceErrOn: Boolean = isTraceErrOn_
 
   /**
     * Tells you whether fatal asserts are on or off
     */
-  def isFatalAssertOn = isFatalAssertOn_
+  def isFatalAssertOn: Boolean = isFatalAssertOn_
 
   /**
     * Tells you whether non-fatal asserts are on or off
     */
-  def isNonFatalAssertOn = isNonFatalAssertOn_
-
-  // these lines disable and enable particular features
+  def isNonFatalAssertOn: Boolean = isNonFatalAssertOn_
 
   /**
     * Enables tracing and asserts, including fatal assertions.
     *
     */
-  def enableEverything() = {
+  def enableEverything(): Unit = {
     traceErrOn()
     traceOutOn()
     fatalAssertOn()
@@ -57,7 +54,7 @@ object Debug {
     * Enables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
     *
     */
-  def traceErrOn() = {
+  def traceErrOn(): Unit = {
     isTraceErrOn_ = true
   }
 
@@ -65,7 +62,7 @@ object Debug {
     * Enables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
     *
     */
-  def traceOutOn() = {
+  def traceOutOn(): Unit = {
     isTraceOutOn_ = true
   }
 
@@ -73,7 +70,7 @@ object Debug {
     * Enables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
     *
     */
-  def fatalAssertOn() = {
+  def fatalAssertOn(): Unit = {
     isFatalAssertOn_ = true
   }
 
@@ -81,7 +78,7 @@ object Debug {
     * Enables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
     *
     */
-  def nonFatalAssertOn() = {
+  def nonFatalAssertOn(): Unit = {
     isNonFatalAssertOn_ = true
   }
 
@@ -89,7 +86,7 @@ object Debug {
     * Disables tracing and asserts. Both fatal and non-fatal assertions are disabled. Does not disable print or println
     *
     */
-  def disableEverything() = {
+  def disableEverything(): Unit = {
     traceErrOff()
     traceOutOff()
     fatalAssertOff()
@@ -100,7 +97,7 @@ object Debug {
     * Disables tracing to standard error. Has no effect on "print" or "println", only on "trace" methods
     *
     */
-  def traceErrOff() = {
+  def traceErrOff(): Unit = {
     isTraceErrOn_ = false
   }
 
@@ -108,7 +105,7 @@ object Debug {
     * Disables tracing to standard out. Has no effect on "print" or "println", only on "traceStdOut" methods
     *
     */
-  def traceOutOff() = {
+  def traceOutOff(): Unit = {
     isTraceOutOn_ = false
   }
 
@@ -116,7 +113,7 @@ object Debug {
     * Disables fatal assertions. Has no effect on "check", only on "assert" and other fatal assert methods (assertEquals, etc.)
     *
     */
-  def fatalAssertOff() = {
+  def fatalAssertOff(): Unit = {
     isFatalAssertOn_ = false
   }
 
@@ -124,7 +121,7 @@ object Debug {
     * Disables non-fatal assertions. Has no effect on "assert" and other fatal assert methods (assertEquals, etc.)
     *
     */
-  def nonFatalAssertOff() = {
+  def nonFatalAssertOff(): Unit = {
     isNonFatalAssertOn_ = false
   }
 

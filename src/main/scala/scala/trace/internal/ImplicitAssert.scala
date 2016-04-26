@@ -95,7 +95,3 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     me
   }
 }
-
-object ImplicitAssert {
-
-}

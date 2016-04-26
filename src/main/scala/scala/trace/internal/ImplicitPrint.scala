@@ -47,7 +47,3 @@ final class ImplicitPrint[MyType](val me: MyType) {
     System.err.println(me); me
   }
 }
-
-object ImplicitPrint {
-
-}

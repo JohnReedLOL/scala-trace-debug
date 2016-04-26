@@ -34,7 +34,9 @@ protected[trace] object Printer {
     // a system property
     val systemProperty = {
       val tmp = System.getProperty(mySystemProperty)
-      if (tmp == null) null
+      if (tmp == null) {
+        null
+      }
       else {
         tmp.trim().toLowerCase() match {
           case "true" => true
@@ -48,7 +50,9 @@ protected[trace] object Printer {
     // an environment variable
     val environmentProperty = {
       val tmp = System.getenv(mySystemProperty)
-      if (tmp == null) null
+      if (tmp == null) {
+        null
+      }
       else {
         tmp.trim().toLowerCase() match {
           case "true" => true

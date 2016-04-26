@@ -40,10 +40,10 @@ Change log:
 
 Not yet released
 
-"2.2.10" - Java compatibility (with Java test cases), shortened import name
+"2.2.10" - Java compatibility (with Java test cases), shortened import name, Debug.assert uses bright color in "assert failed" messages
 
 Other stuff (to be done)
 
 test case for code style, test for overflow - too long messages.
 
-Debug.assert uses orange color in "assert failed" messages, cleaner API, cleaner test cases/examples, tryout with Maven
+cleaner API, cleaner test cases/examples, tryout with Maven
