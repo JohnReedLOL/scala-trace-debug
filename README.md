@@ -46,7 +46,7 @@ ________________________________________________________________________________
 
 #### With Java:
 
-!(Java Screenshot)[http://i.imgur.com/R4Kbpa9.png]
+![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
 
 ^ Note that since I am running this in SBT, all my stack traces are off by one. 
 In real life you could click on any of them and it would take you to the line number. ^
