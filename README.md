@@ -40,7 +40,7 @@ Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/s
 </dependency>
 ```
 
-All the functions that a Java user can call are (here)[file:///home/johnreed/bitbucket2/johnreedlol.bitbucket.org/api/index.html]
+All the functions that a Java user can call are [in here](file:///home/johnreed/bitbucket2/johnreedlol.bitbucket.org/api/index.html)
 
 ____________________________________________________________________________________________________________________
 
