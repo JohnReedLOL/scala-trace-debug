@@ -42,9 +42,8 @@ Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder
 ____________________________________________________________________________________________________________________
 
 
-### Examples:
+### Java Examples:
 
-#### With Java:
 
 ![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
 
@@ -52,7 +51,20 @@ ________________________________________________________________________________
 In real life you could click on any of them and it would take you to the line number. ^
 
 
-#### With Scala:
+### Master Shutoff Switch (Java Capable):
+
+If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
+
+### Other Switches:
+
+The `Debug` object also provides switches for enabling/disabling tracing to standard out or standard error and assertions (fatal and nonFatal). For container printing, the number of columns per line is also adjustable (Debug.setElementsPerRow)
+
+____________________________________________________________________________________________________________________
+
+### Scala Examples:
+
+#### Without Scala:
 
 ![Demo](http://i.imgur.com/EFkBppw.png)
 
@@ -68,24 +80,20 @@ ________________________________________________________________________________
 
 ### Requirements:
 
-- Scala 2.10.4 or higher
+- Scala 2.10.4 or higher (or Java 8+)
 - Some sort of IDE that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 
 ### Instructions (for IntelliJ IDE):
 
-1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
+1. Add the library dependency or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
 
 2. import [scala.trace._](src/main/scala/scala/trace/package.scala)
 
-3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
-
-4. Pick either "Application" (with a Main class) or "SBT Task" ("run", "test", or "test:run").
-
-5. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+3. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
-6. Use the IntelliJ console arrows to navigate up and down the stack traces.
+4. Use the IntelliJ console arrows to navigate up and down the stack traces.
 
 ![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
@@ -99,12 +107,6 @@ ________________________________________________________________________________
 
 You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
 
-____________________________________________________________________________________________________________________
-
-### Master Shutoff Switch:
-
-If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
 ____________________________________________________________________________________________________________________
 
 ### Container Printing:
@@ -163,14 +165,6 @@ ________________________________________________________________________________
 ######^ Useful if you do not want to repeat the name of a variable in a print statement. ^
 
 ^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check`. *
-
-____________________________________________________________________________________________________________________
-
-### Benefits:
-
-- Easy to locate print statements. Gives you an idea of what each thread is doing.
-- Easy to locate and remove trace statements (Ctr-R find-and-replace or set ENABLE_TRACE_DEBUG to "false")
-- Customizable features including stack trace length and enabling/disabling of assertions and traces.
 
 ____________________________________________________________________________________________________________________
 
