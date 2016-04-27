@@ -5,14 +5,14 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
-### Should I use this tool?
+### Is this tool for me?
 
 1. Do I use an IDE or text editor with stack trace parsing?
 
 2. Do I look around for where I put my print statements?
 &nbsp;
 
-If so, then this tool is for you.
+If you answered `yes`, then this tool is for you.
 
 ____________________________________________________________________________________________________________________
 
