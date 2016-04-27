@@ -142,9 +142,7 @@ ________________________________________________________________________________
 
 [Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
 
-[Methods available through the Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.Debug$)
-
-Example functions: http://pastebin.com/2e1JN1De
+Example functions (old): http://pastebin.com/2e1JN1De
 
 ^ For more examples, see [Main.scala](src/test/scala/main/Main.scala), which you can run with `sbt test:run`
 
