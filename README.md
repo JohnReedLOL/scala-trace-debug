@@ -18,7 +18,16 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-- [Maven dependency (copy-paste from here)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- [Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+
+```scala
+<dependency>
+  <groupId>scala.trace</groupId>
+  <artifactId>scala-trace-debug_2.11</artifactId>
+  <version>2.2.13</version>
+  <type>pom</type>
+</dependency>
+```
 
 - SBT "build.sbt" file:
 
