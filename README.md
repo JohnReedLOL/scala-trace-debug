@@ -212,7 +212,13 @@ Note that calls to `Log.find` are faster than calls to `Debug.trace`, but `Log.f
 
 ____________________________________________________________________________________________________________________
 
-#### Links (old):
+#### Code layout:
+
+Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
+
+____________________________________________________________________________________________________________________
+
+#### Links (Old):
 
 See [ScalaDoc](http://ec2-52-87-157-20.compute-1.amazonaws.com/) in source code for in detail documentation.
 
@@ -223,9 +229,3 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 Old version of this library: [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
 Less old version of this library: [https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/](https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/)
-
-____________________________________________________________________________________________________________________
-
-#### Code layout:
-
-Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
