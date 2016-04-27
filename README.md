@@ -18,9 +18,9 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-[Maven dependency (copy-paste from here)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- [Maven dependency (copy-paste from here)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
-SBT "build.sbt" file:
+- SBT "build.sbt" file:
 
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
@@ -28,7 +28,7 @@ resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/mav
 libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.13"
 ```
 
-Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
+- Jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
 
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build. Copy-pasting the jar works too.
 
