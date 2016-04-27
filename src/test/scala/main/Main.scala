@@ -20,6 +20,19 @@ object Main {
   def main(args: Array[String]) {
     import scala.trace.Log
 
+    Debug.traceContents(List(1,2,3,4))
+    Debug.traceContents(Map("1"->1, "2"->2))
+    Thread.sleep(10)
+    Debug.traceContents(List(1,2,3,4,5,1,2,3,4,5,1,2,3,4,5))
+
+    Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
+    Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
+    Debug.trace("foo")
+    val array = Array("z","z","z","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d")
+    System.err.println("\n" + Log.find(array))
+    Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
+    Debug.trace("foo")
+
     Debug.assertCode( // woo
       { // woo0000t
         "foo" == 2}, 3

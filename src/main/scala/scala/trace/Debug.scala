@@ -34,6 +34,7 @@ object Debug {
     * @param elementsPerRow the number of elements per row for container printing
     */
   def setElementsPerRow(elementsPerRow: Int): Unit = {
+    require(elementsPerRow > 0)
     elementsPerRow_ = elementsPerRow
   }
 
@@ -198,7 +199,7 @@ object Debug {
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def assert(assertion: => Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def assert(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
@@ -233,10 +234,7 @@ object Debug {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 
-  import scala.collection.TraversableLike
   import scala.reflect.runtime.universe.WeakTypeTag
-
-  // def printAll(coll: collection.GenTraversable[_]) = coll.foreach(println)
 
   /**
     * Gets the collection as a string of n elements from start to start + numElements
@@ -257,19 +255,47 @@ object Debug {
         currentElement = Long.MaxValue
       }
     }
+    val startElement = currentElement
     // Now currentElement = start
     // then do real printing
     while(currentElement < end) {
       if (iterator.hasNext) {
-        toPrint = toPrint + iterator.next() + " "
+        toPrint = toPrint + iterator.next() + ", "
         currentElement += 1L
+        if( (currentElement - startElement) % Debug.getElementsPerRow() == 0) {
+          toPrint += "\n" // newline every "numElementsPerRow" elements
+        }
       } else {
         // get out of loop
         currentElement = Long.MaxValue
       }
     }
     toPrint = toPrint.trim // no trailing whitespace
-    toPrint
+
+    if (toPrint.length() > 0 && toPrint.charAt(toPrint.length()-1)==',') {
+      toPrint = toPrint.substring(0, toPrint.length()-1) // remove trailing comma
+    }
+
+    "\n" + toPrint + "\n"
+  }
+
+  /**
+    * Same as traceContents[CollectionType], but for Java Arrays (callable from Java Code)
+    */
+  def traceArray[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  : String = {
+    val toPrint = getCollectionAsString(coll, start, numElements)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
+  }
+
+
+  /**
+    * Same as traceContentsStdOut[CollectionType], but for Java Arrays (callable from Java Code)
+    */
+  def traceArrayStdOut[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  : String = {
+    val toPrint = getCollectionAsString(coll, start, numElements)
+    Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
   }
 
   /**
@@ -282,10 +308,10 @@ object Debug {
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def traceContents[CollectionType](coll: collection.GenTraversableOnce[CollectionType], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
-  (implicit tag: WeakTypeTag[CollectionType]): String = {
+  def traceContents[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  (implicit tag: WeakTypeTag[ContainedT]): String = {
     val collectionType = tag.tpe
-    val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
+    val toPrint = "Contains: " + collectionType.toString + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
   }
 
@@ -299,10 +325,10 @@ object Debug {
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def traceContentsStdOut[CollectionType](coll: collection.GenTraversableOnce[CollectionType], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
-  (implicit tag: WeakTypeTag[CollectionType]): String = {
+  def traceContentsStdOut[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  (implicit tag: WeakTypeTag[ContainedT]): String = {
     val collectionType = tag.tpe
-    val toPrint = collectionType.toString + " " + getCollectionAsString(coll, start, numElements)
+    val toPrint = "Contains: " + collectionType.toString + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
   }
 
@@ -317,7 +343,7 @@ object Debug {
     def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
-      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       val args = List(arg1)
       val toReturn =
         q"""
@@ -329,7 +355,7 @@ object Debug {
     def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
-      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn =
@@ -357,7 +383,7 @@ object Debug {
     def traceStackCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
-      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
       val args = List(arg1)
       val toReturn =
         q"""
@@ -546,7 +572,7 @@ object Debug {
     def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
-      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
+      val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
       val args = List(arg2, arg3)
       val toReturn =
@@ -562,7 +588,7 @@ object Debug {
     def assertLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
-      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
+      val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
       val args = List(arg2, arg3)
       val toReturn =
@@ -636,7 +662,7 @@ object Debug {
     def checkCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
-      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
+      val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
       val args = List(arg2, arg3)
       val toReturn =
@@ -652,7 +678,7 @@ object Debug {
     def checkLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
-      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
+      val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
       val args = List(arg2, arg3)
       val toReturn =
