@@ -31,19 +31,6 @@ object Main {
 
     Debug.trace("Trace to standard error")
     Thread.sleep(10);
-    {
-      val e: Array[StackTraceElement] = Thread.currentThread.getStackTrace
-      var i: Int = 0
-      while (i < e.length) {
-        {
-          System.err.println("~ " + e(i))
-        }
-        {
-          i += 1;
-        }
-      }
-    }
-    System.exit(-9)
 
     Debug.traceStdOut("Trace to standard out")
     Thread.sleep(10)

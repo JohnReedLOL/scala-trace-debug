@@ -18,14 +18,14 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-[Maven dependency (copy-paste from link)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+[Maven dependency (copy-paste from here)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
 SBT "build.sbt" file:
 
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
+libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.13"
 ```
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
@@ -38,6 +38,8 @@ Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/s
     <version>2.11.7</version>
 </dependency>
 
+All the functions that a Java user can call are [here](file:///home/johnreed/bitbucket2/johnreedlol.bitbucket.org/api/index.html)
+
 ____________________________________________________________________________________________________________________
 
 
@@ -48,6 +50,8 @@ ________________________________________________________________________________
 
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
+
+- If you just want to copy-paste, Java example is (here)[/src/test/java/main/JavaMain.java].
 
 ____________________________________________________________________________________________________________________
 
@@ -76,7 +80,7 @@ ________________________________________________________________________________
 
 ![Demo](http://i.imgur.com/EFkBppw.png)
 
-^ Note that this is an old screenshot. The import name is `scala.trace`. ^
+^ Note that this is an old screenshot. The import name was changed to `scala.trace`. ^
 
 #### With logger:
 
@@ -84,14 +88,13 @@ ________________________________________________________________________________
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
+- If you just want to copy-paste, Scala example is (here)[/src/test/scala/main/Main.scala].
 ____________________________________________________________________________________________________________________
 
 ### Requirements:
 
 - Scala 2.10.4 or higher (or Java 8+)
-- Some sort of IDE that supports stack trace highlighting
-
-^ Since the stack traces are formatted like exceptions, any text editor with a plugin for stack trace parsing should work.
+- Any IDE or text editor that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
 
