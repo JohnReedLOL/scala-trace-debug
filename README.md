@@ -212,7 +212,7 @@ Note that calls to `Log.find` are faster than calls to `Debug.trace`, but `Log.f
 
 ____________________________________________________________________________________________________________________
 
-#### More info:
+#### Links (old):
 
 See [ScalaDoc](http://ec2-52-87-157-20.compute-1.amazonaws.com/) in source code for in detail documentation.
 
