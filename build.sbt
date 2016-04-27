@@ -1,10 +1,10 @@
 name := "scala-trace-debug"
 
-organization <<= name
+organization := "scala.trace"
 
 scalaVersion := "2.11.7"
 
-version := "2.2.11"
+version := "2.2.12"
 
 crossScalaVersions := Seq("2.10.4", "2.11.7")
 
