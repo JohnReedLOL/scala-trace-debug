@@ -3,18 +3,16 @@ Make multithreaded bug tracing and prevention easier than ever with scala trace 
 
 Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
 
-Now with Java support.
-
 ____________________________________________________________________________________________________________________
 
 ### Is this the right tool for me?
 
 1. Am I using an IDE?
 
-2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints where values are printed?
+2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints there?
 &nbsp;
 
-If you answered yes to both of these questions, this tool is for you.
+If you answered yes, this tool is for you.
 
 ____________________________________________________________________________________________________________________
 
