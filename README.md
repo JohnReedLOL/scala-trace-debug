@@ -12,7 +12,7 @@ ________________________________________________________________________________
 2. Do I look around for where I put my print statements?
 &nbsp;
 
-If you answered `yes`, then this tool is for you.
+If you answered "yes", then this tool is for you.
 
 ____________________________________________________________________________________________________________________
 
