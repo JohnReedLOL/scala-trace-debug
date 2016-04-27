@@ -90,7 +90,7 @@ ________________________________________________________________________________
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
-If you just want to copy-paste, Scala example is (here)[/src/test/scala/main/Main.scala].
+If you just want to copy-paste, Scala example is [here](src/test/scala/main/Main.scala).
 
 ____________________________________________________________________________________________________________________
 
