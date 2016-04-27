@@ -19,6 +19,23 @@ object Debug {
   @volatile private var isTraceErrOn_ = true
   @volatile private var isFatalAssertOn_ = true
   @volatile private var isNonFatalAssertOn_ = true
+  @volatile private var elementsPerRow_ = 10 // for easy counting
+
+  /**
+    * Uses Java notation for Java users
+    * @return the number of elements per row for container printing
+    */
+  def getElementsPerRow(): Int = {
+    elementsPerRow_
+  }
+
+  /**
+    * Uses Java notation for Java users
+    * @param elementsPerRow the number of elements per row for container printing
+    */
+  def setElementsPerRow(elementsPerRow: Int): Unit = {
+    elementsPerRow_ = elementsPerRow
+  }
 
   /** Tells you whether tracing to standard out is on or off
     * Note that disabling the "traceStdOut" feature does not disable the "assertStdOut" feature
