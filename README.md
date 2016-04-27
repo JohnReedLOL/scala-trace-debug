@@ -53,7 +53,7 @@ ________________________________________________________________________________
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
 
-- If you just want to copy-paste, Java example is (here)[/src/test/java/main/JavaMain.java].
+If you just want to copy-paste, Java example is (here)[/src/test/java/main/JavaMain.java].
 
 ____________________________________________________________________________________________________________________
 
@@ -90,7 +90,8 @@ ________________________________________________________________________________
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
-- If you just want to copy-paste, Scala example is (here)[/src/test/scala/main/Main.scala].
+If you just want to copy-paste, Scala example is (here)[/src/test/scala/main/Main.scala].
+
 ____________________________________________________________________________________________________________________
 
 ### Requirements:
@@ -116,11 +117,11 @@ ________________________________________________________________________________
 
 ### Logger Incorporation:
 
-`Log.find` is designed to be used with a logger. Does not incur the overhead of a full stack trace.
+`[Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$)` is designed to be used with a logger. Does not incur the overhead of a full stack trace.
 
-`Debug` methods can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
+`[Debug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$)` methods can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
-`SDebug` stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
+`[SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$)` stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
 
 You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
 
