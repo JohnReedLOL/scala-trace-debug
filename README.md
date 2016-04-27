@@ -32,11 +32,13 @@ libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.13"
 
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build. Copy-pasting the jar works too.
 
+```scala
 <dependency>
     <groupId>org.scala-lang</groupId>
     <artifactId>scala-library</artifactId>
     <version>2.11.7</version>
 </dependency>
+```
 
 All the functions that a Java user can call are [here](file:///home/johnreed/bitbucket2/johnreedlol.bitbucket.org/api/index.html)
 
