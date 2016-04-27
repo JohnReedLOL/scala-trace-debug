@@ -3,18 +3,16 @@ Make multithreaded bug tracing and prevention easier than ever with scala trace 
 
 Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
 
-Now with Java support.
-
 ____________________________________________________________________________________________________________________
 
 ### Is this the right tool for me?
 
 1. Am I using an IDE?
 
-2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints where values are printed?
+2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints there?
 &nbsp;
 
-If you answered yes to both of these questions, this tool is for you.
+If you answered yes, this tool is for you.
 
 ____________________________________________________________________________________________________________________
 
@@ -22,12 +20,14 @@ ________________________________________________________________________________
 
 [Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
+```scala
 <dependency>
   <groupId>scala-trace-debug</groupId>
   <artifactId>scala-trace-debug_2.11</artifactId>
   <version>2.2.11</version>
   <type>pom</type>
 </dependency>
+```
 
 SBT "build.sbt" file:
 
@@ -46,7 +46,7 @@ ________________________________________________________________________________
 
 #### With Java:
 
-!(Java Screenshot)[http://i.imgur.com/R4Kbpa9.png]
+![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
 
 ^ Note that since I am running this in SBT, all my stack traces are off by one. 
 In real life you could click on any of them and it would take you to the line number. ^
