@@ -19,6 +19,12 @@ object Main {
 
   def main(args: Array[String]) {
     import scala.trace.Log
+
+    Debug.assertCode( // woo
+      { // woo0000t
+        "foo" == 2}, 3
+    )
+
     Debug.trace("foo1")
     Debug.trace("foo3", 3)
     Debug.traceStdOut("foo1StdOut")

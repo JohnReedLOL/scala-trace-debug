@@ -3,6 +3,7 @@ package scala.trace
 import scala.trace.internal.Printer
 import scala.trace.internal.Helpers.MacroHelperMethod
 import scala.language.experimental.macros
+import scala.language.existentials
 
 /**
   * Created by johnreed on 3/12/16. Contains static debug functions. https://github.com/JohnReedLOL/scala-trace-debug
@@ -298,9 +299,8 @@ object Debug {
   object traceCode {
     def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      import scala.language.existentials
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
+      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
       val args = List(arg1)
       val toReturn =
         q"""
@@ -311,9 +311,8 @@ object Debug {
 
     def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      import scala.language.existentials
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
+      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
       val arg2 = q"$numLines"
       val args = List(arg1, arg2)
       val toReturn =
@@ -340,20 +339,8 @@ object Debug {
   object traceStackCode {
     def traceStackCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val blockTree = toPrint.tree
-      val blockSource = new String(blockTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = blockSource.slice(start, start + end)
-      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
-      // System.err.println(arg1)
-      // At compile time prints: "(".$plus("fooVar + barVar").$plus(") -> ").$plus(fooVar.+(barVar).toString)
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val arg1 = q""" "(" + $blockString + ")-> " + ({$toPrint}.toString) """
       val args = List(arg1)
       val toReturn =
         q"""
@@ -541,19 +528,8 @@ object Debug {
 
     def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionTree = assertion.tree
-      val assertionSource = new String(assertionTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = assertionSource.slice(start, start + end)
-      val assertionString = blockString + " -> "
-      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
+      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
       val args = List(arg2, arg3)
       val toReturn =
@@ -568,19 +544,8 @@ object Debug {
 
     def assertLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionTree = assertion.tree
-      val assertionSource = new String(assertionTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = assertionSource.slice(start, start + end)
-      val assertionString = blockString + " -> "
-      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
+      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
       val args = List(arg2, arg3)
       val toReturn =
@@ -623,9 +588,9 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply(assertion: Boolean, numLines: Int): String = macro assertLinesNonFatalExpressionImpl
+    def apply(assertion: Boolean, numLines: Int): String = macro checkLinesNonFatalExpressionImpl
 
-    def assertLinesNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    def checkLinesNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val assertionString = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
@@ -649,23 +614,12 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object checkCode {
-    def apply(assertion: Boolean): String = macro assertCodeImpl
+    def apply(assertion: Boolean): String = macro checkCodeImpl
 
-    def assertCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
+    def checkCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionTree = assertion.tree
-      val assertionSource = new String(assertionTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = assertionSource.slice(start, start + end)
-      val assertionString = blockString + " -> "
-      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
+      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
       val args = List(arg2, arg3)
       val toReturn =
@@ -676,23 +630,12 @@ object Debug {
       c.Expr[String](toReturn)
     }
 
-    def apply(assertion: Boolean, numLines: Int): String = macro assertLinesCodeImpl
+    def apply(assertion: Boolean, numLines: Int): String = macro checkLinesCodeImpl
 
-    def assertLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
+    def checkLinesCodeImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionTree = assertion.tree
-      val assertionSource = new String(assertionTree.pos.source.content)
-      // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
-      val listOfTreePositions: List[Int] = assertionTree.collect { case tree => tree.pos.startOrPoint }
-      val start: Int = listOfTreePositions.min
-      import scala.language.existentials
-      val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = assertionSource.drop(start))
-      codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = assertionSource.slice(start, start + end)
-      val assertionString = blockString + " -> "
-      val arg2 = q"$assertionString + ({$assertion}.toString)"
+      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
+      val arg2 = q""" "(" + $sourceCode + ")-> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
       val args = List(arg2, arg3)
       val toReturn =
