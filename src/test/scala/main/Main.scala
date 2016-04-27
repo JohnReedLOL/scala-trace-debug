@@ -23,6 +23,7 @@ object Main {
     System.err.println("\n" + Log.pos("foo"))
     val arrayy = Array("hello","world")
     System.err.println("\n" + Log.find(arrayy))
+    System.err.println("\n" + Log.find("foooooo"))
     val array = Array("z","z","z","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d")
     System.err.println("\n" + Log.find(array))
 
