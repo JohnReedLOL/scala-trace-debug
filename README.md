@@ -53,7 +53,7 @@ ________________________________________________________________________________
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
 
-If you just want to copy-paste, Java example is (here)[/src/test/java/main/JavaMain.java].
+If you just want to copy-paste, Java example is [here](src/test/java/main/JavaMain.java).
 
 ____________________________________________________________________________________________________________________
 
