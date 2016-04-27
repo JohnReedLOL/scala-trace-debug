@@ -19,6 +19,32 @@ object Main {
 
   def main(args: Array[String]) {
     import scala.trace.Log
+    Debug.trace("Trace to standard error")
+    Thread.sleep(10);
+    {
+      val e: Array[StackTraceElement] = Thread.currentThread.getStackTrace
+      var i: Int = 0
+      while (i < e.length) {
+        {
+          System.err.println("~ " + e(i))
+        }
+        {
+          i += 1;
+        }
+      }
+    }
+    System.exit(-9)
+
+    Debug.traceStdOut("Trace to standard out")
+    Thread.sleep(10)
+    Debug.traceStdOut("0 lines of trace", 0)
+    Debug.traceStdOut("2 lines of trace", 2)
+    Thread.sleep(10)
+    Debug.check(7 == 8, "assertion failures are bright red", 1)
+    val array1: Array[String] = Array("1", "2", "3")
+    Debug.traceArray(array1, 0, 3, 1)
+    Debug.assrt(7 == 8, "assert is fatal, check is not", 1)
+
 
     Debug.traceContents(List(1,2,3,4))
     Debug.traceContents(Map("1"->1, "2"->2))

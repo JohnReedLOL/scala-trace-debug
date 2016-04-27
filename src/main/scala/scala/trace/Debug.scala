@@ -192,14 +192,14 @@ object Debug {
 
   /** A fatal assertion.
     * Terminates the program with exit code "7"
-    *
+    * Note: "assert" is a reserved keyword in Java, use "assrt" instead.
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
-    * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
+    * @example Debug.assrt( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def assert(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def assrt(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
@@ -208,7 +208,7 @@ object Debug {
     *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard out on assertion failure
-    * @example Debug.assertStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
+    * @example Debug.assrtStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -217,7 +217,7 @@ object Debug {
   }
 
   /**
-    * Like Debug.assert(), but does not terminate the application
+    * Like Debug.assrt(), but does not terminate the application
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -226,7 +226,7 @@ object Debug {
   }
 
   /**
-    * Like Debug.assertStdOut(), but does not terminate the application
+    * Like Debug.assrtStdOut(), but does not terminate the application
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -276,7 +276,7 @@ object Debug {
       toPrint = toPrint.substring(0, toPrint.length()-1) // remove trailing comma
     }
 
-    "\n" + toPrint + "\n"
+    " " + toPrint + "\n"
   }
 
   /**
@@ -519,8 +519,8 @@ object Debug {
   /**
     * Same as assert, but prints the whole expression instead of an error message
     *
-    * @example Debug.assertExpression{val one = 1; one + 1 == 2}
-    * @example Debug.assertExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
+    * @example Debug.assrtExpression{val one = 1; one + 1 == 2}
+    * @example Debug.assrtExpression({val one = 1; one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object assertExpression {
@@ -536,7 +536,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -553,7 +553,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -562,8 +562,8 @@ object Debug {
   /**
     * Same as assert, but prints the code instead of an error message.
     *
-    * @example val one = 1; Debug.assertCode{one + 1 == 2}
-    * @example val one = 1; Debug.assertCode({one + 1 == 2}, 0) // 0 lines of stack trace
+    * @example val one = 1; Debug.assrtCode{one + 1 == 2}
+    * @example val one = 1; Debug.assrtCode({one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object assertCode {
@@ -578,7 +578,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -594,7 +594,7 @@ object Debug {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }

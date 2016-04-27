@@ -3,13 +3,15 @@ Make multithreaded bug tracing and prevention easier than ever with scala trace 
 
 Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
 
+Now with Java support.
+
 ____________________________________________________________________________________________________________________
 
 ### Is this the right tool for me?
 
 1. Am I using an IDE?
 
-2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements?
+2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints where values are printed?
 &nbsp;
 
 If you answered yes to both of these questions, this tool is for you.
@@ -42,19 +44,25 @@ ________________________________________________________________________________
 
 ### Examples:
 
-#### Without logger:
+#### With Java:
+
+!(Java Screenshot)[http://i.imgur.com/R4Kbpa9.png]
+
+^ Note that since I am running this in SBT, all my stack traces are off by one. 
+In real life you could click on any of them and it would take you to the line number. ^
+
+
+#### With Scala:
 
 ![Demo](http://i.imgur.com/EFkBppw.png)
 
-^ Note: `Debug.assert` kills the application with exit code 7. `Debug.check` never kills any part of the application, not even the current thread. Disable `Debug.assert` with `Debug.fatalAssertOff_!`.
+^ Note that this is an old screenshot. The import name is `scala.trace`. ^
 
 #### With logger:
 
 ![Logger](http://i.imgur.com/MNNkYXe.png)
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
-
-^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check` in 1.2.9+. For older version, use 0.2.9 *
 
 ____________________________________________________________________________________________________________________
 
@@ -69,7 +77,7 @@ ________________________________________________________________________________
 
 1. Add the library dependency (in sbt) or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
 
-2. import [info.collaboration_station.debug._](src/main/scala/info/collaboration_station/debug/package.scala)
+2. import [scala.trace._](src/main/scala/scala/trace/package.scala)
 
 3. Go to: Run > Edit Configurations > Add New Configuration (green plus sign).
 
@@ -127,12 +135,12 @@ Add-on methods available through implicit conversion return the object they were
 
 ```scala
 
-import info.collaboration_station.debug.implicitlyTraceable
+import scala.trace.implicitlyTraceable
 ...
 val foo = true
 if( foo.trace ) { ... }
 
-import info.collaboration_station.debug.implicitlyPrintable
+import scala.trace.implicitlyPrintable
 ...
 val foobar = "foo".trace().concat("bar").println() // Chaining.
 
@@ -154,6 +162,8 @@ ________________________________________________________________________________
 
 ######^ Useful if you do not want to repeat the name of a variable in a print statement. ^
 
+^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check`. *
+
 ____________________________________________________________________________________________________________________
 
 ### Benefits:
@@ -168,10 +178,10 @@ ________________________________________________________________________________
 
 For use in practice, see [this link](USE_WITH_IDE.md)
 
-- To only add prints, `import info.collaboration_station.debug.implicitlyPrintable`
-- To only add traces, `import info.collaboration_station.debug.implicitlyTraceable`
-- If only add asserts, `import info.collaboration_station.debug.implicitlyAssertable`
-- To add prints, traces, and asserts, `import info.collaboration_station.debug._`
+- To only add prints, `import scala.trace.implicitlyPrintable`
+- To only add traces, `import scala.trace.implicitlyTraceable`
+- If only add asserts, `import scala.trace.implicitlyAssertable`
+- To add prints, traces, and asserts, `import scala.trace._`
 
 ____________________________________________________________________________________________________________________
 
@@ -197,10 +207,10 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 
 Old version of this library: [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
-Current version of this library: [https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/](https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/)
+Less old version of this library: [https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/](https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/)
 
 ____________________________________________________________________________________________________________________
 
 #### Code layout:
 
-Currently all the actual printing is done in [`Printer.scala`](src/main/scala/info/collaboration_station/debug/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/info/collaboration_station/debug/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/info/collaboration_station/debug/Debug.scala)
+Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)

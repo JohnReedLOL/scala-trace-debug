@@ -11,12 +11,17 @@ protected[trace] object Printer {
     val escape: Char = 27.toChar
     val clear: String = escape + "[0m"
     val red: String = "[31m"
+    val black: String = "[30m"
 
     /**
-      * Uses ANSI color sequences to make the output red.
+      * Uses ANSI color sequences to make the output yellow.
       */
     def red(str: String): String = {
       escape + red + str + clear
+    }
+
+    def black(str: String): String = {
+      escape + black + str + clear
     }
   }
 
@@ -34,9 +39,7 @@ protected[trace] object Printer {
     // a system property
     val systemProperty = {
       val tmp = System.getProperty(mySystemProperty)
-      if (tmp == null) {
-        null
-      }
+      if (tmp == null) null
       else {
         tmp.trim().toLowerCase() match {
           case "true" => true
@@ -50,9 +53,7 @@ protected[trace] object Printer {
     // an environment variable
     val environmentProperty = {
       val tmp = System.getenv(mySystemProperty)
-      if (tmp == null) {
-        null
-      }
+      if (tmp == null) null
       else {
         tmp.trim().toLowerCase() match {
           case "true" => true
