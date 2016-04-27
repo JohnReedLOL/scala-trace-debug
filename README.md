@@ -5,29 +5,20 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
-### Is this the right tool for me?
+### Should I use this tool?
 
-1. Am I using an IDE?
+1. Am I using an IDE or text editor with stack trace parsing?
 
-2. Do I find myself searching the file system (Ctr-F) for the location of log/print statements or setting breakpoints there?
+2. Do I find myself searching the file system (Ctr-F) for log/print statements or setting breakpoints there?
 &nbsp;
 
-If you answered yes, this tool is for you.
+If you answered yes to either of these questions, then you should use this tool.
 
 ____________________________________________________________________________________________________________________
 
 ### Getting started:
 
-[Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
-
-```scala
-<dependency>
-  <groupId>scala-trace-debug</groupId>
-  <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>2.2.11</version>
-  <type>pom</type>
-</dependency>
-```
+[Maven dependency (copy-paste from link)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
 SBT "build.sbt" file:
 
@@ -39,12 +30,12 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
 
-Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build:
+Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build. Copy-pasting the jar works too.
 
 <dependency>
     <groupId>org.scala-lang</groupId>
     <artifactId>scala-library</artifactId>
-    <version>2.10.3</version>
+    <version>2.11.7</version>
 </dependency>
 
 ____________________________________________________________________________________________________________________
@@ -180,11 +171,15 @@ ________________________________________________________________________________
 
 ######^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^
 
+^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
+
 #### _Code tracing and assertions:_
 
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
 ######^ Useful if you do not want to repeat the name of a variable in a print statement. ^
+
+^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
 
 ____________________________________________________________________________________________________________________
 
