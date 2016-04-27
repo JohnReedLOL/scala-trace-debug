@@ -7,12 +7,12 @@ ________________________________________________________________________________
 
 ### Should I use this tool?
 
-1. Am I using an IDE or text editor with stack trace parsing?
+1. Do I use an IDE or text editor with stack trace parsing?
 
-2. Do I find myself searching the file system (Ctr-F) for log/print statements or setting breakpoints there?
+2. Do I look around for where I put my print statements?
 &nbsp;
 
-If you answered yes to either of these questions, then you should use this tool.
+If so, then this tool is for you.
 
 ____________________________________________________________________________________________________________________
 
