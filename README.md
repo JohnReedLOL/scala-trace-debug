@@ -7,7 +7,7 @@ ________________________________________________________________________________
 
 ### Is this tool for me?
 
-1. Do I use an IDE or text editor with stack trace parsing?
+1. Do I use an IDE or a text editor with stack trace parsing?
 
 2. Do I look around for where I put my print statements?
 &nbsp;
