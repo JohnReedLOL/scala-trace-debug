@@ -5,6 +5,24 @@ import static org.junit.Assert.assertEquals;
 import scala.trace.Debug;
 
 public class TestJunit {
+
+    @Test
+    public void testOverflow() {
+        String overflowStr = "";
+        Debug.enableEverything();
+        /*
+        for(int i = 0; i < 2000000000; ++i) {
+            overflowStr += "0"; // IntelliJ Console dies at i = 58000. Let's buffer at 10,000 for safety reasons.
+            if(i % 1000 == 0) {
+                System.err.println("i: " + i + "||" + overflowStr);
+            }
+        }
+        Debug.trace("Done");
+        */
+
+        assertEquals("Junit is working fine","Junit is working fine");
+    }
+
     @Test
     public void testAdd() {
 

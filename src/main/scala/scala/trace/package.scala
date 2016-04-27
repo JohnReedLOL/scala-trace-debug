@@ -1,7 +1,6 @@
 package scala
 
 import scala.trace.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace}
-import scala.trace.internal.ImplicitTrace
 
 /**
   * Created by johnreed on 3/12/16. Makes Scala Trace Debug functions available via implicit conversions. https://github.com/JohnReedLOL/scala-trace-debug
