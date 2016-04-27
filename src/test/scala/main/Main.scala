@@ -19,6 +19,13 @@ object Main {
 
   def main(args: Array[String]) {
     import scala.trace.Log
+
+    System.err.println("\n" + Log.pos("foo"))
+    val arrayy = Array("hello","world")
+    System.err.println("\n" + Log.find(arrayy))
+    val array = Array("z","z","z","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d")
+    System.err.println("\n" + Log.find(array))
+
     Debug.trace("Trace to standard error")
     Thread.sleep(10);
     {
@@ -54,8 +61,7 @@ object Main {
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
     Debug.trace("foo")
-    val array = Array("z","z","z","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d")
-    System.err.println("\n" + Log.find(array))
+
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
     Debug.trace("foo")
 
