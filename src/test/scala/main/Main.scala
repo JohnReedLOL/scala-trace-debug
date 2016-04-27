@@ -20,6 +20,8 @@ object Main {
   def main(args: Array[String]) {
     import scala.trace.Log
 
+    Debug.trace("Does it work?", 3);
+
     System.err.println("\n" + Log.pos("foo"))
     val arrayy = Array("hello","world")
     System.err.println("\n" + Log.find(arrayy))
@@ -54,10 +56,10 @@ object Main {
     Debug.assrt(7 == 8, "assert is fatal, check is not", 1)
 
 
-    Debug.traceContents(List(1,2,3,4))
-    Debug.traceContents(Map("1"->1, "2"->2))
+    SDebug.traceContents(List(1,2,3,4))
+    SDebug.traceContents(Map("1"->1, "2"->2))
     Thread.sleep(10)
-    Debug.traceContents(List(1,2,3,4,5,1,2,3,4,5,1,2,3,4,5))
+    SDebug.traceContents(List(1,2,3,4,5,1,2,3,4,5,1,2,3,4,5))
 
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
@@ -66,7 +68,7 @@ object Main {
     Debug.traceArray(Array("a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d","a","b","c","d"))
     Debug.trace("foo")
 
-    Debug.assertCode( // woo
+    SDebug.assertCode( // woo
       { // woo0000t
         "foo" == 2}, 3
     )
@@ -97,8 +99,8 @@ object Main {
     Debug.traceStdOut("foo3StdOut", 3)
 
     // Easy to locate log statements
-    Debug.traceContents(List(1, 2, 3) map ( 2.* ))
-    Debug.traceContents(List(1, 2, 3) map ( _*2 ))
+    SDebug.traceContents(List(1, 2, 3) map ( 2.* ))
+    SDebug.traceContents(List(1, 2, 3) map ( _*2 ))
   }
 }
 
@@ -125,7 +127,7 @@ logger.warn(Log.find(Map("foo" -> 2)))
 
 
 
-    Debug.traceContents(List(0, 1, 2, 3), numElements = 3)
+    SDebug.traceContents(List(0, 1, 2, 3), numElements = 3)
 
     //val file = sourcecode.File()
     //assert(file.endsWith("/sourcecode/shared/src/test/scala/sourcecode/Tests.scala"))
@@ -167,7 +169,7 @@ logger.warn(Log.find(Map("foo" -> 2)))
     logger.debug(Debug.trace("Foo bar is awesome!"))
     logger.debug("foo", new RuntimeException("re"))
     Debug.enableEverythingSE()
-    Debug.traceContents(List(1, 2, 3, 4, 5, 6, 7))
+    SDebug.traceContents(List(1, 2, 3, 4, 5, 6, 7))
 
     val temp = LoggerFactory.getILoggerFactory();
     val lc = temp.asInstanceOf[LoggerContext]
@@ -203,14 +205,14 @@ logger.warn(Log.find(Map("foo" -> 2)))
 
     // You can use this with a logger
     Debug.traceErrOffSE // just get the String
-    val collectionString = Debug.traceContents(List(1, 2, 3))
+    val collectionString = SDebug.traceContents(List(1, 2, 3))
     println(collectionString)
 
     Debug.traceOutOnSE
-    Debug.traceContentsStdOut(Map("1" -> 1, "2" -> 2, "3" -> 3))
+    SDebug.traceContentsStdOut(Map("1" -> 1, "2" -> 2, "3" -> 3))
 
     Debug.enableEverythingSE
-    Debug.traceContents(List(1, 2, 3), numElements = 2, numLines = 2)
+    SDebug.traceContents(List(1, 2, 3), numElements = 2, numLines = 2)
 
 
     Thread.sleep(20)

@@ -39,6 +39,14 @@ libraryDependencies += "scala-trace-debug" %% "scala-trace-debug" % "1.2.10"
 
 Or get the jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
 
+Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build:
+
+<dependency>
+    <groupId>org.scala-lang</groupId>
+    <artifactId>scala-library</artifactId>
+    <version>2.10.3</version>
+</dependency>
+
 ____________________________________________________________________________________________________________________
 
 
@@ -48,11 +56,31 @@ ________________________________________________________________________________
 
 ![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
 
-^ Note that since I am running this in SBT, all my stack traces are off by one. 
-In real life you could click on any of them and it would take you to the line number. ^
+^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
+To get around this, specify "2" for last parameter (2 lines of stack trace). ^
 
+____________________________________________________________________________________________________________________
 
-#### With Scala:
+### Master Shutoff Switch (Works with Java):
+
+If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
+
+### Runtime Switches (Works with Java):
+
+```scala
+Debug.traceErrOn/Off()
+Debug.traceOutOn/Off()
+Debug.fatalAssertOn/Off()
+Debug.nonFatalAssertOn/Off() // assertNonFatal = check
+Debug.setElementsPerRow() // For container printing
+```
+
+____________________________________________________________________________________________________________________
+
+### Scala
+
+#### With logger:
 
 ![Demo](http://i.imgur.com/EFkBppw.png)
 
@@ -69,7 +97,9 @@ ________________________________________________________________________________
 ### Requirements:
 
 - Scala 2.10.4 or higher
-- Some sort of IDE that supports stack trace highlighting
+- Some sort of IDE that supports stack trace highlighting. 
+
+Note that since the stack traces follow the Java standard, any text editor with a plugin for stack trace parsing will do.
 
 ____________________________________________________________________________________________________________________
 
@@ -95,16 +125,12 @@ ________________________________________________________________________________
 
 `Log.find` is designed to be used with a logger. Does not incur the overhead of a full stack trace.
 
-`Debug` methods can be used without a logger, but all calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
+`Debug` methods can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
+
+`SDebug` stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
 
 You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
 
-____________________________________________________________________________________________________________________
-
-### Master Shutoff Switch:
-
-If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
 ____________________________________________________________________________________________________________________
 
 ### Container Printing:
@@ -161,8 +187,6 @@ ________________________________________________________________________________
 ![Example2](http://i.imgur.com/pdey7Jk.png)
 
 ######^ Useful if you do not want to repeat the name of a variable in a print statement. ^
-
-^ * Note: `Debug.assertNonFatal` has been replaced with `Debug.check`. *
 
 ____________________________________________________________________________________________________________________
 

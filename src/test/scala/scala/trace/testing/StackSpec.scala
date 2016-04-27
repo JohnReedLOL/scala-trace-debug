@@ -14,10 +14,10 @@ class StackSpec extends FlatSpec {
 
   "Container printing" should "work for arrays, lists, and maps" in {
     val logger = LoggerFactory.getLogger("Logger");
-    Debug.traceContents(List(1,2))
-    Debug.traceContentsStdOut(Array("Hello","World"))
+    SDebug.traceContents(List(1,2))
+    SDebug.traceContentsStdOut(Array("Hello","World"))
     Debug.traceErrOff()
-    logger.warn( Debug.traceContents(Map("1" -> 1, "2" -> 2)) )
+    logger.warn( SDebug.traceContents(Map("1" -> 1, "2" -> 2)) )
     Debug.enableEverything()
   }
 
