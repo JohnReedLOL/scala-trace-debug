@@ -56,7 +56,7 @@ In real life you could click on any of them and it would take you to the line nu
 If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
 A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
 
-### Other Switches:
+### Other Switches (Java Capable):
 
 The `Debug` object also provides switches for enabling/disabling tracing to standard out or standard error and assertions (fatal and nonFatal). For container printing, the number of columns per line is also adjustable (Debug.setElementsPerRow)
 
@@ -64,7 +64,7 @@ ________________________________________________________________________________
 
 ### Scala Examples:
 
-#### Without Scala:
+#### Without logger:
 
 ![Demo](http://i.imgur.com/EFkBppw.png)
 
