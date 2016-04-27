@@ -18,7 +18,16 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-Just add these two lines to your "build.sbt" file:
+[Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+
+<dependency>
+  <groupId>scala-trace-debug</groupId>
+  <artifactId>scala-trace-debug_2.11</artifactId>
+  <version>2.2.11</version>
+  <type>pom</type>
+</dependency>
+
+SBT "build.sbt" file:
 
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
