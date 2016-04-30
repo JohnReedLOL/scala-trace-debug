@@ -7,7 +7,7 @@ ________________________________________________________________________________
 
 ### Is this tool for me?
 
-1. Do I use an IDE or text editor with stack trace parsing?
+1. Do I use an IDE or a text editor with stack trace parsing?
 
 2. Do I look around for where I put my print or log statements?
 &nbsp;
@@ -21,7 +21,16 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-- [Maven dependency (copy-paste from here)](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- [Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+
+```scala
+<dependency>
+  <groupId>scala.trace</groupId>
+  <artifactId>scala-trace-debug_2.11</artifactId>
+  <version>2.2.13</version>
+  <type>pom</type>
+</dependency>
+```
 
 - SBT "build.sbt" file:
 
@@ -56,7 +65,7 @@ ________________________________________________________________________________
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
 
-If you just want to copy-paste, Java example is (here)[/src/test/java/main/JavaMain.java].
+If you just want to copy-paste, Java example is [here](src/test/java/main/JavaMain.java).
 
 ____________________________________________________________________________________________________________________
 
@@ -93,7 +102,7 @@ ________________________________________________________________________________
 
 ^ The left side in parenthesis is the name of a variable; the right side (after "->") is the contents. ^
 
-If you just want to copy-paste, Scala example is (here)[/src/test/scala/main/Main.scala].
+If you just want to copy-paste, Scala example is [here](src/test/scala/main/Main.scala).
 
 ____________________________________________________________________________________________________________________
 
@@ -145,9 +154,7 @@ ________________________________________________________________________________
 
 [Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
 
-[Methods available through the Debug object](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.Debug$)
-
-Example functions: http://pastebin.com/2e1JN1De
+Example functions (old): http://pastebin.com/2e1JN1De
 
 ^ For more examples, see [Main.scala](src/test/scala/main/Main.scala), which you can run with `sbt test:run`
 
@@ -215,7 +222,13 @@ Note that calls to `Log.find` are faster than calls to `Debug.trace`, but `Log.f
 
 ____________________________________________________________________________________________________________________
 
-#### More info:
+#### Code layout:
+
+Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
+
+____________________________________________________________________________________________________________________
+
+#### Links (Old):
 
 See [ScalaDoc](http://ec2-52-87-157-20.compute-1.amazonaws.com/) in source code for in detail documentation.
 
@@ -226,9 +239,3 @@ See also: http://stackoverflow.com/questions/36194905/how-can-we-trace-expressio
 Old version of this library: [https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/](https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/)
 
 Less old version of this library: [https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/](https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/)
-
-____________________________________________________________________________________________________________________
-
-#### Code layout:
-
-Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
