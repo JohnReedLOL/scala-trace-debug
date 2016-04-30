@@ -12,8 +12,6 @@ ________________________________________________________________________________
 2. Do I look around for where I put my print or log statements?
 &nbsp;
 
-If you answered "yes", then this tool is for you.
-
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
 ^ Just add "Pos"
@@ -23,6 +21,13 @@ ________________________________________________________________________________
 
 - [Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
+<dependency>
+  <groupId>scala.trace</groupId>
+  <artifactId>scala-trace-debug_2.11</artifactId>
+  <version>2.2.14</version>
+  <type>pom</type>
+</dependency>
+
 - SBT "build.sbt" file:
 
 ```scala
@@ -31,17 +36,9 @@ resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/mav
 libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 ```
 
-- Jar file located in the [target/scala-2.11](target/scala-2.11) folder. 
+- Jar file located in the [target](target) folder. 
 
-Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library/2.11.7) dependency to the maven build. Copy-pasting the jar works too.
-
-```scala
-<dependency>
-    <groupId>org.scala-lang</groupId>
-    <artifactId>scala-library</artifactId>
-    <version>2.11.7</version>
-</dependency>
-```
+Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build. Copy-pasting the jar works too.
 
 All the functions that a Java user can call are [in here](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$): http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$
 
@@ -64,7 +61,7 @@ ________________________________________________________________________________
 ### Master Shutoff Switch (Java Capable):
 
 If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` with an empty String at compile time.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time.
 
 
 ### Runtime Switches (Java Capable):
