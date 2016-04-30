@@ -1,4 +1,4 @@
-# scala-trace-debug
+# [scala-trace-debug](http://johnreedlol.github.io/scala-trace-debug/)
 Make multithreaded print debugging easier than ever with scala trace debug. 
 
 Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
