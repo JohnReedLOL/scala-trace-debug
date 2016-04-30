@@ -9,11 +9,14 @@ ________________________________________________________________________________
 
 1. Do I use an IDE or text editor with stack trace parsing?
 
-2. Do I look around for where I put my print statements?
+2. Do I look around for where I put my print or log statements?
 &nbsp;
 
 If you answered "yes", then this tool is for you.
 
+![Append Position](http://i.imgur.com/4hvGQ0t.png)
+
+^ Just add "Pos"
 ____________________________________________________________________________________________________________________
 
 ### Getting started:

@@ -1,11 +1,8 @@
-package main
+package my.pkg
 
-import scala.trace._
-import ch.qos.logback.classic.LoggerContext
-import ch.qos.logback.core.util.StatusPrinter
 import org.slf4j._
 
-import scala.trace.Debug
+import scala.trace.{Debug, _}
 
 
 // wildcard import for implicit trace/assert/print functionality
@@ -17,7 +14,16 @@ import scala.trace.Debug
   */
 object Main {
 
+def func() = {
+  val logger = LoggerFactory.getLogger("Logger")
+  logger.warn("A warning has occured" + Pos())
+  logger.debug("Value of 2 is " + 2 + Pos()) // append position
+}
+
   def main(args: Array[String]) {
+
+    func()
+
     import scala.trace.Log
 
     Debug.trace("Does it work?", 3);

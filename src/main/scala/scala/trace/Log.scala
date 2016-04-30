@@ -28,8 +28,6 @@ object Log {
       val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
       val trimmedFileName = processFileName(fileName)
       val fullName = Compat.enclosingOwner(c).fullName.trim
-      import scala.language.existentials
-      val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val toReturn =
         q"""
        ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
