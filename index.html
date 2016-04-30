@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Scala-trace-debug by JohnReedLOL</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Scala-trace-debug</h1>
+      <h2 class="project-tagline">Locates print/log statements, aids in print debugging.</h2>
+      <a href="https://github.com/JohnReedLOL/scala-trace-debug" class="btn">View on GitHub</a>
+      <a href="https://github.com/JohnReedLOL/scala-trace-debug/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/JohnReedLOL/scala-trace-debug/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="scala-trace-debug" class="anchor" href="#scala-trace-debug" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>scala-trace-debug</h1>
+
+<p>Make multithreaded print debugging easier than ever with scala trace debug. </p>
+
+<p>Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.</p>
+
+<hr>
+
+<h3>
+<a id="is-this-tool-for-me" class="anchor" href="#is-this-tool-for-me" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Is this tool for me?</h3>
+
+<ol>
+<li><p>Do I use an IDE or a text editor with stack trace parsing?</p></li>
+<li><p>Do I look around for where I put my print or log statements?
+ </p></li>
+</ol>
+
+<p><img src="http://i.imgur.com/4hvGQ0t.png" alt="Append Position"></p>
+
+<p><a href="http://i.imgur.com/4hvGQ0t.png">http://i.imgur.com/4hvGQ0t.png</a></p>
+
+<p>^ Just add "Pos" ^</p>
+
+<hr>
+
+<h3>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting started:</h3>
+
+<h2>
+<a id="--maven-dependency" class="anchor" href="#--maven-dependency" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>- <a href="https://bintray.com/johnreed2/maven/scala-trace-debug/view">Maven dependency</a>:</h2>
+
+<div class="highlight highlight-source-scala"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
+  &lt;<span class="pl-ent">groupId</span>&gt;scala.trace&lt;/<span class="pl-ent">groupId</span>&gt;
+  &lt;<span class="pl-ent">artifactId</span>&gt;scala<span class="pl-k">-</span>trace<span class="pl-k">-</span>debug_2<span class="pl-c1">.11</span>&lt;/<span class="pl-ent">artifactId</span>&gt;
+  &lt;<span class="pl-ent">version</span>&gt;<span class="pl-c1">2.2.14</span>&lt;/<span class="pl-ent">version</span>&gt;
+  &lt;<span class="pl-ent">type</span>&gt;pom&lt;/<span class="pl-ent">type</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<ul>
+<li>SBT "build.sbt" file:</li>
+</ul>
+
+<div class="highlight highlight-source-scala"><pre>resolvers <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>johnreed2 bintray<span class="pl-pds">"</span></span> at <span class="pl-s"><span class="pl-pds">"</span>http://dl.bintray.com/content/johnreed2/maven<span class="pl-pds">"</span></span>
+
+libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>scala.trace<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>scala-trace-debug<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>2.2.14<span class="pl-pds">"</span></span></pre></div>
+
+<ul>
+<li>Jar file located in the <a href="target">target</a> folder. </li>
+</ul>
+
+<p>Java users need to add <a href="http://mvnrepository.com/artifact/org.scala-lang/scala-library">this</a> dependency to the maven build. Copy-pasting the jar works too.</p>
+
+<p>All the functions that a Java user can call are <a href="http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug%24">in here</a>: <a href="http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug%24">http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$</a></p>
+
+<hr>
+
+<h3>
+<a id="java-examples" class="anchor" href="#java-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java Examples:</h3>
+
+<p><img src="http://i.imgur.com/R4Kbpa9.png" alt="Java Screenshot"></p>
+
+<p><a href="http://i.imgur.com/R4Kbpa9.png">http://i.imgur.com/R4Kbpa9.png</a></p>
+
+<p>^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
+To get around this, specify "2" for last parameter (2 lines of stack trace). ^</p>
+
+<p>If you just want to copy-paste, Java example is <a href="src/test/java/main/JavaMain.java">here</a>.</p>
+
+<hr>
+
+<h3>
+<a id="master-shutoff-switch-java-capable" class="anchor" href="#master-shutoff-switch-java-capable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Master Shutoff Switch (Java Capable):</h3>
+
+<p>If you set the environment variable <code>ENABLE_TRACE_DEBUG</code> to <code>false</code>, it will disable all printing and assertions.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to <code>Log.find</code> and <code>Pos</code> with an empty String at compile time.</p>
+
+<h3>
+<a id="runtime-switches-java-capable" class="anchor" href="#runtime-switches-java-capable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Runtime Switches (Java Capable):</h3>
+
+<div class="highlight highlight-source-scala"><pre><span class="pl-en">Debug</span>.traceErrOn<span class="pl-k">/</span><span class="pl-en">Off</span>()
+<span class="pl-en">Debug</span>.traceOutOn<span class="pl-k">/</span><span class="pl-en">Off</span>()
+<span class="pl-en">Debug</span>.fatalAssertOn<span class="pl-k">/</span><span class="pl-en">Off</span>()
+<span class="pl-en">Debug</span>.nonFatalAssertOn<span class="pl-k">/</span><span class="pl-en">Off</span>() <span class="pl-c">// assertNonFatal = check</span>
+<span class="pl-en">Debug</span>.setElementsPerRow() <span class="pl-c">// For container printing</span></pre></div>
+
+<hr>
+
+<h3>
+<a id="scala-examples" class="anchor" href="#scala-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scala Examples:</h3>
+
+<h4>
+<a id="without-logger" class="anchor" href="#without-logger" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Without logger:</h4>
+
+<p><img src="http://i.imgur.com/EFkBppw.png" alt="Demo"></p>
+
+<p><a href="http://i.imgur.com/EFkBppw.png">http://i.imgur.com/EFkBppw.png</a></p>
+
+<p>^ Note that this is an old screenshot. The import name was changed to <code>scala.trace</code>. ^</p>
+
+<h4>
+<a id="with-logger" class="anchor" href="#with-logger" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>With logger:</h4>
+
+<p><img src="http://i.imgur.com/MNNkYXe.png" alt="Logger"></p>
+
+<p><a href="http://i.imgur.com/MNNkYXe.png">http://i.imgur.com/MNNkYXe.png</a></p>
+
+<p>^ The left side in parenthesis is the name of a variable; the right side (after "-&gt;") is the contents. ^</p>
+
+<p>If you just want to copy-paste, Scala example is <a href="src/test/scala/main/Main.scala">here</a>.</p>
+
+<hr>
+
+<h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements:</h3>
+
+<ul>
+<li>Scala 2.10.4 or higher (or Java 8+)</li>
+<li>Any IDE or text editor that supports stack trace highlighting</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="instructions-for-intellij-ide" class="anchor" href="#instructions-for-intellij-ide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions (for IntelliJ IDE):</h3>
+
+<ol>
+<li><p>Add the library dependency or grab the jar file from the <a href="target/scala-2.11">target/scala-2.11</a> folder.</p></li>
+<li><p>import <a href="src/main/scala/scala/trace/package.scala">scala.trace._</a></p></li>
+<li><p>Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. </p></li>
+<li><p>Use the IntelliJ console arrows to navigate up and down the stack traces.</p></li>
+</ol>
+
+<p><img src="http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png" alt="IntelliJ console"></p>
+
+<p><a href="http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png">http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png</a></p>
+
+<hr>
+
+<h3>
+<a id="logger-incorporation" class="anchor" href="#logger-incorporation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logger Incorporation:</h3>
+
+<p><a href="http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log%24">Log.find</a> is designed to be used with a logger. Does not incur the overhead of a full stack trace.</p>
+
+<p><a href="http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug%24">Debug methods</a> can be called from Java code and without a logger. All calls to <code>Debug.trace</code>, <code>Debug.assert</code>, etc. return a String that can be passed into a logger. </p>
+
+<p><a href="http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug%24">SDebug</a> stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).</p>
+
+<p>You can disable printing to standard out and standard error via <code>Debug.disableEverything_!</code>. <code>Debug</code> methods will still return a String that you can pass into a logger. </p>
+
+<hr>
+
+<h3>
+<a id="container-printing" class="anchor" href="#container-printing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Container Printing:</h3>
+
+<p><img src="http://i.imgur.com/P8mlz0C.png" alt="ContainerExample"></p>
+
+<p><a href="http://i.imgur.com/P8mlz0C.png">http://i.imgur.com/P8mlz0C.png</a></p>
+
+<p>^ Note the jar file name, <code>scalatest_2.11</code>, in the stack trace. ^</p>
+
+<p>^ Container printing works for any Scala container. To pass in Java containers, <a href="http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool">import scala.collection.JavaConversions._</a> ^</p>
+
+<hr>
+
+<h3>
+<a id="cheat-sheet--examples" class="anchor" href="#cheat-sheet--examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cheat Sheet / Examples:</h3>
+
+<p><a href="http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package%24%24ImplicitTrace">Methods available through implicit conversion</a></p>
+
+<p>Example functions (old): <a href="http://pastebin.com/2e1JN1De">http://pastebin.com/2e1JN1De</a></p>
+
+<p>^ For more examples, see <a href="src/test/scala/main/Main.scala">Main.scala</a>, which you can run with <code>sbt test:run</code></p>
+
+<hr>
+
+<h3>
+<a id="method-chaining" class="anchor" href="#method-chaining" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Method Chaining:</h3>
+
+<p>Add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.</p>
+
+<div class="highlight highlight-source-scala"><pre>
+<span class="pl-k">import</span> <span class="pl-v">scala.trace.</span><span class="pl-v">implicitlyTraceable</span>
+...
+<span class="pl-k">val</span> <span class="pl-en">foo</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>
+<span class="pl-k">if</span>( foo.trace ) { ... }
+
+<span class="pl-k">import</span> <span class="pl-v">scala.trace.</span><span class="pl-v">implicitlyPrintable</span>
+...
+<span class="pl-k">val</span> <span class="pl-en">foobar</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>.trace().concat(<span class="pl-s"><span class="pl-pds">"</span>bar<span class="pl-pds">"</span></span>).println() <span class="pl-c">// Chaining.</span>
+</pre></div>
+
+<hr>
+
+<h3>
+<a id="more-features" class="anchor" href="#more-features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>More features:</h3>
+
+<h4>
+<a id="desugared-macro-expression-tracing" class="anchor" href="#desugared-macro-expression-tracing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Desugared macro expression tracing:</em>
+</h4>
+
+<p><img src="http://i.imgur.com/LvB8lOd.png" alt="Example"></p>
+
+<p><a href="http://i.imgur.com/LvB8lOd.png">http://i.imgur.com/LvB8lOd.png</a></p>
+
+<h6>
+<a id="-useful-if-you-have-a-line-like-object-method-object-param-and-you-cant-find-where-the-dot-and-parenthesis-go-" class="anchor" href="#-useful-if-you-have-a-line-like-object-method-object-param-and-you-cant-find-where-the-dot-and-parenthesis-go-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^</h6>
+
+<p>^ Note that this is an old screenshot. These macro methods now use <code>SDebug</code> (Scala Debug) instead of <code>Debug</code>. ^</p>
+
+<h4>
+<a id="code-tracing-and-assertions" class="anchor" href="#code-tracing-and-assertions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Code tracing and assertions:</em>
+</h4>
+
+<p><img src="http://i.imgur.com/pdey7Jk.png" alt="Example2"></p>
+
+<p><a href="http://i.imgur.com/pdey7Jk.png">http://i.imgur.com/pdey7Jk.png</a></p>
+
+<h6>
+<a id="-useful-if-you-do-not-want-to-repeat-the-name-of-a-variable-in-a-print-statement-" class="anchor" href="#-useful-if-you-do-not-want-to-repeat-the-name-of-a-variable-in-a-print-statement-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>^ Useful if you do not want to repeat the name of a variable in a print statement. ^</h6>
+
+<p>^ Note that this is an old screenshot. These macro methods now use <code>SDebug</code> (Scala Debug) instead of <code>Debug</code>. ^</p>
+
+<hr>
+
+<h3>
+<a id="use-in-practice" class="anchor" href="#use-in-practice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use in practice:</h3>
+
+<p>For use in practice, see <a href="USE_WITH_IDE.md">this link</a></p>
+
+<ul>
+<li>To only add prints, <code>import scala.trace.implicitlyPrintable</code>
+</li>
+<li>To only add traces, <code>import scala.trace.implicitlyTraceable</code>
+</li>
+<li>If only add asserts, <code>import scala.trace.implicitlyAssertable</code>
+</li>
+<li>To add prints, traces, and asserts, <code>import scala.trace._</code>
+</li>
+</ul>
+
+<hr>
+
+<h3>
+<a id="performance" class="anchor" href="#performance" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Performance:</h3>
+
+<p>No overhead for no stack trace.</p>
+
+<div class="highlight highlight-source-scala"><pre><span class="pl-s"><span class="pl-pds">"</span>foo<span class="pl-pds">"</span></span>.trace(<span class="pl-c1">0</span>) <span class="pl-c">// no call to Thread.currentThread.getStackTrace()</span></pre></div>
+
+<p>Note that calls to <code>Log.find</code> are faster than calls to <code>Debug.trace</code>, but <code>Log.find</code> is limited to one line.</p>
+
+<hr>
+
+<h4>
+<a id="code-layout" class="anchor" href="#code-layout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code layout:</h4>
+
+<p>Currently all the actual printing is done in <a href="src/main/scala/scala/trace/internal/Printer.scala"><code>Printer.scala</code></a>, all the implicit conversions are in <a href="src/main/scala/scala/trace/package.scala"><code>package.scala</code></a>, and all the calls to the "Debug" object are in <a href="src/main/scala/scala/trace/Debug.scala"><code>Debug.scala</code></a></p>
+
+<hr>
+
+<h4>
+<a id="links-old" class="anchor" href="#links-old" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Links (Old):</h4>
+
+<p>See <a href="http://ec2-52-87-157-20.compute-1.amazonaws.com/">ScalaDoc</a> in source code for in detail documentation.</p>
+
+<p>See also: <a href="http://stackoverflow.com/questions/36194905/how-can-we-trace-expressions-print-statements-with-line-numbers-in-scala/36194986#36194986">http://stackoverflow.com/questions/36194905/how-can-we-trace-expressions-print-statements-with-line-numbers-in-scala/36194986#36194986</a></p>
+
+<p><a href="http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172">http://stackoverflow.com/questions/4272797/debugging-functional-code-in-scala/36287172#36287172</a></p>
+
+<p>Old version of this library: <a href="https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/">https://www.reddit.com/r/scala/comments/4aeqvh/debug_trace_library_needs_users_review/</a></p>
+
+<p>Less old version of this library: <a href="https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/">https://www.reddit.com/r/scala/comments/4fap0r/making_debugging_easier/</a></p>
+
+<p><a href="https://github.com/JohnReedLOL/scala-trace-debug">https://github.com/JohnReedLOL/scala-trace-debug</a></p>
+
+<hr>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>People whose work helped with this project include <a href="https://github.com/lihaoyi" class="user-mention">@lihaoyi</a>, <a href="https://github.com/adamw" class="user-mention">@adamw</a>, and <a href="https://github.com/MasseGuillaume" class="user-mention">@MasseGuillaume</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/JohnReedLOL/scala-trace-debug">Scala-trace-debug</a> is maintained by <a href="https://github.com/JohnReedLOL">JohnReedLOL</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
