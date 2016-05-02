@@ -6,6 +6,7 @@ import scala.language.experimental.macros
 /**
   * Provides a file/line position as a string to append to the end of a print or log statement.
   * @example logger.warn("something has occured" + Pos()) // "something has occured - path.to.MyClass.func(MyClass.scala:33)"
+  * @author John-Michael Reed (https://github.com/JohnReedLOL/scala-trace-debug)
   */
 object Pos {
   /**
