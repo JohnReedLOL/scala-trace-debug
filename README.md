@@ -144,11 +144,11 @@ ________________________________________________________________________________
 
 ### Logger Incorporation:
 
-[Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
+- [Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
 
-[Debug methods](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$) can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
+- [Debug methods](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$) can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
-[SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$) stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
+- [SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$) stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
 
 You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
 
