@@ -187,6 +187,12 @@ ________________________________________________________________________________
 
 ^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
 
+#### _Output formatting (beta):_
+
+![Example3](http://i.imgur.com/QJWGnnM.png)
+
+######^ Useful if you have a giant "wall" of text in std output and you want to inset line breaks programatically. ^
+
 ____________________________________________________________________________________________________________________
 
 ### Use in practice:
