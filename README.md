@@ -5,19 +5,6 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
-### Is this tool for me?
-
-1. Do I use an IDE or a text editor with stack trace parsing?
-
-2. Do I look for where I put my print or log statements?
-&nbsp;
-
-![Append Position](http://i.imgur.com/4hvGQ0t.png)
-
-^ Just add "Pos" ^
-
----
-
 Table of Contents
 
 * <a href="#Getting-started">Getting started</a>
@@ -30,6 +17,19 @@ Table of Contents
 * <a href="#Performance">Performance</a>
 
 ____________________________________________________________________________________________________________________
+
+### Is this tool for me?
+
+1. Do I use an IDE or a text editor with stack trace parsing?
+
+2. Do I look for where I put my print or log statements?
+&nbsp;
+
+![Append Position](http://i.imgur.com/4hvGQ0t.png)
+
+^ Just add "Pos" ^
+
+---
 
 <a name="Getting-started"></a>
 
