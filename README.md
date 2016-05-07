@@ -15,7 +15,23 @@ ________________________________________________________________________________
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
 ^ Just add "Pos" ^
+
+---
+
+Table of Contents
+
+* <a href="#Getting-started">Getting started</a>
+* <a href="#Java-Examples">Java Examples</a>
+* <a href="#Scala-Examples">Scala Examples</a>
+* <a href="#Requirements">Requirements</a>
+* <a href="#Instructions">Instructions</a>
+* <a href="#Logger-Incorporation">Logger Incorporation</a>
+* <a href="#Bonus-Features">Bonus Features</a>
+* <a href="#Performance">Performance</a>
+
 ____________________________________________________________________________________________________________________
+
+<a name="Getting-started"></a>
 
 ### Getting started:
 
@@ -46,6 +62,7 @@ All the functions that a Java user can call are [in here](http://johnreedlol.bit
 
 ____________________________________________________________________________________________________________________
 
+<a name="Java-Examples"></a>
 
 ### Java Examples:
 
@@ -78,6 +95,8 @@ Debug.setElementsPerRow() // For container printing
 
 ____________________________________________________________________________________________________________________
 
+<a name="Scala-Examples"></a>
+
 ### Scala Examples:
 
 #### Without logger:
@@ -96,12 +115,16 @@ If you just want to copy-paste, Scala example is [here](src/test/scala/main/Main
 
 ____________________________________________________________________________________________________________________
 
+<a name="Requirements"></a>
+
 ### Requirements:
 
 - Scala 2.10.4 or higher (or Java 8+)
 - Any IDE or text editor that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
+
+<a name="Instructions"></a>
 
 ### Instructions (for IntelliJ IDE):
 
@@ -117,6 +140,8 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
+<a name="Logger-Incorporation"></a>
+
 ### Logger Incorporation:
 
 [Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
@@ -129,6 +154,7 @@ You can disable printing to standard out and standard error via `Debug.disableEv
 
 ____________________________________________________________________________________________________________________
 
+<a name="Bonus-Features"></a>
 
 ### Container Printing:
 
@@ -205,6 +231,8 @@ For use in practice, see [this link](USE_WITH_IDE.md)
 - To add prints, traces, and asserts, `import scala.trace._`
 
 ____________________________________________________________________________________________________________________
+
+<a name="Performance"></a>
 
 ### Performance:
 
