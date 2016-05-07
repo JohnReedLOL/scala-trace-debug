@@ -7,6 +7,7 @@ ________________________________________________________________________________
 
 Table of Contents
 
+* <a href="#Finding-log-statements">Finding log statements/a>
 * <a href="#Getting-started">Getting started</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Scala-Examples">Scala Examples</a>
@@ -18,18 +19,16 @@ Table of Contents
 
 ____________________________________________________________________________________________________________________
 
-### Is this tool for me?
 
-1. Do I use an IDE or a text editor with stack trace parsing?
+<a name="Finding-log-statements"></a>
 
-2. Do I look for where I put my print or log statements?
-&nbsp;
+### Finding your log statements:
 
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
 ^ Just add "Pos" ^
 
----
+____________________________________________________________________________________________________________________
 
 <a name="Getting-started"></a>
 
