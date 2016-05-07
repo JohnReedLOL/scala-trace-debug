@@ -7,7 +7,7 @@ ________________________________________________________________________________
 
 Table of Contents
 
-* <a href="#Finding-log-statements">Finding log statements/a>
+* <a href="#Finding-log-statements">Finding log statements</a>
 * <a href="#Getting-started">Getting started</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Scala-Examples">Scala Examples</a>
