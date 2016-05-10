@@ -67,7 +67,7 @@ object Log {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName +
+       "(" + $sourceCode + ") -> " + ({$toPrint}.toString) + " - " + $fullName + "(" + $trimmedFileName +
        ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)

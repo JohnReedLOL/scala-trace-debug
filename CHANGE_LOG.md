@@ -42,6 +42,8 @@ Not yet released
 
 "2.2.10" - Java compatibility (with Java test cases), shortened import name, Debug.assert uses bright color in "assert failed" messages
 
+"2.2.15" - Added format functionality
+
 Other stuff (to be done)
 
 test case for code style, test for overflow - too long messages.
