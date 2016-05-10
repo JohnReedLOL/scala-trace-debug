@@ -5,17 +5,32 @@ Provides human-friendly prints, traces, assertions, container printing, source c
 
 ____________________________________________________________________________________________________________________
 
-### Is this tool for me?
+Table of Contents
 
-1. Do I use an IDE or a text editor with stack trace parsing?
+* <a href="#Finding-log-statements">Finding log statements</a>
+* <a href="#Getting-started">Getting started</a>
+* <a href="#Java-Examples">Java Examples</a>
+* <a href="#Scala-Examples">Scala Examples</a>
+* <a href="#Requirements">Requirements</a>
+* <a href="#Instructions">Instructions</a>
+* <a href="#Logger-Incorporation">Logger Incorporation</a>
+* <a href="#Bonus-Features">Bonus Features</a>
+* <a href="#Performance">Performance</a>
 
-2. Do I look for where I put my print or log statements?
-&nbsp;
+____________________________________________________________________________________________________________________
+
+
+<a name="Finding-log-statements"></a>
+
+### Finding your log statements:
 
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
-^ Just add "Pos" ^
+######^ Just add "Pos" ^
+
 ____________________________________________________________________________________________________________________
+
+<a name="Getting-started"></a>
 
 ### Getting started:
 
@@ -46,6 +61,7 @@ All the functions that a Java user can call are [in here](http://johnreedlol.bit
 
 ____________________________________________________________________________________________________________________
 
+<a name="Java-Examples"></a>
 
 ### Java Examples:
 
@@ -78,6 +94,8 @@ Debug.setElementsPerRow() // For container printing
 
 ____________________________________________________________________________________________________________________
 
+<a name="Scala-Examples"></a>
+
 ### Scala Examples:
 
 #### Without logger:
@@ -96,12 +114,16 @@ If you just want to copy-paste, Scala example is [here](src/test/scala/main/Main
 
 ____________________________________________________________________________________________________________________
 
+<a name="Requirements"></a>
+
 ### Requirements:
 
 - Scala 2.10.4 or higher (or Java 8+)
 - Any IDE or text editor that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________
+
+<a name="Instructions"></a>
 
 ### Instructions (for IntelliJ IDE):
 
@@ -117,18 +139,21 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
+<a name="Logger-Incorporation"></a>
+
 ### Logger Incorporation:
 
-[Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
+- [Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
 
-[Debug methods](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$) can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
+- [Debug methods](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$) can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
 
-[SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$) stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
+- [SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$) stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
 
 You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
 
 ____________________________________________________________________________________________________________________
 
+<a name="Bonus-Features"></a>
 
 ### Container Printing:
 
@@ -187,6 +212,12 @@ ________________________________________________________________________________
 
 ^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
 
+#### _Output formatting (beta):_
+
+![Example3](http://i.imgur.com/QJWGnnM.png)
+
+######^ Useful if you have a giant "wall" of text in std output and you want to inset line breaks programatically. ^
+
 ____________________________________________________________________________________________________________________
 
 ### Use in practice:
@@ -199,6 +230,8 @@ For use in practice, see [this link](USE_WITH_IDE.md)
 - To add prints, traces, and asserts, `import scala.trace._`
 
 ____________________________________________________________________________________________________________________
+
+<a name="Performance"></a>
 
 ### Performance:
 
