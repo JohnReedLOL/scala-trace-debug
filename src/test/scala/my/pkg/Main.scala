@@ -56,12 +56,12 @@ object Main {
       "really really really really really really really really really really really really really " +
       "really really really really really really really really" +
       "long string that needs to be formatted because it is longer than " + Format.getLineWrap
-      + " chars").formatted)
+      + " chars").wrap)
     println( ("This is a really,really,really,really,really,really,really,really,really,really,really," +
       ",really,really,really,really,really," +
       ",really,really,really,really,really,," +
       "long,string,that,needs,to,be,formatted,because,it,is,longer,than," + Format.getLineWrap
-      + ",chars").formatted(",") )
+      + ",chars").wrap(",") )
 
     println("an error message" + Pos())
     println(Log.find("foo" + 2 + "bar"))

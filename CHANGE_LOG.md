@@ -44,6 +44,8 @@ Not yet released
 
 "2.2.15" - Added format functionality
 
+"2.2.16" - shortened ".formatted" to ".wrap"
+
 Other stuff (to be done)
 
 test case for code style, test for overflow - too long messages.

@@ -10,14 +10,15 @@ class ImplicitFormat(val me: String) {
 
   /** Formats a string by inserting line breaks on the " " delimiter
     */
-  def formatted: String = {
-    return formatted(" ")
+  def wrap: String = {
+    return wrap(" ")
   }
 
   /** Formats a string by inserting line breaks on the delimiter
+    *
     * @param delimiter to format on
     */
-  def formatted(delimiter: String): String = {
+  def wrap(delimiter: String): String = {
     val splitText: Array[String] = me.split(delimiter)
     var lineLength: Int = 0
     var formattedText: String = ""
