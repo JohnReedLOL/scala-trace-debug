@@ -1,5 +1,6 @@
 package scala.trace.internal
 
+import scala.annotation.tailrec
 import scala.trace.Debug
 
 /**
@@ -154,61 +155,61 @@ protected[trace] object Printer {
     }
   }
 
-  /** Prints out the object with N lines of stack trace. Meant to be used only for asserts
-    *
-    * @param toPrintOutNullable    the object to print out. May be "null"
-    * @param numStackLinesIntended N, the number of lines of stack trace intended. Defaults to zero actual lines of stack trace for negative values
-    * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
-    * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
-    */
-  protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                               usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
-    if (debugDisabled_? || assertionTrue_?) {
+  protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int
+    , usingStdOut: Boolean = false, isAssertTrue : Boolean, isFatal : Boolean): String = {
+    if (debugDisabled_? || isAssertTrue ) {
+      // Intentional decision to break style rules by using an explicit "return".
       return "" // If assertion is true, print nothing and return empty string.
     }
     val toPrintOut: String = if (toPrintOutNullable == null) {
       "null"
     } else {
-      toPrintOutNullable.toString // calling toString on null is bad
+      toPrintOutNullable.toString
     }
-    var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
-
-    if (numStackLinesIntended > 0) {
-      // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
-      val stack = Thread.currentThread().getStackTrace
-      for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
-        val lineNumber = newStackOffset + row
-        val stackLine: StackTraceElement = stack(lineNumber)
-        val packageName = getPackageName(stackLine)
-        val myPackageName = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
-        // The java stack traces use a tab character, not a space
-        val tab = "\t"
-        toPrint += "\n" + tab + "at " + stackLine + myPackageName
+    val toPrintRaw: String = {
+      val firstLine = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
+      if (numStackLinesIntended <= 0) {
+        val lastLine = "\n" + "^ An assertion failure has occured. ^"
+        firstLine + lastLine
+      } else {
+        val stackTrace = Thread.currentThread().getStackTrace
+        val numRows = Math.min(numStackLinesIntended - 1, stackTrace.length - 1 - newStackOffset)
+        @tailrec def appendStackTrace(traced: String, row: Int): String = {
+          if (row == numRows) {
+            traced // base case
+          } else {
+            val stackLineNumber = newStackOffset + row
+            val stackTraceElement = stackTrace(stackLineNumber)
+            val packageNameRaw = getPackageName(stackTraceElement)
+            val packageName = if(packageNameRaw.equals("")) {""} else {" [" + packageNameRaw + "]"}
+            val indent = "\t" // Java stack traces uses a tab character for indentation
+            val traceAppended = traced + "\n" + indent + "at " + stackTraceElement + packageName
+            appendStackTrace(traceAppended, row + 1) // recursive step
+          }
+        }
+        val stackTraceLines = appendStackTrace(traced = "", row = 0)
+        val lastLine = "\n" + "^ The above stack trace leads to an assertion failure. ^"
+        firstLine + stackTraceLines + lastLine
       }
-      toPrint += "\n" + "^ The above stack trace leads to an assertion failure. ^"
+    }
+    val toPrint = Color.red(toPrintRaw)
+    if ( (!isFatal && !Debug.isNonFatalAssertOn) || (isFatal && !Debug.isFatalAssertOn) ) {
+      toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
     } else {
-      toPrint += "\n" + "^ An assertion failure has occured. ^"
-    }
-    toPrint = Color.red(toPrint)
-    if (!isFatal_? && !Debug.isNonFatalAssertOn) {
-      return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
-    }
-    if (isFatal_? && !Debug.isFatalAssertOn) {
-      return toPrint // If it is fatal and fatalAssert is off, return the string without printing (so that the logger can print it)
-    }
-    if (usingStdOut) {
-      PrintLocker.synchronized {
-        System.out.println(toPrint)
+      if (usingStdOut) {
+        PrintLocker.synchronized {
+          System.out.println(toPrint)
+        }
+      } else {
+        PrintLocker.synchronized {
+          System.err.println(toPrint)
+        }
       }
-    } else {
-      PrintLocker.synchronized {
-        System.err.println(toPrint)
+      if (isFatal && Debug.isFatalAssertOn) {
+        System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
       }
+      toPrint
     }
-    if (isFatal_? && Debug.isFatalAssertOn) {
-      System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
-    }
-    toPrint
   }
 
   /**

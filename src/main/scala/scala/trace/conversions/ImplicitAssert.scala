@@ -19,7 +19,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     */
   final def assert(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, assertionTrue_? = assertion(me), isFatal_? = true)
+    Printer.internalAssert(message, numLines, isAssertTrue = assertion(me), isFatal = true)
     me
   }
 
@@ -34,7 +34,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     */
   final def assertStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
     if (!assertion(me) && Debug.isFatalAssertOn) {
-      Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion(me), isFatal_? = true)
+      Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = assertion(me), isFatal = true)
       System.exit(7)
     }
     me
@@ -50,7 +50,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     */
   final def assertEquals[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = me.equals(other), isFatal_? = true)
+    Printer.internalAssert(message, numLines, usingStdOut = false, isAssertTrue = me.equals(other), isFatal = true)
     me
   }
 
@@ -60,7 +60,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     */
   final def assertEqualsStdOut[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = me.equals(other), isFatal_? = true)
+    Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = me.equals(other), isFatal = true)
     me
   }
 
@@ -68,7 +68,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
     */
   final def check(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion(me), isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = false, isAssertTrue = assertion(me), isFatal = false)
     me
   }
 
@@ -76,7 +76,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
     */
   final def checkStdOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion(me), isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = assertion(me), isFatal = false)
     me
   }
 
@@ -84,7 +84,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
     */
   final def checkEquals[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = me.equals(other), isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = false, isAssertTrue = me.equals(other), isFatal = false)
     me
   }
 
@@ -92,7 +92,7 @@ final case class ImplicitAssert[MyType](val me: MyType) {
     * Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
     */
   final def checkEqualsStdOut[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
-    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = me.equals(other), isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = me.equals(other), isFatal = false)
     me
   }
 }

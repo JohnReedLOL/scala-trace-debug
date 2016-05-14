@@ -21,6 +21,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
+ *
     * @return the number of elements per row for container printing
     */
   def getElementsPerRow(): Int = {
@@ -29,6 +30,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
+ *
     * @param elementsPerRow the number of elements per row for container printing
     */
   def setElementsPerRow(elementsPerRow: Int): Unit = {
@@ -191,6 +193,7 @@ object Debug {
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     * Note: "assert" is a reserved keyword in Java, use "assrt" instead.
+    *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assrt( 1 + 2 == 4, "Error: one plus two is not equal to four" )
@@ -198,7 +201,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def assrt(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
+    Printer.internalAssert(message, numLines, usingStdOut = false, isAssertTrue = assertion, isFatal = true) // trace the max number of lines of stack trace to std error
   }
 
   /** A fatal assertion.
@@ -211,7 +214,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def assertStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = true)
+    Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = assertion, isFatal = true)
   }
 
   /**
@@ -220,7 +223,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def check(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = false, isAssertTrue = assertion, isFatal = false)
   }
 
   /**
@@ -229,7 +232,7 @@ object Debug {
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   def checkStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
-    Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = false)
+    Printer.internalAssert(message, numLines, usingStdOut = true, isAssertTrue = assertion, isFatal = false)
   }
 
   /**
