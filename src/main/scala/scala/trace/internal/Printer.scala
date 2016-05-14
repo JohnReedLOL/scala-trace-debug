@@ -172,21 +172,19 @@ protected[trace] object Printer {
         firstLine + "\n" + "^ An assertion failure has occured. ^"
       } else {
         val stackTrace = Thread.currentThread().getStackTrace
-        val numRows = Math.min(numStackLinesIntended - 1, stackTrace.length - 1 - newStackOffset)
-        @tailrec def appendStackTrace(traced: String, row: Int): String = {
-          if (row == numRows) {
-            traced // base case
-          } else {
-            val stackLineNumber = newStackOffset + row
-            val stackTraceElement = stackTrace(stackLineNumber)
+        val stackTraceLines = {
+          var traced = ""
+          val numRows = Math.min(numStackLinesIntended - 1, stackTrace.length - 1 - newStackOffset)
+          for (row <- 0 until numRows) {
+            val stackRowNumber = newStackOffset + row
+            val stackTraceElement = stackTrace(stackRowNumber)
             val packageNameRaw = getPackageName(stackTraceElement)
             val packageName = if(packageNameRaw.equals("")) {""} else {" [" + packageNameRaw + "]"}
             val indent = "\t" // Java stack traces uses a tab character for indentation
-            val traceString = traced + "\n" + indent + "at " + stackTraceElement + packageName
-            appendStackTrace(traceString, row + 1) // recursive step
+            traced = traced + "\n" + indent + "at " + stackTraceElement + packageName
           }
+          traced
         }
-        val stackTraceLines = appendStackTrace(traced = "", row = 0)
         val lastLine = "\n" + "^ The above stack trace leads to an assertion failure. ^"
         firstLine + stackTraceLines + lastLine
       }
