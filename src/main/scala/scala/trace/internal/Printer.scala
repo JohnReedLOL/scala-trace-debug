@@ -86,12 +86,11 @@ protected[trace] object Printer {
     * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[trace] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                              usingStdOut: Boolean = false): String = {
+  protected[trace] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int
+    , usingStdOut: Boolean = false): String = {
     if(debugDisabled_?) {
       return ""
     }
-
     val toPrintOut: String = if (toPrintOutNullable == null) {
       "null"
     } else {
@@ -109,24 +108,18 @@ protected[trace] object Printer {
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + myPackageName
       }
+    }
+    if ((!usingStdOut && !Debug.isTraceErrOn) || (usingStdOut && !Debug.isTraceOutOn)) {
+      // if we are using standard error and tracing to standard error is off, don't print anything
     } else {
-      // do not make a call to Thread.currentThread().getStackTrace
-    }
-    // toPrint += "\n"
-    if (!usingStdOut && !Debug.isTraceErrOn) {
-      return toPrint // if we are using standard error and tracing to standard error is off, return
-    }
-    if (usingStdOut && !Debug.isTraceOutOn) {
-      return toPrint // if we are using standard out and tracing to standard out is off, return
-    }
-
-    if (usingStdOut) {
-      PrintLocker.synchronized {
-        System.out.println(toPrint)
-      }
-    } else {
-      PrintLocker.synchronized {
-        System.err.println(toPrint)
+      if (usingStdOut) {
+        PrintLocker.synchronized {
+          System.out.println(toPrint)
+        }
+      } else {
+        PrintLocker.synchronized {
+          System.err.println(toPrint)
+        }
       }
     }
     toPrint
@@ -161,8 +154,8 @@ protected[trace] object Printer {
     * @param usingStdOut           Whether to use standard out for trace (as opposed to std error). Uses standard error by default
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
-  protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int,
-                                               usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
+  protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int
+    , usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (debugDisabled_? || assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.
     }
@@ -172,7 +165,6 @@ protected[trace] object Printer {
       toPrintOutNullable.toString // calling toString on null is bad
     }
     var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
-
     if (numStackLinesIntended > 0) {
       // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
       val stack = Thread.currentThread().getStackTrace
@@ -190,23 +182,21 @@ protected[trace] object Printer {
       toPrint += "\n" + "^ An assertion failure has occured. ^"
     }
     toPrint = Color.red(toPrint)
-    if (!isFatal_? && !Debug.isNonFatalAssertOn) {
-      return toPrint // If it is nonfatal and nonFatalAssert is off, return the string without printing (so that the logger can print it)
-    }
-    if (isFatal_? && !Debug.isFatalAssertOn) {
-      return toPrint // If it is fatal and fatalAssert is off, return the string without printing (so that the logger can print it)
-    }
-    if (usingStdOut) {
-      PrintLocker.synchronized {
-        System.out.println(toPrint)
-      }
+    if ( (!isFatal_? && !Debug.isNonFatalAssertOn) || (isFatal_? && !Debug.isFatalAssertOn) ) {
+      // If it is nonfatal and nonFatalAssert is off, don't print anything
     } else {
-      PrintLocker.synchronized {
-        System.err.println(toPrint)
+      if (usingStdOut) {
+        PrintLocker.synchronized {
+          System.out.println(toPrint)
+        }
+      } else {
+        PrintLocker.synchronized {
+          System.err.println(toPrint)
+        }
       }
-    }
-    if (isFatal_? && Debug.isFatalAssertOn) {
-      System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
+      if (isFatal_? && Debug.isFatalAssertOn) {
+        System.exit(7) // if the assertion is fatal and fatal assert is on, exit with system code 7
+      }
     }
     toPrint
   }
