@@ -21,7 +21,7 @@ object Log {
 
     def posImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -56,7 +56,7 @@ object Log {
 
     def findImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -93,7 +93,7 @@ object Log {
 
     def findContainerImpl(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -111,7 +111,7 @@ object Log {
     }
     def findContainerImplFromStart(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -129,7 +129,7 @@ object Log {
     def findContainerImplFromStartWNumElements(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]],
     start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -167,7 +167,7 @@ object Log {
 
     def arrayFindContainerImpl[T](c: Compat.Context)(container: c.Expr[Array[T]]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -185,7 +185,7 @@ object Log {
     }
     def arrayFindContainerImplFromStart[T](c: Compat.Context)(container: c.Expr[Array[T]], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line
@@ -202,7 +202,7 @@ object Log {
     }
     def arrayFindContainerImplFromStartWNumElements[T](c: Compat.Context)(container: c.Expr[Array[T]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      if (Printer.debugDisabled_?) {
+      if (Printer.isDebugDisabled) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
       }
       val lineNum = c.enclosingPosition.line

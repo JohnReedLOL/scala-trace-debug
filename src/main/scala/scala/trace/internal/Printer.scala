@@ -34,7 +34,7 @@ protected[trace] object Printer {
     * "ENABLE_TRACE_DEBUG". The system property takes precedence over the
     * environment variable. See: https://github.com/adamw/scala-macro-debug
     */
-  val debugDisabled_? : Boolean = {
+  val isDebugDisabled : Boolean = {
 
     // Holds true or false if debugging has been enabled or disabled through
     // a system property
@@ -89,7 +89,7 @@ protected[trace] object Printer {
     */
   protected[trace] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int,
                                               usingStdOut: Boolean = false): String = {
-    if(debugDisabled_?) {
+    if(isDebugDisabled) {
       return ""
     }
 
@@ -157,7 +157,7 @@ protected[trace] object Printer {
 
   protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int
     , usingStdOut: Boolean = false, isAssertTrue : Boolean, isFatal : Boolean): String = {
-    if (debugDisabled_? || isAssertTrue ) {
+    if (isDebugDisabled || isAssertTrue ) {
       // Intentional decision to break style rules by using an explicit "return".
       return "" // If assertion is true, print nothing and return empty string.
     }

@@ -17,7 +17,7 @@ object Pos {
 
   def posImpl(c: Compat.Context)(): c.Expr[String] = {
     import c.universe._
-    if (Printer.debugDisabled_?) {
+    if (Printer.isDebugDisabled) {
       return c.Expr[String](q"""  ""  """) // return empty string expression
     }
     val lineNum = c.enclosingPosition.line
