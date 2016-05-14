@@ -169,8 +169,7 @@ protected[trace] object Printer {
     val toPrintRaw: String = {
       val firstLine = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
       if (numStackLinesIntended <= 0) {
-        val lastLine = "\n" + "^ An assertion failure has occured. ^"
-        firstLine + lastLine
+        firstLine + "\n" + "^ An assertion failure has occured. ^"
       } else {
         val stackTrace = Thread.currentThread().getStackTrace
         val numRows = Math.min(numStackLinesIntended - 1, stackTrace.length - 1 - newStackOffset)
@@ -183,8 +182,8 @@ protected[trace] object Printer {
             val packageNameRaw = getPackageName(stackTraceElement)
             val packageName = if(packageNameRaw.equals("")) {""} else {" [" + packageNameRaw + "]"}
             val indent = "\t" // Java stack traces uses a tab character for indentation
-            val traceAppended = traced + "\n" + indent + "at " + stackTraceElement + packageName
-            appendStackTrace(traceAppended, row + 1) // recursive step
+            val traceString = traced + "\n" + indent + "at " + stackTraceElement + packageName
+            appendStackTrace(traceString, row + 1) // recursive step
           }
         }
         val stackTraceLines = appendStackTrace(traced = "", row = 0)
