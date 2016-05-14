@@ -177,11 +177,11 @@ protected[trace] object Printer {
           val numRows = Math.min(numStackLinesIntended - 1, stackTrace.length - 1 - newStackOffset)
           for (row <- 0 until numRows) {
             val stackRowNumber = newStackOffset + row
-            val stackTraceElement = stackTrace(stackRowNumber)
-            val packageNameRaw = getPackageName(stackTraceElement)
+            val stackTraceRow = stackTrace(stackRowNumber)
+            val packageNameRaw = getPackageName(stackTraceRow)
             val packageName = if(packageNameRaw.equals("")) {""} else {" [" + packageNameRaw + "]"}
             val indent = "\t" // Java stack traces uses a tab character for indentation
-            traced = traced + "\n" + indent + "at " + stackTraceElement + packageName
+            traced = traced + "\n" + indent + "at " + stackTraceRow + packageName
           }
           traced
         }
