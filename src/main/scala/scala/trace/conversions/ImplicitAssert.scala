@@ -7,7 +7,7 @@ import scala.trace.internal.Printer
 /**
   * Created by johnreed on 4/12/16.
   */
-final case class ImplicitAssert[MyType](val me: MyType) {
+final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
 
   /** A fatal assertion, but with the function name after the object.
     * Terminates the program with exit code "7"

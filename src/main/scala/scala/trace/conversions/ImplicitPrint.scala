@@ -5,7 +5,7 @@ import scala.language.implicitConversions
 /**
   * Created by johnreed on 4/12/16.
   */
-final class ImplicitPrint[MyType](val me: MyType) {
+final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
 
   /**
     * Same as System.out.print(this), but with the function name after the object

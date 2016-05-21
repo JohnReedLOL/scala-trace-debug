@@ -6,7 +6,7 @@ import scala.trace.internal.Printer
 /**
   * Created by johnreed on 4/12/16.
   */
-final class ImplicitTrace[MyType](val me: MyType) {
+final class ImplicitTrace[MyType](val me: MyType) extends AnyVal {
 
   /** Prints out this object with 1 lines of stack trace to standard error
     *

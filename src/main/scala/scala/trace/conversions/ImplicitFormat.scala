@@ -6,7 +6,7 @@ import scala.trace.{Debug, Format}
   * Created by johnreed on 5/10/16.
   * Provides formatting functionality to strings.
   */
-class ImplicitFormat(val me: String) {
+class ImplicitFormat(val me: String) extends AnyVal {
 
   /** Formats a string by inserting line breaks on the " " delimiter
     */
