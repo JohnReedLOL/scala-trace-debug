@@ -34,7 +34,7 @@ ________________________________________________________________________________
 
 ### Getting started:
 
-1. Copy this into your SBT "build.sbt" file:
+- 1. Copy this into your SBT "build.sbt" file:
 
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
@@ -42,7 +42,7 @@ resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/mav
 libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 ```
 
-2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
 ```scala
 <dependency>
@@ -53,7 +53,7 @@ libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 </dependency>
 ```
 
-3. Copy-paste a jar file located in the [target](target) folder. 
+- 3. Copy-paste a jar file located in the [target](target) folder. 
 
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build. Copy-pasting the jar works too.
 
