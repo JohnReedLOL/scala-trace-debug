@@ -5,3 +5,5 @@ Adam Warski is credited for the idea of making a master shutoff switch. The code
 Li Haoyi is credited for the code that made it backwards compatible with Scala 2.10.4. sourcecode.Compat is taken from lihaoyi/sourcecode.
 
 Ceki Gulcu seems to have written the code for getCodeLocation (I got the idea of adding package names from LogBack)
+
+MasGui is credited for the use of sbt-bintrace. If it weren't for him, I would have wasted valuable time with the sonatype publishing process.
