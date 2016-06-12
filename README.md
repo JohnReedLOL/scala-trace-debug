@@ -39,7 +39,7 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
+libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.17"
 ```
 
 - 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
