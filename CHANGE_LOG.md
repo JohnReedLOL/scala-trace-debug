@@ -46,6 +46,23 @@ Not yet released
 
 "2.2.16" - shortened ".formatted" to ".wrap"
 
+"2.2.17" - Set Java version to java-1.7.0-openjdk-amd64
+
+Final publish info:
+
+[info] Main Scala API documentation successful.
+[info] Packaging /home/johnreed/sbtProjects/debug/experimental/experimental/target/scala-2.11/scala-trace-debug_2.11-2.2.17-javadoc.jar ...
+[info] Done packaging.
+[info]  published scala-trace-debug_2.11 to https://api.bintray.com/maven/johnreed2/maven/maven/scala/trace/scala-trace-debug_2.11/2.2.17/scala-trace-debug_2.11-2.2.17.pom
+[info]  published scala-trace-debug_2.11 to https://api.bintray.com/maven/johnreed2/maven/maven/scala/trace/scala-trace-debug_2.11/2.2.17/scala-trace-debug_2.11-2.2.17.jar
+[info]  published scala-trace-debug_2.11 to https://api.bintray.com/maven/johnreed2/maven/maven/scala/trace/scala-trace-debug_2.11/2.2.17/scala-trace-debug_2.11-2.2.17-sources.jar
+[info]  published scala-trace-debug_2.11 to https://api.bintray.com/maven/johnreed2/maven/maven/scala/trace/scala-trace-debug_2.11/2.2.17/scala-trace-debug_2.11-2.2.17-javadoc.jar
+[info] johnreed2/scala-trace-debug@2.2.17 was released
+[success] Total time: 19 s, completed Jun 12, 2016 12:54:28 AM
+[info] Setting version to 2.11.7
+[info] Reapplying settings...
+[info] Set current project to scala-trace-debug (in build file:/home/johnreed/sbtProjects/debug/experimental/experimental/)
+
 Other stuff (to be done)
 
 test case for code style, test for overflow - too long messages.
