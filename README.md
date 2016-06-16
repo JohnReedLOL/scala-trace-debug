@@ -42,7 +42,9 @@ resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/mav
 libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.17"
 ```
 
-Note: If you get:`NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException`
+Note: If you get:
+
+`NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException`
 
 Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
 
