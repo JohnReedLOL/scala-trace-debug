@@ -9,6 +9,7 @@ Table of Contents
 
 * <a href="#Finding-log-statements">Finding log statements</a>
 * <a href="#Getting-started">Getting started</a>
+* <a href="#Video-Demo">Video Demo</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Requirements">Requirements</a>
@@ -65,6 +66,14 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build. Copy-pasting the jar works too.
 
 All the functions that a Java user can call are [in here](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$).
+
+____________________________________________________________________________________________________________________
+
+<a name="Video-Demo"></a>
+
+### Video Demo:
+
+[https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s](https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s)
 
 ____________________________________________________________________________________________________________________
 
