@@ -8,7 +8,7 @@ import scala.language.existentials
 /**
   * Scala specific debug methods.
   */
-object SDebug {
+object Macro {
 
 
   import scala.reflect.runtime.universe.WeakTypeTag
@@ -84,8 +84,8 @@ object SDebug {
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def traceContentsStdOut[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
-                                     (implicit tag: WeakTypeTag[ContainedT]): String = {
+  def traceContentsOut[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+                                  (implicit tag: WeakTypeTag[ContainedT]): String = {
     val collectionType = tag.tpe
     val toPrint = "Contains: " + collectionType.toString + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
