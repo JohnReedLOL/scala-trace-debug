@@ -7,8 +7,8 @@ Table of Contents
 
 * <a href="#Find-log-statements">Find log statements</a>
 * <a href="#Getting-started">Getting started</a>
-* <a href="#Java-Examples">Java Examples</a>
 * <a href="#Scala-Examples">Scala Examples</a>
+* <a href="#Java-Examples">Java Examples</a>
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Logger-Incorporation">Logger Incorporation</a>
@@ -213,82 +213,10 @@ an error message - my.pkg.Main.main(Main.scala:16)
 " in thread main:
   at my.pkg.Main$.main(Main.scala:25)
   at my.pkg.Main.main(Main.scala)
-
-"trace to standard out" in thread main:
-  at my.pkg.Main$.main(Main.scala:27)
-
-"trace to standard out" in thread main:
-  at my.pkg.Main$.main(Main.scala:28)
-  at my.pkg.Main.main(Main.scala)
-
-" 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:29)
-
-" 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:30)
-  at my.pkg.Main.main(Main.scala)
-
-"one must equal one" in thread main:
-  at my.pkg.Main$.main(Main.scala:41)
-  at my.pkg.Main.main(Main.scala)
-^ The above stack trace leads to an assertion failure. ^
-
-"one must equal one" in thread main:
-  at my.pkg.Main$.main(Main.scala:43)
-^ The above stack trace leads to an assertion failure. ^
-
-"Contains: Int 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:49)
-
-"Contains: Int 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:50)
-  at my.pkg.Main.main(Main.scala)
-
-"Contains: Int 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:52)
-
-"Contains: Int 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:53)
-  at my.pkg.Main.main(Main.scala)
-
-"("one" == 2) -> false" in thread main:
-  at my.pkg.Main$.main(Main.scala:55)
-  at my.pkg.Main.main(Main.scala)
-^ The above stack trace leads to an assertion failure. ^
-
-"(one + two / three) -> 1" in thread main:
-  at my.pkg.Main$.main(Main.scala:63)
-
-"one.+(two./(three)) -> 1" in thread main:
-  at my.pkg.Main$.main(Main.scala:62)
-
-"one.+(two./(three)) -> 1" in thread main:
-  at my.pkg.Main$.main(Main.scala:65)
-
-"(one + two / three) -> 1" in thread main:
-  at my.pkg.Main$.main(Main.scala:66)
-
-"foo bar baz" in thread main:
-  at my.pkg.Main$.main(Main.scala:72)
-
-"foo bar baz" in thread main:
-  at my.pkg.Main$.main(Main.scala:73)
-
-This is a really really really really really reallyreally really really really really really really really
-really reallyreally really really really really really really reallylong string that needs to be formatted
-because it is longer than 100 chars default
-
-This is a really,really,really,really,really,really,really,really,really,really,really,,really,really,
-really,really,really,,really,really,really,really,really,,long,string,that,needs,to,be,formatted,because,
-it,is,longer,than,100,chars,
+...
 
 ```
+##### ^Run it yourself with "sbt test:run" ^
 
 ____________________________________________________________________________________________________________________
 
