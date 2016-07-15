@@ -26,9 +26,9 @@ public class TestJunit {
     @Test
     public void testAdd() {
 
-        Debug.trace("Fooo1");
+        Debug.err("Fooo1");
 
-        Debug.traceStdOut("Fooo2");
+        Debug.out("Fooo2");
 
         System.err.println("\"message\" in thread main:");
 
@@ -47,15 +47,15 @@ public class TestJunit {
         System.out.println(s2);
 
         String str= "Junit is working fine";
-        Debug.trace("foo1");
-        Debug.trace("foo3", 3);
-        Debug.traceStdOut("foo1StdOut");
-        Debug.traceStdOut("foo3StdOut", 3);
+        Debug.err("foo1");
+        Debug.err("foo3", 3);
+        Debug.out("foo1StdOut");
+        Debug.out("foo3StdOut", 3);
         Debug.disableEverything();
-        Debug.trace("foo1");
-        Debug.trace("foo3", 3);
-        Debug.traceStdOut("foo1StdOut");
-        Debug.traceStdOut("foo3StdOut", 3);
+        Debug.err("foo1");
+        Debug.err("foo3", 3);
+        Debug.out("foo1StdOut");
+        Debug.out("foo3StdOut", 3);
         assertEquals("Junit is working fine",str);
     }
 }

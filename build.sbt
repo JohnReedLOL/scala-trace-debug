@@ -41,6 +41,8 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= macroDependencies(scalaVersion.value)
 
+libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.11"      % "1.0.4"
+
 scalacOptions ++= Seq("-unchecked", "-feature", "-Xlint", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 bintrayReleaseOnPublish in ThisBuild := true

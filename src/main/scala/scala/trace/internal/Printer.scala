@@ -37,8 +37,8 @@ protected[trace] object Printer {
 
     // Holds true or false if debugging has been enabled or disabled through
     // a system property
-    val systemProperty = {
-      val tmp = System.getProperty(mySystemProperty)
+    val systemProperty: Any = {
+      val tmp: String = System.getProperty(mySystemProperty)
       if (tmp == null) null
       else {
         tmp.trim().toLowerCase() match {
@@ -51,8 +51,8 @@ protected[trace] object Printer {
 
     // Holds true or false if debugging has been enabled or disabled through
     // an environment variable
-    val environmentProperty = {
-      val tmp = System.getenv(mySystemProperty)
+    val environmentProperty: Any = {
+      val tmp: String = System.getenv(mySystemProperty)
       if (tmp == null) null
       else {
         tmp.trim().toLowerCase() match {
@@ -77,7 +77,7 @@ protected[trace] object Printer {
   /** The offset of the first line from the base of the stack trace
     * The +1 is necessary because the method call traceInternal adds one to the offset of the stack trace
     */
-  protected[trace] val newStackOffset = Debug.stackOffset + 1
+  protected[trace] val newStackOffset: Int = Debug.stackOffset + 1
 
   /** Prints out the object with N lines of stack trace. Do not use with assertions
     *
@@ -96,14 +96,14 @@ protected[trace] object Printer {
     } else {
       toPrintOutNullable.toString
     }
-    var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
+    var toPrint: String = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
     if (numStackLinesIntended > 0) {
-      val stack = Thread.currentThread().getStackTrace
+      val stack: Array[StackTraceElement] = Thread.currentThread().getStackTrace
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
-        val lineNumber = newStackOffset + row
+        val lineNumber: Int = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
-        val packageName = getPackageName(stackLine)
-        val myPackageName = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
+        val packageName: String = getPackageName(stackLine)
+        val myPackageName: String = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + myPackageName
@@ -130,9 +130,9 @@ protected[trace] object Printer {
     */
   protected[internal] def getPackageName(stackLine: StackTraceElement): String = {
     try {
-      val className = Class.forName(stackLine.getClassName)
-      val stringLocation = if(className != null) {
-        val packageName = PackagingDataCalculator.getCodeLocation(className)
+      val className: Class[_] = Class.forName(stackLine.getClassName)
+      val stringLocation: String = if(className != null) {
+        val packageName: String = PackagingDataCalculator.getCodeLocation(className)
         if(packageName.endsWith(".jar") ) {
           packageName
         } else {
@@ -164,15 +164,15 @@ protected[trace] object Printer {
     } else {
       toPrintOutNullable.toString // calling toString on null is bad
     }
-    var toPrint = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
+    var toPrint: String = "\n" + "\"" + toPrintOut + "\"" + " in thread " + Thread.currentThread().getName + ":"
     if (numStackLinesIntended > 0) {
       // Only make call to Thread.currentThread().getStackTrace if there is a stack to print
-      val stack = Thread.currentThread().getStackTrace
+      val stack: Array[StackTraceElement] = Thread.currentThread().getStackTrace
       for (row <- 0 to Math.min(numStackLinesIntended - 1, stack.length - 1 - newStackOffset)) {
-        val lineNumber = newStackOffset + row
+        val lineNumber: Int = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
-        val packageName = getPackageName(stackLine)
-        val myPackageName = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
+        val packageName: String = getPackageName(stackLine)
+        val myPackageName: String = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
         // The java stack traces use a tab character, not a space
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + myPackageName

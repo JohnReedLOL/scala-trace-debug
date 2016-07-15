@@ -11,7 +11,7 @@ class ImplicitFormat(val me: String) extends AnyVal {
   /** Formats a string by inserting line breaks on the " " delimiter
     */
   def wrap: String = {
-    return wrap(" ")
+    wrap(" ")
   }
 
   /** Formats a string by inserting line breaks on the delimiter

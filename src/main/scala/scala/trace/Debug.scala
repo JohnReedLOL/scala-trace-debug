@@ -21,6 +21,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
+ *
     * @return the number of elements per row for container printing
     */
   def getElementsPerRow(): Int = {
@@ -29,6 +30,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
+ *
     * @param elementsPerRow the number of elements per row for container printing
     */
   def setElementsPerRow(elementsPerRow: Int): Unit = {
@@ -148,7 +150,7 @@ object Debug {
     * @param toPrint whatever it is you want to print.
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def trace[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1)
+  def err[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1)
 
   /**
     * Traces to standard error with a N line stack trace.
@@ -157,7 +159,7 @@ object Debug {
     * @param numLines the number of lines to trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def trace[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines)
+  def err[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines)
 
   /**
     * Traces to standard error with a full length stack trace.
@@ -165,39 +167,40 @@ object Debug {
     * @param toPrint whatever it is you want to print.
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue)
+  def errStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue)
 
   /**
     * Same as Debug.trace, but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1, usingStdOut = true)
+  def out[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1, usingStdOut = true)
 
   /**
     * Same as Debug.trace(toPrint: T, numLines: Int), but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStdOut[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines, usingStdOut = true)
+  def out[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines, usingStdOut = true)
 
   /**
     * Same as traceStack, but prints to StdOut instead of StdError
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def traceStackStdOut[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue, usingStdOut = true)
+  def outStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue, usingStdOut = true)
 
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     * Note: "assert" is a reserved keyword in Java, use "assrt" instead.
+ *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assrt( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def assrt(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def assert(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = assertion, isFatal_? = true) // trace the max number of lines of stack trace to std error
   }
 
@@ -210,7 +213,7 @@ object Debug {
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def assertStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def assertOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = true)
   }
 
@@ -228,7 +231,7 @@ object Debug {
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def checkStdOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
+  def checkOut(assertion: Boolean, message: String, numLines: Int = Int.MaxValue): String = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion, isFatal_? = false)
   }
 
@@ -288,7 +291,7 @@ object Debug {
   /**
     * Same as traceContentsStdOut[CollectionType], but for Java Arrays (callable from Java Code)
     */
-  def traceArrayStdOut[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  def traceArrayOut[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
   : String = {
     val toPrint = getArrayAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)

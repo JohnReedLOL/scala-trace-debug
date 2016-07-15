@@ -27,9 +27,9 @@ object Main {
 
     println("an error message" + Pos())
     println(Log.find("foo" + 2 + "bar"))
-    SDebug.traceCode("foo" + 2 + "bar")
-    SDebug.traceExpression("foo" + 2 + "bar")
-    SDebug.traceContents(List(1,2,3))
+    Macro.traceCode("foo" + 2 + "bar")
+    Macro.traceExpression("foo" + 2 + "bar")
+    Macro.traceContents(List(1,2,3))
     println(Log.find(List(1,2,3)))
   }
 }

@@ -20,10 +20,10 @@ object Pos {
     if (Printer.debugDisabled_?) {
       return c.Expr[String](q"""  ""  """) // return empty string expression
     }
-    val lineNum = c.enclosingPosition.line
-    val fileName = c.enclosingPosition.source.path // This needs to be trimmed down
-    val trimmedFileName = Log.processFileName(fileName)
-    val fullName = Compat.enclosingOwner(c).fullName.trim
+    val lineNum: Int = c.enclosingPosition.line
+    val fileName: String = c.enclosingPosition.source.path // This needs to be trimmed down
+    val trimmedFileName: String = Log.processFileName(fileName)
+    val fullName: String = Compat.enclosingOwner(c).fullName.trim
     val toReturn =
       q"""
        " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"

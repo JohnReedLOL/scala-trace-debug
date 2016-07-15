@@ -8,7 +8,7 @@ import org.scalatest._
   */
 class PartialImportTest extends FlatSpec {
   "printing with partial import" should "work" in {
-    ("This was printed with a partial import").printlnStdErr()
+    ("This was printed with a partial import").printlnErr()
     assertResult(2) {
       1 + 1
     }

@@ -80,16 +80,18 @@ object Log {
 
     /**
       * Returns a string that helps you locate this container. numElements many elements.
+ *
       * @param numElements the number of elements to print
       */
     def apply(container: collection.GenTraversableOnce[Any], numElements: Int): String = macro findContainerImplFromStart
 
     /**
       * Returns a string that helps you locate this container. Prints numElements from start.
+ *
       * @param start the index of the first element to print
       * @param numElements the number of elements to print
       */
-    def apply(container: collection.GenTraversableOnce[Any], start: Int, numElements: Int): String = macro findContainerImplFromStartWNumElements
+    def apply(container: collection.GenTraversableOnce[Any], start: Int, numElements: Int): String = macro findContainerImpl2
 
     def findContainerImpl(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]]): c.Expr[String] = {
       import c.universe._
@@ -104,7 +106,7 @@ object Log {
       val arg3 = q"Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, 0, $arg3) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, 0, $arg3) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
@@ -121,13 +123,13 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, 0, $numElements) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, 0, $numElements) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
-    def findContainerImplFromStartWNumElements(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]],
-    start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
+    def findContainerImpl2(c: Compat.Context)(container: c.Expr[collection.GenTraversableOnce[Any]],
+                                              start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -139,7 +141,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, $start, $numElements) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, $start, $numElements) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
@@ -154,16 +156,19 @@ object Log {
 
     /**
       * Returns a string that helps you locate this array. numElements many elements.
+ *
       * @param numElements the number of elements to print
       */
-    def apply[T](container: Array[T], numElements: Int): String = macro arrayFindContainerImplFromStart[T]
+    def apply[T](container: Array[T], numElements: Int): String
+      = macro arrayFindContainerImplFromStart1[T]
 
     /**
       * Returns a string that helps you locate this array. Prints numElements from start.
+ *
       * @param start the index of the first element to print
       * @param numElements the number of elements to print
       */
-    def apply[T](container: Array[T], start: Int, numElements: Int): String = macro arrayFindContainerImplFromStartWNumElements[T]
+    def apply[T](container: Array[T], start: Int, numElements: Int): String = macro arrayFindContainerImplFromStart2[T]
 
     def arrayFindContainerImpl[T](c: Compat.Context)(container: c.Expr[Array[T]]): c.Expr[String] = {
       import c.universe._
@@ -178,12 +183,12 @@ object Log {
       val arg3 = q"Int.MaxValue"
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, 0, $arg3) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, 0, $arg3) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
-    def arrayFindContainerImplFromStart[T](c: Compat.Context)(container: c.Expr[Array[T]], numElements: c.Expr[Int]): c.Expr[String] = {
+    def arrayFindContainerImplFromStart1[T](c: Compat.Context)(container: c.Expr[Array[T]], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -195,12 +200,13 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, 0, $numElements) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, 0, $numElements) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)
     }
-    def arrayFindContainerImplFromStartWNumElements[T](c: Compat.Context)(container: c.Expr[Array[T]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
+
+    def arrayFindContainerImplFromStart2[T](c: Compat.Context)(container: c.Expr[Array[T]], start: c.Expr[Int], numElements: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       if (Printer.debugDisabled_?) {
         return c.Expr[String](q"""  ""  """) // return empty string expression
@@ -212,7 +218,7 @@ object Log {
       val sourceCode = (new MacroHelperMethod[c.type](c)).getSourceCode(container.tree)
       val toReturn =
         q"""
-       "(" + $sourceCode + ") ->" + _root_.scala.trace.SDebug.getCollectionAsString($container, $start, $numElements) +
+       "(" + $sourceCode + ") ->" + _root_.scala.trace.Macro.getCollectionAsString($container, $start, $numElements) +
        "\tat " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
       c.Expr[String](toReturn)

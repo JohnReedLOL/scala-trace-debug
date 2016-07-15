@@ -106,7 +106,7 @@ object Macro {
       val args = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.trace(..$args);
+        _root_.scala.trace.Debug.err(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -119,7 +119,7 @@ object Macro {
       val args = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.trace(..$args);
+        _root_.scala.trace.Debug.err(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -143,10 +143,10 @@ object Macro {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
-      val args = List(arg1)
+      val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.traceStack(..$args);
+        _root_.scala.trace.Debug.errStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -164,25 +164,25 @@ object Macro {
   object traceExpression {
     def traceExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
-      val args = List(arg1)
+      val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.trace(..$args);
+        _root_.scala.trace.Debug.err(..$args);
     """
       c.Expr[String](toReturn)
     }
 
     def traceLinesExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val arg2 = q"$numLines"
-      val args = List(arg1, arg2)
+      val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.trace(..$args);
+        _root_.scala.trace.Debug.err(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -201,12 +201,12 @@ object Macro {
   object traceStackExpression {
     def traceStackExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
-      val args = List(arg1)
+      val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.traceStack(..$args);
+        _root_.scala.trace.Debug.errStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -225,25 +225,25 @@ object Macro {
 
     def traceStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
-      val args = List(arg1)
+      val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.traceStdOut(..$args);
+        _root_.scala.trace.Debug.out(..$args);
     """
       c.Expr[String](toReturn)
     }
 
     def traceLinesStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
       val arg2 = q"$numLines"
-      val args = List(arg1, arg2)
+      val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.traceStdOut(..$args);
+        _root_.scala.trace.Debug.out(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -262,12 +262,12 @@ object Macro {
   object traceStackStdOutExpression {
     def traceStackStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
       import c.universe._
-      val toTraceString = (toPrint.tree).toString + " -> "
+      val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
-      val args = List(arg1)
+      val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.traceStackStdOut(..$args);
+        _root_.scala.trace.Debug.outStack(..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -287,15 +287,15 @@ object Macro {
 
     def assertExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionString = (assertion.tree).toString + " -> "
+      val assertionString: String = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"Int.MaxValue"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -304,15 +304,15 @@ object Macro {
 
     def assertLinesExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionString = (assertion.tree).toString + " -> "
+      val assertionString: String = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"$numLines"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -333,11 +333,11 @@ object Macro {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
       val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -349,11 +349,11 @@ object Macro {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
       val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assrt(assertBoolean, ..$args);
+        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
     """
       c.Expr[String](toReturn)
     }
@@ -377,11 +377,11 @@ object Macro {
 
     def checkExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean]): c.Expr[String] = {
       import c.universe._
-      val assertionString = (assertion.tree).toString + " -> "
+      val assertionString: String = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"Int.MaxValue"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
@@ -394,11 +394,11 @@ object Macro {
 
     def checkLinesNonFatalExpressionImpl(c: Compat.Context)(assertion: c.Expr[Boolean], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
-      val assertionString = (assertion.tree).toString + " -> "
+      val assertionString: String = (assertion.tree).toString + " -> "
       //val arg1 = q"$assertion"
       val arg2 = q"$assertionString + ({$assertion}.toString)"
       val arg3 = q"$numLines"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
@@ -423,7 +423,7 @@ object Macro {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
       val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"Int.MaxValue"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;
@@ -439,7 +439,7 @@ object Macro {
       val sourceCode: c.Tree = (new MacroHelperMethod[c.type](c)).getSourceCode(assertion.tree)
       val arg2 = q""" "(" + $sourceCode + ") -> " + ({$assertion}.toString) """
       val arg3 = q"$numLines"
-      val args = List(arg2, arg3)
+      val args: List[c.universe.Tree] = List(arg2, arg3)
       val toReturn =
         q"""
         val assertBoolean = $assertion;

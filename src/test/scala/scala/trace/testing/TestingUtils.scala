@@ -21,7 +21,7 @@ object TestingUtils {
     try {
       breakable {
         while (true) {
-          val nextLine = bfReader.readLine()
+          val nextLine: String = bfReader.readLine()
           // nextLine.trace
           //System.err.println("bf " + bfReader1.toString + " reading: " + nextLine)
           if (nextLine == null) {

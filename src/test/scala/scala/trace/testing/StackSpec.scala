@@ -13,11 +13,11 @@ import scala.trace.Debug
 class StackSpec extends FlatSpec {
 
   "Container printing" should "work for arrays, lists, and maps" in {
-    val logger = LoggerFactory.getLogger("Logger");
-    SDebug.traceContents(List(1,2))
-    SDebug.traceContentsStdOut(Array("Hello","World"))
+    val logger: Logger = LoggerFactory.getLogger("Logger");
+    Macro.traceContents(List(1,2))
+    Macro.traceContentsOut(Array("Hello","World"))
     Debug.traceErrOff()
-    logger.warn( SDebug.traceContents(Map("1" -> 1, "2" -> 2)) )
+    logger.warn( Macro.traceContents(Map("1" -> 1, "2" -> 2)) )
     Debug.enableEverything()
   }
 
@@ -29,15 +29,15 @@ class StackSpec extends FlatSpec {
       // replaces out
       val newOut: PrintStream = new PrintStream(baos1)
       System.setOut(newOut)
-      Debug.checkStdOut(false, "RuntimeException"); // write stuff to System.out
+      Debug.checkOut(false, "RuntimeException"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
       val bais1: ByteArrayInputStream = new ByteArrayInputStream(baos1.toByteArray())
-      val bfReader1 = new BufferedReader(new InputStreamReader(bais1))
+      val bfReader1: BufferedReader = new BufferedReader(new InputStreamReader(bais1))
       TestingUtils.getMessage(bfReader1)
     }
-    val exception = new RuntimeException();
+    val exception: RuntimeException = new RuntimeException();
     val exceptionMessage: Array[String] = {
       val originalErr: PrintStream = System.err;
       val baos2: ByteArrayOutputStream = new ByteArrayOutputStream();
@@ -47,20 +47,20 @@ class StackSpec extends FlatSpec {
       System.err.flush()
       System.setErr(originalErr);
       val bais2: ByteArrayInputStream = new ByteArrayInputStream(baos2.toByteArray())
-      val bfReader2 = new BufferedReader(new InputStreamReader(bais2))
+      val bfReader2: BufferedReader = new BufferedReader(new InputStreamReader(bais2))
       TestingUtils.getMessage(bfReader2)
     }
 
-    val minLength = Math.min(assertMessage.length, exceptionMessage.length) - 2
+    val minLength: Int = Math.min(assertMessage.length, exceptionMessage.length) - 2
     // same line for same stack trace
-    val exceptionTrimmed = exceptionMessage.slice(0, exceptionMessage.length);
-    val assertTrimmed = assertMessage.slice(1, assertMessage.length);
+    val exceptionTrimmed: Array[String] = exceptionMessage.slice(0, exceptionMessage.length);
+    val assertTrimmed: Array[String] = assertMessage.slice(1, assertMessage.length);
     for(i <- 0 until 6) { // minLength) {
       println("i: " + i)
       println("exception: " + exceptionTrimmed(i))
       println("assertion: " + assertTrimmed(i))
-      assert(exceptionTrimmed(i+2).split(" ")(0) === assertTrimmed(i+2).split(" ")(0)) // first word is "at"
-      assert(exceptionTrimmed(i+2).split(" ")(1) === assertTrimmed(i+2).split(" ")(1)) // second word is trace
+      assert(exceptionTrimmed(i + 2).split(" ")(0) === assertTrimmed(i+2).split(" ")(0)) // first word is "at"
+      assert(exceptionTrimmed(i + 2).split(" ")(1) === assertTrimmed(i+2).split(" ")(1)) // second word is trace
       /*
       System.err.println(exceptionTrimmed(i))
       System.err.println(assertTrimmed(i))
@@ -74,21 +74,21 @@ class StackSpec extends FlatSpec {
     // "Hello  World before on".trace;
     Debug.traceErrOn
     // "Hello  World after on".trace;
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalErr: PrintStream = System.err;
       // To get it back later
       val baosErr: ByteArrayOutputStream = new ByteArrayOutputStream();
       // replaces standard error with new PrintStream
       val newErr: PrintStream = new PrintStream(baosErr)
       System.setErr(newErr)
-      "Hello  World".trace; // write stuff to System.err
+      "Hello  World".err; // write stuff to System.err
       System.err.flush()
       System.setErr(originalErr);
       // So you can print again
       val baisErr: ByteArrayInputStream = new ByteArrayInputStream(baosErr.toByteArray())
-      val bfReaderErr = new BufferedReader(new InputStreamReader(baisErr))
+      val bfReaderErr: BufferedReader = new BufferedReader(new InputStreamReader(baisErr))
       // (bfReaderErr == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderErr)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderErr)
       // (message == null).trace // must be false
       val didTraceMessage_? : Boolean = (message.length > 0)
       assert(didTraceMessage_?)
@@ -97,21 +97,21 @@ class StackSpec extends FlatSpec {
 
   "Disabling trace to std err" should "disable tracing to std err" in {
     Debug.traceErrOff
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalErr: PrintStream = System.err;
       // To get it back later
       val baosErr: ByteArrayOutputStream = new ByteArrayOutputStream();
       // replaces standard error with new PrintStream
       val newErr: PrintStream = new PrintStream(baosErr)
       System.setErr(newErr)
-      "Hello  World".trace; // write stuff to System.err
+      "Hello  World".err; // write stuff to System.err
       System.err.flush()
       System.setErr(originalErr);
       // So you can print again
       val baisErr: ByteArrayInputStream = new ByteArrayInputStream(baosErr.toByteArray())
-      val bfReaderErr = new BufferedReader(new InputStreamReader(baisErr))
+      val bfReaderErr: BufferedReader = new BufferedReader(new InputStreamReader(baisErr))
       // (bfReaderErr == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderErr)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderErr)
       // (message == null).trace // must be false
       assert(message.length == 0) // no message was obtained
     }
@@ -119,7 +119,7 @@ class StackSpec extends FlatSpec {
 
 
   "Enabling trace to std out" should "allow tracing to std out" in {
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalOut: PrintStream = System.out;
       // To get it back later
       val baosOut: ByteArrayOutputStream = new ByteArrayOutputStream();
@@ -127,14 +127,14 @@ class StackSpec extends FlatSpec {
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
       Debug.traceOutOn
-      "Hello  World".traceStdOut; // write stuff to System.out
+      "Hello  World".out; // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
-      val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
+      val bfReaderOut: BufferedReader = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderOut)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderOut)
       // (message == null).trace // must be false
       val didTraceMessage_? : Boolean = (message.length > 0)
       assert(didTraceMessage_?)
@@ -143,21 +143,21 @@ class StackSpec extends FlatSpec {
 
   "Disabling trace to std out" should "disable tracing to std out" in {
     Debug.traceOutOff
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalOut: PrintStream = System.out;
       // To get it back later
       val baosOut: ByteArrayOutputStream = new ByteArrayOutputStream();
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "Hello  World".traceStdOut; // write stuff to System.out
+      "Hello  World".out; // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
-      val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
+      val bfReaderOut: BufferedReader = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderOut)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderOut)
       // (message == null).trace // must be false
       assert(message.length == 0) // no message was obtained
     }
@@ -166,21 +166,21 @@ class StackSpec extends FlatSpec {
   it should "not disable assert to standard out" in {
     Debug.nonFatalAssertOn() // enable assertion to standard out
     Debug.traceOutOff() // disable trace to standard out
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalOut: PrintStream = System.out;
       // To get it back later
       val baosOut: ByteArrayOutputStream = new ByteArrayOutputStream();
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      val assertString = "foo".checkStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      val assertString: String = "foo".checkOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
-      val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
+      val bfReaderOut: BufferedReader = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderOut)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderOut)
       // (message == null).trace // must be false
       val didTraceMessage_? : Boolean = (message.length > 0)
       assert(didTraceMessage_?)
@@ -188,21 +188,21 @@ class StackSpec extends FlatSpec {
   }
   "Disabling non-fatal assert" should "stop non-fatal assert from working" in {
     Debug.nonFatalAssertOff() // disable assertion to standard out
-    val traceMessage = {
+    val traceMessage: Unit = {
       val originalOut: PrintStream = System.out;
       // To get it back later
       val baosOut: ByteArrayOutputStream = new ByteArrayOutputStream();
       // replaces standard error with new PrintStream
       val newOut: PrintStream = new PrintStream(baosOut)
       System.setOut(newOut)
-      "foo".checkStdOut(_ equals "bar", "Error message"); // write stuff to System.out
+      "foo".checkOut(_ equals "bar", "Error message"); // write stuff to System.out
       System.out.flush()
       System.setOut(originalOut);
       // So you can print again
       val baisOut: ByteArrayInputStream = new ByteArrayInputStream(baosOut.toByteArray())
-      val bfReaderOut = new BufferedReader(new InputStreamReader(baisOut))
+      val bfReaderOut: BufferedReader = new BufferedReader(new InputStreamReader(baisOut))
       // (bfReaderOut == null).trace // must be false
-      val message = TestingUtils.getMessage(bfReaderOut)
+      val message: Array[String] = TestingUtils.getMessage(bfReaderOut)
       // (message == null).trace // must be false
       assert(message.length == 0)
     }
