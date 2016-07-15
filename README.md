@@ -63,39 +63,6 @@ All the functions that a Java user can call are [in here](http://johnreedlol.bit
 
 ____________________________________________________________________________________________________________________
 
-<a name="Java-Examples"></a>
-
-### Java Examples:
-
-
-![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
-
-^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
-To get around this, specify "2" for last parameter (2 lines of stack trace). ^
-
-If you just want to copy-paste, Java example is [here](src/test/java/main/JavaMain.java).
-
-____________________________________________________________________________________________________________________
-
-
-### Master Shutoff Switch (Java Capable):
-
-If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time.
-
-
-### Runtime Switches (Java Capable):
-
-```scala
-Debug.traceErrOn/Off()
-Debug.traceOutOn/Off()
-Debug.fatalAssertOn/Off()
-Debug.nonFatalAssertOn/Off() // assertNonFatal = check
-Debug.setElementsPerRow() // For container printing
-```
-
-____________________________________________________________________________________________________________________
-
 <a name="Scala-Examples"></a>
 
 ### Scala Example:
@@ -217,6 +184,39 @@ an error message - my.pkg.Main.main(Main.scala:16)
 
 ```
 ##### ^ Run it yourself with "sbt test:run" ^
+
+____________________________________________________________________________________________________________________
+
+<a name="Java-Examples"></a>
+
+### Java Examples:
+
+
+![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
+
+^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
+To get around this, specify "2" for last parameter (2 lines of stack trace). ^
+
+If you just want to copy-paste, Java example is [here](src/test/java/main/JavaMain.java).
+
+____________________________________________________________________________________________________________________
+
+
+### Master Shutoff Switch (Java Capable):
+
+If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
+A system property may also be used. "The system property takes precedence over the environment variable". The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time.
+
+
+### Runtime Switches (Java Capable):
+
+```scala
+Debug.traceErrOn/Off()
+Debug.traceOutOn/Off()
+Debug.fatalAssertOn/Off()
+Debug.nonFatalAssertOn/Off() // assertNonFatal = check
+Debug.setElementsPerRow() // For container printing
+```
 
 ____________________________________________________________________________________________________________________
 
