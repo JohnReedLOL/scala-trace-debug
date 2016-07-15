@@ -98,7 +98,7 @@ ________________________________________________________________________________
 
 ### Scala Example:
 
-![Scala Example](http://i.imgur.com/EAv5H3k.png)
+![Scala Example](http://i.imgur.com/OsCzN7s.png)
 
 ##### Code:
 
