@@ -98,6 +98,10 @@ ________________________________________________________________________________
 
 ### Scala Example:
 
+![Scala Example](http://i.imgur.com/EAv5H3k.png)
+
+##### Code:
+
 ```scala
 
 def sleep() = Thread.sleep(60) // to prevent output mangling
