@@ -1,7 +1,5 @@
 # scala-trace-debug
-Make multithreaded print debugging easier than ever with scala trace debug. 
-
-Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
+Helps you debug faster with clickable print statements and assertions.
 
 ____________________________________________________________________________________________________________________
 
