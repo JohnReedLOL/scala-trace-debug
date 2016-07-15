@@ -67,7 +67,7 @@ ________________________________________________________________________________
 
 ![Scala Example](http://i.imgur.com/OsCzN7s.png)
 
-##### Code:
+##### Code Example:
 
 ```scala
 
