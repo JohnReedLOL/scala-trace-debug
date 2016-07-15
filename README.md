@@ -11,8 +11,6 @@ Table of Contents
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
-* <a href="#Logger-Incorporation">Logger Incorporation</a>
-* <a href="#Bonus-Features">Bonus Features</a>
 * <a href="#Performance">Performance</a>
 
 ____________________________________________________________________________________________________________________
@@ -183,7 +181,8 @@ an error message - my.pkg.Main.main(Main.scala:16)
 // ...
 
 ```
-##### ^ Run it yourself with "sbt test:run" ^
+
+##### ^ Run [it](src/test/scala/main/Main.scala) yourself with "sbt test:run" ^
 
 ____________________________________________________________________________________________________________________
 
@@ -244,98 +243,6 @@ ________________________________________________________________________________
 4. Use the IntelliJ console arrows to navigate up and down the stack traces.
 
 ![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
-
-____________________________________________________________________________________________________________________
-
-<a name="Logger-Incorporation"></a>
-
-### Logger Incorporation:
-
-- [Log.find](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Log$) is designed to be used with a logger. Does not incur the overhead of a full stack trace.
-
-- [Debug methods](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$) can be called from Java code and without a logger. All calls to `Debug.trace`, `Debug.assert`, etc. return a String that can be passed into a logger. 
-
-- [SDebug](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.SDebug$) stands for "Scala Debug". It provides special debug methods that are only available in Scala (macros, source code printing, etc).
-
-You can disable printing to standard out and standard error via `Debug.disableEverything_!`. `Debug` methods will still return a String that you can pass into a logger. 
-
-____________________________________________________________________________________________________________________
-
-<a name="Bonus-Features"></a>
-
-### Container Printing:
-
-![ContainerExample](http://i.imgur.com/P8mlz0C.png)
-
-^ Note the jar file name, `scalatest_2.11`, in the stack trace. ^
-
-^ Container printing works for any Scala container. To pass in Java containers, [import scala.collection.JavaConversions._](http://stackoverflow.com/questions/9638492/conversion-of-scala-map-containing-boolean-to-java-map-containing-java-lang-bool) ^
-
-____________________________________________________________________________________________________________________
-
-### Cheat Sheet / Examples:
-
-[Methods available through implicit conversion](http://ec2-52-87-157-20.compute-1.amazonaws.com/#info.collaboration_station.debug.package$$ImplicitTrace)
-
-Example functions (old): http://pastebin.com/2e1JN1De
-
-^ For more examples, see [Main.scala](src/test/scala/main/Main.scala), which you can run with `sbt test:run`
-
-____________________________________________________________________________________________________________________
-
-### Method Chaining:
-
-Add-on methods available through implicit conversion return the object they were called upon so that you can use them inside an expression or chain them together.
-
-```scala
-
-import scala.trace.implicitlyTraceable
-...
-val foo = true
-if( foo.trace ) { ... }
-
-import scala.trace.implicitlyPrintable
-...
-val foobar = "foo".trace().concat("bar").println() // Chaining.
-
-```
-
-____________________________________________________________________________________________________________________
-
-### More features:
-
-#### _Desugared macro expression tracing:_
-
-![Example](http://i.imgur.com/LvB8lOd.png)
-
-######^ Useful if you have a line like "object method object param" and you can't find where the dot and parenthesis go ^
-
-^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
-
-#### _Code tracing and assertions:_
-
-![Example2](http://i.imgur.com/pdey7Jk.png)
-
-######^ Useful if you do not want to repeat the name of a variable in a print statement. ^
-
-^ Note that this is an old screenshot. These macro methods now use `SDebug` (Scala Debug) instead of `Debug`. ^
-
-#### _Output formatting (beta):_
-
-![Example3](http://i.imgur.com/QJWGnnM.png)
-
-######^ Useful if you have a giant "wall" of text in std output and you want to inset line breaks programatically. ^
-
-____________________________________________________________________________________________________________________
-
-### Use in practice:
-
-For use in practice, see [this link](USE_WITH_IDE.md)
-
-- To only add prints, `import scala.trace.implicitlyPrintable`
-- To only add traces, `import scala.trace.implicitlyTraceable`
-- If only add asserts, `import scala.trace.implicitlyAssertable`
-- To add prints, traces, and asserts, `import scala.trace._`
 
 ____________________________________________________________________________________________________________________
 
