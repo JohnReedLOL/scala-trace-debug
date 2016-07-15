@@ -45,11 +45,15 @@ libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 - 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
 ```scala
+<repository>
+    <id>johnreed2 bintray</id>
+    <url>http://dl.bintray.com/content/johnreed2/maven</url>
+</repository>
+...
 <dependency>
-  <groupId>scala.trace</groupId>
-  <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>2.2.14</version>
-  <type>pom</type>
+    <groupId>scala.trace</groupId>
+    <artifactId>scala-trace-debug_2.11</artifactId>
+    <version>2.2.14</version>
 </dependency>
 ```
 
