@@ -213,10 +213,10 @@ an error message - my.pkg.Main.main(Main.scala:16)
 " in thread main:
   at my.pkg.Main$.main(Main.scala:25)
   at my.pkg.Main.main(Main.scala)
-...
+// ...
 
 ```
-##### ^Run it yourself with "sbt test:run" ^
+##### ^ Run it yourself with "sbt test:run" ^
 
 ____________________________________________________________________________________________________________________
 
