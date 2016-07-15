@@ -75,7 +75,11 @@ def sleep() = Thread.sleep(60) // to prevent output mangling
 
 import scala.trace.Pos
 println("an error message" + Pos()) /*position*/ ; sleep()
+```
 
+##### Debug Statements:
+
+```scala
 import scala.trace.Debug
 
 // debug traces are clickable
@@ -89,7 +93,11 @@ Debug.out("trace to standard out")
 Debug.out("trace to standard out", numLines = 2)
 Debug.arrayOut(Array(1,2,3))
 Debug.arrayOut(Array(1,2,3), start = 1, numLines = 2) ; sleep()
+```
 
+##### Assertions:
+
+```scala
 // assertions are totally fatal (full stop)
 Debug.assert(1 == 1, "one must equal one")
 Debug.assertOut(1 == 1, "one must equal one") ; sleep()
@@ -102,7 +110,11 @@ Debug.assert(1 == 2, "one must equal two")   // nothing happens
 Debug.check("one" == 2, "one must equal one") ; sleep()
 // output is colored bright red for visibility
 Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
+```
 
+##### Macros:
+
+```scala
 import scala.trace.Macro
 
 // Macro methods use advanced Scala features to print code and types
@@ -125,6 +137,11 @@ Macro.codeOut(one + two / three) ; sleep()
 
 Macro.desugarErr(one + two / three)
 Macro.codeErr(one + two / three) ; sleep()
+```
+
+##### Implicit Conversions:
+
+```scala
 
 import scala.trace.implicitlyTraceable
 
@@ -139,7 +156,11 @@ import scala.trace.implicitlyAssertable
 
 "foo bar".assertEq("foo bar", "foo bar must equal foo bar")
 2.check(_ + 3 == 5, "two plus three is five")
+```
 
+##### Output Formatting:
+
+```scala
 import scala.trace.Format
 
 // Formatting makes the string more readable
