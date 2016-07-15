@@ -182,7 +182,7 @@ an error message - my.pkg.Main.main(Main.scala:16)
 
 ```
 
-##### ^ [Run it youtself](src/test/scala/my/pkg/Main.scala) with "sbt test:run" ^
+##### ^ [Run it yourself](src/test/scala/my/pkg/Main.scala) with "sbt test:run" ^
 
 ____________________________________________________________________________________________________________________
 
