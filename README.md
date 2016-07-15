@@ -193,10 +193,11 @@ println(("This is a really,really,really,really,really,really,really,really,real
   ",really,really,really,really,really,," +
   "long,string,that,needs,to,be,formatted,because,it,is,longer,than," + Format.getLineLength
   + ",chars").wrap(delimiter = ","))
+```
 
-// output
+##### Output:
 
-/*
+```scala
 an error message - my.pkg.Main.main(Main.scala:16)
 
 "trace to standard error" in thread main:
