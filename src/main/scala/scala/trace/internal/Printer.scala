@@ -87,8 +87,8 @@ protected[trace] object Printer {
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
   protected[trace] final def traceInternal[A](toPrintOutNullable: A, numStackLinesIntended: Int
-    , usingStdOut: Boolean = false): String = {
-    if(debugDisabled_?) {
+                                              , usingStdOut: Boolean = false): String = {
+    if (debugDisabled_?) {
       return ""
     }
     val toPrintOut: String = if (toPrintOutNullable == null) {
@@ -103,7 +103,11 @@ protected[trace] object Printer {
         val lineNumber: Int = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
         val packageName: String = getPackageName(stackLine)
-        val myPackageName: String = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
+        val myPackageName: String = if (packageName.equals("")) {
+          ""
+        } else {
+          " [" + packageName + "]"
+        }
         // The java stack traces use a tab character, not a space
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + myPackageName
@@ -131,9 +135,9 @@ protected[trace] object Printer {
   protected[internal] def getPackageName(stackLine: StackTraceElement): String = {
     try {
       val className: Class[_] = Class.forName(stackLine.getClassName)
-      val stringLocation: String = if(className != null) {
+      val stringLocation: String = if (className != null) {
         val packageName: String = PackagingDataCalculator.getCodeLocation(className)
-        if(packageName.endsWith(".jar") ) {
+        if (packageName.endsWith(".jar")) {
           packageName
         } else {
           ""
@@ -143,7 +147,9 @@ protected[trace] object Printer {
       }
       stringLocation
     } catch {
-      case _:java.lang.Exception => { "" }
+      case _: java.lang.Exception => {
+        ""
+      }
     }
   }
 
@@ -155,7 +161,7 @@ protected[trace] object Printer {
     * @return The string that would have been printed out if printing were enabled and the string that was printed out because printing was enabled.
     */
   protected[trace] final def internalAssert[A](toPrintOutNullable: A, numStackLinesIntended: Int
-    , usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
+                                               , usingStdOut: Boolean = false, assertionTrue_? : Boolean, isFatal_? : Boolean): String = {
     if (debugDisabled_? || assertionTrue_?) {
       return "" // If assertion is true, print nothing and return empty string.
     }
@@ -172,7 +178,11 @@ protected[trace] object Printer {
         val lineNumber: Int = newStackOffset + row
         val stackLine: StackTraceElement = stack(lineNumber)
         val packageName: String = getPackageName(stackLine)
-        val myPackageName: String = if(packageName.equals("")) {""} else {" [" + packageName + "]"}
+        val myPackageName: String = if (packageName.equals("")) {
+          ""
+        } else {
+          " [" + packageName + "]"
+        }
         // The java stack traces use a tab character, not a space
         val tab = "\t"
         toPrint += "\n" + tab + "at " + stackLine + myPackageName
@@ -182,7 +192,7 @@ protected[trace] object Printer {
       toPrint += "\n" + "^ An assertion failure has occured. ^"
     }
     toPrint = Color.red(toPrint)
-    if ( (!isFatal_? && !Debug.isNonFatalAssertOn) || (isFatal_? && !Debug.isFatalAssertOn) ) {
+    if ((!isFatal_? && !Debug.isNonFatalAssertOn) || (isFatal_? && !Debug.isFatalAssertOn)) {
       // If it is nonfatal and nonFatalAssert is off, don't print anything
     } else {
       if (usingStdOut) {

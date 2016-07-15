@@ -14,7 +14,8 @@ final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
     * @example if(foo.print) { /* do something with foo */ }
     */
   final def print(): MyType = {
-    System.out.print(me); me
+    System.out.print(me);
+    me
   }
 
   /**
@@ -24,7 +25,8 @@ final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
     * @example if(foo.println) { /* do something with foo */ }
     */
   final def println(): MyType = {
-    System.out.println(me); me
+    System.out.println(me);
+    me
   }
 
   /**
@@ -34,7 +36,8 @@ final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
     * @example if(foo.printStdErr) { /* do something with foo */ }
     */
   final def printErr(): MyType = {
-    System.err.print(me); me
+    System.err.print(me);
+    me
   }
 
   /**
@@ -44,6 +47,7 @@ final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
     * @example if(foo.printlnStdErr) { /* do something with foo */ }
     */
   final def printlnErr(): MyType = {
-    System.err.println(me); me
+    System.err.println(me);
+    me
   }
 }

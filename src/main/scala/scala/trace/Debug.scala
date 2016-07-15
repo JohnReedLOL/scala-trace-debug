@@ -21,7 +21,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
- *
+    *
     * @return the number of elements per row for container printing
     */
   def getElementsPerRow(): Int = {
@@ -30,7 +30,7 @@ object Debug {
 
   /**
     * Uses Java notation for Java users
- *
+    *
     * @param elementsPerRow the number of elements per row for container printing
     */
   def setElementsPerRow(elementsPerRow: Int): Unit = {
@@ -150,50 +150,35 @@ object Debug {
     * @param toPrint whatever it is you want to print.
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def err[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1)
+  def err(toPrint: Any): String = Printer.traceInternal(toPrint.toString, 1)
 
   /**
     * Traces to standard error with a N line stack trace.
     *
-    * @param toPrint whatever it is you want to print.
+    * @param toPrint  whatever it is you want to print.
     * @param numLines the number of lines to trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def err[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines)
+  def err(toPrint: Any, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines)
 
   /**
-    * Traces to standard error with a full length stack trace.
-    *
-    * @param toPrint whatever it is you want to print.
-    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-    */
-  def errStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue)
-
-  /**
-    * Same as Debug.trace, but prints to standard out instead of standard error
+    * Same as Debug.err, but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def out[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, 1, usingStdOut = true)
+  def out(toPrint: Any): String = Printer.traceInternal(toPrint.toString, 1, usingStdOut = true)
 
   /**
-    * Same as Debug.trace(toPrint: T, numLines: Int), but prints to standard out instead of standard error
+    * Same as Debug.err(toPrint: Any, numLines: Int), but prints to standard out instead of standard error
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
-  def out[T](toPrint: T, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines, usingStdOut = true)
-
-  /**
-    * Same as traceStack, but prints to StdOut instead of StdError
-    *
-    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-    */
-  def outStack[T](toPrint: T): String = Printer.traceInternal(toPrint.toString, Int.MaxValue, usingStdOut = true)
+  def out(toPrint: Any, numLines: Int): String = Printer.traceInternal(toPrint.toString, numLines, usingStdOut = true)
 
   /** A fatal assertion.
     * Terminates the program with exit code "7"
     * Note: "assert" is a reserved keyword in Java, use "assrt" instead.
- *
+    *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
     * @example Debug.assrt( 1 + 2 == 4, "Error: one plus two is not equal to four" )
@@ -218,7 +203,7 @@ object Debug {
   }
 
   /**
-    * Like Debug.assrt(), but does not terminate the application
+    * Like Debug.assert(), but does not terminate the application
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -227,7 +212,7 @@ object Debug {
   }
 
   /**
-    * Like Debug.assrtStdOut(), but does not terminate the application
+    * Like Debug.assertOut(), but does not terminate the application
     *
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -238,11 +223,11 @@ object Debug {
   /**
     * Gets the collection as a string of n elements from start to start + numElements
     */
-  def getArrayAsString[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue): String = {
+  protected[trace] def getArrayAsString[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue): String = {
     var toPrint = ""
-    val iterator = coll.toIterator
+    val iterator: Iterator[T] = coll.toIterator
     var currentElement: Long = 0L // Long to prevent overflow
-    val end = start.toLong + numElements.toLong  // Long to prevent overflow
+    val end: Long = start.toLong + numElements.toLong // Long to prevent overflow
     // first increment the iterator to start
     while (currentElement < start) {
       if (iterator.hasNext) {
@@ -254,14 +239,14 @@ object Debug {
         currentElement = Long.MaxValue
       }
     }
-    val startElement = currentElement
+    val startElement: Long = currentElement
     // Now currentElement = start
     // then do real printing
-    while(currentElement < end) {
+    while (currentElement < end) {
       if (iterator.hasNext) {
         toPrint = toPrint + iterator.next() + ", "
         currentElement += 1L
-        if( (currentElement - startElement) % Debug.getElementsPerRow() == 0) {
+        if ((currentElement - startElement) % Debug.getElementsPerRow() == 0) {
           toPrint += "\n" // newline every "numElementsPerRow" elements
         }
       } else {
@@ -271,29 +256,29 @@ object Debug {
     }
     toPrint = toPrint.trim // no trailing whitespace
 
-    if (toPrint.length() > 0 && toPrint.charAt(toPrint.length()-1)==',') {
-      toPrint = toPrint.substring(0, toPrint.length()-1) // remove trailing comma
+    if (toPrint.length() > 0 && toPrint.charAt(toPrint.length() - 1) == ',') {
+      toPrint = toPrint.substring(0, toPrint.length() - 1) // remove trailing comma
     }
 
     " " + toPrint + "\n"
   }
 
   /**
-    * Same as traceContents[CollectionType], but for Java Arrays (callable from Java Code)
+    * Same as Macro.containerErr[ContainedT], but for Java Arrays (callable from Java Code)
     */
-  def traceArray[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  def err[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
   : String = {
-    val toPrint = getArrayAsString(coll, start, numElements)
+    val toPrint: String = getArrayAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
   }
 
 
   /**
-    * Same as traceContentsStdOut[CollectionType], but for Java Arrays (callable from Java Code)
+    * Same as Macro.containerOut[ContainedT], but for Java Arrays (callable from Java Code)
     */
-  def traceArrayOut[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  def out[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
   : String = {
-    val toPrint = getArrayAsString(coll, start, numElements)
+    val toPrint: String = getArrayAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
   }
 

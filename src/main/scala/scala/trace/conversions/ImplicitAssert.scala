@@ -55,7 +55,7 @@ final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
   }
 
   /**
-    * Same as ImplicitTrace.assertEquals(), but it uses StdOut instead of StdErr.
+    * Same as ImplicitTrace.assertEq(), but it uses StdOut instead of StdErr.
     *
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     */
@@ -73,7 +73,7 @@ final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
   }
 
   /**
-    * Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
+    * Same as ImplicitTrace[MyType].assertOut(), but it does not kill anything (not even the current thread)
     */
   final def checkOut(assertion: (MyType) => Boolean, message: String, numLines: Int = Int.MaxValue): MyType = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = assertion(me), isFatal_? = false)
@@ -81,7 +81,7 @@ final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
   }
 
   /**
-    * Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
+    * Same as ImplicitTrace[MyType].assertEq(), but it does not kill anything (not even the current thread)
     */
   final def checkEq[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
     Printer.internalAssert(message, numLines, usingStdOut = false, assertionTrue_? = me.equals(other), isFatal_? = false)
@@ -89,7 +89,7 @@ final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
   }
 
   /**
-    * Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
+    * Same as ImplicitTrace[MyType].assertEqOut(), but it does not kill anything (not even the current thread)
     */
   final def checkEqOut[OtherType](other: OtherType, message: String, numLines: Int = Int.MaxValue): MyType = {
     Printer.internalAssert(message, numLines, usingStdOut = true, assertionTrue_? = me.equals(other), isFatal_? = false)

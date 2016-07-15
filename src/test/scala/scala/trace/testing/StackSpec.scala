@@ -14,10 +14,10 @@ class StackSpec extends FlatSpec {
 
   "Container printing" should "work for arrays, lists, and maps" in {
     val logger: Logger = LoggerFactory.getLogger("Logger");
-    Macro.traceContents(List(1,2))
-    Macro.traceContentsOut(Array("Hello","World"))
+    Macro.contentsErr(List(1, 2))
+    Macro.contentsOut(Array("Hello", "World"))
     Debug.traceErrOff()
-    logger.warn( Macro.traceContents(Map("1" -> 1, "2" -> 2)) )
+    logger.warn(Macro.contentsErr(Map("1" -> 1, "2" -> 2)))
     Debug.enableEverything()
   }
 
@@ -55,12 +55,13 @@ class StackSpec extends FlatSpec {
     // same line for same stack trace
     val exceptionTrimmed: Array[String] = exceptionMessage.slice(0, exceptionMessage.length);
     val assertTrimmed: Array[String] = assertMessage.slice(1, assertMessage.length);
-    for(i <- 0 until 6) { // minLength) {
+    for (i <- 0 until 6) {
+      // minLength) {
       println("i: " + i)
       println("exception: " + exceptionTrimmed(i))
       println("assertion: " + assertTrimmed(i))
-      assert(exceptionTrimmed(i + 2).split(" ")(0) === assertTrimmed(i+2).split(" ")(0)) // first word is "at"
-      assert(exceptionTrimmed(i + 2).split(" ")(1) === assertTrimmed(i+2).split(" ")(1)) // second word is trace
+      assert(exceptionTrimmed(i + 2).split(" ")(0) === assertTrimmed(i + 2).split(" ")(0)) // first word is "at"
+      assert(exceptionTrimmed(i + 2).split(" ")(1) === assertTrimmed(i + 2).split(" ")(1)) // second word is trace
       /*
       System.err.println(exceptionTrimmed(i))
       System.err.println(assertTrimmed(i))

@@ -5,12 +5,14 @@ import scala.language.experimental.macros
 
 /**
   * Provides a file/line position as a string to append to the end of a print or log statement.
+  *
   * @example logger.warn("something has occured" + Pos()) // "something has occured - path.to.MyClass.func(MyClass.scala:33)"
   * @author John-Michael Reed (https://github.com/JohnReedLOL/scala-trace-debug)
   */
 object Pos {
   /**
     * Provides a file/line position as a string to append to the end of a print or log statement.
+    *
     * @example logger.warn("something has occured" + Pos()) // "something has occured - path.to.MyClass.func(MyClass.scala:33)"
     */
   def apply(): String = macro posImpl
@@ -22,12 +24,20 @@ object Pos {
     }
     val lineNum: Int = c.enclosingPosition.line
     val fileName: String = c.enclosingPosition.source.path // This needs to be trimmed down
-    val trimmedFileName: String = Log.processFileName(fileName)
+    val trimmedFileName: String = processFileName(fileName)
     val fullName: String = Compat.enclosingOwner(c).fullName.trim
     val toReturn =
       q"""
        " - " + $fullName + "(" + $trimmedFileName + ":" + $lineNum + ")"
      """
     c.Expr[String](toReturn)
+  }
+
+  protected[trace] def processFileName(fileName: String): String = {
+    if (fileName.contains("/")) {
+      fileName.split("/").last
+    } else {
+      fileName.split("\\").last
+    }
   }
 }

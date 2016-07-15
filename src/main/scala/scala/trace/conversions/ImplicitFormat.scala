@@ -30,7 +30,7 @@ class ImplicitFormat(val me: String) extends AnyVal {
         lineLength = 0
       }
     }
-    return formattedText
+    formattedText
   }
 }
 

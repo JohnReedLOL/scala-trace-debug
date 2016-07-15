@@ -2882,7 +2882,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.7!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 1001ms :: artifacts dl 31ms
+[debug] :: resolution report :: resolve 850ms :: artifacts dl 20ms
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT compile produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-compile.xml
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT runtime produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-runtime.xml
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT test produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-test.xml
@@ -2896,5 +2896,5 @@
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT docs produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-docs.xml
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT pom produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-pom.xml
 [debug] 	report for default#experimental-build;0.1-SNAPSHOT scala-tool produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-scala-tool.xml
-[debug] 	resolve done (1001ms resolve - 31ms download)
+[debug] 	resolve done (850ms resolve - 20ms download)
 [info] Done updating.

@@ -11,19 +11,21 @@ protected[trace] object Helpers {
 
     def getSourceCode(toPrint: c.Tree): c.Tree = {
       import c.universe._
-      val blockTree = toPrint
-      val blockSource = new String(blockTree.pos.source.content)
+      val blockTree: c.Tree = toPrint
+      val blockSource: String = new String(blockTree.pos.source.content)
       // apply case tree => tree.pos.startOrPoint to each subtree on which the function is defined and collect the results.
       val listOfTreePositions: List[Int] = blockTree.collect { case tree => tree.pos.startOrPoint }
       val start: Int = listOfTreePositions.min
       import scala.language.existentials
       val globalContext = c.asInstanceOf[reflect.macros.runtime.Context].global // inferred existential
-      val codeParser = globalContext.newUnitParser(code = blockSource.drop(start))
+      val codeParser: globalContext.syntaxAnalyzer.UnitParser
+      = globalContext.newUnitParser(code = blockSource.drop(start))
       codeParser.expr()
-      val end = codeParser.in.lastOffset
-      val blockString = blockSource.slice(start, start + end)
+      val end: globalContext.syntaxAnalyzer.Offset = codeParser.in.lastOffset
+      val blockString: String = blockSource.slice(start, start + end)
       val sourceCode = q""" $blockString """
       sourceCode
     }
   }
+
 }

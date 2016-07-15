@@ -1,6 +1,7 @@
 package scala.trace
 
-protected[trace] object Compat{
+protected[trace] object Compat {
   type Context = scala.reflect.macros.blackbox.Context
+
   def enclosingOwner(c: Context) = c.internal.enclosingOwner
 }
