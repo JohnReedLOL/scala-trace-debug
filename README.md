@@ -18,7 +18,7 @@ ________________________________________________________________________________
 
 <a name="Find-log-statements"></a>
 
-### Finding your log statements:
+### Find your log statements:
 
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
