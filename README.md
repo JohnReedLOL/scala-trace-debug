@@ -1,4 +1,6 @@
 # scala-trace-debug
+
+[![Join the chat at https://gitter.im/JohnReedLOL/scala-trace-debug](https://badges.gitter.im/JohnReedLOL/scala-trace-debug.svg)](https://gitter.im/JohnReedLOL/scala-trace-debug?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Make multithreaded print debugging easier than ever with scala trace debug. 
 
 Provides human-friendly prints, traces, assertions, container printing, source code printing, and log output.
