@@ -19,7 +19,7 @@ public class JavaMain {
         Debug.checkOut(7 == 8, "assertion failures are bright red", 1);
         sleep();
         String[] array = {"1", "2", "3"};
-        Debug.err(array, 0, 3, 1); // 3 elements from 0
+        Debug.arrayErr(array, 0, 3, 1); // 3 elements from 0
         Debug.assertOut(7 == 8, "assert is fatal, check is not", 1);
     }
 }

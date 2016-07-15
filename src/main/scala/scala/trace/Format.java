@@ -1,14 +1,13 @@
 package scala.trace;
 
 /**
- * Created by johnreed on 5/7/16.
  * Used for formatting strings.
  */
 public class Format {
-    private static int _lineWrap = 100;
+    private static int _lineLength = 100;
 
-    public static int getLineWrap() {
-        return _lineWrap;
+    public static int getLineLength() {
+        return _lineLength;
     }
 
     /**
@@ -16,11 +15,11 @@ public class Format {
      *
      * @param length min length before line wrap occurs
      */
-    public static void setLineWrap(int length) {
+    public static void setLineLength(int length) {
         if (length < 1) {
             throw new IllegalArgumentException("Line wrap must occur after one or more characters");
         }
-        _lineWrap = length;
+        _lineLength = length;
     }
 
     /**
@@ -42,7 +41,7 @@ public class Format {
         for (String word : splitText) {
             formattedText += word + delimiter;
             lineLength += word.length() + delimiter.length();
-            if (lineLength > _lineWrap) {
+            if (lineLength > _lineLength) {
                 formattedText += "\n"; // newline every lineWrap elements
                 lineLength = 0;
             }

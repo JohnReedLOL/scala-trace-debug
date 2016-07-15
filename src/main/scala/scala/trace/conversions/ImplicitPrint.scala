@@ -3,7 +3,7 @@ package scala.trace.conversions
 import scala.language.implicitConversions
 
 /**
-  * Created by johnreed on 4/12/16.
+  * Wrapper class for implicit conversion .print methods
   */
 final class ImplicitPrint[MyType](val me: MyType) extends AnyVal {
 

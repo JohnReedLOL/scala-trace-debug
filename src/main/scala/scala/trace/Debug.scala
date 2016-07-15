@@ -3,7 +3,7 @@ package scala.trace
 import scala.trace.internal.Printer
 
 /**
-  * Created by johnreed on 3/12/16. Contains static debug functions for Java and Scala.
+  * Contains static debug functions for Java and Scala.
   * https://github.com/JohnReedLOL/scala-trace-debug
   */
 object Debug {
@@ -266,7 +266,7 @@ object Debug {
   /**
     * Same as Macro.containerErr[ContainedT], but for Java Arrays (callable from Java Code)
     */
-  def err[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  def arrayErr[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
   : String = {
     val toPrint: String = getArrayAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
@@ -276,7 +276,7 @@ object Debug {
   /**
     * Same as Macro.containerOut[ContainedT], but for Java Arrays (callable from Java Code)
     */
-  def out[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
+  def arrayOut[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
   : String = {
     val toPrint: String = getArrayAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)

@@ -3,7 +3,6 @@ package scala.trace.conversions
 import scala.trace.{Debug, Format}
 
 /**
-  * Created by johnreed on 5/10/16.
   * Provides formatting functionality to strings.
   */
 class ImplicitFormat(val me: String) extends AnyVal {
@@ -25,7 +24,7 @@ class ImplicitFormat(val me: String) extends AnyVal {
     for (word <- splitText) {
       formattedText += word + delimiter
       lineLength += word.length + delimiter.length
-      if (lineLength > Format.getLineWrap) {
+      if (lineLength > Format.getLineLength) {
         formattedText += "\n"
         lineLength = 0
       }

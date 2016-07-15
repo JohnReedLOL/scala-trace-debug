@@ -129,6 +129,46 @@ object Macro {
     def apply[T](toPrint: T, numLines: Int): String = macro traceLinesCodeImpl[T]
   }
 
+  /**
+    * Same as Debug.out, but prints the code in the block, not just the result
+    *
+    * @example myVal = 3; Debug.outCode{1 + 2 + myVal}
+    * @example myVal = 3; Debug.outCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+    */
+  object codeOut {
+    def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
+      import c.universe._
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
+      val args: List[c.universe.Tree] = List(arg1)
+      val toReturn =
+        q"""
+        _root_.scala.trace.Debug.err(..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+
+    def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+      import c.universe._
+      val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
+      val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
+      val arg2 = q"$numLines"
+      val args: List[c.universe.Tree] = List(arg1, arg2)
+      val toReturn =
+        q"""
+        _root_.scala.trace.Debug.err(..$args);
+    """
+      c.Expr[String](toReturn)
+    }
+
+    def apply[T](toPrint: T): String = macro traceCodeImpl[T]
+
+    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesCodeImpl[T]
+  }
+
+
+
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
   // You also cannot use default parameters. Boo.
 

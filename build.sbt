@@ -1,6 +1,6 @@
 name := "scala-trace-debug"
 
-organization := "scala.trace"
+organization := "com.github.johnreedlol"
 
 scalaVersion := "2.11.7"
 

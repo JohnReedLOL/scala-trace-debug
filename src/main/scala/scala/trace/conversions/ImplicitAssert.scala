@@ -5,7 +5,7 @@ import scala.trace.Debug
 import scala.trace.internal.Printer
 
 /**
-  * Created by johnreed on 4/12/16.
+  * Wrapper class for implicit conversion .assert methods
   */
 final case class ImplicitAssert[MyType](val me: MyType) extends AnyVal {
 
