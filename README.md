@@ -56,7 +56,7 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 ...
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
-  <artifactId>scala-trace-debug_2.10</artifactId>
+  <artifactId>scala-trace-debug_2.11</artifactId>
   <version>3.0.0</version>
 </dependency>
 ```
