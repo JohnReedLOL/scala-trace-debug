@@ -286,6 +286,8 @@ Currently all the actual printing is done in [`Printer.scala`](src/main/scala/sc
 
 ____________________________________________________________________________________________________________________
 
+#### Developer's Guide
+
 <a name="Developers-Guide"></a>
 
 1. git clone https://github.com/JohnReedLOL/scala-trace-debug 3.0
