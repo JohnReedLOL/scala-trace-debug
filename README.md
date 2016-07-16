@@ -7,11 +7,6 @@ Table of Contents
 
 * <a href="#Locate-statements">Locate statements</a>
 * <a href="#Getting-started">Getting started</a>
-<<<<<<< HEAD
-=======
-* <a href="#Video-Demo">Video Demo</a>
-* <a href="#Java-Examples">Java Examples</a>
->>>>>>> ec037c10b7bfcf7fe5b47e738c417596c275639e
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Requirements">Requirements</a>
@@ -72,19 +67,6 @@ Note that Java users need to add [this](http://mvnrepository.com/artifact/org.sc
 
 ____________________________________________________________________________________________________________________
 
-<<<<<<< HEAD
-<a name="Scala-Examples"></a>
-=======
-<a name="Video-Demo"></a>
-
-### Video Demo:
-
-[https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s](https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s)
-
-____________________________________________________________________________________________________________________
-
-<a name="Java-Examples"></a>
->>>>>>> ec037c10b7bfcf7fe5b47e738c417596c275639e
 
 ### Scala Example:
 
