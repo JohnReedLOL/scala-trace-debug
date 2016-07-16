@@ -1,4 +1,4 @@
-# scala-trace-debug
+# scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
 Helps you debug faster with clickable print statements and assertions.
 
 ____________________________________________________________________________________________________________________
