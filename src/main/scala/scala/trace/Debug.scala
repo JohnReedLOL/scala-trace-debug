@@ -181,7 +181,7 @@ object Debug {
     *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard error on assertion failure
-    * @example Debug.assrt( 1 + 2 == 4, "Error: one plus two is not equal to four" )
+    * @example Debug.assert( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
@@ -194,7 +194,7 @@ object Debug {
     *
     * @param assertion the assertion that must be true for the program to run.
     * @param message   the message to be printed to standard out on assertion failure
-    * @example Debug.assrtStdOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
+    * @example Debug.assertOut( 1 + 2 == 4, "Error: one plus two is not equal to four" )
     * @note this (and other assertions not marked "nonFatal") are fatal. To disable, please call "Debug.fatalAssertOffSE()"
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */

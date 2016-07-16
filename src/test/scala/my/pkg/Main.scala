@@ -7,9 +7,10 @@ object Main {
 
   def main(args: Array[String]) {
 
-    def sleep() = Thread.sleep(60)
-
+    def sleep() = Thread.sleep(60) // to prevent output mangling
     import scala.trace.Pos
+    Pos.err("Standard error") ; sleep()
+    Pos.out("Hello World")
     println("an error message" + Pos()) /*position*/ ; sleep()
 
     import scala.trace.Debug
@@ -96,90 +97,93 @@ object Main {
     // output
 
     /*
-    an error message - my.pkg.Main.main(Main.scala:16)
+    Standard error - my.pkg.Main.main(Main.scala:12)
+    Hello World - my.pkg.Main.main(Main.scala:13)
+    an error message - my.pkg.Main.main(Main.scala:14)
 
     "trace to standard error" in thread main:
-      at my.pkg.Main$.main(Main.scala:22)
+      at my.pkg.Main$.main(Main.scala:20)
 
     "trace to standard error" in thread main:
-      at my.pkg.Main$.main(Main.scala:23)
+      at my.pkg.Main$.main(Main.scala:21)
       at my.pkg.Main.main(Main.scala)
 
     " 1, 2, 3
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:24)
+      at my.pkg.Main$.main(Main.scala:22)
 
     " 1, 2
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:25)
+      at my.pkg.Main$.main(Main.scala:23)
       at my.pkg.Main.main(Main.scala)
 
     "trace to standard out" in thread main:
-      at my.pkg.Main$.main(Main.scala:27)
+      at my.pkg.Main$.main(Main.scala:25)
 
     "trace to standard out" in thread main:
-      at my.pkg.Main$.main(Main.scala:28)
+      at my.pkg.Main$.main(Main.scala:26)
       at my.pkg.Main.main(Main.scala)
 
     " 1, 2, 3
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:29)
+      at my.pkg.Main$.main(Main.scala:27)
 
     " 2, 3
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:30)
+      at my.pkg.Main$.main(Main.scala:28)
       at my.pkg.Main.main(Main.scala)
 
     "one must equal one" in thread main:
-      at my.pkg.Main$.main(Main.scala:41)
+      at my.pkg.Main$.main(Main.scala:39)
       at my.pkg.Main.main(Main.scala)
     ^ The above stack trace leads to an assertion failure. ^
 
     "one must equal one" in thread main:
-      at my.pkg.Main$.main(Main.scala:43)
+      at my.pkg.Main$.main(Main.scala:41)
     ^ The above stack trace leads to an assertion failure. ^
 
     "Contains: Int 1, 2, 3
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:49)
+      at my.pkg.Main$.main(Main.scala:47)
+
+    "Contains: Int 1, 2, 3
+    " in thread main:
+      at my.pkg.Main$.main(Main.scala:48)
+      at my.pkg.Main.main(Main.scala)
 
     "Contains: Int 1, 2, 3
     " in thread main:
       at my.pkg.Main$.main(Main.scala:50)
-      at my.pkg.Main.main(Main.scala)
 
     "Contains: Int 1, 2, 3
     " in thread main:
-      at my.pkg.Main$.main(Main.scala:52)
-
-    "Contains: Int 1, 2, 3
-    " in thread main:
-      at my.pkg.Main$.main(Main.scala:53)
+      at my.pkg.Main$.main(Main.scala:51)
       at my.pkg.Main.main(Main.scala)
 
     "("one" == 2) -> false" in thread main:
-      at my.pkg.Main$.main(Main.scala:55)
+      at my.pkg.Main$.main(Main.scala:53)
       at my.pkg.Main.main(Main.scala)
     ^ The above stack trace leads to an assertion failure. ^
 
+    "one.+(two./(three)) -> 1" in thread main:
+      at my.pkg.Main$.main(Main.scala:60)
+
     "(one + two / three) -> 1" in thread main:
+      at my.pkg.Main$.main(Main.scala:61)
+
+    "one.+(two./(three)) -> 1" in thread main:
       at my.pkg.Main$.main(Main.scala:63)
 
-    "one.+(two./(three)) -> 1" in thread main:
-      at my.pkg.Main$.main(Main.scala:62)
-
-    "one.+(two./(three)) -> 1" in thread main:
-      at my.pkg.Main$.main(Main.scala:65)
-
     "(one + two / three) -> 1" in thread main:
-      at my.pkg.Main$.main(Main.scala:66)
+      at my.pkg.Main$.main(Main.scala:64)
 
     "foo bar baz" in thread main:
-      at my.pkg.Main$.main(Main.scala:72)
+      at my.pkg.Main$.main(Main.scala:71)
 
     "foo bar baz" in thread main:
-      at my.pkg.Main$.main(Main.scala:73)
+      at my.pkg.Main$.main(Main.scala:70)
 
+    Disconnected from the target VM, address: '127.0.0.1:46176', transport: 'socket'
     This is a really really really really really reallyreally really really really really really really really
     really reallyreally really really really really really really reallylong string that needs to be formatted
     because it is longer than 100 chars default

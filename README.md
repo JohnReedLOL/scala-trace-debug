@@ -75,8 +75,9 @@ ________________________________________________________________________________
 ```scala
 
 def sleep() = Thread.sleep(60) // to prevent output mangling
-
 import scala.trace.Pos
+Pos.err("Standard error") ; sleep()
+Pos.out("Hello World")
 println("an error message" + Pos()) /*position*/ ; sleep()
 ```
 
@@ -249,7 +250,7 @@ ________________________________________________________________________________
 
 ### Requirements:
 
-- Scala 2.10.4 or higher (or Java 8+)
+- Scala 2.10.4 or higher (or Java 7+)
 - Any IDE or text editor that supports stack trace highlighting
 
 ____________________________________________________________________________________________________________________

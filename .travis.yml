@@ -5,7 +5,8 @@ scala:
   - 2.11.2
 branches:
   only:
-    - master
     - 3.0
+    - master
 jdk:
   - oraclejdk8
+  - oraclejdk7

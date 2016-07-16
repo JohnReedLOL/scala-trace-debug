@@ -52,7 +52,6 @@ object Macro {
     if (toPrint.length() > 0 && toPrint.charAt(toPrint.length() - 1) == ',') {
       toPrint = toPrint.substring(0, toPrint.length() - 1) // remove trailing comma
     }
-
     " " + toPrint + "\n"
   }
 
@@ -67,8 +66,7 @@ object Macro {
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def contentsErr[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
-                             (implicit tag: WeakTypeTag[ContainedT]): String = {
+  def contentsErr[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[ContainedT]): String = {
     val collectionType = tag.tpe
     val toPrint: String = "Contains: " + collectionType.toString + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = false)
@@ -84,8 +82,7 @@ object Macro {
     * @param numLines    the number of lines of stack trace.
     * @return the string containing what was printed or what would have been printed if printing was enabled.
     */
-  def contentsOut[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)
-                             (implicit tag: WeakTypeTag[ContainedT]): String = {
+  def contentsOut[ContainedT](coll: collection.GenTraversableOnce[ContainedT], start: Int = 0, numElements: Int = Int.MaxValue, numLines: Int = 1)(implicit tag: WeakTypeTag[ContainedT]): String = {
     val collectionType = tag.tpe
     val toPrint: String = "Contains: " + collectionType.toString + getCollectionAsString(coll, start, numElements)
     Printer.traceInternal(toPrint, numStackLinesIntended = numLines, usingStdOut = true)
@@ -94,12 +91,12 @@ object Macro {
   /**
     * Same as Debug.err, but prints the code in the block, not just the result
     *
-    * @example myVal = 3; Debug.traceCode{1 + 2 + myVal}
-    * @example myVal = 3; Debug.traceCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example myVal = 3; Debug.codeErr{1 + 2 + myVal}
+    * @example myVal = 3; Debug.codeErr(1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object codeErr {
-    def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
+    def traceCodeImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
@@ -107,11 +104,11 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesCodeImpl(c: Compat.Context)(toPrint: c.Expr[Any], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
@@ -120,24 +117,24 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def apply[T](toPrint: T): String = macro traceCodeImpl[T]
+    def apply(toPrint: Any): String = macro traceCodeImpl
 
-    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesCodeImpl[T]
+    def apply(toPrint: Any, numLines: Int): String = macro traceLinesCodeImpl
   }
 
   /**
     * Same as Debug.out, but prints the code in the block, not just the result
     *
-    * @example myVal = 3; Debug.outCode{1 + 2 + myVal}
-    * @example myVal = 3; Debug.outCode(1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example myVal = 3; Debug.codeOut{1 + 2 + myVal}
+    * @example myVal = 3; Debug.codeOut(1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object codeOut {
-    def traceCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
+    def traceCodeImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
@@ -145,11 +142,11 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def traceLinesCodeImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesCodeImpl(c: Compat.Context)(toPrint: c.Expr[Any], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val blockString = (new MacroHelperMethod[c.type](c)).getSourceCode(toPrint.tree)
       val arg1 = q""" "(" + $blockString + ") -> " + ({$toPrint}.toString) """
@@ -158,16 +155,14 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def apply[T](toPrint: T): String = macro traceCodeImpl[T]
+    def apply(toPrint: Any): String = macro traceCodeImpl
 
-    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesCodeImpl[T]
+    def apply(toPrint: Any, numLines: Int): String = macro traceLinesCodeImpl
   }
-
-
 
   // You can't pass in : =>Boolean without getting "java.lang.IllegalArgumentException: Could not find proxy for val myVal"
   // You also cannot use default parameters. Boo.
@@ -175,12 +170,12 @@ object Macro {
   /**
     * Same as Debug.err, but prints the entire expression, not just the result
     *
-    * @example Debug.traceExpression{val myVal = 3; 1 + 2 + myVal}
-    * @example Debug.traceExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example Debug.desugarErr{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.desugarErr({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object desugarErr {
-    def traceExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
+    def traceExpressionImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
@@ -188,11 +183,11 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def traceLinesExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesExpressionImpl(c: Compat.Context)(toPrint: c.Expr[Any], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
@@ -201,25 +196,25 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.err(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def apply[T](toPrint: T): String = macro traceExpressionImpl[T]
+    def apply(toPrint: Any): String = macro traceExpressionImpl
 
-    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesExpressionImpl[T]
+    def apply(toPrint: Any, numLines: Int): String = macro traceLinesExpressionImpl
   }
 
   /**
     * Same as Debug.out, but prints the whole expression not just its result
     *
-    * @example Debug.traceStdOutExpression{val myVal = 3; 1 + 2 + myVal}
-    * @example Debug.traceStdOutExpression({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
+    * @example Debug.desugarOut{val myVal = 3; 1 + 2 + myVal}
+    * @example Debug.desugarOut({val myVal = 3; 1 + 2 + myVal}, 3) // 3 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object desugarOut {
 
-    def traceStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T]): c.Expr[String] = {
+    def traceStdOutExpressionImpl(c: Compat.Context)(toPrint: c.Expr[Any]): c.Expr[String] = {
       import c.universe._
       val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
@@ -227,11 +222,11 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.out(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def traceLinesStdOutExpressionImpl[T](c: Compat.Context)(toPrint: c.Expr[T], numLines: c.Expr[Int]): c.Expr[String] = {
+    def traceLinesStdOutExpressionImpl(c: Compat.Context)(toPrint: c.Expr[Any], numLines: c.Expr[Int]): c.Expr[String] = {
       import c.universe._
       val toTraceString: String = (toPrint.tree).toString + " -> "
       val arg1 = q"$toTraceString + ({$toPrint}.toString)"
@@ -240,20 +235,20 @@ object Macro {
       val toReturn =
         q"""
         _root_.scala.trace.Debug.out(..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
-    def apply[T](toPrint: T): String = macro traceStdOutExpressionImpl[T]
+    def apply(toPrint: Any): String = macro traceStdOutExpressionImpl
 
-    def apply[T](toPrint: T, numLines: Int): String = macro traceLinesStdOutExpressionImpl[T]
+    def apply(toPrint: Any, numLines: Int): String = macro traceLinesStdOutExpressionImpl
   }
 
   /**
     * Same as Debug.assert, but prints the code instead of an error message.
     *
-    * @example val one = 1; Debug.assrtCode{one + 1 == 2}
-    * @example val one = 1; Debug.assrtCode({one + 1 == 2}, 0) // 0 lines of stack trace
+    * @example val one = 1; Debug.assertCode{one + 1 == 2}
+    * @example val one = 1; Debug.assertCode({one + 1 == 2}, 0) // 0 lines of stack trace
     * @return the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
     */
   object assertCode {
@@ -269,7 +264,7 @@ object Macro {
         q"""
         val assertBoolean = $assertion;
         _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
@@ -285,7 +280,7 @@ object Macro {
         q"""
         val assertBoolean = $assertion;
         _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
   }
@@ -315,7 +310,7 @@ object Macro {
         q"""
         val assertBoolean = $assertion;
         _root_.scala.trace.Debug.check(assertBoolean, ..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
 
@@ -331,7 +326,7 @@ object Macro {
         q"""
         val assertBoolean = $assertion;
         _root_.scala.trace.Debug.check(assertBoolean, ..$args);
-    """
+      """
       c.Expr[String](toReturn)
     }
   }

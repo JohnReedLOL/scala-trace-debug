@@ -1,11 +1,11 @@
-[info] Updating {file:/home/johnreed/sbtProjects/debug/experimental/experimental/project/}experimental-build...
-[debug] :: resolving dependencies :: default#experimental-build;0.1-SNAPSHOT
+[info] Updating {file:/home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/}scala-trace-debug2-build...
+[debug] :: resolving dependencies :: default#scala-trace-debug2-build;0.1-SNAPSHOT
 [debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
 [debug] 	validate = true
 [debug] 	refresh = false
 [debug] resolving dependencies for configuration 'compile'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [info] Resolving me.lessis#bintray-sbt;0.3.0 ...
 [debug] sbt-chain: Checking cache for: dependency: me.lessis#bintray-sbt;0.3.0 {compile=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: me.lessis#bintray-sbt;0.3.0
@@ -238,13 +238,13 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
 [info] Resolving org.scalastyle#scalastyle-sbt-plugin;0.8.0 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scalastyle#scalastyle-sbt-plugin;0.8.0 {compile=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scalastyle#scalastyle-sbt-plugin;0.8.0
 [debug] 	found org.scalastyle#scalastyle-sbt-plugin;0.8.0 in sbt-chain
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [info] Resolving org.scalastyle#scalastyle_2.10;0.8.0 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scalastyle#scalastyle_2.10;0.8.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
@@ -304,11 +304,11 @@
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
 [debug] resolving dependencies for configuration 'runtime'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [runtime]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [runtime]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->runtime]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->compile]
@@ -465,9 +465,9 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->compile(*)]
@@ -513,12 +513,12 @@
 [debug] == resolving dependencies org.scalariform#scalariform_2.10;0.1.7->org.scala-lang#scala-library;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
 [debug] resolving dependencies for configuration 'test'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [test]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [runtime]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [test]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [runtime]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->runtime]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->compile]
@@ -675,9 +675,9 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->compile(*)]
@@ -723,14 +723,14 @@
 [debug] == resolving dependencies org.scalariform#scalariform_2.10;0.1.7->org.scala-lang#scala-library;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
 [debug] resolving dependencies for configuration 'provided'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [provided]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [provided]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
 [info] Resolving org.scala-sbt#sbt;0.13.7 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-sbt#sbt;0.13.7 {provided=[default(compile)]}
 [debug] sbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.7
@@ -1392,11 +1392,11 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}
 [debug] resolving dependencies for configuration 'optional'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [optional]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [optional]
 [debug] resolving dependencies for configuration 'compile-internal'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile-internal]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile-internal]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->runtime]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->compile]
@@ -1553,9 +1553,9 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->compile(*)]
@@ -1601,14 +1601,14 @@
 [debug] == resolving dependencies org.scalariform#scalariform_2.10;0.1.7->org.scala-lang#scala-library;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [optional]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [provided]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [optional]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [provided]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->default(compile)]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->runtime]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->compile]
@@ -1973,10 +1973,10 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}
 [debug] resolving dependencies for configuration 'runtime-internal'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [runtime-internal]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [runtime]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [runtime-internal]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [runtime]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->runtime]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->compile]
@@ -2133,9 +2133,9 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->compile(*)]
@@ -2181,14 +2181,14 @@
 [debug] == resolving dependencies org.scalariform#scalariform_2.10;0.1.7->org.scala-lang#scala-library;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [optional]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [optional]
 [debug] resolving dependencies for configuration 'test-internal'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [test-internal]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [test]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [runtime]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [test-internal]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [test]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [runtime]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->me.lessis#bintray-sbt;0.3.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->default(compile)]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->runtime]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->me.lessis#bintry_2.10;0.4.0 [compile->compile]
@@ -2345,9 +2345,9 @@
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->runtime(*)]
 [debug] == resolving dependencies org.slf4j#slf4j-nop;1.7.7->org.slf4j#slf4j-api;1.7.7 [runtime->compile]
 [debug] == resolving dependencies me.lessis#bintray-sbt;0.3.0->org.slf4j#slf4j-nop;1.7.7 [compile->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->master(compile)]
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
 [debug] == resolving dependencies org.scalastyle#scalastyle-sbt-plugin;0.8.0->org.scalastyle#scalastyle_2.10;0.8.0 [compile->compile(*)]
@@ -2393,14 +2393,14 @@
 [debug] == resolving dependencies org.scalariform#scalariform_2.10;0.1.7->org.scala-lang#scala-library;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scalastyle#scalastyle_2.10;0.8.0->com.typesafe#config;1.2.0 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [optional]
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [provided]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scalastyle#scalastyle-sbt-plugin;0.8.0 [compile->master]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [optional]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [provided]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.7 [provided->default(compile)]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->default(compile)]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->runtime]
 [debug] == resolving dependencies org.scala-sbt#sbt;0.13.7->org.scala-lang#scala-library;2.10.4 [compile->compile]
@@ -2765,18 +2765,18 @@
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}
 [debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}
 [debug] resolving dependencies for configuration 'plugin'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [plugin]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [plugin]
 [debug] resolving dependencies for configuration 'sources'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [sources]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [sources]
 [debug] resolving dependencies for configuration 'docs'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [docs]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [docs]
 [debug] resolving dependencies for configuration 'pom'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [pom]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [pom]
 [debug] resolving dependencies for configuration 'scala-tool'
-[debug] == resolving dependencies for default#experimental-build;0.1-SNAPSHOT [scala-tool]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->default]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->compile]
+[debug] == resolving dependencies for default#scala-trace-debug2-build;0.1-SNAPSHOT [scala-tool]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->default]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->compile]
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->master(*)]
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->compile(*)]
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->default]
@@ -2794,8 +2794,8 @@
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-reflect;2.10.4 [runtime->compile]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.10.4->org.scala-lang#scala-library;2.10.4 [runtime->runtime(*)]
 [debug] == resolving dependencies org.scala-lang#scala-reflect;2.10.4->org.scala-lang#scala-library;2.10.4 [runtime->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->optional(default)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->optional(default)]
 [debug] == resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#jline;2.10.4 [optional->master(*)]
 [info] Resolving org.scala-lang#jline;2.10.4 ...
 [debug] sbt-chain: Checking cache for: dependency: org.scala-lang#jline;2.10.4 {optional=[compile(*), master(*)]}
@@ -2808,11 +2808,11 @@
 [debug] sbt-chain: module revision found in cache: org.fusesource.jansi#jansi;1.4
 [debug] 	found org.fusesource.jansi#jansi;1.4 in sbt-chain
 [debug] == resolving dependencies org.scala-lang#jline;2.10.4->org.fusesource.jansi#jansi;1.4 [compile->compile(*)]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->default]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->runtime]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->compile]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->master]
-[debug] == resolving dependencies default#experimental-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->optional(default)]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->default]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->runtime]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->compile]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->master]
+[debug] == resolving dependencies default#scala-trace-debug2-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->optional(default)]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
 [debug] 	[NOT REQUIRED] me.lessis#bintray-sbt;0.3.0!bintray-sbt.jar
@@ -2882,19 +2882,19 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.7!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 850ms :: artifacts dl 20ms
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT compile produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-compile.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT runtime produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-runtime.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT test produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-test.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT provided produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-provided.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT optional produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-optional.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT compile-internal produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-compile-internal.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT runtime-internal produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-runtime-internal.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT test-internal produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-test-internal.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT plugin produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-plugin.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT sources produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-sources.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT docs produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-docs.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT pom produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-pom.xml
-[debug] 	report for default#experimental-build;0.1-SNAPSHOT scala-tool produced in /home/johnreed/sbtProjects/debug/experimental/experimental/project/target/resolution-cache/reports/default-experimental-build-scala-tool.xml
-[debug] 	resolve done (850ms resolve - 20ms download)
+[debug] :: resolution report :: resolve 1092ms :: artifacts dl 32ms
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT compile produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-compile.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT runtime produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-runtime.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT test produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-test.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT provided produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-provided.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT optional produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-optional.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT compile-internal produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-compile-internal.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT runtime-internal produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-runtime-internal.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT test-internal produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-test-internal.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT plugin produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-plugin.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT sources produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-sources.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT docs produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-docs.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT pom produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-pom.xml
+[debug] 	report for default#scala-trace-debug2-build;0.1-SNAPSHOT scala-tool produced in /home/johnreed/Documents/Code/xiIntegrate/scala-trace-debug2/project/target/resolution-cache/reports/default-scala-trace-debug2-build-scala-tool.xml
+[debug] 	resolve done (1092ms resolve - 32ms download)
 [info] Done updating.
