@@ -7,6 +7,11 @@ Table of Contents
 
 * <a href="#Locate-statements">Locate statements</a>
 * <a href="#Getting-started">Getting started</a>
+<<<<<<< HEAD
+=======
+* <a href="#Video-Demo">Video Demo</a>
+* <a href="#Java-Examples">Java Examples</a>
+>>>>>>> ec037c10b7bfcf7fe5b47e738c417596c275639e
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Requirements">Requirements</a>
@@ -36,8 +41,15 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
+libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.17"
 ```
+
+Note: If you get:
+
+`NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException`
+
+Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
+
 
 - 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
 
@@ -62,7 +74,19 @@ All the functions that a Java user can call are [in here](http://johnreedlol.bit
 
 ____________________________________________________________________________________________________________________
 
+<<<<<<< HEAD
 <a name="Scala-Examples"></a>
+=======
+<a name="Video-Demo"></a>
+
+### Video Demo:
+
+[https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s](https://www.youtube.com/watch?v=nL_11tu3Vr0&feature=youtu.be&t=49m00s)
+
+____________________________________________________________________________________________________________________
+
+<a name="Java-Examples"></a>
+>>>>>>> ec037c10b7bfcf7fe5b47e738c417596c275639e
 
 ### Scala Example:
 
