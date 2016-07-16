@@ -17,7 +17,7 @@ Table of Contents
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Performance">Performance</a>
-* <a href="#Developer's-Guide">Developers Guide</a>
+* <a href="#Developers-Guide">Developer's Guide</a>
 
 ____________________________________________________________________________________________________________________
 
@@ -66,11 +66,9 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 </dependency>
 ```
 
-- 3. Copy-paste a jar file located in the [target](target) folder. 
+- 3. See the <a href="#Developers-Guide">Developer's Guide</a> to compile and jar.
 
-Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build. Copy-pasting the jar works too.
-
-All the functions that a Java user can call are [in here](http://johnreedlol.bitbucket.org/api/index.html#scala.trace.Debug$).
+Note that Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
 
 ____________________________________________________________________________________________________________________
 
