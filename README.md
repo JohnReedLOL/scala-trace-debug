@@ -12,6 +12,7 @@ Table of Contents
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Performance">Performance</a>
+* <a href="#Developers-Guide">Developers Guide</a>
 
 ____________________________________________________________________________________________________________________
 
@@ -282,6 +283,16 @@ ________________________________________________________________________________
 #### Code layout:
 
 Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
+
+____________________________________________________________________________________________________________________
+
+<a name="Developers-Guide"></a>
+
+1. git clone https://github.com/JohnReedLOL/scala-trace-debug 3.0
+2. cd ./3.0/
+3. sbt test
+4. sbt test:run [pick option 1 - it should fail with exit code 7 for fatal assertion]
+5. sbt test:run [pick option 2]
 
 ____________________________________________________________________________________________________________________
 
