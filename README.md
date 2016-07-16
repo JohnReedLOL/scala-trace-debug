@@ -5,7 +5,7 @@ ________________________________________________________________________________
 
 Table of Contents
 
-* <a href="#Find-log-statements">Find log statements</a>
+* <a href="#Locate-statements">Locate statements</a>
 * <a href="#Getting-started">Getting started</a>
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
@@ -17,9 +17,9 @@ Table of Contents
 ____________________________________________________________________________________________________________________
 
 
-<a name="Find-log-statements"></a>
+<a name="Locate-statements"></a>
 
-### Find log statements:
+### Locate statements:
 
 ![Append Position](http://i.imgur.com/4hvGQ0t.png)
 
