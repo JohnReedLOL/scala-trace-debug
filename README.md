@@ -54,7 +54,7 @@ libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 </dependency>
 ```
 
-- 3. See the <a href="#Developer's-Guide">Developer's Guide</a> to compile and jar.
+- 3. See the <a href="#Developers-Guide">Developer's Guide</a> to compile and jar.
 
 Note that Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
 
