@@ -212,7 +212,7 @@ ________________________________________________________________________________
 ### Java Examples:
 
 
-![Java Screenshot](http://i.imgur.com/R4Kbpa9.png)
+![Java Screenshot](http://i.imgur.com/WElrKVz.png)
 
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
@@ -274,10 +274,8 @@ ________________________________________________________________________________
 No overhead for no stack trace.
 
 ```scala
-"foo".trace(0) // no call to Thread.currentThread.getStackTrace()
+"foo".err(0) // no call to Thread.currentThread.getStackTrace()
 ```
-
-Note that calls to `Log.find` are faster than calls to `Debug.trace`, but `Log.find` is limited to one line.
 
 ____________________________________________________________________________________________________________________
 
