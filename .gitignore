@@ -7,7 +7,8 @@
 .history
 .lib/
 dist/*
-# target/
+
+target/
 
 target/scala-2.11/api/
 target/scala-2.11/classes/
