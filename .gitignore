@@ -39,3 +39,25 @@ project/plugins/project/
 .project
 
 # Created by .ignore support plugin (hsz.mobi)
+project/target/config-classes/$4f46e845c7a4ed1ccaf6.cache
+project/target/scala-2.10/
+project/target/streams/compile/incCompileSetup/
+src/main/resources/
+src/test/resources/
+src/test/scala-2.10/
+src/test/scala-2.11/
+target/scala-2.10/api/scala/trace/Macro$$assertCode$.html
+target/scala-2.10/api/scala/trace/Macro$$checkCode$.html
+target/scala-2.10/api/scala/trace/Macro$$codeErr$.html
+target/scala-2.10/api/scala/trace/Macro$$codeOut$.html
+target/scala-2.10/api/scala/trace/Macro$$desugarErr$.html
+target/scala-2.10/api/scala/trace/Macro$$desugarOut$.html
+target/scala-2.10/api/scala/trace/Macro$.html
+target/scala-2.10/classes/
+target/scala-2.10/ivy-3.0.0.xml
+target/scala-2.10/scala-trace-debug_2.10-3.0.0-javadoc.jar
+target/scala-2.10/scala-trace-debug_2.10-3.0.0-sources.jar
+target/scala-2.10/scala-trace-debug_2.10-3.0.0.jar
+target/scala-2.10/scala-trace-debug_2.10-3.0.0.pom
+target/scala-2.10/test-classes/
+target/scala-2.11/

@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnreed on 4/12/16.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wrapper class for implicit conversion .assert methods
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">java.io.Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyVal">AnyVal</span>, <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -172,16 +172,16 @@ Terminates the program with exit code &quot;7&quot;
                <ol><li class="cmt"><p>1.assert( _ + 2 = 3, &quot;Error: one plus two does not equal three.&quot;)</p></li></ol>
             </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;
 </p></span></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#assertEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertEquals[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
-      <a id="assertEquals[OtherType](OtherType,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#assertEq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assertEq[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertEq[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertEquals</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.assertEquals.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertEq</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.assertEq.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Compares this object with another object of the same type for equality using the &quot;.</p><div class="fullcomment"><div class="comment cmt"><p>Compares this object with another object of the same type for equality using the &quot;.equals()&quot; method.
@@ -190,31 +190,31 @@ Terminates the program with exit code &quot;7&quot; in case of assertion failure
                <ol><li class="cmt"><p>&quot;foo&quot;.assertEquals(&quot;bar&quot;, &quot;Error: foo does not equal bar&quot;)</p></li></ol>
             </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;
 </p></span></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#assertEqualsStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertEqualsStdOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
-      <a id="assertEqualsStdOut[OtherType](OtherType,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#assertEqOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assertEqOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="assertEqOut[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertEqualsStdOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.assertEqualsStdOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertEqOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.assertEqOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as ImplicitTrace.</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace.assertEquals(), but it uses StdOut instead of StdErr.
+      <p class="shortcomment cmt">Same as ImplicitTrace.</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace.assertEq(), but it uses StdOut instead of StdErr.
 </p></div><dl class="attributes block"> <dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;
 </p></span></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#assertStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertStdOut(assertion:MyType=&gt;Boolean,message:String,numLines:Int):MyType"></a>
-      <a id="assertStdOut((MyType)⇒Boolean,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#assertOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assertOut(assertion:MyType=&gt;Boolean,message:String,numLines:Int):MyType"></a>
+      <a id="assertOut((MyType)⇒Boolean,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertStdOut</span><span class="params">(<span name="assertion">assertion: (<span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">assertOut</span><span class="params">(<span name="assertion">assertion: (<span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">A fatal assertion, but with the function name after the object.</p><div class="fullcomment"><div class="comment cmt"><p>A fatal assertion, but with the function name after the object.
@@ -237,47 +237,47 @@ Terminates the program with exit code &quot;7&quot;
       </h4>
       <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assert(), but it does not kill anything (not even the current thread)
 </p></div></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#checkEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkEquals[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
-      <a id="checkEquals[OtherType](OtherType,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#checkEq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkEq[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="checkEq[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkEquals</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.checkEquals.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">checkEq</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.checkEq.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEquals(), but it does not kill anything (not even the current thread)
+      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEq(), but it does not kill anything (not even the current thread)
 </p></div></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#checkEqualsStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkEqualsStdOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
-      <a id="checkEqualsStdOut[OtherType](OtherType,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#checkEqOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkEqOut[OtherType](other:OtherType,message:String,numLines:Int):MyType"></a>
+      <a id="checkEqOut[OtherType](OtherType,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkEqualsStdOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.checkEqualsStdOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">checkEqOut</span><span class="tparams">[<span name="OtherType">OtherType</span>]</span><span class="params">(<span name="other">other: <span class="extype" name="scala.trace.conversions.ImplicitAssert.checkEqOut.OtherType">OtherType</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEqualsStdOut(), but it does not kill anything (not even the current thread)
+      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertEqOut(), but it does not kill anything (not even the current thread)
 </p></div></div>
-    </li><li name="scala.trace.conversions.ImplicitAssert#checkStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkStdOut(assertion:MyType=&gt;Boolean,message:String,numLines:Int):MyType"></a>
-      <a id="checkStdOut((MyType)⇒Boolean,String,Int):MyType"></a>
+    </li><li name="scala.trace.conversions.ImplicitAssert#checkOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkOut(assertion:MyType=&gt;Boolean,message:String,numLines:Int):MyType"></a>
+      <a id="checkOut((MyType)⇒Boolean,String,Int):MyType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkStdOut</span><span class="params">(<span name="assertion">assertion: (<span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
+        <span class="name">checkOut</span><span class="params">(<span name="assertion">assertion: (<span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitAssert.MyType">MyType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertStdOut(), but it does not kill anything (not even the current thread)
+      <p class="shortcomment cmt">Same as ImplicitTrace[MyType].</p><div class="fullcomment"><div class="comment cmt"><p>Same as ImplicitTrace[MyType].assertOut(), but it does not kill anything (not even the current thread)
 </p></div></div>
     </li><li name="scala.AnyVal#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_&lt;:AnyVal]"></a>

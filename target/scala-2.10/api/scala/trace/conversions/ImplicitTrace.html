@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnreed on 4/12/16.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Wrapper class for implicit conversion .trace methods
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyVal">AnyVal</span>, <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -154,6 +154,38 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.trace.conversions.ImplicitTrace#err" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="err(numLines:Int):MyType"></a>
+      <a id="err(Int):MyType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">err</span><span class="params">(<span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints out this object to standard error with a user specified number of lines of stack trace
+</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard error with a user specified number of lines of stack trace
+</p></div><dl class="paramcmts block"><dt class="param">numLines</dt><dd class="cmt"><p>The number of lines of stack trace</p></dd><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
+</p></dd></dl></div>
+    </li><li name="scala.trace.conversions.ImplicitTrace#err" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="err:MyType"></a>
+      <a id="err:MyType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">err</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints out this object with 1 lines of stack trace to standard error
+</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object with 1 lines of stack trace to standard error
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
+</p></dd></dl></div>
     </li><li name="scala.AnyVal#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_&lt;:AnyVal]"></a>
       <a id="getClass():Class[_&lt;:AnyVal]"></a>
@@ -193,6 +225,38 @@
       </span>
       </h4>
       
+    </li><li name="scala.trace.conversions.ImplicitTrace#out" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="out(numLines:Int):MyType"></a>
+      <a id="out(Int):MyType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">out</span><span class="params">(<span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints out this object to standard out with a user specified number of lines of stack trace
+</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard out with a user specified number of lines of stack trace
+</p></div><dl class="paramcmts block"><dt class="param">numLines</dt><dd class="cmt"><p>The number of lines of stack trace</p></dd><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
+</p></dd></dl></div>
+    </li><li name="scala.trace.conversions.ImplicitTrace#out" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="out:MyType"></a>
+      <a id="out:MyType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">out</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Prints out this object with 1 lines of stack trace to standard out
+</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object with 1 lines of stack trace to standard out
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
+</p></dd></dl></div>
     </li><li name="scala.Any#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -206,102 +270,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#trace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace(numLines:Int):MyType"></a>
-      <a id="trace(Int):MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trace</span><span class="params">(<span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object to standard error with a user specified number of lines of stack trace
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard error with a user specified number of lines of stack trace
-</p></div><dl class="paramcmts block"><dt class="param">numLines</dt><dd class="cmt"><p>The number of lines of stack trace</p></dd><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#trace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace:MyType"></a>
-      <a id="trace:MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trace</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object with 1 lines of stack trace to standard error
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object with 1 lines of stack trace to standard error
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#traceStack" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStack:MyType"></a>
-      <a id="traceStack:MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStack</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object to standard error along with the entire stack trace
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard error along with the entire stack trace
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#traceStackStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStackStdOut:MyType"></a>
-      <a id="traceStackStdOut:MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStackStdOut</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object to standard out along with the entire stack trace
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard out along with the entire stack trace
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#traceStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStdOut(numLines:Int):MyType"></a>
-      <a id="traceStdOut(Int):MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStdOut</span><span class="params">(<span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object to standard out with a user specified number of lines of stack trace
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object to standard out with a user specified number of lines of stack trace
-</p></div><dl class="paramcmts block"><dt class="param">numLines</dt><dd class="cmt"><p>The number of lines of stack trace</p></dd><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
-    </li><li name="scala.trace.conversions.ImplicitTrace#traceStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStdOut:MyType"></a>
-      <a id="traceStdOut:MyType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStdOut</span><span class="result">: <span class="extype" name="scala.trace.conversions.ImplicitTrace.MyType">MyType</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Prints out this object with 1 lines of stack trace to standard out
-</p><div class="fullcomment"><div class="comment cmt"><p>Prints out this object with 1 lines of stack trace to standard out
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The thing that was just printed
-</p></dd></dl></div>
     </li></ol>
             </div>
 

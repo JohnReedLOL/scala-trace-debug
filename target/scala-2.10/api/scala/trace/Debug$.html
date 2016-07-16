@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnreed on 3/12/16. Contains static debug functions for Java and Scala.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains static debug functions for Java and Scala.
 https://github.com/JohnReedLOL/scala-trace-debug
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -152,6 +152,34 @@ https://github.com/JohnReedLOL/scala-trace-debug
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.trace.Debug#arrayErr" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayErr[T](coll:Array[T],start:Int,numElements:Int,numLines:Int):String"></a>
+      <a id="arrayErr[T](Array[T],Int,Int,Int):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayErr</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="coll">coll: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.trace.Debug.arrayErr.T">T</span>]</span>, <span name="start">start: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="numElements">numElements: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Same as Macro.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Macro.containerErr[ContainedT], but for Java Arrays (callable from Java Code)
+</p></div></div>
+    </li><li name="scala.trace.Debug#arrayOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="arrayOut[T](coll:Array[T],start:Int,numElements:Int,numLines:Int):String"></a>
+      <a id="arrayOut[T](Array[T],Int,Int,Int):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">arrayOut</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="coll">coll: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.trace.Debug.arrayOut.T">T</span>]</span>, <span name="start">start: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="numElements">numElements: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Same as Macro.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Macro.containerOut[ContainedT], but for Java Arrays (callable from Java Code)
+</p></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -165,16 +193,35 @@ https://github.com/JohnReedLOL/scala-trace-debug
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.trace.Debug#assertStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assertStdOut(assertion:Boolean,message:String,numLines:Int):String"></a>
-      <a id="assertStdOut(Boolean,String,Int):String"></a>
+    </li><li name="scala.trace.Debug#assert" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assert(assertion:Boolean,message:String,numLines:Int):String"></a>
+      <a id="assert(Boolean,String,Int):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">assertStdOut</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">assert</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A fatal assertion.</p><div class="fullcomment"><div class="comment cmt"><p>A fatal assertion.
+Terminates the program with exit code &quot;7&quot;
+Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; instead.
+</p></div><dl class="paramcmts block"><dt class="param">assertion</dt><dd class="cmt"><p>the assertion that must be true for the program to run.</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be printed to standard error on assertion failure</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+               <ol><li class="cmt"><p>Debug.assrt( 1 + 2 == 4, &quot;Error: one plus two is not equal to four&quot; )</p></li></ol>
+            </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;</p></span></dd></dl></div>
+    </li><li name="scala.trace.Debug#assertOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="assertOut(assertion:Boolean,message:String,numLines:Int):String"></a>
+      <a id="assertOut(Boolean,String,Int):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">assertOut</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">A fatal assertion.</p><div class="fullcomment"><div class="comment cmt"><p>A fatal assertion.
@@ -182,24 +229,6 @@ Terminates the program with exit code &quot;7&quot;
 </p></div><dl class="paramcmts block"><dt class="param">assertion</dt><dd class="cmt"><p>the assertion that must be true for the program to run.</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be printed to standard out on assertion failure</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
 </p></dd></dl><dl class="attributes block"> <div class="block">Example:
                <ol><li class="cmt"><p>Debug.assrtStdOut( 1 + 2 == 4, &quot;Error: one plus two is not equal to four&quot; )</p></li></ol>
-            </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;</p></span></dd></dl></div>
-    </li><li name="scala.trace.Debug#assrt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="assrt(assertion:Boolean,message:String,numLines:Int):String"></a>
-      <a id="assrt(Boolean,String,Int):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">assrt</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">A fatal assertion.</p><div class="fullcomment"><div class="comment cmt"><p>A fatal assertion.
-Terminates the program with exit code &quot;7&quot;
-Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; instead.</p></div><dl class="paramcmts block"><dt class="param">assertion</dt><dd class="cmt"><p>the assertion that must be true for the program to run.</p></dd><dt class="param">message</dt><dd class="cmt"><p>the message to be printed to standard error on assertion failure</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl><dl class="attributes block"> <div class="block">Example:
-               <ol><li class="cmt"><p>Debug.assrt( 1 + 2 == 4, &quot;Error: one plus two is not equal to four&quot; )</p></li></ol>
             </div><dt>Note</dt><dd><span class="cmt"><p>this (and other assertions not marked &quot;nonFatal&quot;) are fatal. To disable, please call &quot;Debug.fatalAssertOffSE()&quot;</p></span></dd></dl></div>
     </li><li name="scala.trace.Debug#check" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="check(assertion:Boolean,message:String,numLines:Int):String"></a>
@@ -213,22 +242,22 @@ Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; in
         <span class="name">check</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Like Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Like Debug.assrt(), but does not terminate the application
+      <p class="shortcomment cmt">Like Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Like Debug.assert(), but does not terminate the application
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
 </p></dd></dl></div>
-    </li><li name="scala.trace.Debug#checkStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkStdOut(assertion:Boolean,message:String,numLines:Int):String"></a>
-      <a id="checkStdOut(Boolean,String,Int):String"></a>
+    </li><li name="scala.trace.Debug#checkOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkOut(assertion:Boolean,message:String,numLines:Int):String"></a>
+      <a id="checkOut(Boolean,String,Int):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkStdOut</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">checkOut</span><span class="params">(<span name="assertion">assertion: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Like Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Like Debug.assrtStdOut(), but does not terminate the application
+      <p class="shortcomment cmt">Like Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Like Debug.assertOut(), but does not terminate the application
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -302,6 +331,36 @@ Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; in
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.trace.Debug#err" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="err(toPrint:Any,numLines:Int):String"></a>
+      <a id="err(Any,Int):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">err</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.Any">Any</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Traces to standard error with a N line stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Traces to standard error with a N line stack trace.
+</p></div><dl class="paramcmts block"><dt class="param">toPrint</dt><dd class="cmt"><p>whatever it is you want to print.</p></dd><dt class="param">numLines</dt><dd class="cmt"><p>the number of lines to trace</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+</p></dd></dl></div>
+    </li><li name="scala.trace.Debug#err" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="err(toPrint:Any):String"></a>
+      <a id="err(Any):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">err</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Traces to standard error with a one line stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Traces to standard error with a one line stack trace.
+</p></div><dl class="paramcmts block"><dt class="param">toPrint</dt><dd class="cmt"><p>whatever it is you want to print.</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+</p></dd></dl></div>
     </li><li name="scala.trace.Debug#fatalAssertOff" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fatalAssertOff():Unit"></a>
       <a id="fatalAssertOff():Unit"></a>
@@ -347,7 +406,7 @@ Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; in
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.trace.Debug#getArrayAsString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="scala.trace.Debug#getArrayAsString" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getArrayAsString[T](coll:Array[T],start:Int,numElements:Int):String"></a>
       <a id="getArrayAsString[T](Array[T],Int,Int):String"></a>
       <h4 class="signature">
@@ -360,7 +419,8 @@ Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; in
       </span>
       </h4>
       <p class="shortcomment cmt">Gets the collection as a string of n elements from start to start + numElements
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Gets the collection as a string of n elements from start to start + numElements
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="scala.trace">scala.trace</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -386,7 +446,9 @@ Note: &quot;assert&quot; is a reserved keyword in Java, use &quot;assrt&quot; in
         <span class="name">getElementsPerRow</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Uses Java notation for Java users</p><div class="fullcomment"><div class="comment cmt"><p>Uses Java notation for Java users</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the number of elements per row for container printing
+      <p class="shortcomment cmt">Uses Java notation for Java users
+</p><div class="fullcomment"><div class="comment cmt"><p>Uses Java notation for Java users
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the number of elements per row for container printing
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -537,6 +599,36 @@ Note that disabling the &quot;traceStdOut&quot; feature does not disable the &qu
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.trace.Debug#out" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="out(toPrint:Any,numLines:Int):String"></a>
+      <a id="out(Any,Int):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">out</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.Any">Any</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Same as Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Debug.err(toPrint: Any, numLines: Int), but prints to standard out instead of standard error
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+</p></dd></dl></div>
+    </li><li name="scala.trace.Debug#out" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="out(toPrint:Any):String"></a>
+      <a id="out(Any):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">out</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Same as Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Debug.err, but prints to standard out instead of standard error
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
+</p></dd></dl></div>
     </li><li name="scala.trace.Debug#setElementsPerRow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setElementsPerRow(elementsPerRow:Int):Unit"></a>
       <a id="setElementsPerRow(Int):Unit"></a>
@@ -549,7 +641,9 @@ Note that disabling the &quot;traceStdOut&quot; feature does not disable the &qu
         <span class="name">setElementsPerRow</span><span class="params">(<span name="elementsPerRow">elementsPerRow: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Uses Java notation for Java users</p><div class="fullcomment"><div class="comment cmt"><p>Uses Java notation for Java users</p></div><dl class="paramcmts block"><dt class="param">elementsPerRow</dt><dd class="cmt"><p>the number of elements per row for container printing
+      <p class="shortcomment cmt">Uses Java notation for Java users
+</p><div class="fullcomment"><div class="comment cmt"><p>Uses Java notation for Java users
+</p></div><dl class="paramcmts block"><dt class="param">elementsPerRow</dt><dd class="cmt"><p>the number of elements per row for container printing
 </p></dd></dl></div>
     </li><li name="scala.trace.Debug#stackOffset" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stackOffset:Int"></a>
@@ -592,64 +686,6 @@ Note that disabling the &quot;traceStdOut&quot; feature does not disable the &qu
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.trace.Debug#trace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace[T](toPrint:T,numLines:Int):String"></a>
-      <a id="trace[T](T,Int):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trace</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.trace.T">T</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Traces to standard error with a N line stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Traces to standard error with a N line stack trace.
-</p></div><dl class="paramcmts block"><dt class="param">toPrint</dt><dd class="cmt"><p>whatever it is you want to print.</p></dd><dt class="param">numLines</dt><dd class="cmt"><p>the number of lines to trace</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
-    </li><li name="scala.trace.Debug#trace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="trace[T](toPrint:T):String"></a>
-      <a id="trace[T](T):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trace</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.trace.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Traces to standard error with a one line stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Traces to standard error with a one line stack trace.
-</p></div><dl class="paramcmts block"><dt class="param">toPrint</dt><dd class="cmt"><p>whatever it is you want to print.</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
-    </li><li name="scala.trace.Debug#traceArray" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="traceArray[T](coll:Array[T],start:Int,numElements:Int,numLines:Int):String"></a>
-      <a id="traceArray[T](Array[T],Int,Int,Int):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceArray</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="coll">coll: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.trace.Debug.traceArray.T">T</span>]</span>, <span name="start">start: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="numElements">numElements: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as traceContents[CollectionType], but for Java Arrays (callable from Java Code)
-</p>
-    </li><li name="scala.trace.Debug#traceArrayStdOut" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="traceArrayStdOut[T](coll:Array[T],start:Int,numElements:Int,numLines:Int):String"></a>
-      <a id="traceArrayStdOut[T](Array[T],Int,Int,Int):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceArrayStdOut</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="coll">coll: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.trace.Debug.traceArrayStdOut.T">T</span>]</span>, <span name="start">start: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="numElements">numElements: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../package.html">Int.MaxValue</a></span></span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as traceContentsStdOut[CollectionType], but for Java Arrays (callable from Java Code)
-</p>
     </li><li name="scala.trace.Debug#traceErrOff" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="traceErrOff():Unit"></a>
       <a id="traceErrOff():Unit"></a>
@@ -702,67 +738,6 @@ Note that disabling the &quot;traceStdOut&quot; feature does not disable the &qu
       </span>
       </h4>
       <p class="shortcomment cmt">Enables tracing to standard out.</p><div class="fullcomment"><div class="comment cmt"><p>Enables tracing to standard out. Has no effect on &quot;print&quot; or &quot;println&quot;, only on &quot;traceStdOut&quot; methods</p></div></div>
-    </li><li name="scala.trace.Debug#traceStack" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStack[T](toPrint:T):String"></a>
-      <a id="traceStack[T](T):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStack</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.traceStack.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Traces to standard error with a full length stack trace.</p><div class="fullcomment"><div class="comment cmt"><p>Traces to standard error with a full length stack trace.
-</p></div><dl class="paramcmts block"><dt class="param">toPrint</dt><dd class="cmt"><p>whatever it is you want to print.</p></dd><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
-    </li><li name="scala.trace.Debug#traceStackStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStackStdOut[T](toPrint:T):String"></a>
-      <a id="traceStackStdOut[T](T):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStackStdOut</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.traceStackStdOut.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as traceStack, but prints to StdOut instead of StdError
-</p><div class="fullcomment"><div class="comment cmt"><p>Same as traceStack, but prints to StdOut instead of StdError
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
-    </li><li name="scala.trace.Debug#traceStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStdOut[T](toPrint:T,numLines:Int):String"></a>
-      <a id="traceStdOut[T](T,Int):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStdOut</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.traceStdOut.T">T</span></span>, <span name="numLines">numLines: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Debug.trace(toPrint: T, numLines: Int), but prints to standard out instead of standard error
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
-    </li><li name="scala.trace.Debug#traceStdOut" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traceStdOut[T](toPrint:T):String"></a>
-      <a id="traceStdOut[T](T):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">traceStdOut</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="toPrint">toPrint: <span class="extype" name="scala.trace.Debug.traceStdOut.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Same as Debug.</p><div class="fullcomment"><div class="comment cmt"><p>Same as Debug.trace, but prints to standard out instead of standard error
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the string containing what was printed or what would have been printed if printing was enabled. You can pass this string into a logger.
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
