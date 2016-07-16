@@ -280,13 +280,13 @@ No overhead for no stack trace.
 
 ____________________________________________________________________________________________________________________
 
-#### Code layout:
+### Code layout:
 
 Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
 
 ____________________________________________________________________________________________________________________
 
-#### Developer's Guide
+### Developer's Guide
 
 <a name="Developers-Guide"></a>
 
