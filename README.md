@@ -48,9 +48,9 @@ libraryDependencies += "scala.trace" %% "scala-trace-debug" % "2.2.14"
 </repository>
 ...
 <dependency>
-    <groupId>scala.trace</groupId>
-    <artifactId>scala-trace-debug_2.11</artifactId>
-    <version>2.2.14</version>
+  <groupId>com.github.johnreedlol</groupId>
+  <artifactId>scala-trace-debug_2.10</artifactId>
+  <version>3.0.0</version>
 </dependency>
 ```
 
