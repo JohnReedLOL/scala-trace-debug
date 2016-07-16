@@ -46,7 +46,7 @@ Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Cause
 Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
 
 
-- 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- 2. [See this pom.xml](examplePom.xml):
 
 ```scala
 <repository>
