@@ -25,6 +25,8 @@ ________________________________________________________________________________
 
 #####^ Just add "Pos" ^
 
+"Pos does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used."
+
 ____________________________________________________________________________________________________________________
 
 <a name="Getting-started"></a>
@@ -81,7 +83,7 @@ Pos.out("Hello World")
 println("an error message" + Pos()) /*position*/ ; sleep()
 ```
 
-##### Debug Statements:
+##### Debug Statements (Java Compatible):
 
 ```scala
 import scala.trace.Debug
@@ -99,7 +101,7 @@ Debug.arrayOut(Array(1,2,3))
 Debug.arrayOut(Array(1,2,3), start = 1, numLines = 2) ; sleep()
 ```
 
-##### Assertions:
+##### Assertions (Java Compatible):
 
 ```scala
 // assertions are totally fatal (full stop)
