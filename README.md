@@ -260,13 +260,17 @@ ________________________________________________________________________________
 
 ### Instructions (for IntelliJ IDE):
 
-1. Add the library dependency or grab the jar file from the [target/scala-2.11](target/scala-2.11) folder.
+1. Add the library dependency
 
 2. import [scala.trace._](src/main/scala/scala/trace/package.scala)
 
-3. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+3. Make sure that you have IntelliJ run configuration set up to run from the IntelliJ console
+
+![Example](http://i.imgur.com/UPZAJHo.png)
+
+4. Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
  
-4. Use the IntelliJ console arrows to navigate up and down the stack traces.
+5. Use the IntelliJ console arrows to navigate up and down the stack traces.
 
 ![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
