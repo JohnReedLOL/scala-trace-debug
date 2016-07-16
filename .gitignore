@@ -8,7 +8,7 @@
 .lib/
 dist/*
 
-# target/
+target/
 
 target/resolution-cache/
 target/streams/
