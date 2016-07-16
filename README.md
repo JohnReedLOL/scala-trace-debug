@@ -12,7 +12,7 @@ Table of Contents
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Performance">Performance</a>
-* <a href="#Developers-Guide">Developers Guide</a>
+* <a href="#Developer's-Guide">Developers Guide</a>
 
 ____________________________________________________________________________________________________________________
 
