@@ -38,7 +38,7 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.2"
+libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.3"
 ```
 
 Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
@@ -57,7 +57,7 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
   <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>3.0.2</version>
+  <version>3.0.3</version>
 </dependency>
 ```
 

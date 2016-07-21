@@ -46,4 +46,5 @@ project/plugins/project/
 .project
 
 project/target/
+project/target/streams
 /.gitignore
