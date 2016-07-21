@@ -1,4 +1,4 @@
-# scala-trace-debug
+# scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
 Helps you debug faster with clickable print statements and assertions.
 
 ____________________________________________________________________________________________________________________
@@ -38,7 +38,7 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.0"
+libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.2"
 ```
 
 Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
@@ -46,7 +46,7 @@ Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Cause
 Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
 
 
-- 2. [Use this Maven dependency](https://bintray.com/johnreed2/maven/scala-trace-debug/view):
+- 2. [See this pom.xml](examplePom.xml):
 
 ```scala
 <repository>
@@ -57,7 +57,7 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
   <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.2</version>
 </dependency>
 ```
 
@@ -218,7 +218,7 @@ ________________________________________________________________________________
 ### Java Examples:
 
 
-![Java Screenshot](http://i.imgur.com/WElrKVz.png)
+![Java Screenshot](http://i.imgur.com/DQlI9Rx.png)
 
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
