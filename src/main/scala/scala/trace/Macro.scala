@@ -141,7 +141,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.scala.trace.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -154,7 +154,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.scala.trace.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }

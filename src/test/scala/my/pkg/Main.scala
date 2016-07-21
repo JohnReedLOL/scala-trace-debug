@@ -59,6 +59,7 @@ object Main {
 
     Macro.desugarOut(one + two / three)
     Macro.codeOut(one + two / three) ; sleep()
+    Macro.codeOut(one + two / three, 2) ; sleep()
 
     Macro.desugarErr(one + two / three)
     Macro.codeErr(one + two / three) ; sleep()
