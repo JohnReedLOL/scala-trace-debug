@@ -9,8 +9,10 @@ object Main {
 
     def sleep() = Thread.sleep(60) // to prevent output mangling
     import scala.trace.Pos
+    Pos.err(null)
     Pos.err("Standard error") ; sleep()
     Pos.out("Hello World")
+    Pos.out(null)
     println("an error message" + Pos()) /*position*/ ; sleep()
 
     import scala.trace.Debug

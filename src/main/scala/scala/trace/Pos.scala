@@ -30,7 +30,8 @@ object Pos {
       val fileName: String = c.enclosingPosition.source.path // This needs to be trimmed down
       val trimmedFileName: String = processFileName(fileName)
       val path: String = Compat.enclosingOwner(c).fullName.trim
-      val myString = q""" {$toPrint}.toString """
+      val myStringTree = toPrint.tree
+      val myString = q"""{if($myStringTree == null) {"null"} else {$myStringTree.toString()}}"""
       val toReturn = q"""
         _root_.scala.Console.println($myString + " - " + $path + "(" + $trimmedFileName + ":" + $lineNum + ")");
         $myString
@@ -59,9 +60,10 @@ object Pos {
       val fileName: String = c.enclosingPosition.source.path // This needs to be trimmed down
       val trimmedFileName: String = processFileName(fileName)
       val path: String = Compat.enclosingOwner(c).fullName.trim
-      val myString = q""" {$toPrint}.toString """
+      val myStringTree = toPrint.tree
+      val myString = q"""{if($myStringTree == null) {"null"} else {$myStringTree.toString()}}"""
       val toReturn = q"""
-        _root_.scala.Console.println($myString + " - " + $path + "(" + $trimmedFileName + ":" + $lineNum + ")");
+        _root_.java.lang.System.err.println($myString + " - " + $path + "(" + $trimmedFileName + ":" + $lineNum + ")");
         $myString
       """
       c.Expr[String](toReturn)
