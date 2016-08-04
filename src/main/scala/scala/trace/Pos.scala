@@ -97,7 +97,7 @@ object Pos {
     if (fileName.contains("/")) {
       fileName.split("/").last
     } else {
-      fileName.split("\\").last
+      fileName.split("\\\\").last
     }
   }
 }
