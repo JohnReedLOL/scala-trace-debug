@@ -313,8 +313,8 @@ ________________________________________________________________________________
 
 <a name="Contributors"></a>
 
-- cycorey
-- MasseGuillaume
+- [cycorey](https://github.com/cycorey)
+- [MasseGuillaume](https://github.com/MasseGuillaume)
 
 ____________________________________________________________________________________________________________________
 
