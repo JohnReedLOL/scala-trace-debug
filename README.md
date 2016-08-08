@@ -13,6 +13,7 @@ Table of Contents
 * <a href="#Instructions">Instructions</a>
 * <a href="#Performance">Performance</a>
 * <a href="#Developers-Guide">Developer's Guide</a>
+* <a href="#Contributors">Contributors</a>
 
 ____________________________________________________________________________________________________________________
 
@@ -38,7 +39,7 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.4"
+libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.5"
 ```
 
 Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
@@ -305,6 +306,15 @@ ________________________________________________________________________________
 4. sbt test:run [pick option 1 - it should fail with exit code 7 for fatal assertion]
 5. sbt test:run [pick option 2]
 6. sbt package
+
+____________________________________________________________________________________________________________________
+
+### Contributors
+
+<a name="Contributors"></a>
+
+- cycorey
+- MasseGuillaume
 
 ____________________________________________________________________________________________________________________
 
