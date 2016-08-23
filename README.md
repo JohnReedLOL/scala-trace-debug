@@ -68,6 +68,7 @@ Note that Java users need to add [this](http://mvnrepository.com/artifact/org.sc
 
 ____________________________________________________________________________________________________________________
 
+<a name="Scala-Examples"></a>
 
 ### Scala Example:
 
