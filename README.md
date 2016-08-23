@@ -78,6 +78,7 @@ ________________________________________________________________________________
 ```scala
 
 def sleep() = Thread.sleep(60) // to prevent output mangling
+
 import scala.trace.Pos
 Pos.err("Standard error") ; sleep()
 Pos.out("Hello World")
@@ -137,10 +138,12 @@ Macro.assertCode("one" == "one") ; sleep()
 
 val (one, two, three) = (1, 2, 3)
 
-// desugaring includes all the parenthesis
+// desugar statements will desugar your code, turning whitespace into parenthesis and inserting implicits
 
 Macro.desugarOut(one + two / three)
 Macro.codeOut(one + two / three) ; sleep()
+
+// codeOut and codeErr will print variable names
 
 Macro.desugarErr(one + two / three)
 Macro.codeErr(one + two / three) ; sleep()
