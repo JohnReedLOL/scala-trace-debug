@@ -70,7 +70,7 @@ ________________________________________________________________________________
 
 <a name="Scala-Examples"></a>
 
-### Scala Example:
+### Scala Examples:
 
 ![Scala Example](http://i.imgur.com/OsCzN7s.png)
 
