@@ -24,9 +24,7 @@ ________________________________________________________________________________
 
 ![Append Position](http://i.imgur.com/W2EQdWG.png)
 
-^ In this case, clicking on "Main.scala:12" will cause you to jump to "Main.scala:12". 
-
-#####^ Just add "Pos" ^
+In this case, clicking on "Main.scala:12" will cause you to jump to "Main.scala:12". 
 
 "Pos does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used."
 
