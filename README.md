@@ -1,5 +1,5 @@
 # scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
-Turns your print statements into hyperlinks to your code
+Turns your print statements into hyperlinks to your code.
 
 ____________________________________________________________________________________________________________________
 
