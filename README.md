@@ -1,5 +1,5 @@
 # scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
-Helps you debug faster with clickable print statements and assertions.
+Helps you debug faster with clickable print statements and assertions. 
 
 ____________________________________________________________________________________________________________________
 
@@ -23,6 +23,8 @@ ________________________________________________________________________________
 ### Locate statements:
 
 ![Append Position](http://i.imgur.com/W2EQdWG.png)
+
+^ In this case, clicking on "Main.scala:12" will cause you to jump to "Main.scala:12". 
 
 #####^ Just add "Pos" ^
 
