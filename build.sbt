@@ -4,7 +4,7 @@ organization := "com.github.johnreedlol"
 
 scalaVersion := "2.11.7"
 
-version := "3.0.4"
+version := "3.0.6"
 
 crossScalaVersions := Seq("2.10.4", "2.11.2")
 
@@ -49,7 +49,7 @@ bintrayReleaseOnPublish in ThisBuild := true
 
 bintrayOmitLicense := false
 
-licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0"))
+licenses += ("MIT", url("http://opensource.org/licenses/MIT"))
 
 bintrayPackageLabels := Seq("debug", "scala", "trace", "debugging", "assert")
 

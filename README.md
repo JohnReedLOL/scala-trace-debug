@@ -1,5 +1,5 @@
 # scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
-Turns your print statements into hyperlinks to your code.
+Scala-Trace-Debug keeps you from losing or misplacing any of your print statements or assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
 
 ____________________________________________________________________________________________________________________
 
@@ -39,7 +39,7 @@ ________________________________________________________________________________
 ```scala
 resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
 
-libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.5"
+libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.6"
 ```
 
 Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
@@ -120,6 +120,10 @@ Debug.check("one" == 2, "one must equal one") ; sleep()
 // output is colored bright red for visibility
 Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 ```
+
+![Example macro](https://s22.postimg.org/4b0fgimep/example.png)
+
+^ In this case the macro on line 62 is desugaring the code.
 
 ##### Macros:
 
