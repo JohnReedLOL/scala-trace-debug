@@ -125,7 +125,7 @@ Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 
 ![Example macro](https://s22.postimg.org/4b0fgimep/example.png)
 
-^ In this case the macro on line 62 is desugaring the code.
+^ In this case the macro on line 62 is desugaring the code to standard out.
 
 ```scala
 import scala.trace.Macro
