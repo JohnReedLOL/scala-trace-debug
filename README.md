@@ -1,5 +1,5 @@
 # scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
-Scala-Trace-Debug keeps you from losing or misplacing any of your print statements or assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
+Scala-Trace-Debug locates print statements and assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
 
 ____________________________________________________________________________________________________________________
 
