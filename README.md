@@ -243,7 +243,7 @@ ________________________________________________________________________________
 
 If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, runtime printing and assertions will be disabled. Compile time macros like `Log.find` and `Pos` will require a clean (`sbt clean`) followed by a recompile for this change to take effect.
 
-Instead of an environment variable, a system property can be used. "The system property takes precedence over the environment variable". 
+Instead of an environment variable, a system property may also be used. "The system property takes precedence over the environment variable". 
 
 ### Runtime Switches (Java Capable):
 
