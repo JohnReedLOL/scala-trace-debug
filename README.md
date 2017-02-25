@@ -25,9 +25,9 @@ ________________________________________________________________________________
 
 ![Append Position](http://i.imgur.com/W2EQdWG.png)
 
-^ In this case, clicking on "Main.scala:12" will cause you to jump to Main.scala, line 12. 
+^ Clicking on "Main.scala:12" will cause you to jump to Main.scala, line 12. 
 
-"Pos() does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used."
+"Pos() does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used." - adapted from Li Haoyi's *sourcecode*
 
 ____________________________________________________________________________________________________________________
 
@@ -59,7 +59,7 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
   <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>3.0.3</version>
+  <version>3.0.6</version>
 </dependency>
 ```
 
@@ -122,11 +122,11 @@ Debug.check("one" == 2, "one must equal one") ; sleep()
 Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 ```
 
+##### Macros:
+
 ![Example macro](https://s22.postimg.org/4b0fgimep/example.png)
 
-^ In this case the macro on line 62 is desugaring the code.
-
-##### Macros:
+^ In this case the macro on line 62 is desugaring the code to standard out.
 
 ```scala
 import scala.trace.Macro
