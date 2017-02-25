@@ -6,8 +6,6 @@ import com.github.johnreedlol._
 import org.scalatest._
 import org.slf4j._
 
-import com.github.johnreedlol.Debug
-
 // import com.github.johnreedlol.testing.TestingUtils // this import comes from debugtrace/test/scala
 
 class StackSpec extends FlatSpec {

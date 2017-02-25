@@ -1,5 +1,7 @@
 package my.pkg
 
+import com.github.johnreedlol._
+
 /**
   * Created by johnreed on 3/23/16. Run with sbt test:run
   */
@@ -8,14 +10,11 @@ object Main {
   def main(args: Array[String]) {
 
     def sleep() = Thread.sleep(60) // to prevent output mangling
-    import com.github.johnreedlol.Pos
     Pos.err(null)
     Pos.err("Standard error") ; sleep()
     Pos.out("Hello World")
     Pos.out(null)
     println("an error message" + Pos()) /*position*/ ; sleep()
-
-    import com.github.johnreedlol.Debug
 
     // debug traces are clickable
 
@@ -42,8 +41,6 @@ object Main {
     // output is colored bright red for visibility
     Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 
-    import com.github.johnreedlol.Macro
-
     // Macro methods use advanced Scala features to print code and types
 
     Macro.contentsOut(List(1, 2, 3))
@@ -66,8 +63,6 @@ object Main {
     Macro.desugarErr(one + two / three)
     Macro.codeErr(one + two / three) ; sleep()
 
-    import com.github.johnreedlol.implicitlyTraceable
-
     // you can easily remove calls to ".out" and ".err" from the source by pressing Ctr-R (find-replace)
 
     "foo bar baz".out
@@ -75,27 +70,8 @@ object Main {
 
     println("")
 
-    import com.github.johnreedlol.implicitlyAssertable
-
     "foo bar".assertEq("foo bar", "foo bar must equal foo bar")
     2.check(_ + 3 == 5, "two plus three is five")
-
-    import com.github.johnreedlol.Format
-
-    // Formatting makes the string more readable
-    println(Format.text("This is a really really really really really really" +
-      "really really really really really really really really really really" +
-      "really really really really really really really really" +
-      "long string that needs to be formatted because it is longer than 100 chars default \n"))
-
-    import com.github.johnreedlol.implicitlyFormatable
-
-    // Instead of using Format you can use the .wrap method
-    println(("This is a really,really,really,really,really,really,really,really,really,really,really," +
-      ",really,really,really,really,really," +
-      ",really,really,really,really,really,," +
-      "long,string,that,needs,to,be,formatted,because,it,is,longer,than," + Format.getLineLength
-      + ",chars").wrap(delimiter = ","))
 
     // output
 
@@ -187,13 +163,6 @@ object Main {
       at my.pkg.Main$.main(Main.scala:70)
 
     Disconnected from the target VM, address: '127.0.0.1:46176', transport: 'socket'
-    This is a really really really really really reallyreally really really really really really really really
-    really reallyreally really really really really really really reallylong string that needs to be formatted
-    because it is longer than 100 chars default
-
-    This is a really,really,really,really,really,really,really,really,really,really,really,,really,really,
-    really,really,really,,really,really,really,really,really,,long,string,that,needs,to,be,formatted,because,
-    it,is,longer,than,100,chars,
     */
   }
 }

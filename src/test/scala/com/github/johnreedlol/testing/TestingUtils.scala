@@ -3,7 +3,6 @@ package com.github.johnreedlol.testing
 import java.io.{BufferedReader, IOException}
 
 import scala.util.control.Breaks._
-import com.github.johnreedlol._
 
 /**
   * Created by johnreed on 3/14/16.

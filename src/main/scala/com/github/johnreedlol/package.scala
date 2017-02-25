@@ -1,6 +1,6 @@
 package com.github
 
-import com.github.johnreedlol.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace, ImplicitFormat}
+import com.github.johnreedlol.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace}
 
 /**
   * Makes Scala Trace Debug functions available via implicit conversions.
@@ -36,13 +36,6 @@ package object johnreedlol {
     */
   implicit def implicitlyAssertable[MyType](me: MyType): ImplicitAssert[MyType] = {
     new ImplicitAssert(me)
-  }
-
-  /**
-    * Import this to add formatting functionality to the current scope
-    */
-  implicit def implicitlyFormatable(me: String): ImplicitFormat = {
-    new ImplicitFormat(me)
   }
 
 }

@@ -1,6 +1,7 @@
 package com.github.johnreedlol
 
 import com.github.johnreedlol.internal.Printer
+
 import scala.language.experimental.macros
 
 /**

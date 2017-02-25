@@ -1,6 +1,6 @@
 package com.github.johnreedlol.testing
 
-import com.github.johnreedlol.implicitlyPrintable
+import com.github.johnreedlol._
 import org.scalatest._
 
 /**

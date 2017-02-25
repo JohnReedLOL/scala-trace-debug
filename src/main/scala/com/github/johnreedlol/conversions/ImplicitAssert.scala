@@ -1,8 +1,9 @@
 package com.github.johnreedlol.conversions
 
-import scala.language.implicitConversions
 import com.github.johnreedlol.Debug
 import com.github.johnreedlol.internal.Printer
+
+import scala.language.implicitConversions
 
 /**
   * Wrapper class for implicit conversion .assert methods
