@@ -1,4 +1,4 @@
-package scala.trace.internal;
+package com.github.johnreedlol.internal;
 
 /**
  * Logback: the reliable, generic, fast and flexible logging framework.

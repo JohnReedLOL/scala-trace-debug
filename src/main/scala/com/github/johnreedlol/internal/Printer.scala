@@ -1,4 +1,4 @@
-package scala.trace.internal
+package com.github.johnreedlol.internal
 
 import scala.trace.Debug
 

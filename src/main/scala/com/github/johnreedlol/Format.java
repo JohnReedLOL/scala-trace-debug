@@ -1,4 +1,4 @@
-package scala.trace;
+package com.github.johnreedlol;
 
 /**
  * Used for formatting strings.

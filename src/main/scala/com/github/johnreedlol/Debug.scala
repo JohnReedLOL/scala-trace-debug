@@ -1,4 +1,4 @@
-package scala.trace
+package com.github.johnreedlol
 
 import scala.trace.internal.Printer
 

@@ -1,4 +1,4 @@
-package scala.trace.testing
+package com.github.johnreedlol.testing
 
 import scala.trace.implicitlyPrintable
 import org.scalatest._

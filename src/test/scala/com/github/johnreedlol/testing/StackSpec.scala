@@ -1,4 +1,4 @@
-package scala.trace.testing
+package com.github.johnreedlol.testing
 
 import java.io._
 

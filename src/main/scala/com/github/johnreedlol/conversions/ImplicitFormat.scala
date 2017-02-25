@@ -1,4 +1,4 @@
-package scala.trace.conversions
+package com.github.johnreedlol.conversions
 
 import scala.trace.{Debug, Format}
 

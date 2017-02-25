@@ -1,4 +1,4 @@
-package scala
+package com.github
 
 import scala.trace.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace, ImplicitFormat}
 
@@ -6,7 +6,7 @@ import scala.trace.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace, Im
   * Makes Scala Trace Debug functions available via implicit conversions.
   * https://github.com/JohnReedLOL/scala-trace-debug
   */
-package object trace {
+package object johnreedlol {
 
   import scala.language.implicitConversions
 
