@@ -1,14 +1,15 @@
 # scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=3.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
-Scala-Trace-Debug keeps you from losing or misplacing any of your print statements or assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
+Scala-Trace-Debug helps you locate your print statements or assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
 
 ____________________________________________________________________________________________________________________
 
 Table of Contents
 
-* <a href="#Locate-statements">Locate statements</a>
-* <a href="#Getting-started">Getting started</a>
+* <a href="#Locate-Statements">Locate Statements</a>
+* <a href="#Getting-Started">Getting Started</a>
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
+* <a href="#Master-Shutoff">Master Shutoff</a>
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Performance">Performance</a>
@@ -18,9 +19,9 @@ Table of Contents
 ____________________________________________________________________________________________________________________
 
 
-<a name="Locate-statements"></a>
+<a name="Locate-Statements"></a>
 
-### Locate statements:
+### Locate Statements:
 
 ![Append Position](http://i.imgur.com/W2EQdWG.png)
 
@@ -30,9 +31,9 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
-<a name="Getting-started"></a>
+<a name="Getting-Started"></a>
 
-### Getting started:
+### Getting Started:
 
 - 1. Copy this into your SBT "build.sbt" file:
 
@@ -236,13 +237,14 @@ If you just want to copy-paste, Java example is [here](src/test/java/main/JavaMa
 
 ____________________________________________________________________________________________________________________
 
+<a name="Master-Shutoff"></a>
 
 ### Master Shutoff Switch (Java Capable):
 
 If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
 A system property may also be used. "The system property takes precedence over the environment variable". 
 
-The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time.
+The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time, although this may require a recompile.
 
 
 ### Runtime Switches (Java Capable):
