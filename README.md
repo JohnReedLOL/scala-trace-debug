@@ -174,27 +174,6 @@ import scala.trace.implicitlyAssertable
 2.check(_ + 3 == 5, "two plus three is five")
 ```
 
-##### Output Formatting:
-
-```scala
-import scala.trace.Format
-
-// Formatting makes the string more readable
-println(Format.text("This is a really really really really really really" +
-  "really really really really really really really really really really" +
-  "really really really really really really really really" +
-  "long string that needs to be formatted because it is longer than 100 chars default \n"))
-
-import scala.trace.implicitlyFormatable
-
-// Instead of using Format you can use the .wrap method
-println(("This is a really,really,really,really,really,really,really,really,really,really,really," +
-  ",really,really,really,really,really," +
-  ",really,really,really,really,really,," +
-  "long,string,that,needs,to,be,formatted,because,it,is,longer,than," + Format.getLineLength
-  + ",chars").wrap(delimiter = ","))
-```
-
 ##### Output:
 
 ```scala
