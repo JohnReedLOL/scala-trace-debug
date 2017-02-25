@@ -241,11 +241,9 @@ ________________________________________________________________________________
 
 ### Master Shutoff Switch (Java Capable):
 
-If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, it will disable all printing and assertions.
-A system property may also be used. "The system property takes precedence over the environment variable". 
+If you set the environment variable `ENABLE_TRACE_DEBUG` to `false`, runtime printing and assertions will be disabled. Compile time macros like `Log.find` and `Pos` will require a clean (`sbt clean`) followed by a recompile for this change to take effect.
 
-The preprocessor will also replace all calls to `Log.find` and `Pos` with an empty String at compile time, although this may require a recompile.
-
+Instead of an environment variable, a system property may also be used. "The system property takes precedence over the environment variable". 
 
 ### Runtime Switches (Java Capable):
 
