@@ -1,6 +1,6 @@
 package com.github.johnreedlol
 
-import scala.trace.internal.Printer
+import com.github.johnreedlol.internal.Printer
 import scala.language.experimental.macros
 
 /**
@@ -93,7 +93,7 @@ object Pos {
     }
   }
 
-  protected[trace] def processFileName(fileName: String): String = {
+  protected[johnreedlol] def processFileName(fileName: String): String = {
     if (fileName.contains("/")) {
       fileName.split("/").last
     } else {

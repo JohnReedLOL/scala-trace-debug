@@ -1,11 +1,11 @@
 package com.github.johnreedlol.internal
 
-import scala.trace.Compat
+import com.github.johnreedlol.Compat
 
 /**
   * Created by johnreed on 4/17/16. A place for helper methods.
   */
-protected[trace] object Helpers {
+protected[johnreedlol] object Helpers {
 
   final class MacroHelperMethod[C <: Compat.Context](val c: C) {
 

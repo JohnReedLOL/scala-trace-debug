@@ -1,6 +1,6 @@
 package main;
 
-import scala.trace.Debug;
+import com.github.johnreedlol.Debug;
 
 public class JavaMain {
     public static void sleep() throws Exception {

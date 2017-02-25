@@ -1,6 +1,6 @@
 package com.github
 
-import scala.trace.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace, ImplicitFormat}
+import com.github.johnreedlol.conversions.{ImplicitAssert, ImplicitPrint, ImplicitTrace, ImplicitFormat}
 
 /**
   * Makes Scala Trace Debug functions available via implicit conversions.
@@ -13,7 +13,7 @@ package object johnreedlol {
   /**
     * Assertions fail with exit code 7
     */
-  protected[trace] val exitFail = 7
+  protected[johnreedlol] val exitFail = 7
 
   // Warning: implicit conversions language feature
 

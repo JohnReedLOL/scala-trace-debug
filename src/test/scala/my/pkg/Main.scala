@@ -8,14 +8,14 @@ object Main {
   def main(args: Array[String]) {
 
     def sleep() = Thread.sleep(60) // to prevent output mangling
-    import scala.trace.Pos
+    import com.github.johnreedlol.Pos
     Pos.err(null)
     Pos.err("Standard error") ; sleep()
     Pos.out("Hello World")
     Pos.out(null)
     println("an error message" + Pos()) /*position*/ ; sleep()
 
-    import scala.trace.Debug
+    import com.github.johnreedlol.Debug
 
     // debug traces are clickable
 
@@ -42,7 +42,7 @@ object Main {
     // output is colored bright red for visibility
     Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 
-    import scala.trace.Macro
+    import com.github.johnreedlol.Macro
 
     // Macro methods use advanced Scala features to print code and types
 
@@ -66,7 +66,7 @@ object Main {
     Macro.desugarErr(one + two / three)
     Macro.codeErr(one + two / three) ; sleep()
 
-    import scala.trace.implicitlyTraceable
+    import com.github.johnreedlol.implicitlyTraceable
 
     // you can easily remove calls to ".out" and ".err" from the source by pressing Ctr-R (find-replace)
 
@@ -75,12 +75,12 @@ object Main {
 
     println("")
 
-    import scala.trace.implicitlyAssertable
+    import com.github.johnreedlol.implicitlyAssertable
 
     "foo bar".assertEq("foo bar", "foo bar must equal foo bar")
     2.check(_ + 3 == 5, "two plus three is five")
 
-    import scala.trace.Format
+    import com.github.johnreedlol.Format
 
     // Formatting makes the string more readable
     println(Format.text("This is a really really really really really really" +
@@ -88,7 +88,7 @@ object Main {
       "really really really really really really really really" +
       "long string that needs to be formatted because it is longer than 100 chars default \n"))
 
-    import scala.trace.implicitlyFormatable
+    import com.github.johnreedlol.implicitlyFormatable
 
     // Instead of using Format you can use the .wrap method
     println(("This is a really,really,really,really,really,really,really,really,really,really,really," +

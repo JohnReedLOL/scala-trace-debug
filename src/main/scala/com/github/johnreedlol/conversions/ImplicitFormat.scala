@@ -1,6 +1,6 @@
 package com.github.johnreedlol.conversions
 
-import scala.trace.{Debug, Format}
+import com.github.johnreedlol.{Debug, Format}
 
 /**
   * Provides formatting functionality to strings.

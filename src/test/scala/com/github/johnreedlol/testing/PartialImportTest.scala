@@ -1,6 +1,6 @@
 package com.github.johnreedlol.testing
 
-import scala.trace.implicitlyPrintable
+import com.github.johnreedlol.implicitlyPrintable
 import org.scalatest._
 
 /**

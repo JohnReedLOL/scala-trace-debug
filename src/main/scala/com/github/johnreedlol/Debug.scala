@@ -1,6 +1,6 @@
 package com.github.johnreedlol
 
-import scala.trace.internal.Printer
+import com.github.johnreedlol.internal.Printer
 
 /**
   * Contains static debug functions for Java and Scala.
@@ -11,7 +11,7 @@ object Debug {
   /**
     * Stack offset is 2 because the first row in the stack trace is Thread and the second row is internal call
     */
-  protected[trace] val stackOffset = 2
+  protected[johnreedlol] val stackOffset = 2
 
   @volatile private var isTraceOutOn_ = true
   @volatile private var isTraceErrOn_ = true
@@ -223,7 +223,7 @@ object Debug {
   /**
     * Gets the collection as a string of n elements from start to start + numElements
     */
-  protected[trace] def getArrayAsString[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue): String = {
+  protected[johnreedlol] def getArrayAsString[T](coll: Array[T], start: Int = 0, numElements: Int = Int.MaxValue): String = {
     var toPrint = ""
     val iterator: Iterator[T] = coll.toIterator
     var currentElement: Long = 0L // Long to prevent overflow

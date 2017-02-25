@@ -1,6 +1,6 @@
-package scala.trace
+package com.github.johnreedlol
 
-protected[trace] object Compat {
+protected[johnreedlol] object Compat {
   type Context = scala.reflect.macros.Context
 
   def enclosingOwner(c: Context) = {

@@ -4,7 +4,7 @@ organization := "com.github.johnreedlol"
 
 scalaVersion := "2.11.7"
 
-version := "3.0.6"
+version := "4.0.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
 
 crossScalaVersions := Seq("2.10.4", "2.11.2")
 

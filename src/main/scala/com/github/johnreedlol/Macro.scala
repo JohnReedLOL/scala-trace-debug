@@ -1,7 +1,7 @@
 package com.github.johnreedlol
 
-import scala.trace.internal.Printer
-import scala.trace.internal.Helpers.MacroHelperMethod
+import com.github.johnreedlol.internal.Printer
+import com.github.johnreedlol.internal.Helpers.MacroHelperMethod
 import scala.language.experimental.macros
 import scala.language.existentials
 
@@ -16,7 +16,7 @@ object Macro {
   /**
     * Gets the collection as a string of n elements from start to start + numElements
     */
-  protected[trace] def getCollectionAsString(coll: collection.GenTraversableOnce[_], start: Int = 0, numElements: Int = Int.MaxValue): String = {
+  protected[johnreedlol] def getCollectionAsString(coll: collection.GenTraversableOnce[_], start: Int = 0, numElements: Int = Int.MaxValue): String = {
     var toPrint = ""
     val iterator: Iterator[Any] = coll.toIterator
     var currentElement: Long = 0L // Long to prevent overflow
@@ -103,7 +103,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.com.github.johnreedlol.Debug.err(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -116,7 +116,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.com.github.johnreedlol.Debug.err(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -141,7 +141,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.out(..$args);
+        _root_.com.github.johnreedlol.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -154,7 +154,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.out(..$args);
+        _root_.com.github.johnreedlol.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -182,7 +182,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.com.github.johnreedlol.Debug.err(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -195,7 +195,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.err(..$args);
+        _root_.com.github.johnreedlol.Debug.err(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -221,7 +221,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.out(..$args);
+        _root_.com.github.johnreedlol.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -234,7 +234,7 @@ object Macro {
       val args: List[c.universe.Tree] = List(arg1, arg2)
       val toReturn =
         q"""
-        _root_.scala.trace.Debug.out(..$args);
+        _root_.com.github.johnreedlol.Debug.out(..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -263,7 +263,7 @@ object Macro {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.com.github.johnreedlol.Debug.assert(assertBoolean, ..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -279,7 +279,7 @@ object Macro {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.assert(assertBoolean, ..$args);
+        _root_.com.github.johnreedlol.Debug.assert(assertBoolean, ..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -309,7 +309,7 @@ object Macro {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
+        _root_.com.github.johnreedlol.Debug.check(assertBoolean, ..$args);
       """
       c.Expr[String](toReturn)
     }
@@ -325,7 +325,7 @@ object Macro {
       val toReturn =
         q"""
         val assertBoolean = $assertion;
-        _root_.scala.trace.Debug.check(assertBoolean, ..$args);
+        _root_.com.github.johnreedlol.Debug.check(assertBoolean, ..$args);
       """
       c.Expr[String](toReturn)
     }
