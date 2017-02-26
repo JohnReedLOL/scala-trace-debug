@@ -12,11 +12,11 @@ Table of Contents
 
 * <a href="#Locate-Statements">Locate Statements</a>
 * <a href="#Getting-Started">Getting Started</a>
+* <a href="#Instructions">Instructions for IDEA</a>
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Master-Shutoff">Master Shutoff</a>
 * <a href="#Building">Building</a>
-* <a href="#Instructions">Instructions</a>
 * <a href="#Developers-Guide">Developer's Guide</a>
 * <a href="#Contributors">Contributors</a>
 
@@ -63,6 +63,28 @@ If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: 
 Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
 
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
+
+____________________________________________________________________________________________________________________
+
+<a name="Instructions"></a>
+
+### Instructions (for IntelliJ IDE):
+
+1. Add the library dependency
+
+2. import [com.github.johnreedlol._](src/main/scala/com/github/johnreedlol/package.scala)
+
+3. Make sure that you have IntelliJ run configuration set up to run from the IntelliJ console
+
+Run > Edit Configurations... > SBT Task > Click the green +
+
+![Example](http://i.imgur.com/UPZAJHo.png)
+
+- Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
+ 
+- Use the IntelliJ console arrows to navigate up and down the stack traces.
+
+![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
 ____________________________________________________________________________________________________________________
 
@@ -209,26 +231,6 @@ Debug.fatalAssertOn/Off()
 Debug.nonFatalAssertOn/Off() // assertNonFatal = check
 Debug.setElementsPerRow() // For container printing
 ```
-
-____________________________________________________________________________________________________________________
-
-<a name="Instructions"></a>
-
-### Instructions (for IntelliJ IDE):
-
-1. Add the library dependency
-
-2. import [com.github.johnreedlol._](src/main/scala/com/github/johnreedlol/package.scala)
-
-3. Make sure that you have IntelliJ run configuration set up to run from the IntelliJ console
-
-![Example](http://i.imgur.com/UPZAJHo.png)
-
-- Place some calls to scala trace debug and click the green 'Debug' (Shift+F9) button and follow the stack traces in the console. 
- 
-- Use the IntelliJ console arrows to navigate up and down the stack traces.
-
-![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
 ____________________________________________________________________________________________________________________
 
