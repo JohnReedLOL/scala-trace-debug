@@ -283,7 +283,7 @@ ________________________________________________________________________________
 
 ____________________________
 
-advanced: 
+Advanced ("+" for cross-building): 
 ```scala
 $ sbt
 [info] Loading project definition from /home/.../scala-trace-debug/project
@@ -293,6 +293,9 @@ $ sbt
 > + test
 > + package
 ```
+
+Artifacts are published using `> publish-signed`, the public key is B8CF8F8E
+
 ____________________________________________________________________________________________________________________
 
 ### Contributors

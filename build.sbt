@@ -4,11 +4,15 @@ organization := "com.github.johnreedlol"
 
 scalaVersion := "2.11.7"
 
-version := "4.1.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
+version := "4.2.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
 
 crossScalaVersions := Seq("2.10.4", "2.11.2")
 
 resolvers += Resolver.sonatypeRepo("releases")
+
+pgpReadOnly := false //  To import a key
+
+useGpg := true // The first step towards using the GPG command line tool is to make sbt-pgp gpg-aware. (skip for built-in Bouncy Castle PGP implementation)
 
 def macroDependencies(version: String) =
   Seq(

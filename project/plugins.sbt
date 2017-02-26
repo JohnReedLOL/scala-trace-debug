@@ -2,6 +2,8 @@ addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")
 
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+
 // resolvers += Resolver.sonatypeRepo("releases")
 
 // addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
