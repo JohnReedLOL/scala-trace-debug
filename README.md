@@ -239,7 +239,7 @@ ________________________________________________________________________________
 
 ### Code layout:
 
-Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
+Currently all the actual printing is done in [`Printer.scala`](src/main/scala/com/github/johnreedlol/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/com/github/johnreedlol/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/com/github/johnreedlol/Debug.scala)
 
 ____________________________________________________________________________________________________________________
 
