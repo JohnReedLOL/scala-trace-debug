@@ -88,6 +88,7 @@ Click the green "+" (Add new configuration)
 
 ![IntelliJ console](http://s29.postimg.org/ud0knou1j/debug_Screenshot_Crop.png)
 
+For smooth scrolling, use the keyboard shortcut **Ctr + Alt + Down**
 ____________________________________________________________________________________________________________________
 
 <a name="Scala-Examples"></a>
