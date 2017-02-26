@@ -56,8 +56,6 @@ add this to your pom.xml:
 </dependency>
 ```
 
-or
-
 add this to your build.sbt:
 
 ```scala
