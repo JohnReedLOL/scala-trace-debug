@@ -39,6 +39,8 @@ ________________________________________________________________________________
 
 ### Getting Started:
 
+scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
+
 - 1. Copy this into your SBT "build.sbt" file:
 
 ```scala
