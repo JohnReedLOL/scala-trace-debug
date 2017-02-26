@@ -294,7 +294,7 @@ $ sbt
 > + package
 ```
 
-Artifacts are published using `> publish-signed`, the public key is B8CF8F8E
+Artifacts are published using `> publish-signed`, the public key is 3E2B27D9
 
 ____________________________________________________________________________________________________________________
 
