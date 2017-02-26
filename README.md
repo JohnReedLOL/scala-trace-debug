@@ -15,7 +15,7 @@ Table of Contents
 * <a href="#Scala-Examples">Scala Examples</a>
 * <a href="#Java-Examples">Java Examples</a>
 * <a href="#Master-Shutoff">Master Shutoff</a>
-* <a href="#Requirements">Requirements</a>
+* <a href="#Building">Building</a>
 * <a href="#Instructions">Instructions</a>
 * <a href="#Developers-Guide">Developer's Guide</a>
 * <a href="#Contributors">Contributors</a>
@@ -219,15 +219,6 @@ Debug.setElementsPerRow() // For container printing
 
 ____________________________________________________________________________________________________________________
 
-<a name="Requirements"></a>
-
-### Requirements:
-
-- Scala 2.10.4 or higher (or Java 7+)
-- Any IDE or text editor that supports stack trace highlighting
-
-____________________________________________________________________________________________________________________
-
 <a name="Instructions"></a>
 
 ### Instructions (for IntelliJ IDE):
@@ -267,7 +258,7 @@ ________________________________________________________________________________
 
 ____________________________
 
-Advanced ("+" for cross-building): 
+Advanced: 
 ```scala
 $ sbt
 [info] Loading project definition from /home/.../scala-trace-debug/project
@@ -278,7 +269,17 @@ $ sbt
 > + package
 ```
 
+* "+" means "cross-building"
+
 Artifacts are published using `> publish-signed`, the public key is 3E2B27D9
+
+____________________________________________________________________________________________________________________
+
+<a name="Building"></a>
+
+### Building:
+
+I personally build scala-trace-debug with Java 7 (javac 1.7.0_79) and sbt version 0.13.7. It builds with Scala 2.11.7 but also cross-builds for 2.10.4 and 2.11.2.
 
 ____________________________________________________________________________________________________________________
 
