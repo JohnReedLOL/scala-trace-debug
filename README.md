@@ -56,7 +56,7 @@ add this to your pom.xml:
 </dependency>
 ```
 
-OR
+or
 
 add this to your build.sbt:
 
