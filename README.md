@@ -45,7 +45,7 @@ ________________________________________________________________________________
 
 scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
 
-pom.xml:
+add this to your pom.xml:
 
 ```scala
 <dependency>
@@ -56,7 +56,9 @@ pom.xml:
 </dependency>
 ```
 
-build.sbt:
+OR
+
+add this to your build.sbt:
 
 ```scala
 libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "4.5.0"
@@ -216,6 +218,8 @@ ________________________________________________________________________________
 
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
+
+Also note the jar file name in the stack trace.
 
 Copy-paste Java example [here](src/test/java/main/JavaMain.java).
 
