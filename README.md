@@ -219,7 +219,7 @@ ________________________________________________________________________________
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
 
-Also note the jar file name in the stack trace.
+Note the jar file name in the stack trace.
 
 Copy-paste Java example [here](src/test/java/main/JavaMain.java).
 
