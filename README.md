@@ -27,7 +27,7 @@ ________________________________________________________________________________
 
 ### Locate Statements:
 
-![Append Position](http://i.imgur.com/W2EQdWG.png)
+![Append Position](http://i.imgur.com/PMr2FOB.png)
 
 ^ Clicking on "Main.scala:12" will cause you to jump to Main.scala, line 12. 
 
