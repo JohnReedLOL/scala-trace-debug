@@ -33,6 +33,10 @@ ________________________________________________________________________________
 
 "Pos() does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used." - taken from Li Haoyi's *sourcecode*
 
+Use it with a logger:
+
+![Locate](http://i.imgur.com/FvMgqoB.png)
+
 ____________________________________________________________________________________________________________________
 
 <a name="Getting-Started"></a>
