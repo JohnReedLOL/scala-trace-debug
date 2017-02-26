@@ -2,9 +2,23 @@ name := "scala-trace-debug"
 
 organization := "com.github.johnreedlol"
 
+description := "Macro based print debugging. Locates log statements in your IDE."
+
+// Developer information missing
+developers := List(Developer(id = "johnreedlol", name = "John-Michael Reed", email = "johnmichaelreedfas@gmail.com", new URL("https://github.com/JohnReedLOL")))
+
+scmInfo := Some(ScmInfo(new URL("https://github.com/JohnReedLOL/scala-trace-debug"),
+  "scm:git:git://github.com/JohnReedLOL/scala-trace-debug.git",
+  None)) // SCM URL missing
+
+// Project URL missing
+pomExtra := (
+  <url>https://github.com/JohnReedLOL/scala-trace-debug</url>
+  )
+
 scalaVersion := "2.11.7"
 
-version := "4.2.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
+version := "4.3.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
 
 crossScalaVersions := Seq("2.10.4", "2.11.2")
 
