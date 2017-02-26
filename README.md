@@ -41,19 +41,6 @@ ________________________________________________________________________________
 
 scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
 
-- 1. Copy this into your SBT "build.sbt" file:
-
-```scala
-resolvers += "johnreed2 bintray" at "http://dl.bintray.com/content/johnreed2/maven"
-
-libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "3.0.6"
-```
-
-Note: If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
-
-Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
-
-
 - 2. [See this pom.xml](examplePom.xml):
 
 ```scala
@@ -69,9 +56,11 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 </dependency>
 ```
 
-- 3. See the <a href="#Developers-Guide">Developer's Guide</a> to compile and jar.
+If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
 
-Note that Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
+Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value`
+
+Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
 
 ____________________________________________________________________________________________________________________
 
