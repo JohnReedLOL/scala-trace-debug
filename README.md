@@ -70,7 +70,7 @@ ________________________________________________________________________________
 
 ### Instructions (for IntelliJ IDE):
 
-1. Add the appropirate dependency from <a href="#Getting-Started">Getting Started</a>
+1. Add the appropirate dependency from **Getting Started**
 
 2. import [com.github.johnreedlol._](src/main/scala/com/github/johnreedlol/package.scala)
 
