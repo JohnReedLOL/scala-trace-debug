@@ -41,6 +41,8 @@ ________________________________________________________________________________
 
 scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
 
+.pom:
+
 ```scala
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
@@ -48,6 +50,12 @@ scala-trace-debug is availiable through [maven central](https://search.maven.org
   <version>4.5.0</version>
   <type>pom</type>
 </dependency>
+```
+
+build.sbt:
+
+```scala
+libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "4.5.0"
 ```
 
 If you get: "NoClassDefFoundError: scala/reflect/runtime/package ... Caused by: java.lang.ClassNotFoundException"
