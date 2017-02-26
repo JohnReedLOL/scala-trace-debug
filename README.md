@@ -41,18 +41,12 @@ ________________________________________________________________________________
 
 scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
 
-- 2. [See this pom.xml](examplePom.xml):
-
 ```scala
-<repository>
-    <id>johnreed2 bintray</id>
-    <url>http://dl.bintray.com/content/johnreed2/maven</url>
-</repository>
-...
 <dependency>
   <groupId>com.github.johnreedlol</groupId>
   <artifactId>scala-trace-debug_2.11</artifactId>
-  <version>3.0.6</version>
+  <version>4.5.0</version>
+  <type>pom</type>
 </dependency>
 ```
 
