@@ -45,7 +45,7 @@ ________________________________________________________________________________
 
 scala-trace-debug is availiable through [maven central](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22) as well as [bintray](https://bintray.com/johnreed2/maven/scala-trace-debug/).
 
-add this to your pom.xml:
+Add this to your pom.xml:
 
 ```scala
 <dependency>
@@ -56,7 +56,7 @@ add this to your pom.xml:
 </dependency>
 ```
 
-add this to your build.sbt:
+Add this to your build.sbt:
 
 ```scala
 libraryDependencies += "com.github.johnreedlol" %% "scala-trace-debug" % "4.5.0"
