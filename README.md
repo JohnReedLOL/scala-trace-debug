@@ -80,7 +80,7 @@ ________________________________________________________________________________
 
 def sleep() = Thread.sleep(60) // to prevent output mangling
 
-import scala.trace.Pos
+import com.github.johnreedlol.Pos
 Pos.err("Standard error") ; sleep()
 Pos.out("Hello World")
 println("an error message" + Pos()) /*position*/ ; sleep()
@@ -89,7 +89,7 @@ println("an error message" + Pos()) /*position*/ ; sleep()
 ##### Debug Statements (Java Compatible):
 
 ```scala
-import scala.trace.Debug
+import com.github.johnreedlol.Debug
 
 // debug traces are clickable
 
@@ -128,7 +128,7 @@ Debug.checkOut("one" == 2, "one must equal one", numLines = 1) ; sleep()
 ^ In this case the macro on line 62 is desugaring the code to standard out.
 
 ```scala
-import scala.trace.Macro
+import com.github.johnreedlol.Macro
 
 // Macro methods use advanced Scala features to print code and types
 
@@ -158,7 +158,7 @@ Macro.codeErr(one + two / three) ; sleep()
 
 ```scala
 
-import scala.trace.implicitlyTraceable
+import com.github.johnreedlol.implicitlyTraceable
 
 // you can easily remove calls to ".out" and ".err" from the source by pressing Ctr-R (find-replace)
 
@@ -167,7 +167,7 @@ import scala.trace.implicitlyTraceable
 
 println("")
 
-import scala.trace.implicitlyAssertable
+import com.github.johnreedlol.implicitlyAssertable
 
 "foo bar".assertEq("foo bar", "foo bar must equal foo bar")
 2.check(_ + 3 == 5, "two plus three is five")
