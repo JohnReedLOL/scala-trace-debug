@@ -218,7 +218,7 @@ ________________________________________________________________________________
 
 1. Add the library dependency
 
-2. import [scala.trace._](src/main/scala/scala/trace/package.scala)
+2. import [com.github.johnreedlol._](src/main/scala/com/github/johnreedlol/package.scala)
 
 3. Make sure that you have IntelliJ run configuration set up to run from the IntelliJ console
 
