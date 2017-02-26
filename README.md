@@ -31,7 +31,7 @@ ________________________________________________________________________________
 
 ^ Clicking on "Main.scala:12" will cause you to jump to Main.scala, line 12. 
 
-"Pos() does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used." - adapted from Li Haoyi's *sourcecode*
+"Pos() does not rely on runtime reflection or stack inspection, and is done at compile-time using macros. This means that it is both orders of magnitude faster than e.g. getting file-name and line-numbers using stack inspection, and also works on Scala.js where reflection and stack inspection can't be used." - taken from Li Haoyi's *sourcecode*
 
 ____________________________________________________________________________________________________________________
 
@@ -79,7 +79,7 @@ ________________________________________________________________________________
 
 ![Scala Example](http://i.imgur.com/JHiMwjS.png)
 
-^ Note that the Debug object does not use compile time macros and is more of a throwback to the days when this project was a print debugging system for Java.
+^ Note that the `Debug` object does not use compile time macros and is more of a throwback to the days when this project was a print debugging system for Java.
 
 ##### Code Example:
 
