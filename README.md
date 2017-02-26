@@ -76,7 +76,9 @@ ________________________________________________________________________________
 
 3. Make sure that you have IntelliJ run configuration set up to run from the IntelliJ console
 
-Run > Edit Configurations... > SBT Task > Click the green +
+Run > Edit Configurations... > SBT Task
+
+Click the green "+" (Add new configuration)
 
 ![Example](http://i.imgur.com/UPZAJHo.png)
 
