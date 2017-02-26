@@ -180,29 +180,6 @@ import scala.trace.implicitlyAssertable
 2.check(_ + 3 == 5, "two plus three is five")
 ```
 
-##### Output:
-
-```scala
-an error message - my.pkg.Main.main(Main.scala:16)
-
-"trace to standard error" in thread main:
-  at my.pkg.Main$.main(Main.scala:22)
-
-"trace to standard error" in thread main:
-  at my.pkg.Main$.main(Main.scala:23)
-  at my.pkg.Main.main(Main.scala)
-
-" 1, 2, 3
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:24)
-
-" 1, 2
-" in thread main:
-  at my.pkg.Main$.main(Main.scala:25)
-  at my.pkg.Main.main(Main.scala)
-// ...
-
-```
 
 ##### ^ [Run it yourself](src/test/scala/my/pkg/Main.scala) with "sbt test:run" ^
 
