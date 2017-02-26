@@ -77,7 +77,7 @@ ________________________________________________________________________________
 
 ### Scala Examples:
 
-![Scala Example](http://i.imgur.com/OsCzN7s.png)
+![Scala Example](http://i.imgur.com/JHiMwjS.png)
 
 ##### Code Example:
 
