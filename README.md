@@ -79,6 +79,8 @@ ________________________________________________________________________________
 
 ![Scala Example](http://i.imgur.com/JHiMwjS.png)
 
+^ Note that the Debug object does not use compile time macros and is more of a throwback to the days when this project was a print debugging system for Java.
+
 ##### Code Example:
 
 ```scala
