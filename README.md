@@ -1,4 +1,5 @@
-# scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=4.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
+# scala-trace-debug [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=4.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.johnreedlol/scala-trace-debug/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.johnreedlol/scala-trace-debug)
+
 Scala-Trace-Debug helps you locate your print statements or assertions. It is more effective in Scala, but it works for Java too. Now with MIT License.
 
 ____________________________________________________________________________________________________________________
