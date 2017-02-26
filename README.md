@@ -12,7 +12,6 @@ Table of Contents
 * <a href="#Master-Shutoff">Master Shutoff</a>
 * <a href="#Requirements">Requirements</a>
 * <a href="#Instructions">Instructions</a>
-* <a href="#Performance">Performance</a>
 * <a href="#Developers-Guide">Developer's Guide</a>
 * <a href="#Contributors">Contributors</a>
 
@@ -265,18 +264,6 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________________________________________
 
-<a name="Performance"></a>
-
-### Performance:
-
-No overhead for no stack trace.
-
-```scala
-"foo".err(0) // no call to Thread.currentThread.getStackTrace()
-```
-
-____________________________________________________________________________________________________________________
-
 ### Code layout:
 
 Currently all the actual printing is done in [`Printer.scala`](src/main/scala/scala/trace/internal/Printer.scala), all the implicit conversions are in [`package.scala`](src/main/scala/scala/trace/package.scala), and all the calls to the "Debug" object are in [`Debug.scala`](src/main/scala/scala/trace/Debug.scala)
@@ -288,12 +275,24 @@ ________________________________________________________________________________
 <a name="Developers-Guide"></a>
 
 1. git clone https://github.com/JohnReedLOL/scala-trace-debug 3.0
-2. cd ./3.0/
+2. cd ./4.0/
 3. sbt test
 4. sbt test:run [pick option 1 - it should fail with exit code 7 for fatal assertion]
 5. sbt test:run [pick option 2]
 6. sbt package
 
+____________________________
+
+advanced: 
+```scala
+$ sbt
+[info] Loading project definition from /home/.../scala-trace-debug/project
+[info] Set current project to scala-trace-debug (in build file:/home/.../scala-trace-debug/)
+> + clean
+> + compile 
+> + test
+> + package
+```
 ____________________________________________________________________________________________________________________
 
 ### Contributors
