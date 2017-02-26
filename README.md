@@ -211,7 +211,7 @@ ________________________________________________________________________________
 ### Java Examples:
 
 
-![Java Screenshot](http://i.imgur.com/DQlI9Rx.png)
+![Java Screenshot](http://i.imgur.com/JHiMwjS.png)
 
 ^ Note that all my stack traces are off by one. This only happens when the methods are called from Java.
 To get around this, specify "2" for last parameter (2 lines of stack trace). ^
