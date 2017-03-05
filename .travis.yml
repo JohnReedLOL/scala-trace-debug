@@ -6,7 +6,7 @@ scala:
   - 2.12.0
 jdk:
   - openjdk7
-  - openjdk8
+  - oraclejdk8
   - oraclejdk8
 matrix:
   exclude:
