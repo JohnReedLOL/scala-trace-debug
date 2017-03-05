@@ -4,18 +4,16 @@ import java.io._
 
 import com.github.johnreedlol._
 import org.scalatest._
-import org.slf4j._
-
-// import com.github.johnreedlol.testing.TestingUtils // this import comes from debugtrace/test/scala
+// import org.slf4j._
 
 class StackSpec extends FlatSpec {
 
   "Container printing" should "work for arrays, lists, and maps" in {
-    val logger: Logger = LoggerFactory.getLogger("Logger");
+    // val logger: Logger = LoggerFactory.getLogger("Logger");
     Macro.contentsErr(List(1, 2))
     Macro.contentsOut(Array("Hello", "World"))
     Debug.traceErrOff()
-    logger.warn(Macro.contentsErr(Map("1" -> 1, "2" -> 2)))
+    // logger.warn(Macro.contentsErr(Map("1" -> 1, "2" -> 2)))
     Debug.enableEverything()
   }
 
@@ -222,49 +220,4 @@ class StackSpec extends FlatSpec {
     assert(true)
   }
   */
-  /*
-    "An empty Set" should "should have size 0" in {
-      assert(Set.empty.size == 0)
-    }
-
-    it should "produce NoSuchElementException when head is invoked" in {
-      intercept[NoSuchElementException] {
-        Set.empty.head
-      }
-    }
-
-    "A Stack" should "pop values in last-in-first-out order" in {
-      val stack = new Stack[Int]
-      stack.push(1)
-      stack.push(2)
-      assert(stack.pop() === 2)
-      assert(stack.pop() === 1)
-    }
-
-    ignore should "throw NoSuchElementException if an empty stack is popped" in {
-      val emptyStack = new Stack[String]
-      intercept[NoSuchElementException] {
-        emptyStack.pop()
-      }
-    }
-  */
 }
-
-// http://www.scalatest.org/user_guide/tagging_your_tests
-
-/*
-import org.scalatest.FunSuite
-
-class SetSuite extends FunSuite {
-
-  test("An empty Set should have size 0") {
-    assert(Set.empty.size == 0)
-  }
-
-  test("Invoking head on an empty Set should produce NoSuchElementException") {
-    intercept[NoSuchElementException] {
-      Set.empty.head
-    }
-  }
-}
-*/

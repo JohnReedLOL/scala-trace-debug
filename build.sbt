@@ -4,23 +4,21 @@ organization := "com.github.johnreedlol"
 
 description := "Macro based print debugging. Locates log statements in your IDE."
 
-// Developer information missing
 developers := List(Developer(id = "johnreedlol", name = "John-Michael Reed", email = "johnmichaelreedfas@gmail.com", new URL("https://github.com/JohnReedLOL")))
 
 scmInfo := Some(ScmInfo(new URL("https://github.com/JohnReedLOL/scala-trace-debug"),
   "scm:git:git://github.com/JohnReedLOL/scala-trace-debug.git",
-  None)) // SCM URL missing
+  None))
 
-// Project URL missing
 pomExtra := (
   <url>https://github.com/JohnReedLOL/scala-trace-debug</url>
   )
 
 scalaVersion := "2.11.7"
 
-version := "4.3.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
+version := "5.0.0" // For compatibility, only use first two digits (MajorVersion, MinorVersion)
 
-crossScalaVersions := Seq("2.10.4", "2.11.2")
+crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0")
 
 resolvers += Resolver.sonatypeRepo("releases")
 
@@ -34,8 +32,8 @@ def macroDependencies(version: String) =
     "org.scala-lang" % "scala-compiler" % version % "provided"
   ) ++
     (if (version startsWith "2.10.")
-      Seq(compilerPlugin("org.scalamacros" % s"paradise" % "2.0.0" cross CrossVersion.full),
-        "org.scalamacros" %% s"quasiquotes" % "2.0.0")
+      Seq(compilerPlugin("org.scalamacros" % s"paradise" % "2.1.0" cross CrossVersion.full),
+        "org.scalamacros" %% s"quasiquotes" % "2.1.0")
     else
       Seq())
 
@@ -48,20 +46,11 @@ unmanagedSourceDirectories in Compile ++= {
   }
 }
 
-libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.11.5" % "test",
-  "ch.qos.logback" % "logback-classic" % "1.1.3" % "test",
-  "junit" % "junit" % "4.11" % Test,
-  "com.novocode" % "junit-interface" % "0.11" % Test
-    exclude("junit", "junit-dep")
-)
-
 libraryDependencies ++= macroDependencies(scalaVersion.value)
 
-libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.11"      % "1.0.4"
+// libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.11"      % "1.0.4"
 
-scalacOptions ++= Seq("-unchecked", "-feature", "-Xlint", "-Yinline-warnings", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
+scalacOptions ++= Seq("-unchecked", "-feature", "-Xlint", "-Ywarn-inaccessible", "-Ywarn-nullary-override", "-Ywarn-nullary-unit")
 
 bintrayReleaseOnPublish in ThisBuild := true
 
