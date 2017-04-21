@@ -68,6 +68,7 @@ Add: `libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.v
 
 Java users need to add [this](http://mvnrepository.com/artifact/org.scala-lang/scala-library) dependency to the maven build.
 
+For Scala 2.12.0 and above, please build [this branch](/JohnReedLOL/scala-trace-debug/tree/5.0).
 ____________________________________________________________________________________________________________________
 
 <a name="Instructions"></a>
