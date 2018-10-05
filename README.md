@@ -1,9 +1,8 @@
 # scala-trace-debug: print debugging on steroids
 
+This library is deprecated. If you are using Scala 2.11 or above, please use https://github.com/JohnReedLOL/pos
 
 **scala-trace-debug** is a hyperlink based print debugging system designed to work with any IDE or text editor that supports stack trace highlighting. It had its origins in a print debugging system developed in Java for undergrads, and evolved into something production ready. Using compile-time macros in Scala and run-time switches in Java, scala-trace-debug makes your print statements and assertions easier than ever to locate. Use it to append a "smart" hyperlink to your sourcecode, avoiding the need to "grep", and turn it off by recompiling with the `ENABLE_TRACE_DEBUG` environment variable set to `false`. Write smart print statements and assertions that print out your source code. Never use System.out/err.println again.
-
-Note: If you just want something that is a drop-in replacement for System.out/err.println, use: https://github.com/JohnReedLOL/pos
 
 [![Build Status](https://travis-ci.org/JohnReedLOL/scala-trace-debug.svg?branch=4.0)](https://travis-ci.org/JohnReedLOL/scala-trace-debug)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.johnreedlol/scala-trace-debug_2.11.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.johnreedlol%22)
