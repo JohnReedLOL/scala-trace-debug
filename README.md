@@ -1,6 +1,6 @@
 # scala-trace-debug: print debugging on steroids
 
-**This library is deprecated. If you are using Scala 2.11 or above, please use https://github.com/JohnReedLOL/pos**
+**This library is deprecated. If you are using Scala 2.11 or above, please use https://github.com/JohnReedLOL/pos#Logging **
 
 ____________________________________________________________________________________________________________________
 
